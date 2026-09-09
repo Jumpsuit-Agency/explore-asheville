@@ -1,0 +1,43 @@
+{
+  "_comment": "Brand compliance rules from the Explore Asheville Storytelling Foundation. Enforced at build time and runtime for AI-generated content.",
+  "banned": [
+    "souvenir",
+    "tourist",
+    "quaint",
+    "unique",
+    "nestle",
+    "nestled",
+    "hidden gem",
+    "discover",
+    "charming",
+    "premier",
+    "luxurious",
+    "Beer City USA",
+    "the mountains are calling",
+    "Buncombe County",
+    "Biltmore Estate",
+    "Biltmore House",
+    "The Biltmore",
+    "curse words"
+  ],
+  "bannedContextual": [
+    {
+      "word": "town",
+      "context": "Never use 'town' for Asheville. Black Mountain and Weaverville are towns."
+    }
+  ],
+  "required": {
+    "visitor": "Use 'visitor' or 'traveler', never 'tourist'",
+    "city": "Asheville is a city, not a town",
+    "ashevilleArea": "Use 'Asheville area' for the region",
+    "biltmore": "Just 'Biltmore' — no 'Estate', 'House', or 'The'"
+  },
+  "tone": {
+    "always": "positive framing, never comparative",
+    "never": "comparisons to other destinations in public-facing content"
+  },
+  "inRoomOnly": {
+    "description": "Content flagged inRoomOnly contains competitive rationale naming other destinations. Exclude from PDF export and any public-facing output.",
+    "competitors": ["Charleston", "Savannah", "Greenville", "Chattanooga"]
+  }
+}
