@@ -99,14 +99,27 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
               <span style={{ display: "block" }}>Market: {section.market}</span>
             </div>
 
-            <span className="type-label" style={{ fontSize: "10px", color: "var(--color-goldenrod)", marginBottom: "10px", display: "block" }}>Strategy</span>
-            <h3 style={{ fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 800, color: "white", lineHeight: 1.2, marginBottom: "16px" }}>
-              Send out a frequency, not just a message
-            </h3>
+            <span className="type-label" style={{ fontSize: "10px", color: "var(--color-goldenrod)", marginBottom: "10px", display: "block" }}>Campaign Principles</span>
 
-            <span className="type-label" style={{ fontSize: "10px", color: "var(--color-goldenrod)", marginBottom: "10px", display: "block" }}>Business 3.0</span>
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "16px", fontWeight: 800, color: "white", lineHeight: 1.3, marginBottom: "20px" }}>
-              Turn every touchpoint into a sign — until visiting feels like destiny.
+            <h3 style={{ fontFamily: "var(--font-sans)", fontSize: "14px", fontWeight: 800, color: "white", lineHeight: 1.2, marginBottom: "6px" }}>
+              1. The city is already pursuing you.
+            </h3>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.4, marginBottom: "12px" }}>
+              Flip the power dynamic. The campaign doesn&apos;t recruit — it reveals what&apos;s already happening.
+            </p>
+
+            <h3 style={{ fontFamily: "var(--font-sans)", fontSize: "14px", fontWeight: 800, color: "white", lineHeight: 1.2, marginBottom: "6px" }}>
+              2. Every touchpoint is a sign.
+            </h3>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.4, marginBottom: "12px" }}>
+              The media plan is the message. Paid media becomes plot — every ad, billboard, and retargeting hit is proof of the concept.
+            </p>
+
+            <h3 style={{ fontFamily: "var(--font-sans)", fontSize: "14px", fontWeight: 800, color: "white", lineHeight: 1.2, marginBottom: "6px" }}>
+              3. Urgency through accumulation.
+            </h3>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "12px", color: "rgba(255,255,255,0.45)", lineHeight: 1.4, marginBottom: "20px" }}>
+              No scarcity tactics. The pressure builds through repetition — the more signs you notice, the harder it is to call it coincidence.
             </p>
 
             <span onClick={() => onNavigate?.(3)} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.35)", cursor: "pointer" }}>
