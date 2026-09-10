@@ -40,7 +40,10 @@ export function MountainParallax({ currentSlide, totalSlides }: MountainParallax
           position: "absolute",
           inset: 0,
           backgroundImage: "url(/ridge-bg.jpg)",
-          backgroundSize: "cover",
+          // 2816x1536 source in a 1920x1080 box: "cover" yields 1980x1080 and
+          // zero vertical overflow, so the Y pan below had nothing to move
+          // through. An explicit height gives it room to travel.
+          backgroundSize: "auto 140%",
           backgroundRepeat: "no-repeat",
           backgroundPosition: `center ${yPosition}%`,
           transition: "background-position 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
