@@ -87,7 +87,7 @@ export function AssignmentSlide({}: SlideProps) {
 
           {/* How WE evaluate Big Ideas */}
           <div
-            className="glass-light"
+            className="glass-light interactive"
             onClick={() => setLeftOpen(!leftOpen)}
             style={{
               padding: leftOpen ? "32px 32px" : "48px 40px",
@@ -194,7 +194,7 @@ export function AssignmentSlide({}: SlideProps) {
 
           {/* How YOU'LL evaluate them */}
           <div
-            className="glass-light"
+            className="glass-light interactive"
             onClick={() => setRightOpen(!rightOpen)}
             style={{
               padding: rightOpen ? "32px 32px" : "48px 40px",

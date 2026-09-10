@@ -35,6 +35,7 @@ export function AboutSlide({}: SlideProps) {
               entrepreneurial, highly curated, and self-organizing. We are leaders
               in{" "}
               <span
+                className="interactive"
                 onClick={() => setShowB30(!showB30)}
                 style={{
                   color: "var(--color-jumpsuit-gold)",

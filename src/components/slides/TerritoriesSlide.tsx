@@ -1,15 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import type { SlideProps } from "../Deck";
+import type { SlideId, SlideProps } from "../Deck";
 
-const TERRITORIES = [
+const TERRITORIES: {
+  number: string;
+  hook: string;
+  subtext: string;
+  bigIdea: string;
+  slideId: SlideId;
+  color: string;
+  recommended?: boolean;
+  pitch: string[];
+}[] = [
   {
     number: "01",
     hook: "Invite them\nto participate.",
     subtext: "Instead of just visit.",
     bigIdea: "Make Something of It.",
-    slideIndex: 4,  // territory-1-desc
+    slideId: "territory-1-desc",
     color: "var(--color-grove-park)",
     pitch: [
       "You can visit a place and leave with photos.",
@@ -23,7 +32,7 @@ const TERRITORIES = [
     hook: "Fill them\nwith awe.",
     subtext: "Instead of just information.",
     bigIdea: "Sounds Made Up.",
-    slideIndex: 7,  // territory-2-desc
+    slideId: "territory-2-desc",
     color: "var(--color-french-broad)",
     recommended: true,
     pitch: [
@@ -38,7 +47,7 @@ const TERRITORIES = [
     hook: "Send out\na frequency.",
     subtext: "Instead of just a message.",
     bigIdea: "How Many Signs Do You Need?",
-    slideIndex: 9,  // territory-3-desc
+    slideId: "territory-3-desc",
     color: "var(--color-goldenrod)",
     pitch: [
       "Some places you visit. And some places have been visiting you.",
@@ -97,6 +106,7 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
             return (
               <div
                 key={t.number}
+                className="interactive"
                 style={{ perspective: "1200px", cursor: "pointer" }}
                 onClick={() => setFlipped(isFlipped ? null : t.number)}
               >
@@ -248,7 +258,7 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                         Asheville.<br />{t.bigIdea}
                       </h3>
                       <span
-                        onClick={(e) => { e.stopPropagation(); onNavigate?.(t.slideIndex); }}
+                        onClick={(e) => { e.stopPropagation(); onNavigate?.(t.slideId); }}
                         style={{
                           display: "inline-block",
                           fontFamily: "var(--font-sans)",

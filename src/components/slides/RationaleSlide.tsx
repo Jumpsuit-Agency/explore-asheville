@@ -120,6 +120,7 @@ export function RationaleSlide({}: SlideProps) {
             return (
               <div
                 key={c.name}
+                className="interactive"
                 onClick={() => setExpandedRow(isOpen ? null : i)}
                 style={{
                   display: "grid",

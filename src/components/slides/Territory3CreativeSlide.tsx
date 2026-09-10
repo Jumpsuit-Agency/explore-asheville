@@ -53,7 +53,7 @@ const arrowStyle: React.CSSProperties = {
   position: "absolute" as const,
   top: "50%",
   transform: "translateY(-50%)",
-  zIndex: 10,
+  zIndex: 30,
 };
 
 export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
@@ -69,7 +69,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
 
   return (
     <div className="slide slide-deep" style={{ padding: 0 }}>
-      <div className="relative z-10 flex flex-col flex-1" style={{ padding: "80px 100px" }}>
+      <div className="relative z-10 flex flex-col flex-1 min-h-0" style={{ padding: "80px 100px" }}>
         <div style={{ marginBottom: "40px" }}>
           <span className="type-label" style={{ fontSize: "12px", color: "var(--color-goldenrod)", marginBottom: "12px", display: "block" }}>
             Territory 03 &middot; Sample Creative
@@ -80,11 +80,11 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
           </h2>
         </div>
 
-        <div style={{ flex: 1, display: "flex", gap: "40px", alignItems: "center" }}>
+        <div style={{ flex: 1, minHeight: 0, display: "flex", gap: "40px", alignItems: "center" }}>
           <div className="glass-light" style={{ width: "340px", flexShrink: 0, padding: "32px 28px", borderLeft: "3px solid var(--color-goldenrod)" }}>
             <div style={{ display: "flex", gap: "8px", marginBottom: "20px", flexWrap: "wrap" }}>
               {SECTIONS.map((s, i) => (
-                <button key={s.label} onClick={() => goToSection(i)} style={{
+                <button className="interactive" key={s.label} onClick={() => goToSection(i)} style={{
                   fontFamily: "var(--font-sans)", fontSize: "11px", fontWeight: 700, padding: "6px 14px", borderRadius: "20px",
                   border: "1px solid", borderColor: i === sectionIdx ? "var(--color-goldenrod)" : "rgba(255,255,255,0.15)",
                   background: i === sectionIdx ? "var(--color-goldenrod)" : "none",
@@ -109,12 +109,12 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
               Turn every touchpoint into a sign — until visiting feels like destiny.
             </p>
 
-            <span onClick={() => onNavigate?.(3)} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.35)", cursor: "pointer" }}>
+            <span className="interactive" onClick={() => onNavigate?.("territories")} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.35)", cursor: "pointer" }}>
               &larr; Back to Three Territories
             </span>
           </div>
 
-          <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", height: "100%", position: "relative" }}>
+          <div style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", height: "100%", position: "relative" }}>
             {section.items.length > 1 && (
               <button onClick={() => setItemIdx((itemIdx - 1 + section.items.length) % section.items.length)} style={{ ...arrowStyle, left: "12px" }}>&larr;</button>
             )}

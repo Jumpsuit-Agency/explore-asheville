@@ -90,7 +90,7 @@ const arrowStyle: React.CSSProperties = {
   position: "absolute" as const,
   top: "50%",
   transform: "translateY(-50%)",
-  zIndex: 10,
+  zIndex: 30,
 };
 
 export function Territory1Slide({ onNavigate }: SlideProps) {
@@ -106,7 +106,7 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
 
   return (
     <div className="slide slide-deep" style={{ padding: 0 }}>
-      <div className="relative z-10 flex flex-col flex-1" style={{ padding: "80px 100px" }}>
+      <div className="relative z-10 flex flex-col flex-1 min-h-0" style={{ padding: "80px 100px" }}>
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>
           <span className="type-label" style={{ fontSize: "12px", color: "var(--color-grove-park)", marginBottom: "12px", display: "block" }}>
@@ -126,7 +126,7 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
         </div>
 
         {/* Box + Content row */}
-        <div style={{ flex: 1, display: "flex", gap: "40px", alignItems: "center" }}>
+        <div style={{ flex: 1, minHeight: 0, display: "flex", gap: "40px", alignItems: "center" }}>
           {/* Info box */}
           <div className="glass-light" style={{
             width: "340px",
@@ -138,6 +138,7 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
             <div style={{ display: "flex", gap: "8px", marginBottom: "20px", flexWrap: "wrap" }}>
               {SECTIONS.map((s, i) => (
                 <button
+                  className="interactive"
                   key={s.label}
                   onClick={() => goToSection(i)}
                   style={{
@@ -205,8 +206,7 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
               </div>
             </div>
 
-            <span
-              onClick={() => onNavigate?.(3)}
+            <span className="interactive" onClick={() => onNavigate?.("territories")}
               style={{
                 fontFamily: "var(--font-sans)",
                 fontSize: "12px",
@@ -222,6 +222,7 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
           {/* Right — content area with overlaid arrows */}
           <div style={{
             flex: 1,
+            minHeight: 0,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

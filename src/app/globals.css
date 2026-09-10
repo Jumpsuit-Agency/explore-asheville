@@ -22,6 +22,9 @@
   --color-jumpsuit-navy: #032154;
   --color-jumpsuit-gold: #DEAB39;
 
+  /* Reads as ink on a light accent — used by selected tab states */
+  --color-ink: #1E1F38;
+
   /* Fonts */
   --font-sans: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
   --font-slab: var(--font-zilla-slab), Georgia, serif;
@@ -273,34 +276,197 @@
 }
 
 /* ============================================
-   PROGRESS & NAV
+   NAVIGATION LAYER
+
+   Covers the canvas and advances on click. In-slide controls opt OUT by
+   raising themselves above it via .interactive — so the list to maintain is
+   "what escapes navigation", and a control nobody raised still advances the
+   deck rather than swallowing the click into nothing.
    ============================================ */
+
+.nav-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  cursor: pointer;
+}
+
+/*
+  The content layer paints ABOVE the nav layer but is transparent to the
+  pointer, so ordinary slide content lets a click through to navigation.
+  Controls opt back in below. Raising a control's own z-index would not work:
+  this layer forms a stacking context, so children cannot escape it.
+*/
+.slide-content {
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.slide-content button,
+.slide-content a,
+.slide-content input,
+.slide-content [role="button"],
+.slide-content .interactive {
+  pointer-events: auto;
+}
+
+/* ============================================
+   PROGRESS & NAV
+
+   Chrome sits OUTSIDE .slide-canvas so it escapes the canvas scale
+   transform — inside, the 13px counter rendered at ~9px on a laptop.
+   ============================================ */
+
+.deck-chrome {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.deck-chrome > * {
+  pointer-events: auto;
+}
 
 .progress-bar {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 2px;
+  height: 3px;
   background: var(--color-goldenrod);
   transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-controls {
   position: absolute;
-  bottom: 28px;
-  right: 40px;
+  bottom: 24px;
+  right: 32px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  z-index: 40;
+  gap: 14px;
+  opacity: 0.25;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Quiet during the pitch; present the moment a hand touches the mouse. */
+.nav-controls.is-visible,
+.nav-controls:hover,
+.nav-controls:focus-within {
+  opacity: 1;
 }
 
 .nav-counter {
   font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.85);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.nav-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(30, 31, 56, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+}
+
+.nav-arrow:hover:not(:disabled) {
+  border-color: var(--color-goldenrod);
+  background: rgba(30, 31, 56, 0.8);
+}
+
+.nav-arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.deck-end-toast {
+  position: absolute;
+  bottom: 84px;
+  right: 32px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: rgba(30, 31, 56, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 2px solid var(--color-goldenrod);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 500;
-  opacity: 0.3;
-  color: white;
+  animation: child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Shown once per browser, then never again. */
+.key-legend {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: rgba(30, 31, 56, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  white-space: nowrap;
+  animation: child-fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.key-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.key-legend kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom-width: 2px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* One focus treatment for every control in the deck. */
+.nav-arrow:focus-visible,
+.overview-thumb:focus-visible,
+.interactive:focus-visible,
+.slide-canvas button:focus-visible {
+  outline: 2px solid var(--color-goldenrod);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 /* ============================================
@@ -331,6 +497,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: flex-start;
+  text-align: left;
+  font: inherit;
+  color: inherit;
 }
 
 .overview-thumb:hover {
@@ -407,6 +577,9 @@
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .slide-enter, .depth-enter, .stagger > * { animation: none; }
+  .key-legend, .deck-end-toast { animation: none; }
+  /* Covers the inline `animation: child-fade-in ...` used across the slides. */
+  .slide-canvas *, .deck-chrome * { animation: none !important; }
   * { transition-duration: 0.01ms !important; }
 }
 
@@ -414,7 +587,7 @@
 @media print {
   .deck-viewport { background: white; }
   .slide-canvas { transform: none !important; page-break-after: always; }
-  .nav-controls, .progress-bar { display: none; }
+  .deck-chrome, .nav-controls, .progress-bar, .nav-layer, .key-legend, .deck-end-toast { display: none; }
   .slide { position: relative; }
   [data-in-room-only="true"] { display: none; }
 }
