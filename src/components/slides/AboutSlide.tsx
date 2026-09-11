@@ -34,17 +34,19 @@ export function AboutSlide({}: SlideProps) {
               consultancy powered by the independent network. Our network is
               entrepreneurial, highly curated, and self-organizing. We are leaders
               in{" "}
-              <span
-                className="interactive"
+              <button
+                type="button"
+                className="ui-button"
+                aria-expanded={showB30}
                 onClick={() => setShowB30(!showB30)}
                 style={{
                   color: "var(--color-jumpsuit-gold)",
-                  cursor: "pointer",
                   borderBottom: "1px dashed var(--color-jumpsuit-gold)",
+                  display: "inline",
                 }}
               >
                 Business 3.0
-              </span>
+              </button>
               .
             </p>
 

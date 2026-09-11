@@ -86,16 +86,18 @@ export function AssignmentSlide({}: SlideProps) {
         <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "28px", alignItems: "stretch" }}>
 
           {/* How WE evaluate Big Ideas */}
-          <div
-            className="glass-light interactive"
+          <button
+            type="button"
+            className="glass-light ui-disclose"
+            aria-expanded={leftOpen}
             onClick={() => setLeftOpen(!leftOpen)}
             style={{
-              padding: leftOpen ? "32px 32px" : "48px 40px",
+              // Constant. The 48px -> 32px shrink on open pulled every child
+              // up under the pointer at the moment of the click.
+              padding: "40px 36px",
               borderTop: "3px solid var(--color-goldenrod)",
               display: "flex",
               flexDirection: "column",
-              cursor: "pointer",
-              transition: "background 0.3s",
               position: "relative",
               overflow: "hidden",
             }}
@@ -190,19 +192,21 @@ export function AssignmentSlide({}: SlideProps) {
                 </div>
               </>
             )}
-          </div>
+          </button>
 
           {/* How YOU'LL evaluate them */}
-          <div
-            className="glass-light interactive"
+          <button
+            type="button"
+            className="glass-light ui-disclose"
+            aria-expanded={rightOpen}
             onClick={() => setRightOpen(!rightOpen)}
             style={{
-              padding: rightOpen ? "32px 32px" : "48px 40px",
+              // Constant. The 48px -> 32px shrink on open pulled every child
+              // up under the pointer at the moment of the click.
+              padding: "40px 36px",
               borderTop: "3px solid var(--color-french-broad)",
               display: "flex",
               flexDirection: "column",
-              cursor: "pointer",
-              transition: "background 0.3s",
               position: "relative",
               overflow: "hidden",
             }}
@@ -280,7 +284,7 @@ export function AssignmentSlide({}: SlideProps) {
                 </div>
               </>
             )}
-          </div>
+          </button>
         </div>
       </div>
     </div>

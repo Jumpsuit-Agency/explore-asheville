@@ -104,12 +104,7 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
           {TERRITORIES.map((t) => {
             const isFlipped = flipped === t.number;
             return (
-              <div
-                key={t.number}
-                className="interactive"
-                style={{ perspective: "1200px", cursor: "pointer" }}
-                onClick={() => setFlipped(isFlipped ? null : t.number)}
-              >
+              <div key={t.number} style={{ perspective: "1200px" }}>
                 <div style={{
                   position: "relative",
                   width: "100%",
@@ -118,8 +113,14 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                   transition: "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
                   transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
                 }}>
-                  {/* FRONT */}
-                  <div style={{
+                  {/* FRONT — the whole face is the flip target */}
+                  <button
+                    type="button"
+                    className="ui-card"
+                    aria-expanded={isFlipped}
+                    aria-label={`${t.bigIdea} — flip to see the pitch`}
+                    onClick={() => setFlipped(isFlipped ? null : t.number)}
+                    style={{
                     position: "absolute",
                     inset: 0,
                     backfaceVisibility: "hidden",
@@ -212,7 +213,7 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                         Flip to see the pitch &rarr;
                       </span>
                     </div>
-                  </div>
+                  </button>
 
                   {/* BACK */}
                   <div style={{
@@ -230,7 +231,16 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                     backdropFilter: "blur(12px)",
                     WebkitBackdropFilter: "blur(12px)",
                   }}>
-                    <div>
+                    {/* Flip-back surface, sibling to the CTA rather than its
+                        parent — nesting a button inside a button is invalid. */}
+                    <button
+                      type="button"
+                      className="ui-card"
+                      aria-label="Flip back"
+                      onClick={() => setFlipped(null)}
+                      style={{ position: "absolute", inset: 0, borderRadius: "12px" }}
+                    />
+                    <div style={{ position: "relative", pointerEvents: "none" }}>
                       <span className="type-label" style={{ fontSize: "10px", color: t.color, marginBottom: "24px", display: "block" }}>
                         Territory {t.number}
                       </span>
@@ -248,7 +258,7 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                       </div>
                     </div>
 
-                    <div style={{ marginTop: "40px" }}>
+                    <div style={{ marginTop: "40px", position: "relative", pointerEvents: "none" }}>
                       <h3 style={{
                         fontFamily: "var(--font-sans)",
                         fontSize: "32px",
@@ -260,7 +270,9 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                       }}>
                         Asheville.<br />{t.bigIdea}
                       </h3>
-                      <span
+                      <button
+                        type="button"
+                        className="ui-button"
                         onClick={(e) => { e.stopPropagation(); onNavigate?.(t.slideId); }}
                         style={{
                           display: "inline-block",
@@ -271,11 +283,11 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                           border: `1px solid ${t.color}`,
                           padding: "10px 20px",
                           borderRadius: "6px",
-                          cursor: "pointer",
+                          pointerEvents: "auto",
                         }}
                       >
                         Explore the Big Idea &rarr;
-                      </span>
+                      </button>
                     </div>
                   </div>
                 </div>

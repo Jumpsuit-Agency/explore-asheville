@@ -138,7 +138,7 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
             <div style={{ display: "flex", gap: "8px", marginBottom: "20px", flexWrap: "wrap" }}>
               {SECTIONS.map((s, i) => (
                 <button
-                  className="interactive"
+                  className="ui-button"
                   key={s.label}
                   onClick={() => goToSection(i)}
                   style={{
@@ -206,17 +206,18 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
               </div>
             </div>
 
-            <span className="interactive" onClick={() => onNavigate?.("territories")}
+            <button
+              type="button"
+              className="ui-button ui-button-quiet"
+              onClick={() => onNavigate?.("territories")}
               style={{
                 fontFamily: "var(--font-sans)",
                 fontSize: "12px",
                 fontWeight: 600,
-                color: "rgba(255,255,255,0.35)",
-                cursor: "pointer",
               }}
             >
               &larr; Back to Three Territories
-            </span>
+            </button>
           </div>
 
           {/* Right — content area with overlaid arrows */}
@@ -233,6 +234,7 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
             {/* Left arrow */}
             {section.items.length > 1 && (
               <button
+                className="ui-button"
                 onClick={() => setItemIdx((itemIdx - 1 + section.items.length) % section.items.length)}
                 style={{ ...arrowStyle, left: "12px" }}
               >
@@ -316,6 +318,7 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
             {/* Right arrow */}
             {section.items.length > 1 && (
               <button
+                className="ui-button"
                 onClick={() => setItemIdx((itemIdx + 1) % section.items.length)}
                 style={{ ...arrowStyle, right: "12px" }}
               >
