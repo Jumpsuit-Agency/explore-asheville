@@ -22,6 +22,9 @@
   --color-jumpsuit-navy: #032154;
   --color-jumpsuit-gold: #DEAB39;
 
+  /* Reads as ink on a light accent — used by selected tab states */
+  --color-ink: #1E1F38;
+
   /* Fonts */
   --font-sans: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
   --font-slab: var(--font-zilla-slab), Georgia, serif;
@@ -93,6 +96,31 @@
 .slide-cream {
   background: rgba(246, 234, 208, 0.92);
   color: #1E1F38;
+}
+
+/* ============================================
+   CONTROL RESET
+
+   Lets a <button> carry slide-scale layout without UA chrome. Deliberately
+   placed ABOVE the glass utilities and every component rule: a control that
+   also carries .glass-light must keep its panel treatment, and inline styles
+   at each site still win, so per-slide composition is untouched.
+   ============================================ */
+
+.ui-button,
+.ui-disclose,
+.ui-card {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  transition: color 0.2s, opacity 0.2s, background 0.2s, border-color 0.2s,
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ============================================
@@ -273,34 +301,299 @@
 }
 
 /* ============================================
-   PROGRESS & NAV
+   NAVIGATION LAYER
+
+   Sits beneath the slide content, which is pointer-events:none, so anything
+   that isn't a control lets the click through to here. Controls opt back in
+   below — so the list to maintain is "what escapes navigation", and a control
+   nobody marked up still advances the deck rather than dead-clicking.
+
+   Split left/right so the cursor can point the way it will move.
    ============================================ */
+
+.nav-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  /* How much of the width steps backwards. The rest advances. */
+  --nav-prev-zone: 22%;
+}
+
+.nav-zone {
+  height: 100%;
+}
+
+/*
+  Directional cursors. 48px chevrons, white with a dark halo so they stay
+  legible over both the ink slides and the pale sky at the top of the ridge.
+  Hotspot is centred (24 24) so the arrow sits under the pointer, not beside it.
+*/
+.nav-zone-prev {
+  width: var(--nav-prev-zone);
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij48ZyBvcGFjaXR5PSIwLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTI5IDExIEwxNiAyNCBMMjkgMzciIHN0cm9rZT0icmdiYSgwLDAsMCwwLjUpIiBzdHJva2Utd2lkdGg9IjkiLz48cGF0aCBkPSJNMjkgMTEgTDE2IDI0IEwyOSAzNyIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjQuNSIvPjwvZz48L3N2Zz4=") 24 24, w-resize;
+}
+
+.nav-zone-next {
+  flex: 1;
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij48ZyBvcGFjaXR5PSIwLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTE5IDExIEwzMiAyNCBMMTkgMzciIHN0cm9rZT0icmdiYSgwLDAsMCwwLjUpIiBzdHJva2Utd2lkdGg9IjkiLz48cGF0aCBkPSJNMTkgMTEgTDMyIDI0IEwxOSAzNyIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjQuNSIvPjwvZz48L3N2Zz4=") 24 24, e-resize;
+}
+
+/* Slide one has nowhere to go back to — don't promise a move that won't happen. */
+.nav-zone-prev.is-disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+/*
+  The content layer paints ABOVE the nav layer but is transparent to the
+  pointer, so ordinary slide content lets a click through to navigation.
+  Controls opt back in below. Raising a control's own z-index would not work:
+  this layer forms a stacking context, so children cannot escape it.
+*/
+.slide-content {
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/*
+  Controls take the pointer back — both the events and the cursor. Slide
+  navigation is the only thing that gets a directional arrow, so the cursor
+  always tells you which of the two you are about to do.
+*/
+.slide-content button,
+.slide-content a,
+.slide-content input,
+.slide-content [role="button"],
+.slide-content .interactive,
+.slide-content .ui-button,
+.slide-content .ui-disclose,
+.slide-content .ui-card {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* ============================================
+   INTERACTION SYSTEM
+
+   The deck had ten interaction idioms with nine visual treatments, four of
+   them built on <div onClick>. Everything now resolves to three families,
+   each a real <button> — keyboard-operable, announced, focusable:
+
+     .ui-button    a discrete action   (tabs, arrows, CTAs, back links)
+     .ui-disclose  expands in place    (panels, table rows, inline terms)
+     .ui-card      a whole surface     (territory cards, overview thumbs)
+   ============================================ */
+
+/* 1 — Button. Quiet by default, resolves toward white or the accent. */
+.ui-button:hover:not(:disabled) {
+  color: #ffffff;
+}
+
+.ui-button-quiet {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.ui-button-quiet:hover {
+  color: var(--color-goldenrod);
+}
+
+/* 2 — Disclosure. One marker everywhere, rotating to signal open. The old
+   markers ran from a dashed underline to a 12px glyph at 2.2:1. */
+/* An inset wash rather than a background, so it layers over .glass-light
+   instead of replacing the panel treatment. */
+.ui-disclose:hover {
+  box-shadow: inset 0 0 0 999px rgba(255, 255, 255, 0.04);
+}
+
+.disclose-marker {
+  display: inline-block;
+  flex-shrink: 0;
+  font-size: 11px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.75);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ui-disclose[aria-expanded="true"] .disclose-marker {
+  transform: rotate(90deg);
+}
+
+/* Reserved so an open row never displaces the rows beneath it. Held in
+   layout and hidden from assistive tech until it is actually revealed. */
+.disclose-reserved {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+}
+
+.ui-disclose[aria-expanded="true"] .disclose-reserved {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* 3 — Card. Lifts toward the accent. */
+.ui-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   PROGRESS & NAV
+
+   Chrome sits OUTSIDE .slide-canvas so it escapes the canvas scale
+   transform — inside, the 13px counter rendered at ~9px on a laptop.
+   ============================================ */
+
+.deck-chrome {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.deck-chrome > * {
+  pointer-events: auto;
+}
 
 .progress-bar {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 2px;
+  height: 3px;
   background: var(--color-goldenrod);
   transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-controls {
   position: absolute;
-  bottom: 28px;
-  right: 40px;
+  bottom: 24px;
+  right: 32px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  z-index: 40;
+  gap: 14px;
+  opacity: 0.25;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Quiet during the pitch; present the moment a hand touches the mouse. */
+.nav-controls.is-visible,
+.nav-controls:hover,
+.nav-controls:focus-within {
+  opacity: 1;
 }
 
 .nav-counter {
   font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.85);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.nav-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(30, 31, 56, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+}
+
+.nav-arrow:hover:not(:disabled) {
+  border-color: var(--color-goldenrod);
+  background: rgba(30, 31, 56, 0.8);
+}
+
+.nav-arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.deck-end-toast {
+  position: absolute;
+  bottom: 84px;
+  right: 32px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: rgba(30, 31, 56, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 2px solid var(--color-goldenrod);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 500;
-  opacity: 0.3;
-  color: white;
+  animation: child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Shown once per browser, then never again. */
+.key-legend {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: rgba(30, 31, 56, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  white-space: nowrap;
+  animation: child-fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.key-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.key-legend kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom-width: 2px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* One focus treatment for every control in the deck. */
+.nav-arrow:focus-visible,
+.overview-thumb:focus-visible,
+.interactive:focus-visible,
+.slide-canvas button:focus-visible {
+  outline: 2px solid var(--color-goldenrod);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 /* ============================================
@@ -331,6 +624,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: flex-start;
+  text-align: left;
+  font: inherit;
+  color: inherit;
 }
 
 .overview-thumb:hover {
@@ -407,6 +704,9 @@
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .slide-enter, .depth-enter, .stagger > * { animation: none; }
+  .key-legend, .deck-end-toast { animation: none; }
+  /* Covers the inline `animation: child-fade-in ...` used across the slides. */
+  .slide-canvas *, .deck-chrome * { animation: none !important; }
   * { transition-duration: 0.01ms !important; }
 }
 
@@ -414,7 +714,7 @@
 @media print {
   .deck-viewport { background: white; }
   .slide-canvas { transform: none !important; page-break-after: always; }
-  .nav-controls, .progress-bar { display: none; }
+  .deck-chrome, .nav-controls, .progress-bar, .nav-layer, .key-legend, .deck-end-toast { display: none; }
   .slide { position: relative; }
   [data-in-room-only="true"] { display: none; }
 }

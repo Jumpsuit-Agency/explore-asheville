@@ -52,6 +52,7 @@ export function Territory1FilmSlide({}: SlideProps) {
         <div style={{ display: "flex", gap: "8px" }}>
           {SCRIPTS.map((s, i) => (
             <button
+              className="ui-button"
               key={s.title}
               onClick={() => setScriptIdx(i)}
               style={{

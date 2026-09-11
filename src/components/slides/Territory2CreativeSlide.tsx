@@ -95,7 +95,7 @@ const arrowStyle: React.CSSProperties = {
   position: "absolute" as const,
   top: "50%",
   transform: "translateY(-50%)",
-  zIndex: 10,
+  zIndex: 30,
 };
 
 export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
@@ -111,7 +111,7 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
 
   return (
     <div className="slide slide-deep" style={{ padding: 0 }}>
-      <div className="relative z-10 flex flex-col flex-1" style={{ padding: "80px 100px" }}>
+      <div className="relative z-10 flex flex-col flex-1 min-h-0" style={{ padding: "80px 100px" }}>
         <div style={{ marginBottom: "40px" }}>
           <span className="type-label" style={{ fontSize: "12px", color: "var(--color-french-broad)", marginBottom: "12px", display: "block" }}>
             Territory 02 &middot; Sample Creative
@@ -122,11 +122,11 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
           </h2>
         </div>
 
-        <div style={{ flex: 1, display: "flex", gap: "40px", alignItems: "center" }}>
+        <div style={{ flex: 1, minHeight: 0, display: "flex", gap: "40px", alignItems: "center" }}>
           <div className="glass-light" style={{ width: "340px", flexShrink: 0, padding: "32px 28px", borderLeft: "3px solid var(--color-french-broad)" }}>
             <div style={{ display: "flex", gap: "8px", marginBottom: "20px", flexWrap: "wrap" }}>
               {SECTIONS.map((s, i) => (
-                <button key={s.label} onClick={() => goToSection(i)} style={{
+                <button className="ui-button" key={s.label} onClick={() => goToSection(i)} style={{
                   fontFamily: "var(--font-sans)", fontSize: "11px", fontWeight: 700, padding: "6px 14px", borderRadius: "20px",
                   border: "1px solid", borderColor: i === sectionIdx ? "var(--color-french-broad)" : "rgba(255,255,255,0.15)",
                   background: i === sectionIdx ? "var(--color-french-broad)" : "none",
@@ -169,14 +169,14 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
               </div>
             </div>
 
-            <span onClick={() => onNavigate?.(3)} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.35)", cursor: "pointer" }}>
+            <button type="button" className="ui-button ui-button-quiet" onClick={() => onNavigate?.("territories")} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600 }}>
               &larr; Back to Three Territories
-            </span>
+            </button>
           </div>
 
-          <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", height: "100%", position: "relative" }}>
+          <div style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", height: "100%", position: "relative" }}>
             {section.items.length > 1 && (
-              <button onClick={() => setItemIdx((itemIdx - 1 + section.items.length) % section.items.length)} style={{ ...arrowStyle, left: "12px" }}>&larr;</button>
+              <button className="ui-button" onClick={() => setItemIdx((itemIdx - 1 + section.items.length) % section.items.length)} style={{ ...arrowStyle, left: "12px" }}>&larr;</button>
             )}
 
             {item.type === "image" ? (
@@ -226,7 +226,7 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
             ) : null}
 
             {section.items.length > 1 && (
-              <button onClick={() => setItemIdx((itemIdx + 1) % section.items.length)} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
+              <button className="ui-button" onClick={() => setItemIdx((itemIdx + 1) % section.items.length)} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
             )}
             {section.items.length > 1 && (
               <span style={{ position: "absolute", bottom: "12px", left: "50%", transform: "translateX(-50%)", fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>

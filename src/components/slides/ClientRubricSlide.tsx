@@ -114,18 +114,22 @@ export function ClientRubricSlide({}: SlideProps) {
           {CRITERIA.map((c, i) => {
             const isOpen = expandedRow === i;
             return (
-              <div
+              <button
                 key={c.name}
+                type="button"
+                className="ui-disclose"
+                aria-expanded={isOpen}
                 onClick={() => setExpandedRow(isOpen ? null : i)}
                 style={{
                   display: "grid",
                   gridTemplateColumns: "260px 1fr 1fr 1fr",
                   gap: "0",
-                  padding: isOpen ? "18px 0 14px" : "24px 0",
+                  // Constant. It used to shrink 48px -> 32px on open, which
+                  // moved the row's own content under the pointer mid-click.
+                  padding: "24px 0",
                   borderBottom: i < CRITERIA.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none",
-                  cursor: "pointer",
-                  transition: "background 0.2s",
                   borderRadius: "4px",
+                  width: "100%",
                 }}
               >
                 <div>
@@ -133,14 +137,7 @@ export function ClientRubricSlide({}: SlideProps) {
                     <p style={{ fontFamily: "var(--font-sans)", fontSize: "20px", fontWeight: 700, color: "white" }}>
                       {c.name}
                     </p>
-                    <span style={{
-                      fontSize: "12px",
-                      color: "rgba(255,255,255,0.25)",
-                      transition: "transform 0.2s",
-                      transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
-                    }}>
-                      &#9654;
-                    </span>
+                    <span className="disclose-marker" aria-hidden="true">&#10095;</span>
                   </div>
                   <p style={{ fontFamily: "var(--font-slab)", fontSize: "15px", color: "rgba(255,255,255,0.35)", marginTop: "2px" }}>
                     {c.desc}
@@ -154,24 +151,26 @@ export function ClientRubricSlide({}: SlideProps) {
                     }}>
                       {t.scores[i] ? "\u2713" : "\u2717"}
                     </span>
-                    {isOpen && (
-                      <p style={{
+                    {/* Always in layout, so opening a row never shifts the
+                        rows beneath it. Hidden from AT until revealed. */}
+                    <p
+                      className="disclose-reserved"
+                      style={{
                         fontFamily: "var(--font-slab)",
                         fontSize: "13px",
-                        color: "rgba(255,255,255,0.45)",
+                        color: "rgba(255,255,255,0.6)",
                         lineHeight: 1.4,
                         marginTop: "6px",
                         padding: "0 16px",
                         textAlign: "center",
-                        animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both",
-                        animationDelay: `${ti * 50}ms`,
-                      }}>
-                        {t.rationale[i]}
-                      </p>
-                    )}
+                        transitionDelay: `${ti * 50}ms`,
+                      }}
+                    >
+                      {t.rationale[i]}
+                    </p>
                   </div>
                 ))}
-              </div>
+              </button>
             );
           })}
 
