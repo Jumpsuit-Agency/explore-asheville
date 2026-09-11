@@ -155,29 +155,8 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                       </span>
                     )}
 
-                    <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", gap: "12px" }}>
-                      <p style={{
-                        fontFamily: "var(--font-sans)",
-                        fontWeight: 800,
-                        fontSize: "36px",
-                        color: "white",
-                        lineHeight: 1.15,
-                        letterSpacing: "-0.02em",
-                        whiteSpace: "pre-line",
-                      }}>
-                        {t.hook}
-                      </p>
-                      <p style={{
-                        fontFamily: "var(--font-slab)",
-                        fontSize: "15px",
-                        color: "rgba(255,255,255,0.35)",
-                        fontStyle: "italic",
-                      }}>
-                        {t.subtext}
-                      </p>
-                    </div>
-
-                    <div style={{ textAlign: "center" }}>
+                    {/* Centred: the campaign lockup carries the card */}
+                    <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
                       <p style={{
                         fontFamily: "var(--font-sans)",
                         fontSize: "42px",
@@ -194,11 +173,35 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                         fontSize: "42px",
                         fontWeight: 800,
                         color: t.color,
-                        marginBottom: "16px",
                         lineHeight: 1.05,
                         letterSpacing: "-0.03em",
                       }}>
                         {t.bigIdea}
+                      </p>
+                    </div>
+
+                    {/* Bottom: the strategic hook, then the flip affordance */}
+                    <div style={{ textAlign: "center" }}>
+                      <p style={{
+                        fontFamily: "var(--font-sans)",
+                        fontWeight: 800,
+                        fontSize: "36px",
+                        color: "white",
+                        lineHeight: 1.15,
+                        letterSpacing: "-0.02em",
+                        whiteSpace: "pre-line",
+                        marginBottom: "12px",
+                      }}>
+                        {t.hook}
+                      </p>
+                      <p style={{
+                        fontFamily: "var(--font-slab)",
+                        fontSize: "15px",
+                        color: "rgba(255,255,255,0.35)",
+                        fontStyle: "italic",
+                        marginBottom: "16px",
+                      }}>
+                        {t.subtext}
                       </p>
                       <span style={{
                         fontFamily: "var(--font-sans)",

@@ -296,16 +296,21 @@ export default function Deck() {
         <MountainParallax currentSlide={current} totalSlides={SLIDES.length} />
 
         {/*
-          Navigation layer, beneath the slide content, advancing on click.
-          The content layer above is `pointer-events: none`, so anything that
-          isn't a control lets the click fall through to here. A new control
-          that nobody marks up still advances the deck — never a dead click.
+          Navigation layer, beneath the slide content. The content layer above
+          is `pointer-events: none`, so anything that isn't a control lets the
+          click fall through to here. A new control that nobody marks up still
+          advances the deck — never a dead click.
+
+          Split into two zones so the cursor can point the way it will move.
+          Zone width is --nav-prev-zone in globals.css.
         */}
-        <div
-          className="nav-layer"
-          onClick={() => navigate("next")}
-          aria-hidden="true"
-        />
+        <div className="nav-layer" aria-hidden="true">
+          <div
+            className={`nav-zone nav-zone-prev ${current === 0 ? "is-disabled" : ""}`}
+            onClick={() => navigate("prev")}
+          />
+          <div className="nav-zone nav-zone-next" onClick={() => navigate("next")} />
+        </div>
 
         {/* Slide content layer — sits above the nav layer so controls stay clickable */}
         <div className="slide-content">

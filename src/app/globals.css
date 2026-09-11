@@ -278,17 +278,46 @@
 /* ============================================
    NAVIGATION LAYER
 
-   Covers the canvas and advances on click. In-slide controls opt OUT by
-   raising themselves above it via .interactive — so the list to maintain is
-   "what escapes navigation", and a control nobody raised still advances the
-   deck rather than swallowing the click into nothing.
+   Sits beneath the slide content, which is pointer-events:none, so anything
+   that isn't a control lets the click through to here. Controls opt back in
+   below — so the list to maintain is "what escapes navigation", and a control
+   nobody marked up still advances the deck rather than dead-clicking.
+
+   Split left/right so the cursor can point the way it will move.
    ============================================ */
 
 .nav-layer {
   position: absolute;
   inset: 0;
   z-index: 20;
-  cursor: pointer;
+  display: flex;
+  /* How much of the width steps backwards. The rest advances. */
+  --nav-prev-zone: 22%;
+}
+
+.nav-zone {
+  height: 100%;
+}
+
+/*
+  Directional cursors. 48px chevrons, white with a dark halo so they stay
+  legible over both the ink slides and the pale sky at the top of the ridge.
+  Hotspot is centred (24 24) so the arrow sits under the pointer, not beside it.
+*/
+.nav-zone-prev {
+  width: var(--nav-prev-zone);
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij48ZyBvcGFjaXR5PSIwLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTI5IDExIEwxNiAyNCBMMjkgMzciIHN0cm9rZT0icmdiYSgwLDAsMCwwLjUpIiBzdHJva2Utd2lkdGg9IjkiLz48cGF0aCBkPSJNMjkgMTEgTDE2IDI0IEwyOSAzNyIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjQuNSIvPjwvZz48L3N2Zz4=") 24 24, w-resize;
+}
+
+.nav-zone-next {
+  flex: 1;
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij48ZyBvcGFjaXR5PSIwLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTE5IDExIEwzMiAyNCBMMTkgMzciIHN0cm9rZT0icmdiYSgwLDAsMCwwLjUpIiBzdHJva2Utd2lkdGg9IjkiLz48cGF0aCBkPSJNMTkgMTEgTDMyIDI0IEwxOSAzNyIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjQuNSIvPjwvZz48L3N2Zz4=") 24 24, e-resize;
+}
+
+/* Slide one has nowhere to go back to — don't promise a move that won't happen. */
+.nav-zone-prev.is-disabled {
+  cursor: default;
+  pointer-events: none;
 }
 
 /*
@@ -305,12 +334,18 @@
   pointer-events: none;
 }
 
+/*
+  Controls take the pointer back — both the events and the cursor. Slide
+  navigation is the only thing that gets a directional arrow, so the cursor
+  always tells you which of the two you are about to do.
+*/
 .slide-content button,
 .slide-content a,
 .slide-content input,
 .slide-content [role="button"],
 .slide-content .interactive {
   pointer-events: auto;
+  cursor: pointer;
 }
 
 /* ============================================
