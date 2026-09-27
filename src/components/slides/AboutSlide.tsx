@@ -30,8 +30,8 @@ export function AboutSlide({}: SlideProps) {
             </h2>
 
             <p className="type-subhead" style={{ color: "rgba(255,255,255,0.55)", fontSize: "22px", marginBottom: "24px", maxWidth: "700px", lineHeight: 1.5 }}>
-              Jumpsuit is an award-winning agency, production studio, and Business 3.0
-              consultancy powered by the independent network. Our network is
+              Jumpsuit is an <span style={{ color: "var(--color-jumpsuit-gold)", fontWeight: 700 }}>award-winning creative agency, production studio, and future of work
+              consultancy</span> powered by the independent network. Our network is
               entrepreneurial, highly curated, and self-organizing. We are leaders
               in{" "}
               <span
@@ -74,11 +74,11 @@ export function AboutSlide({}: SlideProps) {
             )}
 
             <p className="type-body" style={{ color: "rgba(255,255,255,0.45)", fontSize: "18px", maxWidth: "650px", lineHeight: 1.6 }}>
-              In practice, that means ideas you didn&apos;t ask for, talent you
-              couldn&apos;t access otherwise, and the kind of speed and agility that
-              only comes from a self-organizing network. We&apos;ve been operating
-              this way from Day 1 &mdash; because we believe the future of work
-              isn&apos;t a bigger machine. It&apos;s a living system.
+              In practice, that means faster creative, deeper talent, and ideas
+              that surprise you &mdash; all without the overhead of a traditional
+              agency. We&apos;ve been building this way since 2016, long before
+              remote work was trendy. We don&apos;t scale by hiring. We scale by
+              trusting the right people.
             </p>
           </div>
 
@@ -89,12 +89,12 @@ export function AboutSlide({}: SlideProps) {
             </span>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "20px" }}>
               {[
-                { name: "Nicole Ayres", role: "CEO", photo: "/team/nicole.jpg", bio: "Founder of Jumpsuit, obsessed with the future, and learning to become more present." },
-                { name: "Jonathan Lapps", role: "Director of Client Success", photo: "/team/jonathan.jpg", bio: "Makes sure clients are happy with the team and the results while integrating his people-pleasing shadow." },
-                { name: "Alex Land", role: "Account Director", photo: "/team/alex.jpg", bio: "Keeps everything moving, everyone aligned, and somehow remembers every detail you forgot you mentioned." },
-                { name: "Levi Bethune", role: "Creative Director", photo: "/team/levi.png", bio: "Full stack creative. What can\u2019t this guy do? Seriously, we\u2019re still trying to figure it out." },
-                { name: "Sas", role: "Director of Multidimensionality", photo: "/team/sasquatch.png", bio: "Sees what others can\u2019t. Bridges dimensions. Technically unverified but consistently right." },
-                { name: "AI", role: "Live Knowledge Base", photo: "/team/ai.png", bio: "Knows the brief, the documents, and our ideas. You can play with him in and outside of the meeting. He will not take jobs from anyone." },
+                { name: "Nicole Ayres", role: "CEO", photo: "/team/nicole.jpg", bio: "Founder of Jumpsuit, obsessed with the future, and thinks business should feel more like play." },
+                { name: "Jonathan Lapps", role: "Director of Client Success", photo: "/team/jonathan.jpg", bio: "Keeps clients feeling supported and happy, while learning to integrate his people pleasing shadow." },
+                { name: "Alex Land", role: "Account Director", photo: "/team/alex.jpg", bio: "Main point of contact. Keeps everything moving, everyone aligned, and thinks of everything you forgot to ask." },
+                { name: "Levi Bethune", role: "Creative Director", photo: "/team/levi.png", bio: "Full stack human. What can\u2019t this guy do? Shoot a commercial. Build AI. Give a TED talk. Make a killer cocktail." },
+                { name: "Sas", role: "Director of Multidimensionality", photo: "/team/sasquatch.png", bio: "Views business as its own multidimensional entity. Creates new realities through resonance, not force." },
+                { name: "AI", role: "Live Knowledge Base", photo: "/team/ai.png", bio: "Knows a bit about you. A bit about us. Can answer questions anytime you have one and is always down to riff." },
               ].map((person) => (
                 <div
                   key={person.name}

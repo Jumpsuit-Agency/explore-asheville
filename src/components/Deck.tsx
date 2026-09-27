@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { MountainParallax } from "./MountainParallax";
+import { CreativeAdvisor, CreativeAdvisorHandle } from "./CreativeAdvisor";
 import { TitleSlide } from "./slides/TitleSlide";
 import { AboutSlide } from "./slides/AboutSlide";
 import { AssignmentSlide } from "./slides/AssignmentSlide";
@@ -18,10 +19,12 @@ import { Territory2CreativeSlide } from "./slides/Territory2CreativeSlide";
 import { Territory3SasStorySlide } from "./slides/Territory3SasStorySlide";
 import { Territory3CreativeSlide } from "./slides/Territory3CreativeSlide";
 import { B30Slide } from "./slides/B30Slide";
+import { ClosingSlide } from "./slides/ClosingSlide";
 
 export interface SlideProps {
   onDepthOpen?: (panelId: string) => void;
   onNavigate?: (slideIndex: number) => void;
+  onOpenAdvisor?: () => void;
 }
 
 interface SlideConfig {
@@ -46,6 +49,7 @@ const SLIDES: SlideConfig[] = [
   { id: "hero-film", title: "Hero Film", component: HeroFilmSlide },                         // 11
   { id: "rationale", title: "Our Recommendation", component: RationaleSlide },                // 12
   { id: "client-rubric", title: "Against Your Criteria", component: ClientRubricSlide },      // 13
+  { id: "closing", title: "Let's Talk", component: ClosingSlide },                            // 14
 ];
 
 export default function Deck() {
@@ -54,6 +58,7 @@ export default function Deck() {
   const [depthOpen, setDepthOpen] = useState<string | null>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const advisorRef = useRef<CreativeAdvisorHandle>(null);
 
   // Scale 1920x1080 canvas to viewport
   const updateScale = useCallback(() => {
@@ -104,6 +109,10 @@ export default function Deck() {
   // Keyboard navigation
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
+      // Don't capture keys when typing in an input/textarea
+      const tag = (e.target as HTMLElement)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+
       // Overview mode
       if (e.key === "o" || e.key === "O") {
         if (!depthOpen) {
@@ -183,6 +192,7 @@ export default function Deck() {
           <SlideComponent
             onDepthOpen={(panelId) => setDepthOpen(panelId)}
             onNavigate={goTo}
+            onOpenAdvisor={() => advisorRef.current?.open()}
           />
         </div>
 
@@ -203,6 +213,13 @@ export default function Deck() {
             </button>
           </div>
         )}
+
+        {/* AI Advisor */}
+        <CreativeAdvisor
+          ref={advisorRef}
+          slideId={SLIDES[current].id}
+          slideTitle={SLIDES[current].title}
+        />
 
         {/* Progress bar */}
         <div
