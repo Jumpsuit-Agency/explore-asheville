@@ -13,7 +13,6 @@ import { Territory2DescSlide } from "./slides/Territory2DescSlide";
 import { Territory3DescSlide } from "./slides/Territory3DescSlide";
 import { RationaleSlide } from "./slides/RationaleSlide";
 import { ClientRubricSlide } from "./slides/ClientRubricSlide";
-import { HeroFilmSlide } from "./slides/HeroFilmSlide";
 import { ActivationsSlide } from "./slides/ActivationsSlide";
 import { Territory2CreativeSlide } from "./slides/Territory2CreativeSlide";
 import { Territory3SasStorySlide } from "./slides/Territory3SasStorySlide";
@@ -46,8 +45,7 @@ const SLIDES: SlideConfig[] = [
   { id: "territory-3-desc", title: "How Many Signs Do You Need?", component: Territory3DescSlide }, // 8
   { id: "territory-3-sas-story", title: "The Sasquatch Story", component: Territory3SasStorySlide }, // 9
   { id: "territory-3-creative", title: "T3 Creative", component: Territory3CreativeSlide },   // 10
-  { id: "hero-film", title: "Hero Film", component: HeroFilmSlide },                         // 11
-  { id: "rationale", title: "Our Recommendation", component: RationaleSlide },                // 12
+{ id: "rationale", title: "Our Recommendation", component: RationaleSlide },                // 12
   { id: "client-rubric", title: "Against Your Criteria", component: ClientRubricSlide },      // 13
   { id: "closing", title: "Let's Talk", component: ClosingSlide },                            // 14
 ];
