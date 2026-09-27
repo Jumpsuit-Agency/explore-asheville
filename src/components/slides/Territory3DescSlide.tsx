@@ -1,12 +1,20 @@
 import type { SlideProps } from "../Deck";
 
-const PARAGRAPHS = [
-  "Most destination campaigns try to convince people to visit.",
-  "How Many Signs Do You Need? suggests they already know.",
-  "Some places keep showing up in your life \u2014 in a song, on a tee shirt, in a conversation for the third time. Asheville is one of those places. Instead of making a case, we lean into the magnetism. The campaign treats the city as something that\u2019s already been calling.",
-  "The \u201Csigns\u201D create a retargeting logic that works at every level \u2014 literal (billboards, ads, social) and figurative (coincidences, recommendations, dreams). Each touchpoint reinforces the feeling that Asheville isn\u2019t just an option. It\u2019s the one that won\u2019t leave you alone.",
-  "The idea works because it turns passive awareness into active urgency. It\u2019s bold, a little mystical, and unmistakably Asheville \u2014 the kind of confidence no competitor would dare claim.",
-  "At its heart, it reframes Asheville from a place you consider into a place that\u2019s been considering you.",
+const COLOR = "var(--color-goldenrod)";
+
+const EXTENSIONS = [
+  {
+    prompt: "What if Asheville starts to feel like a sign?",
+    desc: "Once you see it, you start seeing it everywhere. A cheap flight. A long weekend opening up. A rainbow. A friend who just got back. A billboard. An Asheville Instagram account that started following you. Is it the algorithm or the universe conspiring?",
+  },
+  {
+    prompt: "What if Asheville gets in on the signs?",
+    desc: "Hotel key cards. Coffee sleeves. Storefronts. Murals. Hotel elevators. Even the interstate construction zone gets in on it. Signs show up in the places people stay, eat, shop, walk, drive and explore \u2014 each one adding another little nudge, wink or confirmation that Asheville is exactly where they\u2019re supposed to be. Is it word of mouth, or is the whole city in on it?",
+  },
+  {
+    prompt: "What if visitors start to get the cosmic joke?",
+    desc: "Asheville keeps showing up because people who live there and visit there love it. When you love a place, you spot it everywhere \u2014 a bumper sticker, a friend\u2019s Instagram, a stranger\u2019s t-shirt. And once you see enough signs, you stop noticing them and start making them.",
+  },
 ];
 
 export function Territory3DescSlide({}: SlideProps) {
@@ -19,53 +27,86 @@ export function Territory3DescSlide({}: SlideProps) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "100px 120px",
+          padding: "80px 120px",
         }}
       >
-        <span
-          className="type-label"
-          style={{ fontSize: "12px", color: "var(--color-goldenrod)", marginBottom: "40px" }}
-        >
-          Territory 03 &middot; The Idea
-        </span>
-
-        <div style={{ maxWidth: "1100px", marginBottom: "56px" }}>
-          {PARAGRAPHS.map((p, i) => (
-            <p
-              key={i}
-              style={{
-                fontFamily: "var(--font-slab)",
-                fontSize: i === 0 || i === 1 ? "28px" : "22px",
-                fontWeight: i === 1 ? 700 : 400,
-                color: i === 1
-                  ? "rgba(255,255,255,0.8)"
-                  : "rgba(255,255,255,0.5)",
-                lineHeight: 1.6,
-                marginBottom: i === 1 ? "28px" : "12px",
-              }}
-            >
-              {p}
-            </p>
-          ))}
+        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
+          <span
+            className="type-label"
+            style={{ fontSize: "12px", color: COLOR }}
+          >
+            Territory 03 &middot; Campaign Extensions
+          </span>
+          <span
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "10px",
+              fontWeight: 700,
+              color: COLOR,
+              textTransform: "uppercase",
+              letterSpacing: "0.15em",
+              background: "rgba(254,181,44,0.15)",
+              padding: "3px 10px",
+              borderRadius: "4px",
+            }}
+          >
+            Our Pick
+          </span>
         </div>
 
         <h2
           style={{
             fontFamily: "var(--font-sans)",
-            fontSize: "72px",
+            fontSize: "48px",
             fontWeight: 800,
             color: "white",
-            lineHeight: 1.0,
+            lineHeight: 1.05,
             letterSpacing: "-0.03em",
+            marginBottom: "40px",
           }}
         >
-          ASHEVILLE.{" "}
-          <span style={{ color: "var(--color-goldenrod)" }}>
-            HOW MANY SIGNS{" "}
-            <br />
-            DO YOU NEED?
-          </span>
+          How <span style={{ color: COLOR }}>How Many Signs Do You Need?</span> comes to life.
         </h2>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: "28px", maxWidth: "1000px", marginBottom: "48px" }}>
+          {EXTENSIONS.map((ext, i) => (
+            <div key={i}>
+              <p style={{
+                fontFamily: "var(--font-slab)",
+                fontSize: "22px",
+                fontWeight: 700,
+                color: COLOR,
+                lineHeight: 1.4,
+                marginBottom: "8px",
+              }}>
+                {ext.prompt}
+              </p>
+              <p style={{
+                fontFamily: "var(--font-slab)",
+                fontSize: "18px",
+                color: "rgba(255,255,255,0.5)",
+                lineHeight: 1.6,
+              }}>
+                {ext.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* The tee-up */}
+        <p
+          style={{
+            fontFamily: "var(--font-sans)",
+            fontSize: "40px",
+            fontWeight: 800,
+            color: COLOR,
+            lineHeight: 1.15,
+            letterSpacing: "-0.02em",
+            maxWidth: "800px",
+          }}
+        >
+          And what if someone&apos;s been behind the signs all along?
+        </p>
       </div>
     </div>
   );

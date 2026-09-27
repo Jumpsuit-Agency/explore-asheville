@@ -26,7 +26,6 @@ const TERRITORIES = [
     name: "Sounds\nMade Up",
     color: "var(--color-french-broad)",
     scores: [true, true, true, true],
-    recommended: true,
     rationale: [
       "Creates curiosity \u2014 if it sounds made up, you have to go hear it for yourself.",
       "The lore, the sounds, the stories \u2014 positions Asheville as deeper than any competitor\u2019s surface charm.",
@@ -38,6 +37,7 @@ const TERRITORIES = [
     name: "How Many Signs\nDo You Need?",
     color: "var(--color-goldenrod)",
     scores: [true, true, true, true],
+    recommended: true,
     rationale: [
       "Turns passive awareness into active urgency. If Asheville keeps showing up, there\u2019s a reason.",
       "Reframes Asheville from \u201Cone of many options\u201D to \u201Cthe one that won\u2019t leave you alone.\u201D Bold positioning.",
@@ -150,9 +150,9 @@ export function ClientRubricSlide({}: SlideProps) {
                   <div key={t.name + c.name} style={{ textAlign: "center" }}>
                     <span style={{
                       fontSize: "32px",
-                      color: t.scores[i] ? "var(--color-fiddlehead)" : "rgba(255,255,255,0.15)",
+                      color: t.scores[i] === "?" ? "var(--color-goldenrod)" : t.scores[i] ? "var(--color-fiddlehead)" : "rgba(255,255,255,0.15)",
                     }}>
-                      {t.scores[i] ? "\u2713" : "\u2717"}
+                      {t.scores[i] === "?" ? "?" : t.scores[i] ? "\u2713" : "\u2717"}
                     </span>
                     {isOpen && (
                       <p style={{
@@ -197,7 +197,7 @@ export function ClientRubricSlide({}: SlideProps) {
                   color: t.color,
                   letterSpacing: "-0.02em",
                 }}>
-                  {t.scores.filter(Boolean).length}/{t.scores.length}
+                  {t.scores.filter((s) => s === true).length}/{t.scores.length}
                 </span>
               </div>
             ))}

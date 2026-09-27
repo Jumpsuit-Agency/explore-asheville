@@ -15,7 +15,7 @@ const TERRITORIES = [
   {
     name: "Make Something of It",
     color: "var(--color-grove-park)",
-    scores: [true, true, true, true, true],
+    scores: ["?", true, true, true, true],
     rationale: [
       "You don\u2019t forget the place where you made something with your hands, heard a song that changed you, or met someone who saw you.",
       "Making a bowl, making music, making contact with a stranger \u2014 each version works in any format, for any audience.",
@@ -28,7 +28,6 @@ const TERRITORIES = [
     name: "Sounds Made Up",
     color: "var(--color-french-broad)",
     scores: [true, true, true, true, true],
-    recommended: true,
     rationale: [
       "The phrase sticks because it\u2019s playful and true \u2014 half the best things in Asheville really do sound made up.",
       "Works as audio, video, social, OOH \u2014 the sounds of nature, craft, and local stories flex everywhere.",
@@ -41,6 +40,7 @@ const TERRITORIES = [
     name: "How Many Signs\nDo You Need?",
     color: "var(--color-goldenrod)",
     scores: [true, true, true, true, true],
+    recommended: true,
     rationale: [
       "The question lingers. It\u2019s the kind of line people repeat to friends planning a trip.",
       "Works as a billboard, a social caption, a 60-second spot, a bumper sticker. The format is the message.",
@@ -64,7 +64,7 @@ export function RationaleSlide({}: SlideProps) {
           </span>
           <h2 className="type-billboard" style={{ fontSize: "64px" }}>
             All three ideas are strong.<br />
-            <span style={{ color: "var(--color-goldenrod)" }}>One is built to win.</span>
+            <span style={{ color: "var(--color-goldenrod)" }}>One is built to get everyone talking.</span>
           </h2>
         </div>
 
@@ -154,9 +154,9 @@ export function RationaleSlide({}: SlideProps) {
                   <div key={t.name + c.name} style={{ textAlign: "center" }}>
                     <span style={{
                       fontSize: "28px",
-                      color: t.scores[i] ? "var(--color-fiddlehead)" : "rgba(255,255,255,0.15)",
+                      color: t.scores[i] === "?" ? "var(--color-goldenrod)" : t.scores[i] ? "var(--color-fiddlehead)" : "rgba(255,255,255,0.15)",
                     }}>
-                      {t.scores[i] ? "\u2713" : "\u2717"}
+                      {t.scores[i] === "?" ? "?" : t.scores[i] ? "\u2713" : "\u2717"}
                     </span>
                     {isOpen && (
                       <p style={{
@@ -201,7 +201,7 @@ export function RationaleSlide({}: SlideProps) {
                   color: t.color,
                   letterSpacing: "-0.02em",
                 }}>
-                  {t.scores.filter(Boolean).length}/{t.scores.length}
+                  {t.scores.filter((s) => s === true).length}/{t.scores.length}
                 </span>
               </div>
             ))}

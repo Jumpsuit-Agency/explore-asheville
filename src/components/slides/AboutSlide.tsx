@@ -30,7 +30,7 @@ export function AboutSlide({}: SlideProps) {
             </h2>
 
             <p className="type-subhead" style={{ color: "rgba(255,255,255,0.55)", fontSize: "22px", marginBottom: "24px", maxWidth: "700px", lineHeight: 1.5 }}>
-              Jumpsuit is an award-winning creative agency and future of work
+              Jumpsuit is an award-winning agency, production studio, and Business 3.0
               consultancy powered by the independent network. Our network is
               entrepreneurial, highly curated, and self-organizing. We are leaders
               in{" "}

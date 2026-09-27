@@ -3,238 +3,405 @@
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
 
-interface CarouselSection {
-  label: string;
-  format: string;
-  audience: string;
-  market: string;
-  items: CarouselItem[];
-}
-
-type ScriptLine = { text: string; direction?: string };
-
 type CarouselItem =
   | { type: "image"; src: string; alt: string; caption?: string; imgStyle?: React.CSSProperties }
   | { type: "row"; images: { src: string; alt: string; caption?: string }[]; note?: string }
-  | { type: "image-script"; src: string; alt: string; imgStyle?: React.CSSProperties; scriptTitle: string; scriptLines: ScriptLine[] }
+  | { type: "image-script"; src: string; alt: string; imgStyle?: React.CSSProperties; scriptTitle: string; scriptLines: { text: string; direction?: string }[] }
   | { type: "placeholder"; label: string };
 
-const SECTIONS: CarouselSection[] = [
+interface Section { label: string; meta: string; items: CarouselItem[] }
+interface ScriptLine { dir: string; vis: string; vo: string }
+interface Script { title: string; lines: ScriptLine[] | null }
+
+const COLOR = "var(--color-french-broad)";
+const TAB_LABELS = ["By Audience", "By Platform", "By Market", "Scripts"];
+
+const TABS: { id: string; sections: Section[] }[] = [
   {
-    label: "Example 1",
-    format: "Streaming / Audio",
-    audience: "Experience Enthusiasts, Value Seekers",
-    market: "Spotify, YouTube, Podcast platforms",
-    items: [
-      { type: "image", src: "/creative/t2-nashville-moog-v2.png", alt: "Nashville Broadway billboard — Weird sounds started here", caption: "Planted on Broadway in Music City, right where Nashville defines what music sounds like. This ad quietly rewrites the origin story — Asheville didn't follow the music industry, it invented an instrument that changed it. The Moog isn't nostalgia. It's a claim." },
-      { type: "image", src: "/creative/t3-nashville-medical-billboard.png", alt: "Nashville medical district billboard — Doctors Used to Prescribe Asheville", caption: "Context is everything. Place a historical fact where it hits hardest — outside a medical center, surrounded by healthcare workers who understand burnout. The truth does the selling: doctors really did prescribe Asheville. It sounds made up. It isn't.", imgStyle: { maxHeight: "35%", maxWidth: "50%" } },
-      { type: "image", src: "/creative/t2-airport-bigfoot.png", alt: "Airport OOH — According to locals", caption: "Placed in a competitor airport where every ad promises the expected. This one leans into Asheville's mythology — the kind of story travelers retell before they ever book. It doesn't sell a destination. It sells the feeling that something out there is worth finding." },
-      { type: "image", src: "/creative/t2-spotify-podcast.png", alt: "Spotify — Sounds Made Up podcast", caption: "A podcast that turns Asheville\u2019s lore into episodes: the Moog, Biltmore, handpan makers, Buckminster Fuller. Each story makes the place sound more unbelievable \u2014 and more real." },
-      { type: "image-script", src: "/creative/t2-instagram-profile.png", alt: "Instagram — @exploreashevillenc profile", imgStyle: { maxHeight: "100%", maxWidth: "420px" }, scriptTitle: "Sample Reel Script — Doctors Used to Prescribe Asheville", scriptLines: [
-        { text: "We heard a rumor that doctors used to prescribe Asheville." },
-        { text: "Thaaaat... sounded made up. But who knows, maybe." },
-        { text: "So, we did some digging.", direction: "Quick cuts: old newspaper clipping, historic photo, creator asking a local historian." },
-        { text: "Turns out, the rumor\u2019s true." },
-        { text: "Which honestly makes a lot of sense now that I\u2019m here.", direction: "Cut to river, mountains, deep breath." },
-        { text: "This is by no means medical advice, but I mean, I\u2019d prescribe it too." },
-      ] },
-      { type: "image", src: "/creative/t2-biltmore-castle.png", alt: "Biltmore — Rumor has it", caption: "Turns a world-famous landmark into a rumor. The framing makes Biltmore feel like a secret you stumbled into, not a tourist stop you Googled. It invites the viewer to discover rather than consume — and positions Asheville as a place where even the real things sound made up." },
-      { type: "image", src: "/creative/t2-winter-banner.png", alt: "Winter banner — weekends cost less", caption: "Solves the oldest problem in destination marketing: off-season. Instead of discounting the brand, it weaponizes the insider tone — 'you didn't hear it from us' makes a budget play feel like a secret worth sharing. Extends the campaign into Q4 without breaking character." },
-    ],
-  },
-  {
-    label: "Example 2",
-    format: "OOH / Competitor Markets",
-    audience: "Energetic Families, Traveling Traditionalists",
-    market: "Nashville, Greenville, competitor corridors",
-    items: [
-      { type: "image", src: "/creative/t2-nashville-whole-foods.png", alt: "Nashville — Whole Foods foraging", caption: "Placed outside a Whole Foods in Nashville. The contrast writes the headline \u2014 this family forages for real. Energetic Families see their next adventure; everyone else sees a story they want to tell." },
-      { type: "image", src: "/creative/t2-nashville-airport-campfire.png", alt: "Nashville airport — he turned his phone off", caption: "Nashville airport travelers see someone who did the unthinkable. Three words that sound made up to anyone mid-scroll \u2014 and plant the seed for a different kind of trip." },
-      { type: "image", src: "/creative/t2-greenville-billboard.png", alt: "Greenville billboard — chased waterfalls", caption: "Sitting above a Greenville shopping center, the ad reframes a routine weekend. Asheville isn\u2019t competing with Greenville \u2014 it\u2019s offering what Greenville can\u2019t." },
-    ],
-  },
-  {
-    label: "Example 3",
-    format: "OOH / Streaming / Owned Platform",
-    audience: "All segments",
-    market: "Elevator, Airport, Transit",
-    items: [
+    id: "audience",
+    sections: [
       {
-        type: "row",
-        images: [
-          { src: "/creative/t2-elevator-ooh.png", alt: "Elevator OOH — waterfall", caption: "A QR code in a hotel elevator links to Asheville\u2019s real soundscape. The ad doesn\u2019t describe the place \u2014 it lets you hear it. Curiosity does the rest." },
-          { src: "/creative/t2-chattanooga-airport.png", alt: "Chattanooga airport — handpan", caption: "Placed in a competitor\u2019s airport. The instrument is strange, the woman is real, and the headline is a dare. Asheville steals attention on someone else\u2019s turf." },
+        label: "Experience Enthusiasts",
+        meta: "55\u201364 \u00B7 HHI $158K",
+        items: [
+          { type: "image", src: "/creative/t2-nashville-moog-v2.png", alt: "Nashville Broadway billboard \u2014 Weird sounds started here", caption: "Planted on Broadway in Music City, right where Nashville defines what music sounds like. This ad quietly rewrites the origin story \u2014 Asheville didn\u2019t follow the music industry, it invented an instrument that changed it." },
+          { type: "image", src: "/creative/t2-spotify-podcast.png", alt: "Spotify \u2014 Sounds Made Up podcast", caption: "A podcast that turns Asheville\u2019s lore into episodes: the Moog, Biltmore, handpan makers, Buckminster Fuller. Each story makes the place sound more unbelievable \u2014 and more real." },
         ],
       },
       {
-        type: "row",
-        images: [
-          { src: "/creative/t2-spotify-soundtrack.png", alt: "Spotify — Asheville Soundtrack", caption: "An album of real Asheville soundscapes on Spotify \u2014 rain, rivers, banjos, cicadas. Meets people where they already are: sleeping, meditating, working, traveling." },
-          { src: "/creative/t2-youtube-waterfall.png", alt: "YouTube — 8 Hours of Waterfall Sounds", caption: "An 8-hour ambient video on YouTube. The brand becomes a utility \u2014 people fall asleep to Asheville before they ever decide to visit." },
+        label: "Traveling Traditionalists",
+        meta: "65\u201374 \u00B7 HHI $93K",
+        items: [
+          { type: "image", src: "/creative/t3-nashville-medical-billboard.png", alt: "Nashville medical district billboard \u2014 Doctors Used to Prescribe Asheville", caption: "Context is everything. Place a historical fact where it hits hardest \u2014 outside a medical center, surrounded by healthcare workers who understand burnout. The truth does the selling: doctors really did prescribe Asheville.", imgStyle: { maxHeight: "35%", maxWidth: "50%" } },
+          { type: "image", src: "/creative/t2-biltmore-castle.png", alt: "Biltmore \u2014 Rumor has it", caption: "Turns a world-famous landmark into a rumor. The framing makes Biltmore feel like a secret you stumbled into, not a tourist stop you Googled." },
         ],
       },
-      { type: "image", src: "/creative/t2-sound-library.png", alt: "Sample Asheville — Sound Library", caption: "The campaign's owned platform: an open-source sound library where artists, visitors, and makers upload, remix, and create from Asheville's raw audio. Turns the audience into contributors and the brand into a living commons — every creation spreads the soundscape further.", imgStyle: { maxWidth: "50%", maxHeight: "55%" } },
-      { type: "image", src: "/creative/t2-sasquatch-search-party.png", alt: "Sasquatch Search Party — street poster", caption: "Built from Western North Carolina's real Sasquatch lore and festival culture, this turns the myth into something visitors can actually join. The knock, the call, the silence in the woods become both a self-organizing Asheville ritual and the sound of the campaign itself — spreading through YouTube, podcast, social, and the stories people tell afterward." },
+      {
+        label: "Energetic Families",
+        meta: "45\u201354 \u00B7 HHI $115K",
+        items: [
+          { type: "image", src: "/creative/t2-nashville-whole-foods.png", alt: "Nashville \u2014 Whole Foods foraging", caption: "Placed outside a Whole Foods in Nashville. The contrast writes the headline \u2014 this family forages for real. Energetic Families see their next adventure." },
+          { type: "image", src: "/creative/t2-nashville-airport-campfire.png", alt: "Nashville airport \u2014 he turned his phone off", caption: "Nashville airport travelers see someone who did the unthinkable. Three words that sound made up to anyone mid-scroll." },
+        ],
+      },
+      {
+        label: "Value Seekers",
+        meta: "35\u201344 \u00B7 HHI $88K",
+        items: [
+          { type: "image", src: "/creative/t2-winter-banner.png", alt: "Winter banner \u2014 weekends cost less", caption: "Solves the oldest problem in destination marketing: off-season. Instead of discounting the brand, it weaponizes the insider tone \u2014 \u2018you didn\u2019t hear it from us\u2019 makes a budget play feel like a secret worth sharing." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "platform",
+    sections: [
+      {
+        label: "OOH",
+        meta: "Billboards, Airport, Transit, Elevator",
+        items: [
+          { type: "image", src: "/creative/t2-airport-bigfoot.png", alt: "Airport OOH \u2014 According to locals", caption: "Placed in a competitor airport where every ad promises the expected. This one leans into Asheville\u2019s mythology \u2014 the kind of story travelers retell before they ever book." },
+          { type: "image", src: "/creative/t2-greenville-billboard.png", alt: "Greenville billboard \u2014 chased waterfalls", caption: "Sitting above a Greenville shopping center, the ad reframes a routine weekend. Asheville isn\u2019t competing with Greenville \u2014 it\u2019s offering what Greenville can\u2019t." },
+          {
+            type: "row",
+            images: [
+              { src: "/creative/t2-elevator-ooh.png", alt: "Elevator OOH \u2014 waterfall", caption: "A QR code in a hotel elevator links to Asheville\u2019s real soundscape." },
+              { src: "/creative/t2-chattanooga-airport.png", alt: "Chattanooga airport \u2014 handpan", caption: "Placed in a competitor\u2019s airport. The instrument is strange, the headline is a dare." },
+            ],
+          },
+        ],
+      },
+      {
+        label: "Social",
+        meta: "Instagram, TikTok, Reels",
+        items: [
+          { type: "image-script", src: "/creative/t2-instagram-profile.png", alt: "Instagram \u2014 @exploreashevillenc profile", imgStyle: { maxHeight: "100%", maxWidth: "420px" }, scriptTitle: "Sample Reel Script \u2014 Doctors Used to Prescribe Asheville", scriptLines: [
+            { text: "We heard a rumor that doctors used to prescribe Asheville." },
+            { text: "Thaaaat... sounded made up. But who knows, maybe." },
+            { text: "So, we did some digging.", direction: "Quick cuts: old newspaper clipping, historic photo, creator asking a local historian." },
+            { text: "Turns out, the rumor\u2019s true." },
+            { text: "Which honestly makes a lot of sense now that I\u2019m here.", direction: "Cut to river, mountains, deep breath." },
+            { text: "This is by no means medical advice, but I mean, I\u2019d prescribe it too." },
+          ] },
+        ],
+      },
+      {
+        label: "Audio / Streaming",
+        meta: "Spotify, YouTube, Podcast",
+        items: [
+          { type: "image", src: "/creative/t2-spotify-podcast.png", alt: "Spotify \u2014 Sounds Made Up podcast", caption: "A podcast that turns Asheville\u2019s lore into episodes. Each story makes the place sound more unbelievable \u2014 and more real." },
+          {
+            type: "row",
+            images: [
+              { src: "/creative/t2-spotify-soundtrack.png", alt: "Spotify \u2014 Asheville Soundtrack", caption: "An album of real Asheville soundscapes on Spotify \u2014 rain, rivers, banjos, cicadas." },
+              { src: "/creative/t2-youtube-waterfall.png", alt: "YouTube \u2014 8 Hours of Waterfall Sounds", caption: "An 8-hour ambient video. The brand becomes a utility \u2014 people fall asleep to Asheville before they ever decide to visit." },
+            ],
+          },
+        ],
+      },
+      {
+        label: "Experiential",
+        meta: "Projections, Events, Activations",
+        items: [
+          { type: "image", src: "/creative/t2-sasquatch-projection.png", alt: "Sasquatch projection — Some lore is told. Some lore is howled.", caption: "A building-scale projection turns downtown into a stage. The QR code teaches you the call. The lore isn\u2019t just told \u2014 it\u2019s performed.", imgStyle: { maxHeight: "60%", maxWidth: "50%" } },
+          { type: "image", src: "/creative/t2-moog-experience.png", alt: "Moog x Explore Asheville — Sounds Made Up installation", caption: "A partnership with Moog Music \u2014 Asheville\u2019s own synthesizer icon. Visitors twist real Asheville sounds through Moog hardware and make something no one\u2019s heard before. The brand that invented electronic music helps prove Asheville literally sounds made up." },
+        ],
+      },
+      {
+        label: "Digital",
+        meta: "Display, Programmatic",
+        items: [
+          { type: "image", src: "/creative/t2-biltmore-castle.png", alt: "Biltmore — Rumor has it", caption: "Turns a world-famous landmark into a rumor. The framing makes Biltmore feel like a secret you stumbled into, not a tourist stop you Googled." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "market",
+    sections: [
+      {
+        label: "Nashville",
+        meta: "Drive market, Airport, Broadway",
+        items: [
+          { type: "image", src: "/creative/t2-nashville-moog-v2.png", alt: "Nashville Broadway billboard", caption: "Planted on Broadway in Music City. Asheville didn\u2019t follow the music industry, it invented an instrument that changed it." },
+          { type: "image", src: "/creative/t3-nashville-medical-billboard.png", alt: "Nashville medical district billboard", caption: "Place a historical fact where it hits hardest \u2014 outside a medical center.", imgStyle: { maxHeight: "35%", maxWidth: "50%" } },
+          { type: "image", src: "/creative/t2-nashville-whole-foods.png", alt: "Nashville Whole Foods", caption: "The contrast writes the headline \u2014 this family forages for real." },
+          { type: "image", src: "/creative/t2-nashville-airport-campfire.png", alt: "Nashville airport", caption: "Nashville airport travelers see someone who did the unthinkable." },
+        ],
+      },
+      {
+        label: "Greenville",
+        meta: "Competitor market",
+        items: [
+          { type: "image", src: "/creative/t2-greenville-billboard.png", alt: "Greenville billboard \u2014 chased waterfalls", caption: "Asheville isn\u2019t competing with Greenville \u2014 it\u2019s offering what Greenville can\u2019t." },
+        ],
+      },
+      {
+        label: "Chattanooga",
+        meta: "Competitor market, Airport",
+        items: [
+          { type: "image", src: "/creative/t2-chattanooga-airport.png", alt: "Chattanooga airport \u2014 handpan", caption: "Placed in a competitor\u2019s airport. The instrument is strange, the headline is a dare. Asheville steals attention on someone else\u2019s turf." },
+        ],
+      },
+      {
+        label: "In-Destination",
+        meta: "Hotels, Streetscape",
+        items: [
+          { type: "image", src: "/creative/t2-elevator-ooh.png", alt: "Elevator OOH \u2014 waterfall", caption: "A QR code in a hotel elevator links to Asheville\u2019s real soundscape. The ad doesn\u2019t describe the place \u2014 it lets you hear it." },
+        ],
+      },
     ],
   },
 ];
 
+const SCRIPTS: Script[] = [
+  {
+    title: "Winter",
+    lines: [
+      { dir: "OPEN ON", vis: "Snow dusting the Blue Ridge. Bare branches. A quieter downtown. Breath visible in the cold.", vo: "You know, they say Asheville gets quieter in winter." },
+      { dir: "CUT TO", vis: "A couple walking an empty trail. A cabin porch at golden hour. Steam rising from mugs.", vo: "Making it a really good time to visit." },
+      { dir: "CUT TO", vis: "Wind through bare hardwoods. A frozen waterfall. A creek running under ice.", vo: "But according to the locals, winter\u2019s when you really start hearing things." },
+      { dir: "CUT TO", vis: "A river rushing louder without the canopy. Birds sharper in the cold air. Snow crunching underfoot.", vo: "With less leaves, you better hear the sounds of nature." },
+      { dir: "CUT TO", vis: "A blacksmith hammering. A potter at the wheel. A luthier bending wood. Workshops glowing warm.", vo: "With more time on their hands, you better hear the makers." },
+      { dir: "CUT TO", vis: "Darkness. Woods. A strange knock echoes. Then another.", vo: "And that sound? Rumor has it we have a Bigfoot in the Blue Ridge." },
+      { dir: "CUT TO", vis: "A group of strangers learning the Sasquatch call. Laughing. Trying again. Heading into the trees.", vo: "Which is how we got a group of folks learning to call him." },
+      { dir: "SUPER", vis: "ASHEVILLE. SOUNDS MADE UP.", vo: "Hear for yourself this winter." },
+    ],
+  },
+  { title: ":60 Spot", lines: null },
+  { title: ":30 Spot", lines: null },
+  { title: ":15 Spot", lines: null },
+  { title: "Radio", lines: null },
+];
+
+const PRINCIPLES = [
+  { title: "The lore spreads itself.", desc: "Stories that sound made up get retold. Every visitor leaves with one, and the telling becomes the marketing." },
+  { title: "The businesses create lore on purpose.", desc: "Secret menus, hidden legends, moonlit drum circles \u2014 locals build experiences that generate stories worth retelling." },
+  { title: "You can\u2019t fake it.", desc: "The stories work because they\u2019re real. People can feel the difference between a campaign and a place that\u2019s actually like this." },
+];
+
 const arrowStyle: React.CSSProperties = {
-  width: "44px",
-  height: "44px",
-  borderRadius: "50%",
+  width: "44px", height: "44px", borderRadius: "50%",
   border: "2px solid var(--color-french-broad)",
-  background: "rgba(0,0,0,0.5)",
-  backdropFilter: "blur(8px)",
-  color: "var(--color-french-broad)",
-  fontSize: "18px",
-  cursor: "pointer",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  position: "absolute" as const,
-  top: "50%",
-  transform: "translateY(-50%)",
-  zIndex: 10,
+  background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)",
+  color: "var(--color-french-broad)", fontSize: "18px", cursor: "pointer",
+  display: "flex", alignItems: "center", justifyContent: "center",
+  position: "absolute" as const, top: "50%", transform: "translateY(-50%)", zIndex: 10,
 };
 
 export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
+  const [tabIdx, setTabIdx] = useState(0);
   const [sectionIdx, setSectionIdx] = useState(0);
   const [itemIdx, setItemIdx] = useState(0);
-  const section = SECTIONS[sectionIdx];
-  const item = section.items[itemIdx];
+  const [scriptIdx, setScriptIdx] = useState(0);
 
-  const goToSection = (i: number) => {
-    setSectionIdx(i);
-    setItemIdx(0);
-  };
+  const changeTab = (i: number) => { setTabIdx(i); setSectionIdx(0); setItemIdx(0); };
+  const changeSection = (i: number) => { setSectionIdx(i); setItemIdx(0); };
+
+  const isScripts = tabIdx === 3;
+  const tab = !isScripts ? TABS[tabIdx] : null;
+  const section = tab ? tab.sections[sectionIdx] : null;
+  const items = section ? section.items : [];
+  const item = items[itemIdx];
+  const script = SCRIPTS[scriptIdx];
 
   return (
     <div className="slide slide-deep" style={{ padding: 0 }}>
-      <div className="relative z-10 flex flex-col flex-1" style={{ padding: "80px 100px" }}>
-        <div style={{ marginBottom: "40px" }}>
-          <span className="type-label" style={{ fontSize: "12px", color: "var(--color-french-broad)", marginBottom: "12px", display: "block" }}>
-            Territory 02 &middot; Sample Creative
+      <div className="relative z-10 flex flex-col flex-1" style={{ padding: "60px 80px" }}>
+        {/* Header */}
+        <div style={{ marginBottom: "16px" }}>
+          <span className="type-label" style={{ fontSize: "12px", color: COLOR, marginBottom: "8px", display: "block" }}>
+            Territory 02
           </span>
-          <h2 style={{ fontFamily: "var(--font-sans)", fontSize: "56px", fontWeight: 800, color: "white", lineHeight: 1.05, letterSpacing: "-0.03em" }}>
-            ASHEVILLE.{" "}
-            <span style={{ color: "var(--color-french-broad)" }}>SOUNDS MADE UP.</span>
+          <h2 style={{ fontFamily: "var(--font-sans)", fontSize: "48px", fontWeight: 800, color: "white", lineHeight: 1.05, letterSpacing: "-0.03em" }}>
+            ASHEVILLE. <span style={{ color: COLOR }}>SOUNDS MADE UP.</span>
           </h2>
         </div>
 
-        <div style={{ flex: 1, display: "flex", gap: "40px", alignItems: "center" }}>
-          <div className="glass-light" style={{ width: "340px", flexShrink: 0, padding: "32px 28px", borderLeft: "3px solid var(--color-french-broad)" }}>
-            <div style={{ display: "flex", gap: "8px", marginBottom: "20px", flexWrap: "wrap" }}>
-              {SECTIONS.map((s, i) => (
-                <button key={s.label} onClick={() => goToSection(i)} style={{
-                  fontFamily: "var(--font-sans)", fontSize: "11px", fontWeight: 700, padding: "6px 14px", borderRadius: "20px",
-                  border: "1px solid", borderColor: i === sectionIdx ? "var(--color-french-broad)" : "rgba(255,255,255,0.15)",
-                  background: i === sectionIdx ? "var(--color-french-broad)" : "none",
-                  color: i === sectionIdx ? "white" : "rgba(255,255,255,0.5)", cursor: "pointer", transition: "all 0.2s",
-                }}>{s.label}</button>
+        {/* Tab bar */}
+        <div style={{ display: "flex", gap: "6px", marginBottom: "20px" }}>
+          {TAB_LABELS.map((label, i) => (
+            <button key={label} onClick={() => changeTab(i)} style={{
+              fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 700,
+              padding: "6px 16px", borderRadius: "20px", border: "1px solid",
+              borderColor: i === tabIdx ? COLOR : "rgba(255,255,255,0.15)",
+              background: i === tabIdx ? COLOR : "none",
+              color: i === tabIdx ? "white" : "rgba(255,255,255,0.5)",
+              cursor: "pointer", transition: "all 0.2s",
+            }}>{label}</button>
+          ))}
+        </div>
+
+        {isScripts ? (
+          <>
+            <div style={{ display: "flex", gap: "8px", marginBottom: "20px" }}>
+              {SCRIPTS.map((s, i) => (
+                <button key={s.title} onClick={() => setScriptIdx(i)} style={{
+                  fontFamily: "var(--font-sans)", fontSize: "11px", fontWeight: 700,
+                  padding: "5px 14px", borderRadius: "20px", border: "2px solid",
+                  borderColor: i === scriptIdx ? COLOR : "rgba(255,255,255,0.15)",
+                  background: i === scriptIdx ? COLOR : "none",
+                  color: i === scriptIdx ? "white" : "rgba(255,255,255,0.5)",
+                  cursor: "pointer", transition: "all 0.2s",
+                }}>{s.title}</button>
               ))}
             </div>
 
-            <div style={{ fontFamily: "var(--font-sans)", fontSize: "12px", color: "rgba(255,255,255,0.35)", marginBottom: "20px" }}>
-              <span style={{ display: "block", marginBottom: "4px" }}><span style={{ color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>{section.format}</span></span>
-              <span style={{ display: "block", marginBottom: "4px" }}>Audience: {section.audience}</span>
-              <span style={{ display: "block" }}>Market: {section.market}</span>
-            </div>
-
-            <span className="type-label" style={{ fontSize: "10px", color: "var(--color-french-broad)", marginBottom: "12px", display: "block" }}>Campaign Principles</span>
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "20px" }}>
-              <div>
-                <p style={{ fontFamily: "var(--font-sans)", fontSize: "14px", fontWeight: 800, color: "white", lineHeight: 1.3 }}>
-                  The lore spreads itself.
-                </p>
-                <p style={{ fontFamily: "var(--font-sans)", fontSize: "12px", color: "rgba(255,255,255,0.4)", lineHeight: 1.4 }}>
-                  Stories that sound made up get retold. Every visitor leaves with one, and the telling becomes the marketing.
-                </p>
-              </div>
-              <div>
-                <p style={{ fontFamily: "var(--font-sans)", fontSize: "14px", fontWeight: 800, color: "white", lineHeight: 1.3 }}>
-                  You become the proof.
-                </p>
-                <p style={{ fontFamily: "var(--font-sans)", fontSize: "12px", color: "rgba(255,255,255,0.4)", lineHeight: 1.4 }}>
-                  The best marketing isn&apos;t the ad — it&apos;s the story you tell at dinner on Monday. The campaign turns visitors into walking, talking evidence that Asheville is real.
-                </p>
-              </div>
-              <div>
-                <p style={{ fontFamily: "var(--font-sans)", fontSize: "14px", fontWeight: 800, color: "white", lineHeight: 1.3 }}>
-                  Let them hear it before they believe it.
-                </p>
-                <p style={{ fontFamily: "var(--font-sans)", fontSize: "12px", color: "rgba(255,255,255,0.4)", lineHeight: 1.4 }}>
-                  Sound bypasses skepticism. A QR code, a playlist, a podcast episode — every touchpoint lets Asheville introduce itself on its own terms.
-                </p>
-              </div>
-            </div>
-
-            <span onClick={() => onNavigate?.(3)} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.35)", cursor: "pointer" }}>
-              &larr; Back to Three Territories
-            </span>
-          </div>
-
-          <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", height: "100%", position: "relative" }}>
-            {section.items.length > 1 && (
-              <button onClick={() => setItemIdx((itemIdx - 1 + section.items.length) % section.items.length)} style={{ ...arrowStyle, left: "12px" }}>&larr;</button>
-            )}
-
-            {item.type === "image" ? (
-              <div key={item.src} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px", maxWidth: "100%", maxHeight: "100%", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
-                <img src={item.src} alt={item.alt} style={{ maxWidth: "70%", maxHeight: "70%", objectFit: "contain", borderRadius: "8px", ...item.imgStyle }} />
-                {item.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "13px", color: "rgba(255,255,255,0.45)", textAlign: "center", lineHeight: 1.5, maxWidth: "90%" }}>{item.caption}</p>}
-              </div>
-            ) : item.type === "row" ? (
-              <div key={`row-${sectionIdx}-${itemIdx}`} style={{ width: "100%", display: "flex", flexDirection: "column", gap: "12px", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
-                {item.note && <span style={{ fontFamily: "var(--font-sans)", fontSize: "16px", fontWeight: 600, fontStyle: "italic", color: "rgba(255,255,255,0.4)", textAlign: "center" }}>{item.note}</span>}
-                <div style={{ display: "flex", gap: "12px", flex: 1 }}>
-                  {item.images.map((img, i) => img.src ? (
-                    <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", gap: "8px", minWidth: 0 }}>
-                      <div style={{ borderRadius: "8px", overflow: "hidden", flex: 1 }}><img src={img.src} alt={img.alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} /></div>
-                      {img.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "11px", color: "rgba(255,255,255,0.4)", lineHeight: 1.4 }}>{img.caption}</p>}
+            {script.lines ? (
+              <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1.1fr", gap: "48px" }}>
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <div className="asset-placeholder" style={{ flex: 1, minHeight: "360px", marginBottom: "16px", fontSize: "16px" }}>
+                    {script.title} &mdash; Production Pending
+                  </div>
+                  <div className="glass-light" style={{ padding: "16px 20px" }}>
+                    <span className="type-label" style={{ fontSize: "9px", color: COLOR }}>Production</span>
+                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "13px", color: "rgba(255,255,255,0.4)", marginTop: "4px", lineHeight: 1.5 }}>
+                      Sound-first filmmaking. Layered audio drives every frame &mdash; the place is heard before it&apos;s seen.
+                    </p>
+                  </div>
+                </div>
+                <div style={{ overflow: "auto", paddingRight: "12px" }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                    {script.lines.map((s, i) => (
+                      <div key={i} style={{ display: "flex", gap: "16px" }}>
+                        <span style={{
+                          fontFamily: "monospace", fontSize: "10px", fontWeight: 700,
+                          textTransform: "uppercase", letterSpacing: "0.05em",
+                          color: s.dir === "FINAL" || s.dir === "SUPER" ? COLOR : "rgba(255,255,255,0.25)",
+                          minWidth: "52px", paddingTop: "4px", flexShrink: 0,
+                        }}>{s.dir}</span>
+                        <div>
+                          <p style={{
+                            fontFamily: "var(--font-slab)",
+                            fontSize: s.dir === "SUPER" ? "18px" : "15px",
+                            fontWeight: s.dir === "SUPER" ? 800 : 400,
+                            color: s.dir === "SUPER" ? COLOR : "rgba(255,255,255,0.45)",
+                            lineHeight: 1.5,
+                          }}>{s.vis}</p>
+                          {s.vo && (
+                            <p style={{ fontFamily: "var(--font-slab)", fontSize: "16px", fontStyle: "italic", color: "rgba(255,255,255,0.8)", marginTop: "3px", lineHeight: 1.5 }}>
+                              &ldquo;{s.vo}&rdquo;
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                    <div style={{ marginTop: "12px", padding: "16px 24px", background: COLOR, borderRadius: "8px", textAlign: "center" }}>
+                      <span style={{ fontFamily: "var(--font-accent)", fontStyle: "italic", fontSize: "24px", color: "white" }}>
+                        Asheville. Sounds Made Up.
+                      </span>
                     </div>
-                  ) : (
-                    <div key={i} className="asset-placeholder" style={{ flex: 1, borderRadius: "8px", fontSize: "13px", minHeight: "300px" }}>{img.alt}</div>
-                  ))}
+                  </div>
                 </div>
               </div>
-            ) : item.type === "image-script" ? (
-              <div key={item.src} style={{ display: "flex", gap: "32px", alignItems: "flex-start", width: "100%", height: "100%", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both", padding: "20px 40px" }}>
-                <img src={item.src} alt={item.alt} style={{ objectFit: "contain", borderRadius: "8px", flexShrink: 0, ...item.imgStyle }} />
-                <div className="glass-light" style={{ flex: 0, minWidth: "320px", maxWidth: "360px", padding: "24px 28px", borderLeft: "3px solid var(--color-french-broad)", overflow: "auto", maxHeight: "100%" }}>
-                  <span className="type-label" style={{ fontSize: "10px", color: "var(--color-french-broad)", marginBottom: "16px", display: "block" }}>{item.scriptTitle}</span>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                    {item.scriptLines.map((line, i) => (
-                      <div key={i}>
-                        {line.direction && (
-                          <p style={{ fontFamily: "monospace", fontSize: "11px", color: "rgba(255,255,255,0.25)", marginBottom: "4px", fontStyle: "italic" }}>
-                            [{line.direction}]
-                          </p>
-                        )}
-                        <p style={{ fontFamily: "var(--font-slab)", fontSize: "15px", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.5 }}>
-                          &ldquo;{line.text}&rdquo;
-                        </p>
+            ) : (
+              <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <div className="asset-placeholder" style={{ width: "80%", minHeight: "500px", fontSize: "18px" }}>
+                  {script.title} &mdash; Script Coming Soon
+                </div>
+              </div>
+            )}
+          </>
+        ) : (
+          <div style={{ flex: 1, display: "flex", gap: "36px", alignItems: "stretch" }}>
+            <div className="glass-light" style={{ width: "320px", flexShrink: 0, padding: "24px 20px", borderLeft: `3px solid ${COLOR}`, display: "flex", flexDirection: "column" }}>
+              <div style={{ display: "flex", gap: "6px", marginBottom: "16px", flexWrap: "wrap" }}>
+                {tab?.sections.map((s, i) => (
+                  <button key={s.label} onClick={() => changeSection(i)} style={{
+                    fontFamily: "var(--font-sans)", fontSize: "11px", fontWeight: 700,
+                    padding: "5px 12px", borderRadius: "20px", border: "1px solid",
+                    borderColor: i === sectionIdx ? COLOR : "rgba(255,255,255,0.15)",
+                    background: i === sectionIdx ? COLOR : "none",
+                    color: i === sectionIdx ? "white" : "rgba(255,255,255,0.5)",
+                    cursor: "pointer", transition: "all 0.2s",
+                  }}>{s.label}</button>
+                ))}
+              </div>
+
+              {section && (
+                <div style={{ fontFamily: "var(--font-sans)", fontSize: "12px", color: "rgba(255,255,255,0.35)", marginBottom: "20px" }}>
+                  <span style={{ display: "block", color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>{section.label}</span>
+                  <span style={{ display: "block" }}>{section.meta}</span>
+                </div>
+              )}
+
+              <span className="type-label" style={{ fontSize: "10px", color: COLOR, marginBottom: "12px", display: "block" }}>Campaign Principles</span>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "20px", flex: 1 }}>
+                {PRINCIPLES.map((p, i) => (
+                  <div key={i}>
+                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "13px", fontWeight: 800, color: "white", lineHeight: 1.3 }}>{p.title}</p>
+                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "11px", color: "rgba(255,255,255,0.4)", lineHeight: 1.4 }}>{p.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              <span onClick={() => onNavigate?.(3)} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.35)", cursor: "pointer" }}>
+                &larr; Back to Three Territories
+              </span>
+            </div>
+
+            <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative" }}>
+              {items.length > 1 && (
+                <button onClick={() => setItemIdx((itemIdx - 1 + items.length) % items.length)} style={{ ...arrowStyle, left: "12px" }}>&larr;</button>
+              )}
+
+              {item?.type === "image" ? (
+                <div key={item.src} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px", maxWidth: "100%", maxHeight: "100%", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
+                  <img src={item.src} alt={item.alt} style={{ maxWidth: "70%", maxHeight: "70%", objectFit: "contain", borderRadius: "8px", ...item.imgStyle }} />
+                  {item.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "13px", color: "rgba(255,255,255,0.45)", textAlign: "center", lineHeight: 1.5, maxWidth: "90%" }}>{item.caption}</p>}
+                </div>
+              ) : item?.type === "row" ? (
+                <div key={`row-${tabIdx}-${sectionIdx}-${itemIdx}`} style={{ width: "100%", display: "flex", flexDirection: "column", gap: "12px", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
+                  {item.note && <span style={{ fontFamily: "var(--font-sans)", fontSize: "16px", fontWeight: 600, fontStyle: "italic", color: "rgba(255,255,255,0.4)", textAlign: "center" }}>{item.note}</span>}
+                  <div style={{ display: "flex", gap: "12px", flex: 1 }}>
+                    {item.images.map((img, i) => (
+                      <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", gap: "8px", minWidth: 0 }}>
+                        <div style={{ borderRadius: "8px", overflow: "hidden", flex: 1 }}>
+                          <img src={img.src} alt={img.alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                        </div>
+                        {img.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "11px", color: "rgba(255,255,255,0.4)", lineHeight: 1.4 }}>{img.caption}</p>}
                       </div>
                     ))}
                   </div>
                 </div>
-              </div>
-            ) : item.type === "placeholder" ? (
-              <div key={item.label} className="asset-placeholder" style={{ width: "100%", minHeight: "400px", fontSize: "16px", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
-                {item.label} — Coming Soon
-              </div>
-            ) : null}
+              ) : item?.type === "image-script" ? (
+                <div key={item.src} style={{ display: "flex", gap: "32px", alignItems: "flex-start", width: "100%", height: "100%", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both", padding: "20px 40px" }}>
+                  <img src={item.src} alt={item.alt} style={{ objectFit: "contain", borderRadius: "8px", flexShrink: 0, ...item.imgStyle }} />
+                  <div className="glass-light" style={{ flex: 0, minWidth: "320px", maxWidth: "360px", padding: "24px 28px", borderLeft: `3px solid ${COLOR}`, overflow: "auto", maxHeight: "100%" }}>
+                    <span className="type-label" style={{ fontSize: "10px", color: COLOR, marginBottom: "16px", display: "block" }}>{item.scriptTitle}</span>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                      {item.scriptLines.map((line, i) => (
+                        <div key={i}>
+                          {line.direction && (
+                            <p style={{ fontFamily: "monospace", fontSize: "11px", color: "rgba(255,255,255,0.25)", marginBottom: "4px", fontStyle: "italic" }}>
+                              [{line.direction}]
+                            </p>
+                          )}
+                          <p style={{ fontFamily: "var(--font-slab)", fontSize: "15px", fontStyle: "italic", color: "rgba(255,255,255,0.8)", lineHeight: 1.5 }}>
+                            &ldquo;{line.text}&rdquo;
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : item?.type === "placeholder" ? (
+                <div key={item.label} className="asset-placeholder" style={{ width: "100%", minHeight: "400px", fontSize: "16px", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
+                  {item.label}
+                </div>
+              ) : null}
 
-            {section.items.length > 1 && (
-              <button onClick={() => setItemIdx((itemIdx + 1) % section.items.length)} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
-            )}
-            {section.items.length > 1 && (
-              <span style={{ position: "absolute", bottom: "12px", left: "50%", transform: "translateX(-50%)", fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>
-                {itemIdx + 1} / {section.items.length}
-              </span>
-            )}
+              {items.length > 1 && (
+                <button onClick={() => setItemIdx((itemIdx + 1) % items.length)} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
+              )}
+              {items.length > 1 && (
+                <span style={{ position: "absolute", bottom: "12px", left: "50%", transform: "translateX(-50%)", fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>
+                  {itemIdx + 1} / {items.length}
+                </span>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

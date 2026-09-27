@@ -20,12 +20,11 @@ const TERRITORIES = [
   },
   {
     number: "02",
-    hook: "Fill them\nwith awe.",
+    hook: "Spread\nthe lore.",
     subtext: "Instead of just information.",
     bigIdea: "Sounds Made Up.",
-    slideIndex: 7,  // territory-2-desc
+    slideIndex: 6,  // territory-2-desc
     color: "var(--color-french-broad)",
-    recommended: true,
     pitch: [
       "A castle in the mountains.",
       "A place where the road IS the destination.",
@@ -38,8 +37,9 @@ const TERRITORIES = [
     hook: "Send out\na frequency.",
     subtext: "Instead of just a message.",
     bigIdea: "How Many Signs Do You Need?",
-    slideIndex: 9,  // territory-3-desc
+    slideIndex: 8,  // territory-3-desc
     color: "var(--color-goldenrod)",
+    recommended: true,
     pitch: [
       "Some places you visit. And some places have been visiting you.",
       "In a song. On a tee shirt. In a dream. In an ad.",

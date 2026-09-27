@@ -14,9 +14,8 @@ import { RationaleSlide } from "./slides/RationaleSlide";
 import { ClientRubricSlide } from "./slides/ClientRubricSlide";
 import { HeroFilmSlide } from "./slides/HeroFilmSlide";
 import { ActivationsSlide } from "./slides/ActivationsSlide";
-import { Territory1FilmSlide } from "./slides/Territory1FilmSlide";
 import { Territory2CreativeSlide } from "./slides/Territory2CreativeSlide";
-import { Territory2FilmSlide } from "./slides/Territory2FilmSlide";
+import { Territory3SasStorySlide } from "./slides/Territory3SasStorySlide";
 import { Territory3CreativeSlide } from "./slides/Territory3CreativeSlide";
 import { B30Slide } from "./slides/B30Slide";
 
@@ -39,17 +38,14 @@ const SLIDES: SlideConfig[] = [
   { id: "territories", title: "Three Territories", component: TerritoriesSlide },             // 3
   { id: "territory-1-desc", title: "Make Something of It", component: Territory1DescSlide },  // 4
   { id: "territory-1", title: "T1 Creative", component: Territory1Slide },                    // 5
-  { id: "territory-1-film", title: "T1 Film", component: Territory1FilmSlide },               // 6
-  { id: "territory-2-desc", title: "Sounds Made Up", component: Territory2DescSlide },        // 7
-  { id: "territory-2-creative", title: "T2 Creative", component: Territory2CreativeSlide },   // 8
-  { id: "territory-2-film", title: "T2 Film", component: Territory2FilmSlide },              // 9
-  { id: "territory-3-desc", title: "How Many Signs Do You Need?", component: Territory3DescSlide }, // 10
+  { id: "territory-2-desc", title: "Sounds Made Up", component: Territory2DescSlide },        // 6
+  { id: "territory-2-creative", title: "T2 Creative", component: Territory2CreativeSlide },   // 7
+  { id: "territory-3-desc", title: "How Many Signs Do You Need?", component: Territory3DescSlide }, // 8
+  { id: "territory-3-sas-story", title: "The Sasquatch Story", component: Territory3SasStorySlide }, // 9
   { id: "territory-3-creative", title: "T3 Creative", component: Territory3CreativeSlide },   // 10
   { id: "hero-film", title: "Hero Film", component: HeroFilmSlide },                         // 11
   { id: "rationale", title: "Our Recommendation", component: RationaleSlide },                // 12
   { id: "client-rubric", title: "Against Your Criteria", component: ClientRubricSlide },      // 13
-  { id: "activations", title: "Cross-Platform Activations", component: ActivationsSlide },    // 14
-  { id: "b30", title: "Business 3.0 Lens", component: B30Slide },                            // 15
 ];
 
 export default function Deck() {
