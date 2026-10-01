@@ -10,7 +10,18 @@ interface Beat {
   headline: string;
   images: { src: string; alt: string }[];
   caption: string;
+  heroLast?: boolean;
 }
+
+const BEAT_KICKERS: Record<number, string> = {
+  0: "Something strange is happening in Asheville\u2019s drive markets.",
+  1: "Turns out, Sasquatch has been behind the signs all along.",
+  2: "The internet starts connecting the dots.",
+  3: "And he\u2019s absolutely obsessed.",
+  4: "Now he has resources and access.",
+  5: "And the new Head of Lore gets to work.",
+  6: "The legend moves on. The love for Asheville doesn\u2019t.",
+};
 
 const BEATS: Beat[] = [
   {
@@ -37,9 +48,10 @@ const BEATS: Beat[] = [
     headline: "Digital captures the moment. And the easter egg.",
     images: [
       { src: "/creative/t3-media-search-results.png", alt: "Google search results for Sasquatch Asheville sign" },
-      { src: "/creative/t3-media-ai-answer.png", alt: "AI search answer explaining the Asheville Sasquatch campaign" },
+      { src: "/creative/t3-chatgpt-sasquatch-answer.jpeg", alt: "ChatGPT answering 'what's the Sasquatch Asheville thing' with full campaign breakdown" },
       { src: "/creative/t3-sas-behind-all-signs.png", alt: "Collage showing Sasquatch hidden in every touchpoint" },
     ],
+    heroLast: true,
     caption: "Search spikes in every sighting city. AI starts answering \u201Cwhat\u2019s the Asheville Sasquatch thing?\u201D with our story. Paid media follows anyone who searched, clicked, or engaged \u2014 Asheville keeps finding them. And the deeper they look, the more they notice: he\u2019s been in every billboard, coffee sleeve, and hotel elevator all along. The signs were never random.",
   },
   {
@@ -47,14 +59,17 @@ const BEATS: Beat[] = [
     headline: "Sas returns to Asheville. Now he\u2019s the one spotting you.",
     images: [
       { src: "/creative/t3-sas-asheville-chronicle.png", alt: "The Asheville Chronicle front page \u2014 Sasquatch Makes It Back to Asheville" },
+      { src: "/creative/t3-sas-rarer-than-himself.png", alt: "Sas Found Something Rarer Than Himself — couple kissing at 50th anniversary, Sas peeking from behind stone wall" },
+      { src: "/creative/t3-sas-ultimate-fish-story.png", alt: "The Ultimate Fish Story — Sasquatch fishing in Asheville" },
     ],
-    caption: "After months on the road, he\u2019s spotted back on Asheville\u2019s streets. Only now he\u2019s not the one being hunted. The creature everyone was searching for flips the script \u2014 and the campaign gets its front page.",
+    caption: "The nature. The food. The people. The sunsets. He came back to Asheville and he can\u2019t stop staring.",
   },
   {
     label: "Act 5",
     headline: "Explore Asheville officially hires Sas.",
     images: [
       { src: "/creative/t3-sas-head-of-lore.png", alt: "WLOS News 13 \u2014 Explore Asheville Hires Sasquatch as New Head of Lore" },
+      { src: "/creative/t3-bigfoot-festival-marion.png", alt: "WNC Bigfoot Festival Returns Near Asheville — Live from Marion, NC" },
     ],
     caption: "Explore Asheville officially hires Sas as their new Head of Lore. A press conference. A badge. A title nobody saw coming. Every outlet in the region runs it.",
   },
@@ -65,15 +80,15 @@ const BEATS: Beat[] = [
       { src: "/creative/t3-sas-believes-in-you.png", alt: "Sasquatch posting a Sasquatch Believes in You flyer on a downtown Asheville bulletin board" },
       { src: "/creative/t3-sas-podcast.png", alt: "Sasquatch hosting a talk show interview with a guest in a cardboard box costume" },
     ],
-    caption: "He\u2019s not recruiting anymore \u2014 he\u2019s welcoming. Posting flyers downtown, greeting visitors, making content, pointing people toward what\u2019s real. The campaign gave Asheville a character. Asheville gave him a home.",
+    caption: "He\u2019s posting flyers, crashing festivals, reviewing restaurants, hosting a podcast from an undisclosed location in the Blue Ridge. Every piece of content he makes is another sign pointing someone new to Asheville.",
   },
   {
     label: "Act 7",
-    headline: "But can Asheville really own Sasquatch?",
+    headline: "And when it\u2019s time to go?",
     images: [
       { src: "/creative/t3-nashvillenews-sighting.jpeg", alt: "@nashvillenews TikTok \u2014 Big Foot sighting in Tennessee, Asheville declines to comment" },
     ],
-    caption: "No. But it becomes a mythology competitors can never borrow without it looking like they\u2019re taking Asheville\u2019s idea. In fact, we don\u2019t need Sas to stay in Asheville. It\u2019s better that he doesn\u2019t. Because every sighting somewhere else becomes another sign pointing back to us.",
+    caption: "That\u2019s okay. Explore Asheville hires a new Head of Lore. Human or otherwise. And if we do our job right, every time someone thinks of Sasquatch, they think of Asheville. And if Sasquatch does his job right, every time someone thinks of a rainbow, a mountain, a farm-to-table meal, a clay bowl, they think of Asheville.",
   },
 ];
 
@@ -96,7 +111,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
               className="type-label"
               style={{ fontSize: "12px", color: COLOR }}
             >
-              Territory 03 &middot; The Sasquatch Story
+              Territory 03 &middot; Guerrilla
             </span>
             <span
               style={{
@@ -180,19 +195,23 @@ export function Territory3SasStorySlide({}: SlideProps) {
               animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
             }}
           >
-            {beat.images.map((img, i) => (
-              <img
-                key={i}
-                src={img.src}
-                alt={img.alt}
-                style={{
-                  maxHeight: beat.images.length === 1 ? "620px" : "580px",
-                  maxWidth: beat.images.length === 1 ? "95%" : `${90 / beat.images.length}%`,
-                  objectFit: "contain",
-                  borderRadius: "8px",
-                }}
-              />
-            ))}
+            {beat.images.map((img, i) => {
+              const isLast = i === beat.images.length - 1;
+              const hero = beat.heroLast;
+              return (
+                <img
+                  key={i}
+                  src={img.src}
+                  alt={img.alt}
+                  style={{
+                    maxHeight: beat.images.length === 1 ? "700px" : hero && isLast ? "650px" : hero ? "500px" : "650px",
+                    maxWidth: beat.images.length === 1 ? "98%" : hero && isLast ? "50%" : hero ? "22%" : `${95 / beat.images.length}%`,
+                    objectFit: "contain",
+                    borderRadius: "8px",
+                  }}
+                />
+              );
+            })}
           </div>
 
           {!isLast && (
@@ -264,6 +283,21 @@ export function Territory3SasStorySlide({}: SlideProps) {
               />
             ))}
           </div>
+
+          {BEAT_KICKERS[beatIdx] && (
+            <p
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: "28px",
+                fontWeight: 800,
+                color: COLOR,
+                textAlign: "center",
+                marginTop: "20px",
+              }}
+            >
+              {BEAT_KICKERS[beatIdx]}
+            </p>
+          )}
         </div>
       </div>
     </div>

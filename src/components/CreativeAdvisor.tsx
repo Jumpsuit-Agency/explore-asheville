@@ -27,23 +27,6 @@ interface CreativeAdvisorProps {
   slideTitle: string;
 }
 
-const SLIDE_STARTERS: Record<string, string> = {
-  "title": "Why is Jumpsuit the right partner for Explore Asheville?",
-  "about": "What makes Jumpsuit different from a traditional agency?",
-  "assignment": "How does your rubric ensure these are actually big ideas?",
-  "territories": "Why three ideas — and why is Territory 03 your pick?",
-  "territory-1-desc": "How would 'Make Something of It' work for a specific segment?",
-  "territory-1": "What would this look like for a family visiting in summer?",
-  "territory-2-desc": "What makes 'Sounds Made Up' feel different from typical destination marketing?",
-  "territory-2-creative": "How would the Moog partnership actually work?",
-  "territory-3-desc": "How important is Sasquatch — could the campaign live without him?",
-  "territory-3-sas-story": "What happens after Sasquatch is gone — does Asheville keep winning?",
-  "territory-3-creative": "How does the follow-back social engine actually work?",
-  "hero-film": "What's the production vision for this spot?",
-  "rationale": "Why Territory 03 over Sounds Made Up?",
-  "client-rubric": "How does this turn passive awareness into actual visits?",
-  "closing": "What would working with Jumpsuit actually look like?",
-};
 
 export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisorProps>(function CreativeAdvisor({ slideId, slideTitle }, ref) {
   const sessionId = useMemo(() => getSessionId(), []);
@@ -177,7 +160,6 @@ export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisor
     [messages, slideId, streaming]
   );
 
-  const starter = SLIDE_STARTERS[slideId] || "What should I know about this slide?";
 
   return (
     <>
@@ -355,37 +337,17 @@ export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisor
             }}
           >
             {messages.length === 0 && (
-              <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginTop: "8px" }}>
-                <p
-                  style={{
-                    fontFamily: "var(--font-slab)",
-                    fontSize: "15px",
-                    color: "rgba(255,255,255,0.5)",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  I know the brief, the documents, and every idea in this deck. Ask me anything.
-                </p>
-                <button
-                  onClick={() => sendMessage(starter)}
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "13px",
-                    fontWeight: 600,
-                    color: "var(--color-goldenrod)",
-                    background: "rgba(254,181,44,0.1)",
-                    border: "1px solid rgba(254,181,44,0.25)",
-                    borderRadius: "8px",
-                    padding: "10px 16px",
-                    cursor: "pointer",
-                    textAlign: "left",
-                    lineHeight: 1.4,
-                    transition: "background 0.2s",
-                  }}
-                >
-                  {starter}
-                </button>
-              </div>
+              <p
+                style={{
+                  fontFamily: "var(--font-slab)",
+                  fontSize: "15px",
+                  color: "rgba(255,255,255,0.5)",
+                  lineHeight: 1.5,
+                  marginTop: "8px",
+                }}
+              >
+                Ask a question or explore an idea.
+              </p>
             )}
 
             {messages.map((msg, i) => (

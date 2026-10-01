@@ -11,12 +11,16 @@ import { Territory1DescSlide } from "./slides/Territory1DescSlide";
 import { Territory1Slide } from "./slides/Territory1Slide";
 import { Territory2DescSlide } from "./slides/Territory2DescSlide";
 import { Territory3DescSlide } from "./slides/Territory3DescSlide";
+import { Territory3MontageSlide } from "./slides/Territory3MontageSlide";
+import { Territory3DigitalMontageSlide } from "./slides/Territory3DigitalMontageSlide";
+import { Territory3GuerillaIntroSlide } from "./slides/Territory3GuerillaIntroSlide";
 import { RationaleSlide } from "./slides/RationaleSlide";
 import { ClientRubricSlide } from "./slides/ClientRubricSlide";
 import { ActivationsSlide } from "./slides/ActivationsSlide";
 import { Territory2CreativeSlide } from "./slides/Territory2CreativeSlide";
 import { Territory3SasStorySlide } from "./slides/Territory3SasStorySlide";
 import { Territory3CreativeSlide } from "./slides/Territory3CreativeSlide";
+import { ProductionScheduleSlide } from "./slides/ProductionScheduleSlide";
 import { B30Slide } from "./slides/B30Slide";
 import { ClosingSlide } from "./slides/ClosingSlide";
 
@@ -43,9 +47,13 @@ const SLIDES: SlideConfig[] = [
   { id: "territory-2-desc", title: "Sounds Made Up", component: Territory2DescSlide },        // 6
   { id: "territory-2-creative", title: "T2 Creative", component: Territory2CreativeSlide },   // 7
   { id: "territory-3-desc", title: "How Many Signs Do You Need?", component: Territory3DescSlide }, // 8
-  { id: "territory-3-sas-story", title: "The Sasquatch Story", component: Territory3SasStorySlide }, // 9
-  { id: "territory-3-creative", title: "T3 Creative", component: Territory3CreativeSlide },   // 10
-{ id: "rationale", title: "Our Recommendation", component: RationaleSlide },                // 12
+  { id: "territory-3-montage", title: "Signs — OOH", component: Territory3MontageSlide }, // 9
+  { id: "territory-3-digital", title: "Signs — Digital", component: Territory3DigitalMontageSlide }, // 10
+  { id: "territory-3-guerrilla-intro", title: "Guerrilla", component: Territory3GuerillaIntroSlide }, // 11
+  { id: "territory-3-sas-story", title: "The Sasquatch Story", component: Territory3SasStorySlide }, // 12
+  { id: "production-schedule", title: "Production Schedule", component: ProductionScheduleSlide },
+  { id: "territory-3-creative", title: "T3 Creative", component: Territory3CreativeSlide },
+  { id: "rationale", title: "Our Recommendation", component: RationaleSlide },                // 12
   { id: "client-rubric", title: "Against Your Criteria", component: ClientRubricSlide },      // 13
   { id: "closing", title: "Let's Talk", component: ClosingSlide },                            // 14
 ];
