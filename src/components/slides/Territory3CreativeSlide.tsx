@@ -222,7 +222,7 @@ const arrowStyle: React.CSSProperties = {
   background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)",
   color: "var(--color-goldenrod)", fontSize: "18px", cursor: "pointer",
   display: "flex", alignItems: "center", justifyContent: "center",
-  position: "absolute" as const, top: "50%", transform: "translateY(-50%)", zIndex: 10,
+  position: "absolute" as const, top: "50%", transform: "translateY(-50%)", zIndex: 30,
 };
 
 export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
@@ -243,7 +243,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
 
   return (
     <div className="slide slide-deep" style={{ padding: 0 }}>
-      <div className="relative z-10 flex flex-col flex-1" style={{ padding: "60px 80px" }}>
+      <div className="relative z-10 flex flex-col flex-1 min-h-0" style={{ padding: "60px 80px" }}>
         {/* Header */}
         <div style={{ marginBottom: "16px" }}>
           <span className="type-label" style={{ fontSize: "12px", color: COLOR, marginBottom: "8px", display: "block" }}>
@@ -257,7 +257,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
         {/* Tab bar */}
         <div style={{ display: "flex", gap: "6px", marginBottom: "20px" }}>
           {TAB_LABELS.map((label, i) => (
-            <button key={label} onClick={() => changeTab(i)} style={{
+            <button className="ui-button" key={label} onClick={() => changeTab(i)} style={{
               fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 700,
               padding: "6px 16px", borderRadius: "20px", border: "1px solid",
               borderColor: i === tabIdx ? COLOR : "rgba(255,255,255,0.15)",
@@ -272,7 +272,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
           <>
             <div style={{ display: "flex", gap: "8px", marginBottom: "20px" }}>
               {SCRIPTS.map((s, i) => (
-                <button key={s.title} onClick={() => setScriptIdx(i)} style={{
+                <button className="ui-button" key={s.title} onClick={() => setScriptIdx(i)} style={{
                   fontFamily: "var(--font-sans)", fontSize: "11px", fontWeight: 700,
                   padding: "5px 14px", borderRadius: "20px", border: "2px solid",
                   borderColor: i === scriptIdx ? COLOR : "rgba(255,255,255,0.15)",
@@ -330,11 +330,11 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
             )}
           </>
         ) : (
-          <div style={{ flex: 1, display: "flex", gap: "36px", alignItems: "stretch" }}>
+          <div style={{ flex: 1, minHeight: 0, display: "flex", gap: "36px", alignItems: "stretch" }}>
             <div className="glass-light" style={{ width: "320px", flexShrink: 0, padding: "24px 20px", borderLeft: `3px solid ${COLOR}`, display: "flex", flexDirection: "column" }}>
               <div style={{ display: "flex", gap: "6px", marginBottom: "16px", flexWrap: "wrap" }}>
                 {tab?.sections.map((s, i) => (
-                  <button key={s.label} onClick={() => changeSection(i)} style={{
+                  <button className="ui-button" key={s.label} onClick={() => changeSection(i)} style={{
                     fontFamily: "var(--font-sans)", fontSize: "11px", fontWeight: 700,
                     padding: "5px 12px", borderRadius: "20px", border: "1px solid",
                     borderColor: i === sectionIdx ? COLOR : "rgba(255,255,255,0.15)",
@@ -362,14 +362,14 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
                 ))}
               </div>
 
-              <span onClick={() => onNavigate?.(3)} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.35)", cursor: "pointer" }}>
+              <button type="button" className="ui-button ui-button-quiet" onClick={() => onNavigate?.("territories")} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600 }}>
                 &larr; Back to Three Territories
-              </span>
+              </button>
             </div>
 
-            <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative" }}>
+            <div style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative" }}>
               {items.length > 1 && (
-                <button onClick={() => setItemIdx((itemIdx - 1 + items.length) % items.length)} style={{ ...arrowStyle, left: "12px" }}>&larr;</button>
+                <button className="ui-button" onClick={() => setItemIdx((itemIdx - 1 + items.length) % items.length)} style={{ ...arrowStyle, left: "12px" }}>&larr;</button>
               )}
 
               {item?.type === "image" && item.layout === "side" ? (
@@ -405,7 +405,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
               ) : null}
 
               {items.length > 1 && (
-                <button onClick={() => setItemIdx((itemIdx + 1) % items.length)} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
+                <button className="ui-button" onClick={() => setItemIdx((itemIdx + 1) % items.length)} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
               )}
               {items.length > 1 && (
                 <span style={{ position: "absolute", bottom: "12px", left: "50%", transform: "translateX(-50%)", fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>

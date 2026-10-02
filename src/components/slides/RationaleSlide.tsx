@@ -11,7 +11,15 @@ const CRITERIA = [
   { name: "On Equity", desc: "Does it feel like the brand?" },
 ];
 
-const TERRITORIES = [
+type Score = boolean | "?";
+
+const TERRITORIES: {
+  name: string;
+  color: string;
+  scores: Score[];
+  recommended?: boolean;
+  rationale: string[];
+}[] = [
   {
     name: "Make Something of It",
     color: "var(--color-grove-park)",
@@ -118,18 +126,22 @@ export function RationaleSlide({}: SlideProps) {
           {CRITERIA.map((c, i) => {
             const isOpen = expandedRow === i;
             return (
-              <div
+              <button
                 key={c.name}
+                type="button"
+                className="ui-disclose"
+                aria-expanded={isOpen}
                 onClick={() => setExpandedRow(isOpen ? null : i)}
                 style={{
                   display: "grid",
                   gridTemplateColumns: "200px 1fr 1fr 1fr",
                   gap: "0",
-                  padding: isOpen ? "16px 0 12px" : "20px 0",
+                  // Constant. It used to shrink 40px -> 28px on open, which
+                  // moved the row's own content under the pointer mid-click.
+                  padding: "16px 0",
                   borderBottom: i < CRITERIA.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none",
-                  cursor: "pointer",
-                  transition: "background 0.2s",
                   borderRadius: "4px",
+                  width: "100%",
                 }}
               >
                 <div>
@@ -137,14 +149,7 @@ export function RationaleSlide({}: SlideProps) {
                     <p style={{ fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 700, color: "white" }}>
                       {c.name}
                     </p>
-                    <span style={{
-                      fontSize: "12px",
-                      color: "rgba(255,255,255,0.25)",
-                      transition: "transform 0.2s",
-                      transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
-                    }}>
-                      &#9654;
-                    </span>
+                    <span className="disclose-marker" aria-hidden="true">&#10095;</span>
                   </div>
                   <p style={{ fontFamily: "var(--font-slab)", fontSize: "14px", color: "rgba(255,255,255,0.35)", marginTop: "2px" }}>
                     {c.desc}
@@ -158,24 +163,26 @@ export function RationaleSlide({}: SlideProps) {
                     }}>
                       {t.scores[i] === "?" ? "?" : t.scores[i] ? "\u2713" : "\u2717"}
                     </span>
-                    {isOpen && (
-                      <p style={{
+                    {/* Always in layout, so opening a row never shifts the
+                        rows beneath it. Hidden from AT until revealed. */}
+                    <p
+                      className="disclose-reserved"
+                      style={{
                         fontFamily: "var(--font-slab)",
                         fontSize: "13px",
-                        color: "rgba(255,255,255,0.45)",
+                        color: "rgba(255,255,255,0.6)",
                         lineHeight: 1.4,
                         marginTop: "6px",
                         padding: "0 16px",
                         textAlign: "center",
-                        animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both",
-                        animationDelay: `${ti * 50}ms`,
-                      }}>
-                        {t.rationale[i]}
-                      </p>
-                    )}
+                        transitionDelay: `${ti * 50}ms`,
+                      }}
+                    >
+                      {t.rationale[i]}
+                    </p>
                   </div>
                 ))}
-              </div>
+              </button>
             );
           })}
 
@@ -201,7 +208,7 @@ export function RationaleSlide({}: SlideProps) {
                   color: t.color,
                   letterSpacing: "-0.02em",
                 }}>
-                  {t.scores.filter((s) => s === true).length}/{t.scores.length}
+                  {t.scores.filter((sc) => sc === true).length}/{t.scores.length}
                 </span>
               </div>
             ))}

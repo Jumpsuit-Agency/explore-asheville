@@ -157,7 +157,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
         >
           {/* Nav arrows */}
           {!isFirst && (
-            <button
+            <button className="ui-button"
               onClick={() => setBeatIdx(beatIdx - 1)}
               style={{
                 position: "absolute",
@@ -215,7 +215,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
           </div>
 
           {!isLast && (
-            <button
+            <button className="ui-button"
               onClick={() => setBeatIdx(beatIdx + 1)}
               style={{
                 position: "absolute",
@@ -268,7 +268,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
             }}
           >
             {BEATS.map((b, i) => (
-              <button
+              <button className="ui-button"
                 key={i}
                 onClick={() => setBeatIdx(i)}
                 style={{

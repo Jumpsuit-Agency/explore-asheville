@@ -266,7 +266,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
 
         {/* Navigation */}
         <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", gap: "16px", marginTop: "16px" }}>
-          <button
+          <button className="ui-button"
             onClick={() => setPhaseIdx(phaseIdx - 1)}
             disabled={isFirst}
             style={{
@@ -288,7 +288,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
 
           <div style={{ display: "flex", gap: "8px" }}>
             {PHASES.map((p, i) => (
-              <button
+              <button className="ui-button"
                 key={i}
                 onClick={() => setPhaseIdx(i)}
                 style={{
@@ -311,7 +311,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
             ))}
           </div>
 
-          <button
+          <button className="ui-button"
             onClick={() => setPhaseIdx(phaseIdx + 1)}
             disabled={isLast}
             style={{
