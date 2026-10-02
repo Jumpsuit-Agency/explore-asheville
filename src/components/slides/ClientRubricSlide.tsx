@@ -150,9 +150,9 @@ export function ClientRubricSlide({}: SlideProps) {
                   <div key={t.name + c.name} style={{ textAlign: "center" }}>
                     <span style={{
                       fontSize: "32px",
-                      color: t.scores[i] === "?" ? "var(--color-goldenrod)" : t.scores[i] ? "var(--color-fiddlehead)" : "rgba(255,255,255,0.15)",
+                      color: t.scores[i] ? "var(--color-fiddlehead)" : "rgba(255,255,255,0.15)",
                     }}>
-                      {t.scores[i] === "?" ? "?" : t.scores[i] ? "\u2713" : "\u2717"}
+                      {t.scores[i] ? "\u2713" : "\u2717"}
                     </span>
                     {isOpen && (
                       <p style={{
