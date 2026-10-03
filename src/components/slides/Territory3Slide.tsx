@@ -23,7 +23,7 @@ export function Territory3Slide({}: SlideProps) {
       >
         {/* Label */}
         <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "40px" }}>
-          <span className="type-label" style={{ fontSize: "12px", color: "var(--color-goldenrod)" }}>
+          <span className="type-label" style={{ fontSize: "18px", color: "var(--color-goldenrod)" }}>
             Territory 03
           </span>
         </div>

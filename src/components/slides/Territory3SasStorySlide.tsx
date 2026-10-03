@@ -113,14 +113,14 @@ export function Territory3SasStorySlide({}: SlideProps) {
           <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
             <span
               className="type-label"
-              style={{ fontSize: "12px", color: COLOR }}
+              style={{ fontSize: "18px", color: COLOR }}
             >
               Territory 03 &middot; Guerrilla
             </span>
             <span
               style={{
                 fontFamily: "var(--font-sans)",
-                fontSize: "10px",
+                fontSize: "16px",
                 fontWeight: 700,
                 color: COLOR,
                 textTransform: "uppercase",
@@ -176,7 +176,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
                 background: "rgba(0,0,0,0.5)",
                 backdropFilter: "blur(8px)",
                 color: COLOR,
-                fontSize: "20px",
+                fontSize: "26px",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -234,7 +234,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
                 background: "rgba(0,0,0,0.5)",
                 backdropFilter: "blur(8px)",
                 color: COLOR,
-                fontSize: "20px",
+                fontSize: "26px",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -252,7 +252,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
             key={beatIdx}
             style={{
               fontFamily: "var(--font-slab)",
-              fontSize: "17px",
+              fontSize: "22px",
               color: "rgba(255,255,255,0.5)",
               lineHeight: 1.6,
               textAlign: "center",

@@ -19,7 +19,7 @@ export function Territory3GuerillaIntroSlide({}: SlideProps) {
       >
         <span
           className="type-label"
-          style={{ fontSize: "12px", color: COLOR, marginBottom: "24px" }}
+          style={{ fontSize: "18px", color: COLOR, marginBottom: "24px" }}
         >
           Territory 03 &middot; Guerrilla
         </span>

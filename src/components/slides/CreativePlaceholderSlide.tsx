@@ -11,7 +11,7 @@ export function CreativePlaceholderSlide({ territory, territoryColor, slots }: C
     <div className="slide slide-deep" style={{ padding: 0 }}>
       <div className="relative z-10 flex flex-col flex-1" style={{ padding: "80px 100px" }}>
         <div style={{ marginBottom: "48px" }}>
-          <span className="type-label" style={{ fontSize: "12px", color: territoryColor, marginBottom: "12px", display: "block" }}>
+          <span className="type-label" style={{ fontSize: "18px", color: territoryColor, marginBottom: "12px", display: "block" }}>
             {territory} &middot; Sample Creative
           </span>
           <h2 style={{
@@ -47,7 +47,7 @@ export function CreativePlaceholderSlide({ territory, territoryColor, slots }: C
             >
               <span style={{
                 fontFamily: "var(--font-sans)",
-                fontSize: "13px",
+                fontSize: "20px",
                 fontWeight: 700,
                 color: territoryColor,
                 textTransform: "uppercase",
@@ -57,7 +57,7 @@ export function CreativePlaceholderSlide({ territory, territoryColor, slots }: C
               </span>
               <span style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "16px",
+                fontSize: "22px",
                 color: "rgba(255,255,255,0.3)",
                 textTransform: "none",
                 letterSpacing: "0",

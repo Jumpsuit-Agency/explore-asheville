@@ -41,7 +41,7 @@ export function AssignmentSlide({}: SlideProps) {
           <div style={{ flex: 1, display: "flex", gap: "16px", alignItems: "flex-start" }}>
             <span style={{
               fontFamily: "var(--font-sans)",
-              fontSize: "12px",
+              fontSize: "18px",
               fontWeight: 700,
               color: "var(--color-goldenrod)",
               textTransform: "uppercase",
@@ -54,7 +54,7 @@ export function AssignmentSlide({}: SlideProps) {
             }}>
               Primary
             </span>
-            <p style={{ fontFamily: "var(--font-slab)", fontSize: "20px", color: "rgba(255,255,255,0.6)", lineHeight: 1.45 }}>
+            <p style={{ fontFamily: "var(--font-slab)", fontSize: "26px", color: "rgba(255,255,255,0.6)", lineHeight: 1.45 }}>
               Increase intent to visit among Explore Asheville&apos;s four target audience
               visitor profiles and convert into visitors.
             </p>
@@ -62,7 +62,7 @@ export function AssignmentSlide({}: SlideProps) {
           <div style={{ flex: 1, display: "flex", gap: "16px", alignItems: "flex-start" }}>
             <span style={{
               fontFamily: "var(--font-sans)",
-              fontSize: "12px",
+              fontSize: "18px",
               fontWeight: 700,
               color: "var(--color-french-broad)",
               textTransform: "uppercase",
@@ -75,7 +75,7 @@ export function AssignmentSlide({}: SlideProps) {
             }}>
               Secondary
             </span>
-            <p style={{ fontFamily: "var(--font-slab)", fontSize: "20px", color: "rgba(255,255,255,0.6)", lineHeight: 1.45 }}>
+            <p style={{ fontFamily: "var(--font-slab)", fontSize: "26px", color: "rgba(255,255,255,0.6)", lineHeight: 1.45 }}>
               Improve brand favorability versus Asheville&apos;s comp set, including
               Charleston, SC; Savannah, GA; Greenville, SC; and Chattanooga, TN.
             </p>
@@ -135,7 +135,7 @@ export function AssignmentSlide({}: SlideProps) {
                     If it can&apos;t survive all five, it&apos;s not a Big Idea &mdash; it&apos;s a tagline.
                   </p>
                 </div>
-                <span style={{ fontFamily: "var(--font-sans)", fontSize: "13px", color: "var(--color-goldenrod)", opacity: 0.5, position: "relative" }}>
+                <span style={{ fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-goldenrod)", opacity: 0.5, position: "relative" }}>
                   Click to reveal &rarr;
                 </span>
               </div>
@@ -180,10 +180,10 @@ export function AssignmentSlide({}: SlideProps) {
                         {i + 1}
                       </span>
                       <div>
-                        <h4 style={{ fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 700, color: "white" }}>
+                        <h4 style={{ fontFamily: "var(--font-sans)", fontSize: "24px", fontWeight: 700, color: "white" }}>
                           {r.name}
                         </h4>
-                        <p style={{ fontFamily: "var(--font-slab)", fontSize: "14px", color: "rgba(255,255,255,0.4)" }}>
+                        <p style={{ fontFamily: "var(--font-slab)", fontSize: "21px", color: "rgba(255,255,255,0.4)" }}>
                           {r.test}
                         </p>
                       </div>
@@ -244,7 +244,7 @@ export function AssignmentSlide({}: SlideProps) {
                     and spend more &mdash; while staying authentically Asheville.
                   </p>
                 </div>
-                <span style={{ fontFamily: "var(--font-sans)", fontSize: "13px", color: "var(--color-french-broad)", opacity: 0.5, position: "relative" }}>
+                <span style={{ fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-french-broad)", opacity: 0.5, position: "relative" }}>
                   Click to reveal &rarr;
                 </span>
               </div>
@@ -273,10 +273,10 @@ export function AssignmentSlide({}: SlideProps) {
                         animation: `child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${i * 80}ms both`,
                       }}
                     >
-                      <h4 style={{ fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 700, color: "white", marginBottom: "4px" }}>
+                      <h4 style={{ fontFamily: "var(--font-sans)", fontSize: "24px", fontWeight: 700, color: "white", marginBottom: "4px" }}>
                         {c.name}
                       </h4>
-                      <p style={{ fontFamily: "var(--font-slab)", fontSize: "15px", color: "rgba(255,255,255,0.4)" }}>
+                      <p style={{ fontFamily: "var(--font-slab)", fontSize: "21px", color: "rgba(255,255,255,0.4)" }}>
                         {c.detail}
                       </p>
                     </div>

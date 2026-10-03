@@ -64,10 +64,10 @@ export function RationaleSlide({}: SlideProps) {
 
   return (
     <div className="slide slide-ink" style={{ padding: 0 }}>
-      <div className="relative z-10 flex flex-col flex-1" style={{ padding: "80px 100px" }}>
+      <div className="relative z-10 flex flex-col flex-1" style={{ padding: "44px 100px" }}>
         {/* Header */}
-        <div style={{ marginBottom: "48px" }}>
-          <span className="type-label" style={{ color: "var(--color-goldenrod)", marginBottom: "16px", fontSize: "14px", display: "block" }}>
+        <div style={{ marginBottom: "26px" }}>
+          <span className="type-label" style={{ color: "var(--color-goldenrod)", marginBottom: "16px", fontSize: "21px", display: "block" }}>
             Our Recommendation
           </span>
           <h2 className="type-billboard" style={{ fontSize: "64px" }}>
@@ -104,7 +104,7 @@ export function RationaleSlide({}: SlideProps) {
                 {t.recommended && (
                   <span style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "10px",
+                    fontSize: "16px",
                     fontWeight: 700,
                     color: t.color,
                     textTransform: "uppercase",
@@ -138,7 +138,7 @@ export function RationaleSlide({}: SlideProps) {
                   gap: "0",
                   // Constant. It used to shrink 40px -> 28px on open, which
                   // moved the row's own content under the pointer mid-click.
-                  padding: "16px 0",
+                  padding: "8px 0",
                   borderBottom: i < CRITERIA.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none",
                   borderRadius: "4px",
                   width: "100%",
@@ -146,12 +146,12 @@ export function RationaleSlide({}: SlideProps) {
               >
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 700, color: "white" }}>
+                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "22px", fontWeight: 700, color: "white" }}>
                       {c.name}
                     </p>
                     <span className="disclose-marker" aria-hidden="true">&#10095;</span>
                   </div>
-                  <p style={{ fontFamily: "var(--font-slab)", fontSize: "14px", color: "rgba(255,255,255,0.35)", marginTop: "2px" }}>
+                  <p style={{ fontFamily: "var(--font-slab)", fontSize: "18px", color: "rgba(255,255,255,0.35)", marginTop: "2px" }}>
                     {c.desc}
                   </p>
                 </div>
@@ -169,9 +169,9 @@ export function RationaleSlide({}: SlideProps) {
                       className="disclose-reserved"
                       style={{
                         fontFamily: "var(--font-slab)",
-                        fontSize: "13px",
+                        fontSize: "17px",
                         color: "rgba(255,255,255,0.6)",
-                        lineHeight: 1.4,
+                        lineHeight: 1.35,
                         marginTop: "6px",
                         padding: "0 16px",
                         textAlign: "center",
@@ -196,7 +196,7 @@ export function RationaleSlide({}: SlideProps) {
             marginTop: "4px",
             alignItems: "center",
           }}>
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "16px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "22px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
               Score
             </p>
             {TERRITORIES.map((t) => (

@@ -25,6 +25,39 @@
   /* Reads as ink on a light accent — used by selected tab states */
   --color-ink: #1E1F38;
 
+  /* ============================================
+     TYPE SCALE
+
+     Authored in CANVAS px. The canvas is a fixed 1920x1080 box scaled to the
+     viewport, so what a reader actually sees is canvas px x scale, and scale
+     is ~0.72 on a 14" laptop and 0.75 at 1440x900. Every size below is chosen
+     so its EFFECTIVE size holds up there, which is why the smallest role is
+     16px rather than the 11-13px the deck had been using — those were landing
+     at 8-9px on screen.
+
+       role        canvas   @0.72   job
+       display       96px    69px   slide-dominating statement
+       headline      64px    46px   slide title
+       title         44px    32px   card lockup, big number
+       subhead       30px    22px   section intro, lead-in
+       lead          26px    19px   first paragraph, pull quote
+       body          22px    16px   default reading size (floor)
+       secondary     21px    15px   supporting paragraph
+       caption       20px    14px   image caption, rationale
+       label         18px    13px   uppercase tracked label, tab pill
+       micro         16px    12px   badge, counter, overline
+     ============================================ */
+  --text-display: 96px;
+  --text-headline: 64px;
+  --text-title: 44px;
+  --text-subhead: 30px;
+  --text-lead: 26px;
+  --text-body: 22px;
+  --text-secondary: 21px;
+  --text-caption: 20px;
+  --text-label: 18px;
+  --text-micro: 16px;
+
   /* Fonts */
   --font-sans: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
   --font-slab: var(--font-zilla-slab), Georgia, serif;
@@ -181,21 +214,21 @@
 
 .type-subhead {
   font-family: var(--font-slab);
-  font-size: 28px;
+  font-size: var(--text-subhead);
   font-weight: 400;
   line-height: 1.45;
 }
 
 .type-body {
   font-family: var(--font-slab);
-  font-size: 22px;
+  font-size: var(--text-body);
   font-weight: 400;
   line-height: 1.6;
 }
 
 .type-label {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: var(--text-label);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -203,7 +236,7 @@
 
 .type-meta {
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: var(--text-secondary);
   font-weight: 400;
   opacity: 0.6;
 }
@@ -377,6 +410,32 @@
 }
 
 /* ============================================
+   TAB PILLS
+
+   One geometry for every tab and section selector in the deck. Colour stays
+   inline at each site because it carries the territory accent. Sized for a
+   comfortable target at canvas scale: 44px tall is ~32px on a laptop.
+   ============================================ */
+
+.pill {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.pill-sm {
+  font-size: var(--text-micro);
+  padding: 10px 20px;
+}
+
+/* ============================================
    INTERACTION SYSTEM
 
    The deck had ten interaction idioms with nine visual treatments, four of
@@ -412,7 +471,7 @@
 .disclose-marker {
   display: inline-block;
   flex-shrink: 0;
-  font-size: 11px;
+  font-size: var(--text-label);
   line-height: 1;
   color: rgba(255, 255, 255, 0.75);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);

@@ -92,7 +92,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
             <span
               className="type-label"
               style={{
-                fontSize: "11px",
+                fontSize: "18px",
                 color: "var(--color-goldenrod)",
                 display: "block",
                 marginBottom: "16px",
@@ -132,7 +132,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
                 <p
                   style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "11px",
+                    fontSize: "18px",
                     color: "rgba(255,255,255,0.4)",
                     textTransform: "uppercase",
                     letterSpacing: "0.08em",
@@ -145,7 +145,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
             <p
               style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "18px",
+                fontSize: "24px",
                 color: "rgba(255,255,255,0.7)",
                 lineHeight: 1.6,
                 flex: 1,
@@ -185,7 +185,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
             <span
               className="type-label"
               style={{
-                fontSize: "11px",
+                fontSize: "18px",
                 color: "var(--color-goldenrod)",
                 display: "block",
                 marginBottom: "16px",
@@ -225,7 +225,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
                 <p
                   style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "11px",
+                    fontSize: "18px",
                     color: "rgba(255,255,255,0.4)",
                     textTransform: "uppercase",
                     letterSpacing: "0.08em",
@@ -238,7 +238,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
             <p
               style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "18px",
+                fontSize: "24px",
                 color: "rgba(255,255,255,0.7)",
                 lineHeight: 1.6,
                 flex: 1,
@@ -254,7 +254,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
         <p
           style={{
             fontFamily: "var(--font-sans)",
-            fontSize: "13px",
+            fontSize: "20px",
             color: "rgba(255,255,255,0.25)",
             marginTop: "56px",
           }}
@@ -302,7 +302,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
             <p
               style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "14px",
+                fontSize: "21px",
                 color: "rgba(255,255,255,0.5)",
                 textAlign: "center",
                 marginTop: "16px",

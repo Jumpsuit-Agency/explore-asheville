@@ -86,7 +86,7 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
         <div style={{ marginBottom: "48px" }}>
           <span
             className="type-label"
-            style={{ color: "var(--color-goldenrod)", marginBottom: "16px", fontSize: "14px", display: "block" }}
+            style={{ color: "var(--color-goldenrod)", marginBottom: "16px", fontSize: "21px", display: "block" }}
           >
             Three Territories
           </span>
@@ -145,7 +145,7 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                           position: "absolute",
                           top: "20px",
                           right: "24px",
-                          fontSize: "10px",
+                          fontSize: "16px",
                           color: t.color,
                           background: "rgba(254,181,44,0.15)",
                           padding: "4px 10px",
@@ -197,7 +197,7 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                       </p>
                       <p style={{
                         fontFamily: "var(--font-slab)",
-                        fontSize: "15px",
+                        fontSize: "21px",
                         color: "rgba(255,255,255,0.35)",
                         fontStyle: "italic",
                         marginBottom: "16px",
@@ -206,7 +206,7 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                       </p>
                       <span style={{
                         fontFamily: "var(--font-sans)",
-                        fontSize: "13px",
+                        fontSize: "20px",
                         fontWeight: 600,
                         color: "rgba(255,255,255,0.4)",
                       }}>
@@ -241,7 +241,7 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                       style={{ position: "absolute", inset: 0, borderRadius: "12px" }}
                     />
                     <div style={{ position: "relative", pointerEvents: "none" }}>
-                      <span className="type-label" style={{ fontSize: "10px", color: t.color, marginBottom: "24px", display: "block" }}>
+                      <span className="type-label" style={{ fontSize: "16px", color: t.color, marginBottom: "24px", display: "block" }}>
                         Territory {t.number}
                       </span>
                       <div style={{ display: "flex", flexDirection: "column", gap: "6px", textAlign: "left" }}>
@@ -277,7 +277,7 @@ export function TerritoriesSlide({ onNavigate }: SlideProps) {
                         style={{
                           display: "inline-block",
                           fontFamily: "var(--font-sans)",
-                          fontSize: "16px",
+                          fontSize: "22px",
                           fontWeight: 700,
                           color: t.color,
                           border: `1px solid ${t.color}`,

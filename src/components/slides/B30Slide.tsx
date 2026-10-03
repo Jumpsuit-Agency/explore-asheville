@@ -29,7 +29,7 @@ export function B30Slide({}: SlideProps) {
       <div className="relative z-10 flex flex-col flex-1" style={{ padding: "80px 100px" }}>
         {/* Header */}
         <div style={{ marginBottom: "40px" }}>
-          <span className="type-label" style={{ color: "var(--color-jumpsuit-gold)", marginBottom: "16px", fontSize: "14px", display: "block" }}>
+          <span className="type-label" style={{ color: "var(--color-jumpsuit-gold)", marginBottom: "16px", fontSize: "21px", display: "block" }}>
             Business 3.0 Lens
           </span>
           <h2 className="type-billboard" style={{ fontSize: "56px" }}>
@@ -55,7 +55,7 @@ export function B30Slide({}: SlideProps) {
                 flexDirection: "column",
               }}
             >
-              <span className="type-label" style={{ fontSize: "10px", color: idea.color, marginBottom: "12px" }}>
+              <span className="type-label" style={{ fontSize: "16px", color: idea.color, marginBottom: "12px" }}>
                 {idea.territory}
               </span>
               <h3 style={{
@@ -71,7 +71,7 @@ export function B30Slide({}: SlideProps) {
               </h3>
               <p style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "16px",
+                fontSize: "22px",
                 color: "rgba(255,255,255,0.5)",
                 lineHeight: 1.6,
                 flex: 1,

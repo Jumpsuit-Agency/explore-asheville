@@ -157,13 +157,13 @@ export function ProductionScheduleSlide({}: SlideProps) {
         {/* Header */}
         <div style={{ marginBottom: "16px", flexShrink: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
-            <span className="type-label" style={{ fontSize: "12px", color: COLOR }}>
+            <span className="type-label" style={{ fontSize: "18px", color: COLOR }}>
               Territory 03 &middot; Production Schedule
             </span>
             <span
               style={{
                 fontFamily: "var(--font-sans)",
-                fontSize: "10px",
+                fontSize: "16px",
                 fontWeight: 700,
                 color: COLOR,
                 textTransform: "uppercase",
@@ -207,7 +207,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
             <p
               style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "20px",
+                fontSize: "26px",
                 color: "rgba(255,255,255,0.6)",
                 lineHeight: 1.6,
               }}
@@ -255,7 +255,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
                   <p
                     style={{
                       fontFamily: "var(--font-sans)",
-                      fontSize: "15px",
+                      fontSize: "21px",
                       color: "rgba(255,255,255,0.7)",
                       lineHeight: 1.5,
                     }}
@@ -280,7 +280,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
               border: `2px solid ${isFirst ? "rgba(255,255,255,0.15)" : COLOR}`,
               background: "rgba(0,0,0,0.5)",
               color: isFirst ? "rgba(255,255,255,0.2)" : COLOR,
-              fontSize: "18px",
+              fontSize: "24px",
               cursor: isFirst ? "default" : "pointer",
               display: "flex",
               alignItems: "center",
@@ -297,7 +297,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
                 onClick={() => setPhaseIdx(i)}
                 style={{
                   fontFamily: "var(--font-sans)",
-                  fontSize: "11px",
+                  fontSize: "18px",
                   fontWeight: 700,
                   padding: "5px 12px",
                   borderRadius: "20px",
@@ -325,7 +325,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
               border: `2px solid ${isLast ? "rgba(255,255,255,0.15)" : COLOR}`,
               background: "rgba(0,0,0,0.5)",
               color: isLast ? "rgba(255,255,255,0.2)" : COLOR,
-              fontSize: "18px",
+              fontSize: "24px",
               cursor: isLast ? "default" : "pointer",
               display: "flex",
               alignItems: "center",

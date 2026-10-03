@@ -221,7 +221,7 @@ const arrowStyle: React.CSSProperties = {
   width: "44px", height: "44px", borderRadius: "50%",
   border: "2px solid var(--color-goldenrod)",
   background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)",
-  color: "var(--color-goldenrod)", fontSize: "18px", cursor: "pointer",
+  color: "var(--color-goldenrod)", fontSize: "24px", cursor: "pointer",
   display: "flex", alignItems: "center", justifyContent: "center",
   position: "absolute" as const, top: "50%", transform: "translateY(-50%)", zIndex: 30,
 };
@@ -247,10 +247,10 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
 
   return (
     <div className="slide slide-deep" style={{ padding: 0 }}>
-      <div className="relative z-10 flex flex-col flex-1 min-h-0" style={{ padding: "60px 80px" }}>
+      <div className="relative z-10 flex flex-col flex-1 min-h-0" style={{ padding: "40px 80px" }}>
         {/* Header */}
         <div style={{ marginBottom: "16px" }}>
-          <span className="type-label" style={{ fontSize: "12px", color: COLOR, marginBottom: "8px", display: "block" }}>
+          <span className="type-label" style={{ fontSize: "18px", color: COLOR, marginBottom: "8px", display: "block" }}>
             Territory 03
           </span>
           <h2 style={{ fontFamily: "var(--font-sans)", fontSize: "48px", fontWeight: 800, color: "white", lineHeight: 1.05, letterSpacing: "-0.03em" }}>
@@ -259,11 +259,9 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
         </div>
 
         {/* Tab bar */}
-        <div style={{ display: "flex", gap: "6px", marginBottom: "20px" }}>
+        <div style={{ display: "flex", gap: "6px", marginBottom: "14px" }}>
           {TAB_LABELS.map((label, i) => (
-            <button className="ui-button" key={label} onClick={() => changeTab(i)} style={{
-              fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 700,
-              padding: "6px 16px", borderRadius: "20px", border: "1px solid",
+            <button className="ui-button pill" key={label} onClick={() => changeTab(i)} style={{
               borderColor: i === tabIdx ? COLOR : "rgba(255,255,255,0.15)",
               background: i === tabIdx ? COLOR : "none",
               color: i === tabIdx ? "var(--color-ink)" : "rgba(255,255,255,0.5)",
@@ -274,10 +272,10 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
 
         {isScripts ? (
           <>
-            <div style={{ display: "flex", gap: "8px", marginBottom: "20px" }}>
+            <div style={{ display: "flex", gap: "8px", marginBottom: "14px" }}>
               {SCRIPTS.map((s, i) => (
                 <button className="ui-button" key={s.title} onClick={() => setScriptIdx(i)} style={{
-                  fontFamily: "var(--font-sans)", fontSize: "11px", fontWeight: 700,
+                  fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 700,
                   padding: "5px 14px", borderRadius: "20px", border: "2px solid",
                   borderColor: i === scriptIdx ? COLOR : "rgba(255,255,255,0.15)",
                   background: i === scriptIdx ? COLOR : "none",
@@ -290,22 +288,22 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
             {script.lines ? (
               <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1.1fr", gap: "48px" }}>
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <div className="asset-placeholder" style={{ flex: 1, minHeight: "360px", marginBottom: "16px", fontSize: "16px" }}>
+                  <div className="asset-placeholder" style={{ flex: 1, minHeight: "360px", marginBottom: "16px", fontSize: "22px" }}>
                     {script.title} &mdash; Production Pending
                   </div>
                   <div className="glass-light" style={{ padding: "16px 20px" }}>
-                    <span className="type-label" style={{ fontSize: "9px", color: COLOR }}>Production</span>
-                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "13px", color: "rgba(255,255,255,0.4)", marginTop: "4px", lineHeight: 1.5 }}>
+                    <span className="type-label" style={{ fontSize: "16px", color: COLOR }}>Production</span>
+                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "20px", color: "rgba(255,255,255,0.4)", marginTop: "4px", lineHeight: 1.5 }}>
                       The signs become the story. Every touchpoint is a moment in the narrative &mdash; discovered, not delivered.
                     </p>
                   </div>
                 </div>
                 <div style={{ overflow: "auto", paddingRight: "12px" }}>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                     {script.lines.map((s, i) => (
                       <div key={i} style={{ display: "flex", gap: "16px" }}>
                         <span style={{
-                          fontFamily: "monospace", fontSize: "10px", fontWeight: 700,
+                          fontFamily: "monospace", fontSize: "16px", fontWeight: 700,
                           textTransform: "uppercase", letterSpacing: "0.05em",
                           color: s.dir === "FINAL" || s.dir === "SUPER" || s.dir === "_" ? COLOR : "rgba(255,255,255,0.25)",
                           minWidth: "52px", paddingTop: "4px", flexShrink: 0,
@@ -318,7 +316,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
                             color: s.dir === "SUPER" || s.dir === "_" ? COLOR : "rgba(255,255,255,0.45)",
                             lineHeight: 1.5,
                           }}>{s.vis}</p>
-                          {s.vo && <p style={{ fontFamily: "var(--font-sans)", fontSize: "13px", fontStyle: "italic", color: "rgba(255,255,255,0.3)", lineHeight: 1.5, marginTop: "2px" }}>{s.vo}</p>}
+                          {s.vo && <p style={{ fontFamily: "var(--font-sans)", fontSize: "20px", fontStyle: "italic", color: "rgba(255,255,255,0.3)", lineHeight: 1.5, marginTop: "2px" }}>{s.vo}</p>}
                         </div>
                       </div>
                     ))}
@@ -327,7 +325,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
               </div>
             ) : (
               <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <div className="asset-placeholder" style={{ width: "80%", minHeight: "500px", fontSize: "16px" }}>
+                <div className="asset-placeholder" style={{ width: "80%", minHeight: "500px", fontSize: "22px" }}>
                   {script.title} &mdash; Coming Soon
                 </div>
               </div>
@@ -335,12 +333,10 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
           </>
         ) : (
           <div style={{ flex: 1, minHeight: 0, display: "flex", gap: "36px", alignItems: "stretch" }}>
-            <div className="glass-light" style={{ width: "320px", flexShrink: 0, padding: "24px 20px", borderLeft: `3px solid ${COLOR}`, display: "flex", flexDirection: "column" }}>
+            <div className="glass-light" style={{ width: "400px", flexShrink: 0, padding: "18px 20px", borderLeft: `3px solid ${COLOR}`, display: "flex", flexDirection: "column", minHeight: 0 }}>
               <div style={{ display: "flex", gap: "6px", marginBottom: "16px", flexWrap: "wrap" }}>
                 {tab?.sections.map((s, i) => (
-                  <button className="ui-button" key={s.label} onClick={() => changeSection(i)} style={{
-                    fontFamily: "var(--font-sans)", fontSize: "11px", fontWeight: 700,
-                    padding: "5px 12px", borderRadius: "20px", border: "1px solid",
+                  <button className="ui-button pill pill-sm" key={s.label} onClick={() => changeSection(i)} style={{
                     borderColor: i === sectionIdx ? COLOR : "rgba(255,255,255,0.15)",
                     background: i === sectionIdx ? COLOR : "none",
                     color: i === sectionIdx ? "var(--color-ink)" : "rgba(255,255,255,0.5)",
@@ -350,23 +346,23 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
               </div>
 
               {section && (
-                <div style={{ fontFamily: "var(--font-sans)", fontSize: "12px", color: "rgba(255,255,255,0.35)", marginBottom: "20px" }}>
+                <div style={{ fontFamily: "var(--font-sans)", fontSize: "18px", color: "rgba(255,255,255,0.35)", marginBottom: "20px" }}>
                   <span style={{ display: "block", color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>{section.label}</span>
                   <span style={{ display: "block" }}>{section.meta}</span>
                 </div>
               )}
 
-              <span className="type-label" style={{ fontSize: "10px", color: COLOR, marginBottom: "12px", display: "block" }}>Campaign Principles</span>
-              <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "20px", flex: 1 }}>
+              <span className="type-label" style={{ fontSize: "16px", color: COLOR, marginBottom: "12px", display: "block" }}>Campaign Principles</span>
+              <div data-scroll-region style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "12px", flex: 1, minHeight: 0, overflowY: "auto" }}>
                 {PRINCIPLES.map((p, i) => (
                   <div key={i}>
-                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "13px", fontWeight: 800, color: "white", lineHeight: 1.3 }}>{p.title}</p>
-                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "11px", color: "rgba(255,255,255,0.4)", lineHeight: 1.4 }}>{p.desc}</p>
+                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "19px", fontWeight: 800, color: "white", lineHeight: 1.25 }}>{p.title}</p>
+                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "17px", color: "rgba(255,255,255,0.45)", lineHeight: 1.35 }}>{p.desc}</p>
                   </div>
                 ))}
               </div>
 
-              <button type="button" className="ui-button ui-button-quiet" onClick={() => onNavigate?.("territories")} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600 }}>
+              <button type="button" className="ui-button ui-button-quiet" onClick={() => onNavigate?.("territories")} style={{ fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 600 }}>
                 &larr; Back to Three Territories
               </button>
             </div>
@@ -381,14 +377,14 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
                   <img src={item.src} alt={item.alt} style={{ maxWidth: "45%", maxHeight: "600px", objectFit: "contain", borderRadius: "8px", ...item.imgStyle }} />
                   <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "20px" }}>
                     {item.headline && <p style={{ fontFamily: "var(--font-sans)", fontSize: "24px", fontWeight: 800, color: "white", lineHeight: 1.3, whiteSpace: "pre-line" }}>{item.headline}</p>}
-                    {item.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5 }}>{item.caption}</p>}
+                    {item.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "21px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5 }}>{item.caption}</p>}
                   </div>
                 </div>
               ) : item?.type === "image" ? (
                 <div key={item.src} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px", maxWidth: "100%", maxHeight: "100%", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
-                  {item.headline && <p style={{ fontFamily: "var(--font-sans)", fontSize: "20px", fontWeight: 800, color: "white", textAlign: "center", lineHeight: 1.3, maxWidth: "90%", whiteSpace: "pre-line" }}>{item.headline}</p>}
+                  {item.headline && <p style={{ fontFamily: "var(--font-sans)", fontSize: "26px", fontWeight: 800, color: "white", textAlign: "center", lineHeight: 1.3, maxWidth: "90%", whiteSpace: "pre-line" }}>{item.headline}</p>}
                   <img src={item.src} alt={item.alt} style={{ maxWidth: "100%", maxHeight: item.headline ? "460px" : "580px", objectFit: "contain", borderRadius: "8px", ...item.imgStyle }} />
-                  {item.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "13px", color: "rgba(255,255,255,0.45)", textAlign: "center", lineHeight: 1.5, maxWidth: "90%" }}>{item.caption}</p>}
+                  {item.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "20px", color: "rgba(255,255,255,0.45)", textAlign: "center", lineHeight: 1.5, maxWidth: "90%" }}>{item.caption}</p>}
                 </div>
               ) : item?.type === "row" ? (
                 <div key={`row-${tabIdx}-${sectionIdx}-${itemIdx}`} style={{ width: "100%", display: "flex", flexDirection: "column", gap: "12px", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
@@ -396,14 +392,14 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
                     {item.images.map((img, i) => (
                       <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", gap: "8px", minWidth: 0, alignItems: "center" }}>
                         <img src={img.src} alt={img.alt} style={{ maxWidth: "100%", maxHeight: "540px", objectFit: "contain", borderRadius: "8px", display: "block" }} />
-                        {img.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "11px", color: "rgba(255,255,255,0.4)", lineHeight: 1.4 }}>{img.caption}</p>}
+                        {img.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "17px", color: "rgba(255,255,255,0.45)", lineHeight: 1.35 }}>{img.caption}</p>}
                       </div>
                     ))}
                   </div>
-                  {item.note && <p style={{ fontFamily: "var(--font-sans)", fontSize: "13px", color: "rgba(255,255,255,0.45)", textAlign: "center", lineHeight: 1.5, maxWidth: "90%", margin: "0 auto" }}>{item.note}</p>}
+                  {item.note && <p style={{ fontFamily: "var(--font-sans)", fontSize: "20px", color: "rgba(255,255,255,0.45)", textAlign: "center", lineHeight: 1.5, maxWidth: "90%", margin: "0 auto" }}>{item.note}</p>}
                 </div>
               ) : item?.type === "placeholder" ? (
-                <div key={item.label} className="asset-placeholder" style={{ width: "100%", minHeight: "400px", fontSize: "16px", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
+                <div key={item.label} className="asset-placeholder" style={{ width: "100%", minHeight: "400px", fontSize: "22px", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
                   {item.label}
                 </div>
               ) : null}
@@ -412,7 +408,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
                 <button className="ui-button" onClick={() => setItemIdx((itemIdx + 1) % items.length)} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
               )}
               {items.length > 1 && (
-                <span style={{ position: "absolute", bottom: "12px", left: "50%", transform: "translateX(-50%)", fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>
+                <span style={{ position: "absolute", bottom: "12px", left: "50%", transform: "translateX(-50%)", fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>
                   {itemIdx + 1} / {items.length}
                 </span>
               )}

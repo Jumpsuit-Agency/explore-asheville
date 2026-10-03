@@ -262,7 +262,7 @@ export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisor
               <p
                 style={{
                   fontFamily: "var(--font-sans)",
-                  fontSize: "13px",
+                  fontSize: "20px",
                   fontWeight: 700,
                   color: "white",
                 }}
@@ -272,7 +272,7 @@ export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisor
               <p
                 style={{
                   fontFamily: "var(--font-sans)",
-                  fontSize: "10px",
+                  fontSize: "16px",
                   color: "rgba(255,255,255,0.4)",
                   textTransform: "uppercase",
                   letterSpacing: "0.1em",
@@ -284,7 +284,7 @@ export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisor
             <span
               style={{
                 fontFamily: "var(--font-sans)",
-                fontSize: "10px",
+                fontSize: "16px",
                 fontWeight: 600,
                 color: "var(--color-goldenrod)",
                 opacity: 0.6,
@@ -303,7 +303,7 @@ export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisor
                 border: "none",
                 background: "rgba(255,255,255,0.08)",
                 color: "rgba(255,255,255,0.5)",
-                fontSize: "16px",
+                fontSize: "22px",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -340,7 +340,7 @@ export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisor
               <p
                 style={{
                   fontFamily: "var(--font-slab)",
-                  fontSize: "15px",
+                  fontSize: "21px",
                   color: "rgba(255,255,255,0.5)",
                   lineHeight: 1.5,
                   marginTop: "8px",
@@ -370,7 +370,7 @@ export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisor
                         : "rgba(255,255,255,0.08)",
                     color: msg.role === "user" ? "var(--color-ridge-ink)" : "rgba(255,255,255,0.8)",
                     fontFamily: "var(--font-sans)",
-                    fontSize: "13px",
+                    fontSize: "20px",
                     lineHeight: 1.55,
                     fontWeight: msg.role === "user" ? 600 : 400,
                     whiteSpace: "pre-wrap",
@@ -393,7 +393,7 @@ export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisor
                           />
                         ))}
                       </span>
-                      <span style={{ color: "rgba(255,255,255,0.4)", fontStyle: "italic", fontSize: "12px" }}>
+                      <span style={{ color: "rgba(255,255,255,0.4)", fontStyle: "italic", fontSize: "18px" }}>
                         thinking
                       </span>
                     </span>
@@ -445,7 +445,7 @@ export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisor
                 flex: 1,
                 padding: "10px 14px",
                 fontFamily: "var(--font-sans)",
-                fontSize: "13px",
+                fontSize: "20px",
                 border: "1px solid rgba(255,255,255,0.15)",
                 borderRadius: "8px",
                 background: "rgba(255,255,255,0.05)",
@@ -465,7 +465,7 @@ export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisor
               style={{
                 padding: "10px 16px",
                 fontFamily: "var(--font-sans)",
-                fontSize: "12px",
+                fontSize: "18px",
                 fontWeight: 700,
                 background: input.trim() && !streaming ? "var(--color-goldenrod)" : "rgba(255,255,255,0.1)",
                 color: input.trim() && !streaming ? "var(--color-ridge-ink)" : "rgba(255,255,255,0.3)",

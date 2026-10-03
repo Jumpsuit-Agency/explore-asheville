@@ -12,7 +12,7 @@ export function Territory1CreativeSlide(_props: SlideProps) {
     <div className="slide slide-deep" style={{ padding: 0 }}>
       <div style={{ position: "relative", zIndex: 10, padding: "60px 80px", width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>
         <div style={{ marginBottom: "32px" }}>
-          <span className="type-label" style={{ fontSize: "12px", color: "var(--color-grove-park)", marginBottom: "12px", display: "block" }}>
+          <span className="type-label" style={{ fontSize: "18px", color: "var(--color-grove-park)", marginBottom: "12px", display: "block" }}>
             Make Something of It &middot; The Wheel
           </span>
           <h2 style={{
