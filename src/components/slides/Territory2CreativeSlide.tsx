@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
+import { useSlideSequence } from "../SlideSequence";
 
 type CarouselItem =
   | { type: "image"; src: string; alt: string; caption?: string; imgStyle?: React.CSSProperties }
@@ -202,6 +203,9 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
   const tab = !isScripts ? TABS[tabIdx] : null;
   const section = tab ? tab.sections[sectionIdx] : null;
   const items = section ? section.items : [];
+
+  // Lend the carousel to the deck: forward walks these items, then the slide.
+  useSlideSequence(items.length, itemIdx, setItemIdx);
   const item = items[itemIdx];
   const script = SCRIPTS[scriptIdx];
 

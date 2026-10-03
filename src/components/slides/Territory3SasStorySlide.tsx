@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
+import { useSlideSequence } from "../SlideSequence";
 
 const COLOR = "var(--color-goldenrod)";
 
@@ -95,6 +96,9 @@ const BEATS: Beat[] = [
 export function Territory3SasStorySlide({}: SlideProps) {
   const [beatIdx, setBeatIdx] = useState(0);
   const beat = BEATS[beatIdx];
+
+  // Forward walks the story beats before leaving the slide.
+  useSlideSequence(BEATS.length, beatIdx, setBeatIdx);
   const isFirst = beatIdx === 0;
   const isLast = beatIdx === BEATS.length - 1;
 

@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { MountainParallax } from "./MountainParallax";
 import { CreativeAdvisor, CreativeAdvisorHandle } from "./CreativeAdvisor";
+import { SlideSequenceContext, SequenceApi } from "./SlideSequence";
 import { TitleSlide } from "./slides/TitleSlide";
 import { AboutSlide } from "./slides/AboutSlide";
 import { AssignmentSlide } from "./slides/AssignmentSlide";
@@ -89,6 +90,9 @@ export default function Deck() {
 
   // Mirrors `current` so event handlers read it without re-binding listeners.
   const currentRef = useRef(0);
+  // The current slide's inner sequence, if it lent one to the deck.
+  const sequenceRef = useRef<SequenceApi | null>(null);
+  const entryDirection = useRef<"forward" | "backward">("forward");
   const hideChromeTimer = useRef<number | null>(null);
   const wheelLock = useRef(0);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
@@ -127,6 +131,9 @@ export default function Deck() {
 
   const goTo = useCallback((index: number) => {
     const clamped = Math.max(0, Math.min(index, SLIDES.length - 1));
+    // A jump (overview, deep link, CTA) is not a walk — start at the top.
+    entryDirection.current = "forward";
+    sequenceRef.current = null;
     currentRef.current = clamped;
     setCurrent(clamped);
     setOverview(false);
@@ -144,6 +151,13 @@ export default function Deck() {
   const navigate = useCallback(
     (dir: "next" | "prev") => {
       if (depthOpen) return; // depth open blocks surface navigation
+
+      // The slide's own sequence gets the step first. Only once it is
+      // exhausted does the deck move — so one forward key walks carousel
+      // items, story beats and phases without anything being unreachable.
+      const seq = sequenceRef.current;
+      if (seq && (dir === "next" ? seq.next() : seq.prev())) return;
+
       const next = dir === "next" ? currentRef.current + 1 : currentRef.current - 1;
       if (next < 0) return;
       if (next > SLIDES.length - 1) {
@@ -152,6 +166,8 @@ export default function Deck() {
         return;
       }
       goTo(next);
+      // goTo resets this for jumps; a walk overrides it straight after.
+      entryDirection.current = dir === "next" ? "forward" : "backward";
     },
     [depthOpen, goTo]
   );
@@ -294,6 +310,15 @@ export default function Deck() {
     [navigate, overview, depthOpen]
   );
 
+  const registerSequence = useCallback((api: SequenceApi | null) => {
+    sequenceRef.current = api;
+  }, []);
+
+  const sequenceContext = useMemo(
+    () => ({ register: registerSequence, entryDirection }),
+    [registerSequence]
+  );
+
   const SlideComponent = SLIDES[current].component;
 
   return (
@@ -328,11 +353,14 @@ export default function Deck() {
 
         {/* Slide content layer — above the nav layer so controls stay clickable */}
         <div className="slide-content">
-          <SlideComponent
-            onDepthOpen={(panelId) => setDepthOpen(panelId)}
-            onNavigate={goToId}
-            onOpenAdvisor={() => advisorRef.current?.open()}
-          />
+          <SlideSequenceContext.Provider value={sequenceContext}>
+            <SlideComponent
+              key={SLIDES[current].id}
+              onDepthOpen={(panelId) => setDepthOpen(panelId)}
+              onNavigate={goToId}
+              onOpenAdvisor={() => advisorRef.current?.open()}
+            />
+          </SlideSequenceContext.Provider>
         </div>
 
         {/* Depth overlay */}

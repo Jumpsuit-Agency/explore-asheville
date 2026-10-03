@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
+import { useSlideSequence } from "../SlideSequence";
 
 const COLOR = "var(--color-goldenrod)";
 
@@ -141,6 +142,9 @@ const PHASES: Phase[] = [
 export function ProductionScheduleSlide({}: SlideProps) {
   const [phaseIdx, setPhaseIdx] = useState(0);
   const phase = PHASES[phaseIdx];
+
+  // Forward walks the phases before leaving the slide.
+  useSlideSequence(PHASES.length, phaseIdx, setPhaseIdx);
   const isFirst = phaseIdx === 0;
   const isLast = phaseIdx === PHASES.length - 1;
 
