@@ -63,7 +63,7 @@ export function HonestRubricSlide({}: SlideProps) {
               <span
                 style={{
                   fontFamily: "var(--font-sans)",
-                  fontSize: "16px",
+                  fontSize: "22px",
                   fontWeight: 800,
                   color: "var(--color-fiddlehead)",
                   textTransform: "uppercase",
@@ -72,7 +72,7 @@ export function HonestRubricSlide({}: SlideProps) {
               >
                 {s.answer}
               </span>
-              <p style={{ fontFamily: "var(--font-slab)", fontSize: "16px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5 }}>
+              <p style={{ fontFamily: "var(--font-slab)", fontSize: "22px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5 }}>
                 {s.evidence}
               </p>
             </div>

@@ -27,20 +27,20 @@ export function Territory3DescSlide({}: SlideProps) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "80px 120px",
+          padding: "56px 120px",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
           <span
             className="type-label"
-            style={{ fontSize: "12px", color: COLOR }}
+            style={{ fontSize: "18px", color: COLOR }}
           >
             Territory 03 &middot; Campaign Extensions
           </span>
           <span
             style={{
               fontFamily: "var(--font-sans)",
-              fontSize: "10px",
+              fontSize: "16px",
               fontWeight: 700,
               color: COLOR,
               textTransform: "uppercase",
@@ -62,7 +62,7 @@ export function Territory3DescSlide({}: SlideProps) {
             color: "white",
             lineHeight: 1.05,
             letterSpacing: "-0.03em",
-            marginBottom: "40px",
+            marginBottom: "24px",
           }}
         >
           How <span style={{ color: COLOR }}>How Many Signs Do You Need?</span> comes to life.
@@ -73,7 +73,7 @@ export function Territory3DescSlide({}: SlideProps) {
             <div key={i}>
               <p style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "22px",
+                fontSize: "21px",
                 fontWeight: 700,
                 color: COLOR,
                 lineHeight: 1.4,
@@ -83,9 +83,9 @@ export function Territory3DescSlide({}: SlideProps) {
               </p>
               <p style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "18px",
+                fontSize: "21px",
                 color: "rgba(255,255,255,0.5)",
-                lineHeight: 1.6,
+                lineHeight: 1.5,
               }}>
                 {ext.desc}
               </p>

@@ -10,7 +10,13 @@ const CRITERIA = [
   { name: "Stay authentically Asheville", desc: "Built on what makes the city real" },
 ];
 
-const TERRITORIES = [
+const TERRITORIES: {
+  name: string;
+  color: string;
+  scores: boolean[];
+  recommended?: boolean;
+  rationale: string[];
+}[] = [
   {
     name: "Make Something\nof It",
     color: "var(--color-grove-park)",
@@ -52,10 +58,10 @@ export function ClientRubricSlide({}: SlideProps) {
 
   return (
     <div className="slide slide-ink" style={{ padding: 0 }}>
-      <div className="relative z-10 flex flex-col flex-1" style={{ padding: "80px 100px" }}>
+      <div className="relative z-10 flex flex-col flex-1" style={{ padding: "44px 100px" }}>
         {/* Header */}
-        <div style={{ marginBottom: "48px" }}>
-          <span className="type-label" style={{ color: "var(--color-goldenrod)", marginBottom: "16px", fontSize: "14px", display: "block" }}>
+        <div style={{ marginBottom: "26px" }}>
+          <span className="type-label" style={{ color: "var(--color-goldenrod)", marginBottom: "16px", fontSize: "21px", display: "block" }}>
             Against Your Criteria
           </span>
           <h2 className="type-billboard" style={{ fontSize: "64px" }}>
@@ -92,7 +98,7 @@ export function ClientRubricSlide({}: SlideProps) {
                 {t.recommended && (
                   <span style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "10px",
+                    fontSize: "16px",
                     fontWeight: 700,
                     color: t.color,
                     textTransform: "uppercase",
@@ -114,35 +120,32 @@ export function ClientRubricSlide({}: SlideProps) {
           {CRITERIA.map((c, i) => {
             const isOpen = expandedRow === i;
             return (
-              <div
+              <button
                 key={c.name}
+                type="button"
+                className="ui-disclose"
+                aria-expanded={isOpen}
                 onClick={() => setExpandedRow(isOpen ? null : i)}
                 style={{
                   display: "grid",
                   gridTemplateColumns: "260px 1fr 1fr 1fr",
                   gap: "0",
-                  padding: isOpen ? "18px 0 14px" : "24px 0",
+                  // Constant. It used to shrink 48px -> 32px on open, which
+                  // moved the row's own content under the pointer mid-click.
+                  padding: "8px 0",
                   borderBottom: i < CRITERIA.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none",
-                  cursor: "pointer",
-                  transition: "background 0.2s",
                   borderRadius: "4px",
+                  width: "100%",
                 }}
               >
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "20px", fontWeight: 700, color: "white" }}>
+                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "26px", fontWeight: 700, color: "white" }}>
                       {c.name}
                     </p>
-                    <span style={{
-                      fontSize: "12px",
-                      color: "rgba(255,255,255,0.25)",
-                      transition: "transform 0.2s",
-                      transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
-                    }}>
-                      &#9654;
-                    </span>
+                    <span className="disclose-marker" aria-hidden="true">&#10095;</span>
                   </div>
-                  <p style={{ fontFamily: "var(--font-slab)", fontSize: "15px", color: "rgba(255,255,255,0.35)", marginTop: "2px" }}>
+                  <p style={{ fontFamily: "var(--font-slab)", fontSize: "18px", color: "rgba(255,255,255,0.35)", marginTop: "2px" }}>
                     {c.desc}
                   </p>
                 </div>
@@ -154,24 +157,26 @@ export function ClientRubricSlide({}: SlideProps) {
                     }}>
                       {t.scores[i] ? "\u2713" : "\u2717"}
                     </span>
-                    {isOpen && (
-                      <p style={{
+                    {/* Always in layout, so opening a row never shifts the
+                        rows beneath it. Hidden from AT until revealed. */}
+                    <p
+                      className="disclose-reserved"
+                      style={{
                         fontFamily: "var(--font-slab)",
-                        fontSize: "13px",
-                        color: "rgba(255,255,255,0.45)",
-                        lineHeight: 1.4,
+                        fontSize: "17px",
+                        color: "rgba(255,255,255,0.6)",
+                        lineHeight: 1.35,
                         marginTop: "6px",
                         padding: "0 16px",
                         textAlign: "center",
-                        animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both",
-                        animationDelay: `${ti * 50}ms`,
-                      }}>
-                        {t.rationale[i]}
-                      </p>
-                    )}
+                        transitionDelay: `${ti * 50}ms`,
+                      }}
+                    >
+                      {t.rationale[i]}
+                    </p>
                   </div>
                 ))}
-              </div>
+              </button>
             );
           })}
 
@@ -185,7 +190,7 @@ export function ClientRubricSlide({}: SlideProps) {
             marginTop: "4px",
             alignItems: "center",
           }}>
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "16px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "22px", fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
               Score
             </p>
             {TERRITORIES.map((t) => (
@@ -197,7 +202,7 @@ export function ClientRubricSlide({}: SlideProps) {
                   color: t.color,
                   letterSpacing: "-0.02em",
                 }}>
-                  {t.scores.filter((s) => s === true).length}/{t.scores.length}
+                  {t.scores.filter((sc) => sc === true).length}/{t.scores.length}
                 </span>
               </div>
             ))}

@@ -46,18 +46,20 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
         >
           We have <span style={{ color: "var(--color-goldenrod)" }}>award-winning</span> humans.<br />
           And an{" "}
-          <span
+          <button
+            type="button"
+            className="ui-button"
             onClick={() => setShowSas(true)}
             style={{
+              display: "inline",
               color: "var(--color-goldenrod)",
-              cursor: "pointer",
               textDecoration: "underline",
               textUnderlineOffset: "4px",
               textDecorationThickness: "2px",
             }}
           >
             award-accepting
-          </span>{" "}
+          </button>{" "}
           Sasquatch.
         </h2>
 
@@ -90,7 +92,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
             <span
               className="type-label"
               style={{
-                fontSize: "11px",
+                fontSize: "18px",
                 color: "var(--color-goldenrod)",
                 display: "block",
                 marginBottom: "16px",
@@ -130,7 +132,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
                 <p
                   style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "11px",
+                    fontSize: "18px",
                     color: "rgba(255,255,255,0.4)",
                     textTransform: "uppercase",
                     letterSpacing: "0.08em",
@@ -143,7 +145,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
             <p
               style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "18px",
+                fontSize: "24px",
                 color: "rgba(255,255,255,0.7)",
                 lineHeight: 1.6,
                 flex: 1,
@@ -166,8 +168,9 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
           </div>
 
           {/* Play with AI */}
-          <div
-            className="glass"
+          <button
+            type="button"
+            className="glass ui-card closing-ai-card"
             onClick={() => onOpenAdvisor?.()}
             style={{
               padding: "36px 44px",
@@ -176,17 +179,13 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
               width: "400px",
               display: "flex",
               flexDirection: "column",
-              cursor: "pointer",
-              transition: "border-color 0.3s",
               borderColor: "rgba(254,181,44,0.25)",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--color-goldenrod)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(254,181,44,0.25)"; }}
           >
             <span
               className="type-label"
               style={{
-                fontSize: "11px",
+                fontSize: "18px",
                 color: "var(--color-goldenrod)",
                 display: "block",
                 marginBottom: "16px",
@@ -226,7 +225,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
                 <p
                   style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "11px",
+                    fontSize: "18px",
                     color: "rgba(255,255,255,0.4)",
                     textTransform: "uppercase",
                     letterSpacing: "0.08em",
@@ -239,7 +238,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
             <p
               style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "18px",
+                fontSize: "24px",
                 color: "rgba(255,255,255,0.7)",
                 lineHeight: 1.6,
                 flex: 1,
@@ -248,14 +247,14 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
               Click the AI on any slide.<br />
               It knows everything in this deck.
             </p>
-          </div>
+          </button>
         </div>
 
         {/* Footer */}
         <p
           style={{
             fontFamily: "var(--font-sans)",
-            fontSize: "13px",
+            fontSize: "20px",
             color: "rgba(255,255,255,0.25)",
             marginTop: "56px",
           }}
@@ -267,7 +266,9 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
       {/* Sas ADDY easter egg modal */}
       {showSas && (
         <div
-          onClick={() => setShowSas(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Sas ADDY award"
           style={{
             position: "absolute",
             inset: 0,
@@ -276,11 +277,19 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            cursor: "pointer",
             animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both",
           }}
         >
-          <div style={{ position: "relative", maxWidth: "600px" }}>
+          {/* Dismiss surface, sibling to the content rather than its parent,
+              so the image is not swallowed by a click target. */}
+          <button
+            type="button"
+            className="ui-card"
+            aria-label="Close"
+            onClick={() => setShowSas(false)}
+            style={{ position: "absolute", inset: 0 }}
+          />
+          <div style={{ position: "relative", zIndex: 1, maxWidth: "600px" }}>
             <img
               src="/team/sas-addy.jpg"
               alt="Sas accepting a Gold ADDY at the American Advertising Federation"
@@ -293,7 +302,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
             <p
               style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "14px",
+                fontSize: "21px",
                 color: "rgba(255,255,255,0.5)",
                 textAlign: "center",
                 marginTop: "16px",

@@ -37,7 +37,7 @@ export function Territory3MediaEngineSlide({}: SlideProps) {
         <div style={{ marginBottom: "12px" }}>
           <span
             className="type-label"
-            style={{ fontSize: "12px", color: COLOR, marginBottom: "12px", display: "block" }}
+            style={{ fontSize: "18px", color: COLOR, marginBottom: "12px", display: "block" }}
           >
             Territory 03 &middot; Media Strategy
           </span>
@@ -57,7 +57,7 @@ export function Territory3MediaEngineSlide({}: SlideProps) {
           <p
             style={{
               fontFamily: "var(--font-slab)",
-              fontSize: "18px",
+              fontSize: "24px",
               color: "rgba(255,255,255,0.4)",
               lineHeight: 1.5,
               marginTop: "12px",
@@ -140,7 +140,7 @@ export function Territory3MediaEngineSlide({}: SlideProps) {
                   <span
                     style={{
                       fontFamily: "var(--font-sans)",
-                      fontSize: "12px",
+                      fontSize: "18px",
                       fontWeight: 800,
                       color: COLOR,
                     }}
@@ -150,7 +150,7 @@ export function Territory3MediaEngineSlide({}: SlideProps) {
                   <p
                     style={{
                       fontFamily: "var(--font-sans)",
-                      fontSize: "18px",
+                      fontSize: "24px",
                       fontWeight: 800,
                       color: "white",
                       lineHeight: 1.25,
@@ -163,7 +163,7 @@ export function Territory3MediaEngineSlide({}: SlideProps) {
                 <p
                   style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "13px",
+                    fontSize: "20px",
                     color: "rgba(255,255,255,0.45)",
                     lineHeight: 1.5,
                   }}

@@ -47,7 +47,7 @@ export function Territory1B30Slide({}: SlideProps) {
       <div className="relative z-10 flex flex-col flex-1" style={{ padding: "50px 100px 40px" }}>
         {/* Top — Label + Headline + Setup */}
         <div style={{ marginBottom: "6px" }}>
-          <span className="type-label" style={{ fontSize: "12px", color: "var(--color-grove-park)", marginBottom: "8px", display: "block" }}>
+          <span className="type-label" style={{ fontSize: "18px", color: "var(--color-grove-park)", marginBottom: "8px", display: "block" }}>
             Territory 01 &middot; Business 3.0 Lens
           </span>
           <h2 style={{
@@ -64,7 +64,7 @@ export function Territory1B30Slide({}: SlideProps) {
           </h2>
           <p style={{
             fontFamily: "var(--font-slab)",
-            fontSize: "15px",
+            fontSize: "21px",
             color: "rgba(255,255,255,0.4)",
             lineHeight: 1.55,
             maxWidth: "800px",
@@ -103,7 +103,7 @@ export function Territory1B30Slide({}: SlideProps) {
               onClick={() => { setActiveExample(i); setFullscreen(null); }}
               style={{
                 fontFamily: "var(--font-sans)",
-                fontSize: "13px",
+                fontSize: "20px",
                 fontWeight: 700,
                 color: i === activeExample ? "white" : "rgba(255,255,255,0.4)",
                 background: i === activeExample ? "var(--color-grove-park)" : "rgba(255,255,255,0.06)",
@@ -132,7 +132,7 @@ export function Territory1B30Slide({}: SlideProps) {
               {i > 0 && (
                 <span style={{
                   fontFamily: "var(--font-sans)",
-                  fontSize: "18px",
+                  fontSize: "24px",
                   fontWeight: 700,
                   color: "var(--color-grove-park)",
                   flexShrink: 0,
@@ -174,7 +174,7 @@ export function Territory1B30Slide({}: SlideProps) {
                 }}>
                   <span style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "9px",
+                    fontSize: "16px",
                     fontWeight: 700,
                     color: "rgba(255,255,255,0.7)",
                     lineHeight: 1.3,
@@ -185,7 +185,7 @@ export function Territory1B30Slide({}: SlideProps) {
               </div>
             </div>
           )) : (
-            <div className="asset-placeholder" style={{ flex: 1, height: "200px", fontSize: "16px" }}>
+            <div className="asset-placeholder" style={{ flex: 1, height: "200px", fontSize: "22px" }}>
               Creative — Coming Soon
             </div>
           )}
@@ -199,7 +199,7 @@ export function Territory1B30Slide({}: SlideProps) {
         }}>
           <p style={{
             fontFamily: "var(--font-sans)",
-            fontSize: "15px",
+            fontSize: "21px",
             fontWeight: 800,
             color: "white",
             lineHeight: 1.3,
@@ -231,7 +231,7 @@ export function Territory1B30Slide({}: SlideProps) {
         >
           <span style={{
             fontFamily: "var(--font-sans)",
-            fontSize: "13px",
+            fontSize: "20px",
             fontWeight: 700,
             color: "var(--color-grove-park)",
             textTransform: "uppercase",
@@ -274,7 +274,7 @@ export function Territory1B30Slide({}: SlideProps) {
                 border: "1px solid rgba(255,255,255,0.3)",
                 background: "none",
                 color: "white",
-                fontSize: "20px",
+                fontSize: "26px",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -288,7 +288,7 @@ export function Territory1B30Slide({}: SlideProps) {
                 onClick={() => setFullscreen(fullscreen + 1)}
                 style={{
                   fontFamily: "var(--font-sans)",
-                  fontSize: "16px",
+                  fontSize: "22px",
                   fontWeight: 700,
                   color: "white",
                   background: "var(--color-grove-park)",
@@ -305,7 +305,7 @@ export function Territory1B30Slide({}: SlideProps) {
                 onClick={() => setFullscreen(null)}
                 style={{
                   fontFamily: "var(--font-sans)",
-                  fontSize: "16px",
+                  fontSize: "22px",
                   fontWeight: 700,
                   color: "white",
                   background: "var(--color-grove-park)",
@@ -327,7 +327,7 @@ export function Territory1B30Slide({}: SlideProps) {
                 border: "1px solid rgba(255,255,255,0.3)",
                 background: "none",
                 color: "white",
-                fontSize: "20px",
+                fontSize: "26px",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",

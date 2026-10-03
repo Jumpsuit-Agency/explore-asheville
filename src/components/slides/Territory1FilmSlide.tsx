@@ -56,7 +56,7 @@ export function Territory1FilmSlide({}: SlideProps) {
               onClick={() => setScriptIdx(i)}
               style={{
                 fontFamily: "var(--font-sans)",
-                fontSize: "12px",
+                fontSize: "18px",
                 fontWeight: 700,
                 padding: "5px 14px",
                 borderRadius: "20px",
@@ -79,17 +79,17 @@ export function Territory1FilmSlide({}: SlideProps) {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             className="asset-placeholder"
-            style={{ flex: 1, minHeight: "400px", marginBottom: "16px", fontSize: "16px" }}
+            style={{ flex: 1, minHeight: "400px", marginBottom: "16px", fontSize: "22px" }}
           >
             {script.title} &mdash; Production Pending
           </div>
           <div style={{ display: "flex", gap: "12px" }}>
-            <div className="asset-placeholder" style={{ flex: 1, height: "56px", fontSize: "11px" }}>:30 Cut</div>
-            <div className="asset-placeholder" style={{ flex: 1, height: "56px", fontSize: "11px" }}>:15 Cut</div>
+            <div className="asset-placeholder" style={{ flex: 1, height: "56px", fontSize: "18px" }}>:30 Cut</div>
+            <div className="asset-placeholder" style={{ flex: 1, height: "56px", fontSize: "18px" }}>:15 Cut</div>
           </div>
           <div className="glass-light" style={{ marginTop: "16px", padding: "16px 20px" }}>
-            <span className="type-label" style={{ fontSize: "9px", color: "var(--color-grove-park)" }}>Production</span>
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "13px", color: "rgba(255,255,255,0.4)", marginTop: "4px", lineHeight: 1.5 }}>
+            <span className="type-label" style={{ fontSize: "16px", color: "var(--color-grove-park)" }}>Production</span>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "20px", color: "rgba(255,255,255,0.4)", marginTop: "4px", lineHeight: 1.5 }}>
               Shot on location. Real people, real places. Genuine, layered, sense of place — never posed.
             </p>
           </div>
@@ -103,7 +103,7 @@ export function Territory1FilmSlide({}: SlideProps) {
                 <span
                   style={{
                     fontFamily: "monospace",
-                    fontSize: "10px",
+                    fontSize: "16px",
                     fontWeight: 700,
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
@@ -128,7 +128,7 @@ export function Territory1FilmSlide({}: SlideProps) {
                     {s.vis}
                   </p>
                   {s.vo && (
-                    <p style={{ fontFamily: "var(--font-slab)", fontSize: "16px", fontStyle: "italic", color: "rgba(255,255,255,0.8)", marginTop: "3px", lineHeight: 1.5 }}>
+                    <p style={{ fontFamily: "var(--font-slab)", fontSize: "22px", fontStyle: "italic", color: "rgba(255,255,255,0.8)", marginTop: "3px", lineHeight: 1.5 }}>
                       &ldquo;{s.vo}&rdquo;
                     </p>
                   )}

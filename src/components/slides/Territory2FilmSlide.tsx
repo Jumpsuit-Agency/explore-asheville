@@ -69,7 +69,7 @@ export function Territory2FilmSlide({}: SlideProps) {
       <div style={{ display: "flex", gap: "8px", marginBottom: "32px", flexWrap: "wrap" }}>
         {TABS.map((t, i) => (
           <button key={t.label} onClick={() => setTabIdx(i)} style={{
-            fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 700, padding: "8px 18px", borderRadius: "20px",
+            fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 700, padding: "8px 18px", borderRadius: "20px",
             border: "1px solid", borderColor: i === tabIdx ? "var(--color-french-broad)" : "rgba(255,255,255,0.15)",
             background: i === tabIdx ? "var(--color-french-broad)" : "none",
             color: i === tabIdx ? "white" : "rgba(255,255,255,0.5)", cursor: "pointer", transition: "all 0.2s",
@@ -83,13 +83,13 @@ export function Territory2FilmSlide({}: SlideProps) {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div
               className="asset-placeholder"
-              style={{ flex: 1, minHeight: "400px", marginBottom: "16px", fontSize: "16px" }}
+              style={{ flex: 1, minHeight: "400px", marginBottom: "16px", fontSize: "22px" }}
             >
               {tab.label} {tab.subtitle} &mdash; Production Pending
             </div>
             <div className="glass-light" style={{ marginTop: "16px", padding: "16px 20px" }}>
-              <span className="type-label" style={{ fontSize: "9px", color: "var(--color-french-broad)" }}>Production</span>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "13px", color: "rgba(255,255,255,0.4)", marginTop: "4px", lineHeight: 1.5 }}>
+              <span className="type-label" style={{ fontSize: "16px", color: "var(--color-french-broad)" }}>Production</span>
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "20px", color: "rgba(255,255,255,0.4)", marginTop: "4px", lineHeight: 1.5 }}>
                 Sound-first filmmaking. Layered audio drives every frame — the place is heard before it&apos;s seen.
               </p>
             </div>
@@ -103,7 +103,7 @@ export function Territory2FilmSlide({}: SlideProps) {
                   <span
                     style={{
                       fontFamily: "monospace",
-                      fontSize: "10px",
+                      fontSize: "16px",
                       fontWeight: 700,
                       textTransform: "uppercase",
                       letterSpacing: "0.05em",
@@ -128,7 +128,7 @@ export function Territory2FilmSlide({}: SlideProps) {
                       {s.vis}
                     </p>
                     {s.vo && (
-                      <p style={{ fontFamily: "var(--font-slab)", fontSize: "16px", fontStyle: "italic", color: "rgba(255,255,255,0.8)", marginTop: "3px", lineHeight: 1.5 }}>
+                      <p style={{ fontFamily: "var(--font-slab)", fontSize: "22px", fontStyle: "italic", color: "rgba(255,255,255,0.8)", marginTop: "3px", lineHeight: 1.5 }}>
                         &ldquo;{s.vo}&rdquo;
                       </p>
                     )}
@@ -158,7 +158,7 @@ export function Territory2FilmSlide({}: SlideProps) {
         <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
           <div
             className="asset-placeholder"
-            style={{ width: "80%", minHeight: "500px", fontSize: "18px" }}
+            style={{ width: "80%", minHeight: "500px", fontSize: "24px" }}
           >
             {tab.label} &middot; {tab.subtitle} &mdash; Script Coming Soon
           </div>
