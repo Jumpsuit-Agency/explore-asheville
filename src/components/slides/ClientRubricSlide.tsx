@@ -10,12 +10,10 @@ const CRITERIA = [
   { name: "Stay authentically Asheville", desc: "Built on what makes the city real" },
 ];
 
-type Score = boolean | "?";
-
 const TERRITORIES: {
   name: string;
   color: string;
-  scores: Score[];
+  scores: boolean[];
   recommended?: boolean;
   rationale: string[];
 }[] = [
@@ -155,9 +153,9 @@ export function ClientRubricSlide({}: SlideProps) {
                   <div key={t.name + c.name} style={{ textAlign: "center" }}>
                     <span style={{
                       fontSize: "32px",
-                      color: t.scores[i] === "?" ? "var(--color-goldenrod)" : t.scores[i] ? "var(--color-fiddlehead)" : "rgba(255,255,255,0.15)",
+                      color: t.scores[i] ? "var(--color-fiddlehead)" : "rgba(255,255,255,0.15)",
                     }}>
-                      {t.scores[i] === "?" ? "?" : t.scores[i] ? "\u2713" : "\u2717"}
+                      {t.scores[i] ? "\u2713" : "\u2717"}
                     </span>
                     {/* Always in layout, so opening a row never shifts the
                         rows beneath it. Hidden from AT until revealed. */}
