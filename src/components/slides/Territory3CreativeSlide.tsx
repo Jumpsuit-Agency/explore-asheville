@@ -250,17 +250,17 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
     <div className="slide slide-deep" style={{ padding: 0 }}>
       <div className="relative z-10 flex flex-col flex-1 min-h-0" style={{ padding: "40px 80px" }}>
         {/* Header */}
-        <div style={{ marginBottom: "16px" }}>
+        <div style={{ marginBottom: "10px" }}>
           <span className="type-label" style={{ fontSize: "18px", color: COLOR, marginBottom: "8px", display: "block" }}>
             Territory 03
           </span>
-          <h2 style={{ fontFamily: "var(--font-sans)", fontSize: "48px", fontWeight: 800, color: "white", lineHeight: 1.05, letterSpacing: "-0.03em" }}>
+          <h2 style={{ fontFamily: "var(--font-sans)", fontSize: "44px", fontWeight: 800, color: "white", lineHeight: 1.02, letterSpacing: "-0.03em" }}>
             ASHEVILLE. <span style={{ color: COLOR }}>HOW MANY SIGNS DO YOU NEED?</span>
           </h2>
         </div>
 
         {/* Tab bar */}
-        <div style={{ display: "flex", gap: "6px", marginBottom: "14px" }}>
+        <div style={{ display: "flex", gap: "8px", marginBottom: "10px" }}>
           {TAB_LABELS.map((label, i) => (
             <button className="ui-button pill" key={label} onClick={() => changeTab(i)} style={{
               borderColor: i === tabIdx ? COLOR : "rgba(255,255,255,0.15)",
@@ -273,7 +273,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
 
         {isScripts ? (
           <>
-            <div style={{ display: "flex", gap: "8px", marginBottom: "14px" }}>
+            <div style={{ display: "flex", gap: "8px", marginBottom: "10px" }}>
               {SCRIPTS.map((s, i) => (
                 <button className="ui-button" key={s.title} onClick={() => setScriptIdx(i)} style={{
                   fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 700,
@@ -347,14 +347,14 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
               </div>
 
               {section && (
-                <div style={{ fontFamily: "var(--font-sans)", fontSize: "18px", color: "rgba(255,255,255,0.35)", marginBottom: "20px" }}>
+                <div style={{ fontFamily: "var(--font-sans)", fontSize: "18px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
                   <span style={{ display: "block", color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>{section.label}</span>
                   <span style={{ display: "block" }}>{section.meta}</span>
                 </div>
               )}
 
-              <span className="type-label" style={{ fontSize: "16px", color: COLOR, marginBottom: "12px", display: "block" }}>Campaign Principles</span>
-              <div data-scroll-region style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "12px", flex: 1, minHeight: 0, overflowY: "auto" }}>
+              <span className="type-label" style={{ fontSize: "16px", color: COLOR, marginBottom: "8px", display: "block" }}>Campaign Principles</span>
+              <div data-scroll-region style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "10px", flex: 1, minHeight: 0, overflowY: "auto" }}>
                 {PRINCIPLES.map((p, i) => (
                   <div key={i}>
                     <p style={{ fontFamily: "var(--font-sans)", fontSize: "19px", fontWeight: 800, color: "white", lineHeight: 1.25 }}>{p.title}</p>
@@ -372,7 +372,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
                 it is a surface, not a control, and the keyboard path is the
                 deck's own forward step rather than a focus stop here. */}
             <div
-              className="carousel-stage"
+              className="carousel-stage carousel-stage-gold"
               onClick={advance}
               style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative" }}
             >

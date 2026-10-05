@@ -214,11 +214,11 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
     <div className="slide slide-deep" style={{ padding: 0 }}>
       <div className="relative z-10 flex flex-col flex-1 min-h-0" style={{ padding: "60px 80px" }}>
         {/* Header */}
-        <div style={{ marginBottom: "16px" }}>
+        <div style={{ marginBottom: "10px" }}>
           <span className="type-label" style={{ fontSize: "18px", color: COLOR, marginBottom: "8px", display: "block" }}>
             Territory 02
           </span>
-          <h2 style={{ fontFamily: "var(--font-sans)", fontSize: "48px", fontWeight: 800, color: "white", lineHeight: 1.05, letterSpacing: "-0.03em" }}>
+          <h2 style={{ fontFamily: "var(--font-sans)", fontSize: "44px", fontWeight: 800, color: "white", lineHeight: 1.02, letterSpacing: "-0.03em" }}>
             ASHEVILLE. <span style={{ color: COLOR }}>SOUNDS MADE UP.</span>
           </h2>
         </div>
@@ -320,13 +320,13 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
               </div>
 
               {section && (
-                <div style={{ fontFamily: "var(--font-sans)", fontSize: "18px", color: "rgba(255,255,255,0.35)", marginBottom: "20px" }}>
+                <div style={{ fontFamily: "var(--font-sans)", fontSize: "18px", color: "rgba(255,255,255,0.35)", marginBottom: "12px" }}>
                   <span style={{ display: "block", color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>{section.label}</span>
                   <span style={{ display: "block" }}>{section.meta}</span>
                 </div>
               )}
 
-              <span className="type-label" style={{ fontSize: "16px", color: COLOR, marginBottom: "12px", display: "block" }}>Campaign Principles</span>
+              <span className="type-label" style={{ fontSize: "16px", color: COLOR, marginBottom: "8px", display: "block" }}>Campaign Principles</span>
               <div data-scroll-region style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "20px", flex: 1, minHeight: 0, overflowY: "auto" }}>
                 {PRINCIPLES.map((p, i) => (
                   <div key={i}>
@@ -345,7 +345,7 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
                 it is a surface, not a control, and the keyboard path is the
                 deck's own forward step rather than a focus stop here. */}
             <div
-              className="carousel-stage"
+              className="carousel-stage carousel-stage-french"
               onClick={advance}
               style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative" }}
             >
