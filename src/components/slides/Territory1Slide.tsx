@@ -228,6 +228,9 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
   // Lend the carousel to the deck: forward walks these items, then the slide.
   useSlideSequence(items.length, itemIdx, setItemIdx);
   const advance = useDeckAdvance();
+  // A single comp has nothing to page to, so the stage stays inert:
+  // no handler, no paging cursor, and no fall-through to a slide change.
+  const canPage = items.length > 1;
   const item = items[itemIdx];
   const script = SCRIPTS[scriptIdx];
 
@@ -363,8 +366,8 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
                 it is a surface, not a control, and the keyboard path is the
                 deck's own forward step rather than a focus stop here. */}
             <div
-              className="carousel-stage carousel-stage-grove"
-              onClick={advance}
+              className={`carousel-stage ${canPage ? "carousel-stage-grove" : "carousel-stage-inert"}`}
+              onClick={canPage ? advance : undefined}
               style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative" }}
             >
               {items.length > 1 && (
