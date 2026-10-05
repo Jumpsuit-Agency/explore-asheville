@@ -21,12 +21,25 @@ export interface SequenceApi {
 
 interface SequenceContextValue {
   register: (api: SequenceApi | null) => void;
+  /** The deck's forward step: walks this slide's sequence, then moves on. */
+  advance: () => void;
   /** Which way the deck was travelling when this slide mounted. */
   entryDirection: React.RefObject<"forward" | "backward">;
 }
 
 export const SlideSequenceContext =
   createContext<SequenceContextValue | null>(null);
+
+/**
+ * The deck's forward step, for surfaces that want to drive the sequence
+ * themselves — the carousel stage, so clicking the artwork pages it.
+ * Routed through the deck rather than a local setter so the stage inherits
+ * the same hand-off: page the items, then leave the slide.
+ */
+export function useDeckAdvance(): () => void {
+  const ctx = useContext(SlideSequenceContext);
+  return ctx ? ctx.advance : () => {};
+}
 
 /**
  * Lends a slide's inner sequence to the deck's navigation.

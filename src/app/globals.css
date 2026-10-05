@@ -410,6 +410,29 @@
 }
 
 /* ============================================
+   CAROUSEL STAGE
+
+   The artwork itself pages the carousel, so the target is the whole block
+   rather than a 44px button. It routes through the deck's own forward step,
+   which means it inherits the hand-off: page the items, then leave the slide.
+   No trap at the last comp.
+
+   Its cursor is a CIRCLED chevron, echoing the on-screen carousel buttons, so
+   it reads as "move within this block" against the bare chevron the nav zones
+   use for "move the deck".
+   ============================================ */
+
+.carousel-stage {
+  pointer-events: auto;
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MiIgaGVpZ2h0PSI1MiIgdmlld0JveD0iMCAwIDUyIDUyIj48ZyBvcGFjaXR5PSIwLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PGNpcmNsZSBjeD0iMjYiIGN5PSIyNiIgcj0iMTciIHN0cm9rZT0icmdiYSgwLDAsMCwwLjUpIiBzdHJva2Utd2lkdGg9IjciLz48cGF0aCBkPSJNMjMgMTkgTDMwIDI2IEwyMyAzMyIgc3Ryb2tlPSJyZ2JhKDAsMCwwLDAuNSkiIHN0cm9rZS13aWR0aD0iNyIvPjxjaXJjbGUgY3g9IjI2IiBjeT0iMjYiIHI9IjE3IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMi41Ii8+PHBhdGggZD0iTTIzIDE5IEwzMCAyNiBMMjMgMzMiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIzIi8+PC9nPjwvc3ZnPg==") 26 26, e-resize;
+}
+
+/* Controls inside the stage keep the pointer and swallow their own clicks. */
+.carousel-stage button {
+  cursor: pointer;
+}
+
+/* ============================================
    TAB PILLS
 
    One geometry for every tab and section selector in the deck. Colour stays

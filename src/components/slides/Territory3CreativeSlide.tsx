@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
-import { useSlideSequence } from "../SlideSequence";
+import { useSlideSequence, useDeckAdvance } from "../SlideSequence";
 
 type CarouselItem =
   | { type: "image"; src: string; alt: string; caption?: string; headline?: string; layout?: "side"; imgStyle?: React.CSSProperties }
@@ -242,6 +242,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
 
   // Lend the carousel to the deck: forward walks these items, then the slide.
   useSlideSequence(items.length, itemIdx, setItemIdx);
+  const advance = useDeckAdvance();
   const item = items[itemIdx];
   const script = SCRIPTS[scriptIdx];
 
@@ -333,7 +334,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
           </>
         ) : (
           <div style={{ flex: 1, minHeight: 0, display: "flex", gap: "36px", alignItems: "stretch" }}>
-            <div className="glass-light" style={{ width: "400px", flexShrink: 0, padding: "18px 20px", borderLeft: `3px solid ${COLOR}`, display: "flex", flexDirection: "column", minHeight: 0 }}>
+            <div className="glass-light" style={{ width: "470px", flexShrink: 0, padding: "18px 20px", borderLeft: `3px solid ${COLOR}`, display: "flex", flexDirection: "column", minHeight: 0 }}>
               <div style={{ display: "flex", gap: "6px", marginBottom: "16px", flexWrap: "wrap" }}>
                 {tab?.sections.map((s, i) => (
                   <button className="ui-button pill pill-sm" key={s.label} onClick={() => changeSection(i)} style={{
@@ -367,9 +368,16 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
               </button>
             </div>
 
-            <div style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative" }}>
+            {/* The artwork pages the carousel. Deliberately not role="button":
+                it is a surface, not a control, and the keyboard path is the
+                deck's own forward step rather than a focus stop here. */}
+            <div
+              className="carousel-stage"
+              onClick={advance}
+              style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative" }}
+            >
               {items.length > 1 && (
-                <button className="ui-button" onClick={() => setItemIdx((itemIdx - 1 + items.length) % items.length)} style={{ ...arrowStyle, left: "12px" }}>&larr;</button>
+                <button className="ui-button" onClick={(e) => { e.stopPropagation(); setItemIdx((itemIdx - 1 + items.length) % items.length); }} style={{ ...arrowStyle, left: "12px" }}>&larr;</button>
               )}
 
               {item?.type === "image" && item.layout === "side" ? (
@@ -405,7 +413,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
               ) : null}
 
               {items.length > 1 && (
-                <button className="ui-button" onClick={() => setItemIdx((itemIdx + 1) % items.length)} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
+                <button className="ui-button" onClick={(e) => { e.stopPropagation(); setItemIdx((itemIdx + 1) % items.length); }} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
               )}
               {items.length > 1 && (
                 <span style={{ position: "absolute", bottom: "12px", left: "50%", transform: "translateX(-50%)", fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>
