@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
-import { useSlideSequence, useDeckAdvance, useDeckRetreat } from "../SlideSequence";
+import { useDeckAdvance, useDeckRetreat } from "../SlideSequence";
+import { useCreativeStops } from "./useCreativeStops";
 
 type CarouselItem =
   | { type: "image"; src: string; alt: string; caption?: string; imgStyle?: React.CSSProperties }
@@ -16,6 +17,8 @@ interface Script { title: string; lines: ScriptLine[] | null }
 
 const COLOR = "var(--color-french-broad)";
 const TAB_LABELS = ["By Audience", "By Platform", "By Market", "Scripts"];
+/** Scripts is a label without a TABS entry — it renders scripts, not artwork. */
+const SCRIPTS_TAB = TAB_LABELS.length - 1;
 
 const TABS: { id: string; sections: Section[] }[] = [
   {
@@ -191,21 +194,15 @@ const arrowStyle: React.CSSProperties = {
 };
 
 export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
-  const [tabIdx, setTabIdx] = useState(0);
-  const [sectionIdx, setSectionIdx] = useState(0);
-  const [itemIdx, setItemIdx] = useState(0);
-  const [scriptIdx, setScriptIdx] = useState(0);
+  // One cursor over every tab -> section -> item, so the deck's forward key
+  // walks the whole tree and hands off to the next slide at the end.
+  const { tabIdx, sectionIdx, itemIdx, scriptIdx, changeTab, changeSection, changeScript } =
+    useCreativeStops(TABS, SCRIPTS, SCRIPTS_TAB);
 
-  const changeTab = (i: number) => { setTabIdx(i); setSectionIdx(0); setItemIdx(0); };
-  const changeSection = (i: number) => { setSectionIdx(i); setItemIdx(0); };
-
-  const isScripts = tabIdx === 3;
+  const isScripts = tabIdx === SCRIPTS_TAB;
   const tab = !isScripts ? TABS[tabIdx] : null;
   const section = tab ? tab.sections[sectionIdx] : null;
   const items = section ? section.items : [];
-
-  // Lend the carousel to the deck: forward walks these items, then the slide.
-  useSlideSequence(items.length, itemIdx, setItemIdx);
   const advance = useDeckAdvance();
   const retreat = useDeckRetreat();
   // A single comp has nothing to page to, so the stage stays inert:
@@ -243,7 +240,7 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
           <>
             <div style={{ display: "flex", gap: "8px", marginBottom: "20px" }}>
               {SCRIPTS.map((s, i) => (
-                <button className="ui-button" key={s.title} onClick={() => setScriptIdx(i)} style={{
+                <button className="ui-button" key={s.title} onClick={() => changeScript(i)} style={{
                   fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 700,
                   padding: "5px 14px", borderRadius: "20px", border: "2px solid",
                   borderColor: i === scriptIdx ? COLOR : "rgba(255,255,255,0.15)",
