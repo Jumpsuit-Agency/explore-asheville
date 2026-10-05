@@ -315,10 +315,11 @@ export default function Deck() {
   }, []);
 
   const advance = useCallback(() => navigate("next"), [navigate]);
+  const retreat = useCallback(() => navigate("prev"), [navigate]);
 
   const sequenceContext = useMemo(
-    () => ({ register: registerSequence, advance, entryDirection }),
-    [registerSequence, advance]
+    () => ({ register: registerSequence, advance, retreat, entryDirection }),
+    [registerSequence, advance, retreat]
   );
 
   const SlideComponent = SLIDES[current].component;

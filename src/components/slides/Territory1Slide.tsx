@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
-import { useSlideSequence, useDeckAdvance } from "../SlideSequence";
+import { useSlideSequence, useDeckAdvance, useDeckRetreat } from "../SlideSequence";
 
 type CarouselItem =
   | { type: "image"; src: string; alt: string; caption?: string; imgStyle?: React.CSSProperties }
@@ -228,6 +228,7 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
   // Lend the carousel to the deck: forward walks these items, then the slide.
   useSlideSequence(items.length, itemIdx, setItemIdx);
   const advance = useDeckAdvance();
+  const retreat = useDeckRetreat();
   // A single comp has nothing to page to, so the stage stays inert:
   // no handler, no paging cursor, and no fall-through to a slide change.
   const canPage = items.length > 1;
@@ -371,7 +372,7 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
               style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative" }}
             >
               {items.length > 1 && (
-                <button className="ui-button" onClick={(e) => { e.stopPropagation(); setItemIdx((itemIdx - 1 + items.length) % items.length); }} style={{ ...arrowStyle, left: "12px" }}>&larr;</button>
+                <button className="ui-button" onClick={(e) => { e.stopPropagation(); retreat(); }} style={{ ...arrowStyle, left: "12px" }}>&larr;</button>
               )}
 
               {item?.type === "image" ? (
@@ -400,7 +401,7 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
               ) : null}
 
               {items.length > 1 && (
-                <button className="ui-button" onClick={(e) => { e.stopPropagation(); setItemIdx((itemIdx + 1) % items.length); }} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
+                <button className="ui-button" onClick={(e) => { e.stopPropagation(); advance(); }} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
               )}
               {items.length > 1 && (
                 <span style={{ position: "absolute", bottom: "12px", left: "50%", transform: "translateX(-50%)", fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>

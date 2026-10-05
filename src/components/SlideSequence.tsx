@@ -23,6 +23,8 @@ interface SequenceContextValue {
   register: (api: SequenceApi | null) => void;
   /** The deck's forward step: walks this slide's sequence, then moves on. */
   advance: () => void;
+  /** The deck's backward step, the mirror of `advance`. */
+  retreat: () => void;
   /** Which way the deck was travelling when this slide mounted. */
   entryDirection: React.RefObject<"forward" | "backward">;
 }
@@ -39,6 +41,12 @@ export const SlideSequenceContext =
 export function useDeckAdvance(): () => void {
   const ctx = useContext(SlideSequenceContext);
   return ctx ? ctx.advance : () => {};
+}
+
+/** The deck's backward step, for the same surfaces that use `useDeckAdvance`. */
+export function useDeckRetreat(): () => void {
+  const ctx = useContext(SlideSequenceContext);
+  return ctx ? ctx.retreat : () => {};
 }
 
 /**
