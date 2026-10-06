@@ -93,6 +93,22 @@ const BEATS: Beat[] = [
   },
 ];
 
+const beatArrow: React.CSSProperties = {
+  width: "44px",
+  height: "44px",
+  borderRadius: "50%",
+  border: `2px solid ${COLOR}`,
+  background: "rgba(0,0,0,0.5)",
+  backdropFilter: "blur(8px)",
+  color: COLOR,
+  fontSize: "20px",
+  cursor: "pointer",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  transition: "opacity 0.2s",
+};
+
 export function Territory3SasStorySlide({}: SlideProps) {
   const [beatIdx, setBeatIdx] = useState(0);
   const beat = BEATS[beatIdx];
@@ -147,161 +163,132 @@ export function Territory3SasStorySlide({}: SlideProps) {
           </h2>
         </div>
 
-        {/* Image area */}
-        <div
-          style={{
-            flex: 1,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "16px",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          {/* Nav arrows */}
-          {!isFirst && (
-            <button className="ui-button"
-              onClick={() => setBeatIdx(beatIdx - 1)}
+        {/* Two columns: the beat's narrative holds the left, the artwork the
+            right. Centring a single tall phone left the copy stranded under a
+            wide empty band. */}
+        <div style={{ flex: 1, minHeight: 0, display: "flex", gap: "48px", alignItems: "stretch" }}>
+
+          {/* Narrative */}
+          <div style={{ width: "34%", flexShrink: 0, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <p
+              key={beatIdx}
               style={{
-                position: "absolute",
-                left: "12px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                zIndex: 10,
-                width: "52px",
-                height: "52px",
-                borderRadius: "50%",
-                border: `2px solid ${COLOR}`,
-                background: "rgba(0,0,0,0.5)",
-                backdropFilter: "blur(8px)",
-                color: COLOR,
+                fontFamily: "var(--font-slab)",
                 fontSize: "26px",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                color: "rgba(255,255,255,0.6)",
+                lineHeight: 1.55,
+                animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
               }}
             >
-              &larr;
-            </button>
-          )}
+              {beat.caption}
+            </p>
 
+            {BEAT_KICKERS[beatIdx] && (
+              <p
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "30px",
+                  fontWeight: 800,
+                  color: COLOR,
+                  lineHeight: 1.2,
+                  marginTop: "24px",
+                }}
+              >
+                {BEAT_KICKERS[beatIdx]}
+              </p>
+            )}
+
+            {/* Beat controls: prev, the run of beats, next — kept together so
+                the arrows read as part of this story rather than floating in
+                the space beside the artwork. */}
+            <div style={{ display: "flex", alignItems: "center", gap: "18px", marginTop: "36px" }}>
+              <button
+                className="ui-button"
+                onClick={() => setBeatIdx(beatIdx - 1)}
+                disabled={isFirst}
+                aria-label="Previous beat"
+                style={{ ...beatArrow, opacity: isFirst ? 0.25 : 1 }}
+              >
+                &larr;
+              </button>
+
+              <div style={{ display: "flex", gap: "8px" }}>
+                {BEATS.map((b, i) => (
+                  <button
+                    className="ui-button"
+                    key={i}
+                    onClick={() => setBeatIdx(i)}
+                    aria-label={`Beat ${i + 1}`}
+                    style={{
+                      width: i === beatIdx ? "32px" : "8px",
+                      height: "8px",
+                      borderRadius: "4px",
+                      border: "none",
+                      background: i === beatIdx ? COLOR : "rgba(255,255,255,0.2)",
+                      cursor: "pointer",
+                      transition: "all 0.3s ease",
+                    }}
+                  />
+                ))}
+              </div>
+
+              <button
+                className="ui-button"
+                onClick={() => setBeatIdx(beatIdx + 1)}
+                disabled={isLast}
+                aria-label="Next beat"
+                style={{ ...beatArrow, opacity: isLast ? 0.25 : 1 }}
+              >
+                &rarr;
+              </button>
+            </div>
+          </div>
+
+          {/* Artwork */}
           <div
-            key={beatIdx}
             style={{
+              flex: 1,
+              minHeight: 0,
               display: "flex",
-              gap: "16px",
               alignItems: "center",
               justifyContent: "center",
-              maxWidth: "100%",
-              maxHeight: "100%",
-              animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
+              gap: "16px",
+              position: "relative",
+              overflow: "hidden",
             }}
           >
-            {beat.images.map((img, i) => {
-              const isLast = i === beat.images.length - 1;
-              const hero = beat.heroLast;
-              return (
-                <img
-                  key={i}
-                  src={img.src}
-                  alt={img.alt}
-                  style={{
-                    maxHeight: beat.images.length === 1 ? "700px" : hero && isLast ? "650px" : hero ? "500px" : "650px",
-                    maxWidth: beat.images.length === 1 ? "98%" : hero && isLast ? "50%" : hero ? "22%" : `${95 / beat.images.length}%`,
-                    objectFit: "contain",
-                    borderRadius: "8px",
-                  }}
-                />
-              );
-            })}
-          </div>
 
-          {!isLast && (
-            <button className="ui-button"
-              onClick={() => setBeatIdx(beatIdx + 1)}
+            <div
+              key={beatIdx}
               style={{
-                position: "absolute",
-                right: "12px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                zIndex: 10,
-                width: "52px",
-                height: "52px",
-                borderRadius: "50%",
-                border: `2px solid ${COLOR}`,
-                background: "rgba(0,0,0,0.5)",
-                backdropFilter: "blur(8px)",
-                color: COLOR,
-                fontSize: "26px",
-                cursor: "pointer",
                 display: "flex",
+                gap: "16px",
                 alignItems: "center",
                 justifyContent: "center",
+                maxWidth: "100%",
+                maxHeight: "100%",
+                animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
               }}
             >
-              &rarr;
-            </button>
-          )}
-        </div>
-
-        {/* Caption + progress */}
-        <div style={{ marginTop: "20px", maxWidth: "900px", margin: "20px auto 0" }}>
-          <p
-            key={beatIdx}
-            style={{
-              fontFamily: "var(--font-slab)",
-              fontSize: "22px",
-              color: "rgba(255,255,255,0.5)",
-              lineHeight: 1.6,
-              textAlign: "center",
-              animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
-            }}
-          >
-            {beat.caption}
-          </p>
-
-          {/* Progress dots */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "8px",
-              marginTop: "16px",
-            }}
-          >
-            {BEATS.map((b, i) => (
-              <button className="ui-button"
-                key={i}
-                onClick={() => setBeatIdx(i)}
-                style={{
-                  width: i === beatIdx ? "32px" : "8px",
-                  height: "8px",
-                  borderRadius: "4px",
-                  border: "none",
-                  background: i === beatIdx ? COLOR : "rgba(255,255,255,0.2)",
-                  cursor: "pointer",
-                  transition: "all 0.3s ease",
-                }}
-              />
-            ))}
+              {beat.images.map((img, i) => {
+                const isLastImg = i === beat.images.length - 1;
+                const hero = beat.heroLast;
+                return (
+                  <img
+                    key={i}
+                    src={img.src}
+                    alt={img.alt}
+                    style={{
+                      maxHeight: beat.images.length === 1 ? "760px" : hero && isLastImg ? "700px" : hero ? "540px" : "700px",
+                      maxWidth: beat.images.length === 1 ? "92%" : hero && isLastImg ? "50%" : hero ? "22%" : `${92 / beat.images.length}%`,
+                      objectFit: "contain",
+                      borderRadius: "8px",
+                    }}
+                  />
+                );
+              })}
+            </div>
           </div>
-
-          {BEAT_KICKERS[beatIdx] && (
-            <p
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "28px",
-                fontWeight: 800,
-                color: COLOR,
-                textAlign: "center",
-                marginTop: "20px",
-              }}
-            >
-              {BEAT_KICKERS[beatIdx]}
-            </p>
-          )}
         </div>
       </div>
     </div>

@@ -197,7 +197,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
             flex: 1,
             minHeight: 0,
             display: "grid",
-            gridTemplateColumns: "1fr 1.4fr",
+            gridTemplateColumns: "1fr 1.25fr",
             gap: "48px",
             overflow: "hidden",
           }}
@@ -207,7 +207,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
             <p
               style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "26px",
+                fontSize: "34px",
                 color: "rgba(255,255,255,0.6)",
                 lineHeight: 1.6,
               }}
@@ -218,7 +218,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
               <p
                 style={{
                   fontFamily: "var(--font-sans)",
-                  fontSize: "22px",
+                  fontSize: "26px",
                   fontWeight: 800,
                   color: COLOR,
                   lineHeight: 1.3,
