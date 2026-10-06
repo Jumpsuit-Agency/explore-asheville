@@ -869,6 +869,61 @@
 .advisor-panel ::-webkit-scrollbar-track { background: transparent; }
 .advisor-panel ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
 
+/* ============================================
+   OFFLINE STATUS
+
+   Answers the only question a presenter has before walking into a room with
+   unknown wifi: is it cached yet. Counts real assets, says so, then leaves.
+   ============================================ */
+
+.offline-chip {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(30, 31, 56, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  animation: child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.offline-chip.is-offline {
+  border-color: var(--color-goldenrod);
+  color: var(--color-goldenrod);
+}
+
+.offline-chip-bar {
+  display: inline-block;
+  width: 64px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+.offline-chip-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--color-goldenrod);
+  transition: width 0.3s ease;
+}
+
+@media print {
+  .offline-chip { display: none; }
+}
+
 /* Print */
 @media print {
   .deck-viewport { background: white; }

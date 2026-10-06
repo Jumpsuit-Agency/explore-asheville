@@ -27,7 +27,7 @@ export function TitleSlide({}: SlideProps) {
       >
         {/* Jumpsuit wordmark — top left, matching About slide */}
         <Image
-          src="/jumpsuit-wordmark.png"
+          src="/jumpsuit-wordmark.webp"
           alt="Jumpsuit"
           width={200}
           height={40}

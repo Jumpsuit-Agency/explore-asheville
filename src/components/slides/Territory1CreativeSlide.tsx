@@ -1,10 +1,10 @@
 import type { SlideProps } from "../Deck";
 
 const WHEEL_IMAGES = [
-  { src: "/creative/wheel-2-museum.png", alt: "Now Open: The Museum of 1st Attempts." },
-  { src: "/creative/wheel-3-coffee-cups.png", alt: "The coffee's good. The cups are terrible. (Made by visitors)" },
-  { src: "/creative/wheel-4-marta-ooh.png", alt: "Made by a finance team, Q4. MARTA OOH in Atlanta." },
-  { src: "/creative/arc-5-airport-ooh.png", alt: "Made by an accountant from Atlanta. Airport OOH at AVL." },
+  { src: "/creative/wheel-2-museum.webp", alt: "Now Open: The Museum of 1st Attempts." },
+  { src: "/creative/wheel-3-coffee-cups.webp", alt: "The coffee's good. The cups are terrible. (Made by visitors)" },
+  { src: "/creative/wheel-4-marta-ooh.webp", alt: "Made by a finance team, Q4. MARTA OOH in Atlanta." },
+  { src: "/creative/arc-5-airport-ooh.webp", alt: "Made by an accountant from Atlanta. Airport OOH at AVL." },
 ];
 
 export function Territory1CreativeSlide(_props: SlideProps) {

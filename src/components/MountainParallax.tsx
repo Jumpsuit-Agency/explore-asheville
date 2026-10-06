@@ -39,7 +39,7 @@ export function MountainParallax({ currentSlide, totalSlides }: MountainParallax
         style={{
           position: "absolute",
           inset: 0,
-          backgroundImage: "url(/ridge-bg.jpg)",
+          backgroundImage: "url(/ridge-bg.webp)",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: `center ${yPosition}%`,

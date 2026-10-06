@@ -27,7 +27,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
       >
         {/* Jumpsuit wordmark */}
         <Image
-          src="/jumpsuit-wordmark.png"
+          src="/jumpsuit-wordmark.webp"
           alt="Jumpsuit"
           width={200}
           height={40}
@@ -112,7 +112,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
                 }}
               >
                 <img
-                  src="/team/jonathan.jpg"
+                  src="/team/jonathan.webp"
                   alt="Jonathan Lapps"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
@@ -205,7 +205,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
                 }}
               >
                 <img
-                  src="/team/ai.png"
+                  src="/team/ai.webp"
                   alt="AI Advisor"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
@@ -291,7 +291,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
           />
           <div style={{ position: "relative", zIndex: 1, maxWidth: "600px" }}>
             <img
-              src="/team/sas-addy.jpg"
+              src="/team/sas-addy.webp"
               alt="Sas accepting a Gold ADDY at the American Advertising Federation"
               style={{
                 width: "100%",

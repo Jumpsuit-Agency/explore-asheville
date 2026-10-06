@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Zilla_Slab } from "next/font/google";
 import "./globals.css";
+import { OfflineReady } from "@/components/OfflineReady";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,7 +26,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${inter.variable} ${zillaSlab.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-black">{children}</body>
+      <body className="min-h-full flex flex-col bg-black">
+        {children}
+        <OfflineReady />
+      </body>
     </html>
   );
 }

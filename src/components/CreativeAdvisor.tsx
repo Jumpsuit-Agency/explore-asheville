@@ -187,7 +187,7 @@ export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisor
         }}
       >
         <img
-          src="/team/ai.png"
+          src="/team/ai.webp"
           alt="AI Advisor"
           style={{
             width: "100%",
@@ -256,7 +256,7 @@ export const CreativeAdvisor = forwardRef<CreativeAdvisorHandle, CreativeAdvisor
                 border: "1px solid rgba(255,255,255,0.15)",
               }}
             >
-              <img src="/team/ai.png" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <img src="/team/ai.webp" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             </div>
             <div style={{ flex: 1 }}>
               <p

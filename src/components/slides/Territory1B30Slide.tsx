@@ -17,11 +17,11 @@ const EXAMPLES: ArcExample[] = [
   {
     seed: "The sky",
     arc: [
-      { step: "A visitor finds a moment worth making something of.", src: "/creative/chain-1-moment.png" },
-      { step: "The visitor leaves the moment behind.", src: "/creative/chain-2-secret.png" },
-      { step: "A local turns it into a ritual.", src: "/creative/chain-3-ritual.png" },
-      { step: "A business turns the ritual into an experience.", src: "/creative/chain-4-experience.png" },
-      { step: "An artist turns the experience into the next ad.", src: "/creative/arc-5-winter-poster.png" },
+      { step: "A visitor finds a moment worth making something of.", src: "/creative/chain-1-moment.webp" },
+      { step: "The visitor leaves the moment behind.", src: "/creative/chain-2-secret.webp" },
+      { step: "A local turns it into a ritual.", src: "/creative/chain-3-ritual.webp" },
+      { step: "A business turns the ritual into an experience.", src: "/creative/chain-4-experience.webp" },
+      { step: "An artist turns the experience into the next ad.", src: "/creative/arc-5-winter-poster.webp" },
     ],
   },
   {

@@ -4,16 +4,16 @@ const COLOR = "var(--color-goldenrod)";
 
 const GRID: { src: string; alt: string }[] = [
   // Col 1
-  { src: "/creative/t3-1111-mountain-night.png", alt: "11:11 — Good. You noticed." },
-  { src: "/creative/t3-calendar-opening.png", alt: "Calendar — Found an opening. Asheville All Weekend." },
+  { src: "/creative/t3-1111-mountain-night.webp", alt: "11:11 — Good. You noticed." },
+  { src: "/creative/t3-calendar-opening.webp", alt: "Calendar — Found an opening. Asheville All Weekend." },
   // Col 2
-  { src: "/creative/t3-222-round-trip.png", alt: "$222 Round Trip — At some point it stops being a coincidence" },
-  { src: "/creative/t3-maps-light-traffic.png", alt: "Maps — Asheville 4hr 52min, Light Traffic. Looks like another sign." },
+  { src: "/creative/t3-222-round-trip.webp", alt: "$222 Round Trip — At some point it stops being a coincidence" },
+  { src: "/creative/t3-maps-light-traffic.webp", alt: "Maps — Asheville 4hr 52min, Light Traffic. Looks like another sign." },
   // Col 3
-  { src: "/creative/t3-save-33-weekend.png", alt: "Save 33% This Weekend — The universe is basically packing your bag" },
-  { src: "/creative/t3-weather-feels-like.png", alt: "Weather — 48° Clear. Feels like: You should be here." },
+  { src: "/creative/t3-save-33-weekend.webp", alt: "Save 33% This Weekend — The universe is basically packing your bag" },
+  { src: "/creative/t3-weather-feels-like.webp", alt: "Weather — 48° Clear. Feels like: You should be here." },
   // Col 4 — tall
-  { src: "/creative/t3-instagram-full-profile.png", alt: "Instagram — Asheville Started Following You — full profile" },
+  { src: "/creative/t3-instagram-full-profile.webp", alt: "Instagram — Asheville Started Following You — full profile" },
 ];
 
 export function Territory3DigitalMontageSlide({}: SlideProps) {
