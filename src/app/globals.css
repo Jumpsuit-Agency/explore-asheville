@@ -715,15 +715,19 @@
   inset: 0;
   z-index: 100;
   background: rgba(30, 31, 56, 0.97);
-  padding: 40px;
+  padding: 32px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(6, 1fr);
+  /* Rows size to their content. A fixed aspect-ratio gave every card the same
+     height whether its title ran to one line or three, so the long ones spilled
+     over their neighbours. */
+  grid-auto-rows: minmax(104px, auto);
+  align-content: start;
+  gap: 14px;
   overflow-y: auto;
 }
 
 .overview-thumb {
-  aspect-ratio: 16/9;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   cursor: pointer;
@@ -738,6 +742,14 @@
   text-align: left;
   font: inherit;
   color: inherit;
+  gap: 6px;
+  overflow-wrap: break-word;
+}
+
+/* The label role's 0.2em tracking is right at slide scale and too wide in a
+   thumbnail — it was breaking RECOMMENDATION across two lines mid-word. */
+.overview-thumb .type-label {
+  letter-spacing: 0.06em;
 }
 
 .overview-thumb:hover {
