@@ -28,31 +28,31 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "Experience Enthusiasts",
         meta: "55\u201364 \u00B7 HHI $158K",
         items: [
-          { type: "image", src: "/creative/t2-nashville-moog-v2.png", alt: "Nashville Broadway billboard \u2014 Weird sounds started here", caption: "Planted on Broadway in Music City, right where Nashville defines what music sounds like. This ad quietly rewrites the origin story \u2014 Asheville didn\u2019t follow the music industry, it invented an instrument that changed it." },
-          { type: "image", src: "/creative/t2-spotify-podcast.png", alt: "Spotify \u2014 Sounds Made Up podcast", caption: "A podcast that turns Asheville\u2019s lore into episodes: the Moog, Biltmore, handpan makers, Buckminster Fuller. Each story makes the place sound more unbelievable \u2014 and more real." },
+          { type: "image", src: "/creative/t2-nashville-moog-v2.webp", alt: "Nashville Broadway billboard \u2014 Weird sounds started here", caption: "Planted on Broadway in Music City, right where Nashville defines what music sounds like. This ad quietly rewrites the origin story \u2014 Asheville didn\u2019t follow the music industry, it invented an instrument that changed it." },
+          { type: "image", src: "/creative/t2-spotify-podcast.webp", alt: "Spotify \u2014 Sounds Made Up podcast", caption: "A podcast that turns Asheville\u2019s lore into episodes: the Moog, Biltmore, handpan makers, Buckminster Fuller. Each story makes the place sound more unbelievable \u2014 and more real." },
         ],
       },
       {
         label: "Traveling Traditionalists",
         meta: "65\u201374 \u00B7 HHI $93K",
         items: [
-          { type: "image", src: "/creative/t3-nashville-medical-billboard.png", alt: "Nashville medical district billboard \u2014 Doctors Used to Prescribe Asheville", caption: "Context is everything. Place a historical fact where it hits hardest \u2014 outside a medical center, surrounded by healthcare workers who understand burnout. The truth does the selling: doctors really did prescribe Asheville.", imgStyle: { maxHeight: "35%", maxWidth: "50%" } },
-          { type: "image", src: "/creative/t2-biltmore-castle.png", alt: "Biltmore \u2014 Rumor has it", caption: "Turns a world-famous landmark into a rumor. The framing makes Biltmore feel like a secret you stumbled into, not a tourist stop you Googled." },
+          { type: "image", src: "/creative/t3-nashville-medical-billboard.webp", alt: "Nashville medical district billboard \u2014 Doctors Used to Prescribe Asheville", caption: "Context is everything. Place a historical fact where it hits hardest \u2014 outside a medical center, surrounded by healthcare workers who understand burnout. The truth does the selling: doctors really did prescribe Asheville.", imgStyle: { maxHeight: "35%", maxWidth: "50%" } },
+          { type: "image", src: "/creative/t2-biltmore-castle.webp", alt: "Biltmore \u2014 Rumor has it", caption: "Turns a world-famous landmark into a rumor. The framing makes Biltmore feel like a secret you stumbled into, not a tourist stop you Googled." },
         ],
       },
       {
         label: "Energetic Families",
         meta: "45\u201354 \u00B7 HHI $115K",
         items: [
-          { type: "image", src: "/creative/t2-nashville-whole-foods.png", alt: "Nashville \u2014 Whole Foods foraging", caption: "Placed outside a Whole Foods in Nashville. The contrast writes the headline \u2014 this family forages for real. Energetic Families see their next adventure." },
-          { type: "image", src: "/creative/t2-nashville-airport-campfire.png", alt: "Nashville airport \u2014 he turned his phone off", caption: "Nashville airport travelers see someone who did the unthinkable. Three words that sound made up to anyone mid-scroll." },
+          { type: "image", src: "/creative/t2-nashville-whole-foods.webp", alt: "Nashville \u2014 Whole Foods foraging", caption: "Placed outside a Whole Foods in Nashville. The contrast writes the headline \u2014 this family forages for real. Energetic Families see their next adventure." },
+          { type: "image", src: "/creative/t2-nashville-airport-campfire.webp", alt: "Nashville airport \u2014 he turned his phone off", caption: "Nashville airport travelers see someone who did the unthinkable. Three words that sound made up to anyone mid-scroll." },
         ],
       },
       {
         label: "Value Seekers",
         meta: "35\u201344 \u00B7 HHI $88K",
         items: [
-          { type: "image", src: "/creative/t2-winter-banner.png", alt: "Winter banner \u2014 weekends cost less", caption: "Solves the oldest problem in destination marketing: off-season. Instead of discounting the brand, it weaponizes the insider tone \u2014 \u2018you didn\u2019t hear it from us\u2019 makes a budget play feel like a secret worth sharing." },
+          { type: "image", src: "/creative/t2-winter-banner.webp", alt: "Winter banner \u2014 weekends cost less", caption: "Solves the oldest problem in destination marketing: off-season. Instead of discounting the brand, it weaponizes the insider tone \u2014 \u2018you didn\u2019t hear it from us\u2019 makes a budget play feel like a secret worth sharing." },
         ],
       },
     ],
@@ -64,13 +64,13 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "OOH",
         meta: "Billboards, Airport, Transit, Elevator",
         items: [
-          { type: "image", src: "/creative/t2-airport-bigfoot.png", alt: "Airport OOH \u2014 According to locals", caption: "Placed in a competitor airport where every ad promises the expected. This one leans into Asheville\u2019s mythology \u2014 the kind of story travelers retell before they ever book." },
-          { type: "image", src: "/creative/t2-greenville-billboard.png", alt: "Greenville billboard \u2014 chased waterfalls", caption: "Sitting above a Greenville shopping center, the ad reframes a routine weekend. Asheville isn\u2019t competing with Greenville \u2014 it\u2019s offering what Greenville can\u2019t." },
+          { type: "image", src: "/creative/t2-airport-bigfoot.webp", alt: "Airport OOH \u2014 According to locals", caption: "Placed in a competitor airport where every ad promises the expected. This one leans into Asheville\u2019s mythology \u2014 the kind of story travelers retell before they ever book." },
+          { type: "image", src: "/creative/t2-greenville-billboard.webp", alt: "Greenville billboard \u2014 chased waterfalls", caption: "Sitting above a Greenville shopping center, the ad reframes a routine weekend. Asheville isn\u2019t competing with Greenville \u2014 it\u2019s offering what Greenville can\u2019t." },
           {
             type: "row",
             images: [
-              { src: "/creative/t2-elevator-ooh.png", alt: "Elevator OOH \u2014 waterfall", caption: "A QR code in a hotel elevator links to Asheville\u2019s real soundscape." },
-              { src: "/creative/t2-chattanooga-airport.png", alt: "Chattanooga airport \u2014 handpan", caption: "Placed in a competitor\u2019s airport. The instrument is strange, the headline is a dare." },
+              { src: "/creative/t2-elevator-ooh.webp", alt: "Elevator OOH \u2014 waterfall", caption: "A QR code in a hotel elevator links to Asheville\u2019s real soundscape." },
+              { src: "/creative/t2-chattanooga-airport.webp", alt: "Chattanooga airport \u2014 handpan", caption: "Placed in a competitor\u2019s airport. The instrument is strange, the headline is a dare." },
             ],
           },
         ],
@@ -79,7 +79,7 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "Social",
         meta: "Instagram, TikTok, Reels",
         items: [
-          { type: "image-script", src: "/creative/t2-instagram-profile.png", alt: "Instagram \u2014 @exploreashevillenc profile", imgStyle: { maxHeight: "100%", maxWidth: "420px" }, scriptTitle: "Sample Reel Script \u2014 Doctors Used to Prescribe Asheville", scriptLines: [
+          { type: "image-script", src: "/creative/t2-instagram-profile.webp", alt: "Instagram \u2014 @exploreashevillenc profile", imgStyle: { maxHeight: "100%", maxWidth: "420px" }, scriptTitle: "Sample Reel Script \u2014 Doctors Used to Prescribe Asheville", scriptLines: [
             { text: "We heard a rumor that doctors used to prescribe Asheville." },
             { text: "Thaaaat... sounded made up. But who knows, maybe." },
             { text: "So, we did some digging.", direction: "Quick cuts: old newspaper clipping, historic photo, creator asking a local historian." },
@@ -93,12 +93,12 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "Audio / Streaming",
         meta: "Spotify, YouTube, Podcast",
         items: [
-          { type: "image", src: "/creative/t2-spotify-podcast.png", alt: "Spotify \u2014 Sounds Made Up podcast", caption: "A podcast that turns Asheville\u2019s lore into episodes. Each story makes the place sound more unbelievable \u2014 and more real." },
+          { type: "image", src: "/creative/t2-spotify-podcast.webp", alt: "Spotify \u2014 Sounds Made Up podcast", caption: "A podcast that turns Asheville\u2019s lore into episodes. Each story makes the place sound more unbelievable \u2014 and more real." },
           {
             type: "row",
             images: [
-              { src: "/creative/t2-spotify-soundtrack.png", alt: "Spotify \u2014 Asheville Soundtrack", caption: "An album of real Asheville soundscapes on Spotify \u2014 rain, rivers, banjos, cicadas." },
-              { src: "/creative/t2-youtube-waterfall.png", alt: "YouTube \u2014 8 Hours of Waterfall Sounds", caption: "An 8-hour ambient video. The brand becomes a utility \u2014 people fall asleep to Asheville before they ever decide to visit." },
+              { src: "/creative/t2-spotify-soundtrack.webp", alt: "Spotify \u2014 Asheville Soundtrack", caption: "An album of real Asheville soundscapes on Spotify \u2014 rain, rivers, banjos, cicadas." },
+              { src: "/creative/t2-youtube-waterfall.webp", alt: "YouTube \u2014 8 Hours of Waterfall Sounds", caption: "An 8-hour ambient video. The brand becomes a utility \u2014 people fall asleep to Asheville before they ever decide to visit." },
             ],
           },
         ],
@@ -107,15 +107,15 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "Experiential",
         meta: "Projections, Events, Activations",
         items: [
-          { type: "image", src: "/creative/t2-sasquatch-projection.png", alt: "Sasquatch projection — Some lore is told. Some lore is howled.", caption: "A building-scale projection turns downtown into a stage. The QR code teaches you the call. The lore isn\u2019t just told \u2014 it\u2019s performed.", imgStyle: { maxHeight: "60%", maxWidth: "50%" } },
-          { type: "image", src: "/creative/t2-moog-experience.png", alt: "Moog x Explore Asheville — Sounds Made Up installation", caption: "A partnership with Moog Music \u2014 Asheville\u2019s own synthesizer icon. Visitors twist real Asheville sounds through Moog hardware and make something no one\u2019s heard before. The brand that invented electronic music helps prove Asheville literally sounds made up." },
+          { type: "image", src: "/creative/t2-sasquatch-projection.webp", alt: "Sasquatch projection — Some lore is told. Some lore is howled.", caption: "A building-scale projection turns downtown into a stage. The QR code teaches you the call. The lore isn\u2019t just told \u2014 it\u2019s performed.", imgStyle: { maxHeight: "60%", maxWidth: "50%" } },
+          { type: "image", src: "/creative/t2-moog-experience.webp", alt: "Moog x Explore Asheville — Sounds Made Up installation", caption: "A partnership with Moog Music \u2014 Asheville\u2019s own synthesizer icon. Visitors twist real Asheville sounds through Moog hardware and make something no one\u2019s heard before. The brand that invented electronic music helps prove Asheville literally sounds made up." },
         ],
       },
       {
         label: "Digital",
         meta: "Display, Programmatic",
         items: [
-          { type: "image", src: "/creative/t2-biltmore-castle.png", alt: "Biltmore — Rumor has it", caption: "Turns a world-famous landmark into a rumor. The framing makes Biltmore feel like a secret you stumbled into, not a tourist stop you Googled." },
+          { type: "image", src: "/creative/t2-biltmore-castle.webp", alt: "Biltmore — Rumor has it", caption: "Turns a world-famous landmark into a rumor. The framing makes Biltmore feel like a secret you stumbled into, not a tourist stop you Googled." },
         ],
       },
     ],
@@ -127,31 +127,31 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "Nashville",
         meta: "Drive market, Airport, Broadway",
         items: [
-          { type: "image", src: "/creative/t2-nashville-moog-v2.png", alt: "Nashville Broadway billboard", caption: "Planted on Broadway in Music City. Asheville didn\u2019t follow the music industry, it invented an instrument that changed it." },
-          { type: "image", src: "/creative/t3-nashville-medical-billboard.png", alt: "Nashville medical district billboard", caption: "Place a historical fact where it hits hardest \u2014 outside a medical center.", imgStyle: { maxHeight: "35%", maxWidth: "50%" } },
-          { type: "image", src: "/creative/t2-nashville-whole-foods.png", alt: "Nashville Whole Foods", caption: "The contrast writes the headline \u2014 this family forages for real." },
-          { type: "image", src: "/creative/t2-nashville-airport-campfire.png", alt: "Nashville airport", caption: "Nashville airport travelers see someone who did the unthinkable." },
+          { type: "image", src: "/creative/t2-nashville-moog-v2.webp", alt: "Nashville Broadway billboard", caption: "Planted on Broadway in Music City. Asheville didn\u2019t follow the music industry, it invented an instrument that changed it." },
+          { type: "image", src: "/creative/t3-nashville-medical-billboard.webp", alt: "Nashville medical district billboard", caption: "Place a historical fact where it hits hardest \u2014 outside a medical center.", imgStyle: { maxHeight: "35%", maxWidth: "50%" } },
+          { type: "image", src: "/creative/t2-nashville-whole-foods.webp", alt: "Nashville Whole Foods", caption: "The contrast writes the headline \u2014 this family forages for real." },
+          { type: "image", src: "/creative/t2-nashville-airport-campfire.webp", alt: "Nashville airport", caption: "Nashville airport travelers see someone who did the unthinkable." },
         ],
       },
       {
         label: "Greenville",
         meta: "Competitor market",
         items: [
-          { type: "image", src: "/creative/t2-greenville-billboard.png", alt: "Greenville billboard \u2014 chased waterfalls", caption: "Asheville isn\u2019t competing with Greenville \u2014 it\u2019s offering what Greenville can\u2019t." },
+          { type: "image", src: "/creative/t2-greenville-billboard.webp", alt: "Greenville billboard \u2014 chased waterfalls", caption: "Asheville isn\u2019t competing with Greenville \u2014 it\u2019s offering what Greenville can\u2019t." },
         ],
       },
       {
         label: "Chattanooga",
         meta: "Competitor market, Airport",
         items: [
-          { type: "image", src: "/creative/t2-chattanooga-airport.png", alt: "Chattanooga airport \u2014 handpan", caption: "Placed in a competitor\u2019s airport. The instrument is strange, the headline is a dare. Asheville steals attention on someone else\u2019s turf." },
+          { type: "image", src: "/creative/t2-chattanooga-airport.webp", alt: "Chattanooga airport \u2014 handpan", caption: "Placed in a competitor\u2019s airport. The instrument is strange, the headline is a dare. Asheville steals attention on someone else\u2019s turf." },
         ],
       },
       {
         label: "In-Destination",
         meta: "Hotels, Streetscape",
         items: [
-          { type: "image", src: "/creative/t2-elevator-ooh.png", alt: "Elevator OOH \u2014 waterfall", caption: "A QR code in a hotel elevator links to Asheville\u2019s real soundscape. The ad doesn\u2019t describe the place \u2014 it lets you hear it." },
+          { type: "image", src: "/creative/t2-elevator-ooh.webp", alt: "Elevator OOH \u2014 waterfall", caption: "A QR code in a hotel elevator links to Asheville\u2019s real soundscape. The ad doesn\u2019t describe the place \u2014 it lets you hear it." },
         ],
       },
     ],

@@ -4,16 +4,16 @@ const COLOR = "var(--color-goldenrod)";
 
 const GRID: { src: string; alt: string }[] = [
   // Col 1
-  { src: "/creative/t3-highway-billboard.png", alt: "Highway billboard — You Asked for a Sign" },
-  { src: "/creative/t3-austin-billboard.png", alt: "Austin billboard — Nonstop to Asheville" },
+  { src: "/creative/t3-highway-billboard.webp", alt: "Highway billboard — You Asked for a Sign" },
+  { src: "/creative/t3-austin-billboard.webp", alt: "Austin billboard — Nonstop to Asheville" },
   // Col 2
-  { src: "/creative/t3-bus-station-signs.png", alt: "Bus station takeover" },
-  { src: "/creative/t3-airport-fresh-air.png", alt: "Airport living wall — The Fresh Air Found You" },
+  { src: "/creative/t3-bus-station-signs.webp", alt: "Bus station takeover" },
+  { src: "/creative/t3-airport-fresh-air.webp", alt: "Airport living wall — The Fresh Air Found You" },
   // Col 3
-  { src: "/creative/t3-gas-pump.png", alt: "Gas pump screen — You Have Enough Gas" },
-  { src: "/creative/t3-expect-delays-v2.png", alt: "Expect Delays billboard — You'll Want to Stay a While" },
+  { src: "/creative/t3-gas-pump.webp", alt: "Gas pump screen — You Have Enough Gas" },
+  { src: "/creative/t3-expect-delays-v2.webp", alt: "Expect Delays billboard — You'll Want to Stay a While" },
   // Col 4 — tall
-  { src: "/creative/t3-in-destination-touchpoints-v2.png", alt: "In-destination touchpoints" },
+  { src: "/creative/t3-in-destination-touchpoints-v2.webp", alt: "In-destination touchpoints" },
 ];
 
 export function Territory3MontageSlide({}: SlideProps) {

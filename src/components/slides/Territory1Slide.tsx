@@ -27,29 +27,29 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "Traveling Traditionalists",
         meta: "65\u201374 \u00B7 HHI $93K",
         items: [
-          { type: "image", src: "/creative/t1-atlanta-billboard.png", alt: "Atlanta billboard concept", caption: "Hero OOH concept. The headline IS the proof \u2014 real visitors, real creations, real stories turned into ads." },
+          { type: "image", src: "/creative/t1-atlanta-billboard.webp", alt: "Atlanta billboard concept", caption: "Hero OOH concept. The headline IS the proof \u2014 real visitors, real creations, real stories turned into ads." },
         ],
       },
       {
         label: "Experience Enthusiasts",
         meta: "55\u201364 \u00B7 HHI $158K",
         items: [
-          { type: "image", src: "/creative/wheel-4-marta-ooh.png", alt: "MARTA station OOH", caption: "OOH placements in cities where there\u2019s noticeable contrast. Experience Enthusiasts see something worth the drive." },
-          { type: "image", src: "/creative/wheel-2-museum.png", alt: "Museum of 1st Attempts", caption: "The campaign creates a launchpad for new events, pop-ups, and businesses built around making \u2014 each one extends the brand without a media buy." },
+          { type: "image", src: "/creative/wheel-4-marta-ooh.webp", alt: "MARTA station OOH", caption: "OOH placements in cities where there\u2019s noticeable contrast. Experience Enthusiasts see something worth the drive." },
+          { type: "image", src: "/creative/wheel-2-museum.webp", alt: "Museum of 1st Attempts", caption: "The campaign creates a launchpad for new events, pop-ups, and businesses built around making \u2014 each one extends the brand without a media buy." },
         ],
       },
       {
         label: "Energetic Families",
         meta: "45\u201354 \u00B7 HHI $115K",
         items: [
-          { type: "image", src: "/creative/t1-make-contact.png", alt: "Print concept \u2014 make contact", caption: "Magazine spread for Garden & Gun / Southern Living. Positions Asheville as a place you make contact with, not just visit." },
-          { type: "image", src: "/creative/fish-5-charleston-bus.png", alt: "Charleston bus wrap", caption: "The media follows the family home. The kid\u2019s whole school, friends, and family are talking about it \u2014 and every Charleston tourist is now considering Asheville." },
+          { type: "image", src: "/creative/t1-make-contact.webp", alt: "Print concept \u2014 make contact", caption: "Magazine spread for Garden & Gun / Southern Living. Positions Asheville as a place you make contact with, not just visit." },
+          { type: "image", src: "/creative/fish-5-charleston-bus.webp", alt: "Charleston bus wrap", caption: "The media follows the family home. The kid\u2019s whole school, friends, and family are talking about it \u2014 and every Charleston tourist is now considering Asheville." },
           {
             type: "row",
             note: "Sample experience flow",
             images: [
-              { src: "/creative/fish-1-guide-chef.png", alt: "The guide called the chef.", caption: "Activates fly fishing as a bookable experience." },
-              { src: "/creative/fish-2-chef-special.png", alt: "The chef made a special.", caption: "Restaurants become co-marketers, not just vendors." },
+              { src: "/creative/fish-1-guide-chef.webp", alt: "The guide called the chef.", caption: "Activates fly fishing as a bookable experience." },
+              { src: "/creative/fish-2-chef-special.webp", alt: "The chef made a special.", caption: "Restaurants become co-marketers, not just vendors." },
             ],
           },
         ],
@@ -58,9 +58,9 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "Value Seekers",
         meta: "35\u201344 \u00B7 HHI $88K",
         items: [
-          { type: "image", src: "/creative/t1-instagram-value-seekers.png", alt: "Instagram \u2014 Smoky fig old fashioned recipe", caption: "We were never into gatekeeping around here. Share the recipe, share the secret, send people home with something they can keep making. Value Seekers don\u2019t just want the experience \u2014 they want to take it with them.", imgStyle: { maxHeight: "75%", maxWidth: "45%" } },
-          { type: "image", src: "/creative/t1-value-seekers-free.png", alt: "The Best of Asheville Is Free", caption: "The best stuff doesn\u2019t cost anything. Mountain air, waterfalls, front-porch music, sunset views. The raw materials for a good trip are already here.", imgStyle: { maxHeight: "75%", maxWidth: "45%" } },
-          { type: "image", src: "/creative/t1-value-seekers-return.png", alt: "Make a Return to Yourself", caption: "More grounded. More connected. More alive. Make more than a memory \u2014 make a return to yourself." },
+          { type: "image", src: "/creative/t1-instagram-value-seekers.webp", alt: "Instagram \u2014 Smoky fig old fashioned recipe", caption: "We were never into gatekeeping around here. Share the recipe, share the secret, send people home with something they can keep making. Value Seekers don\u2019t just want the experience \u2014 they want to take it with them.", imgStyle: { maxHeight: "75%", maxWidth: "45%" } },
+          { type: "image", src: "/creative/t1-value-seekers-free.webp", alt: "The Best of Asheville Is Free", caption: "The best stuff doesn\u2019t cost anything. Mountain air, waterfalls, front-porch music, sunset views. The raw materials for a good trip are already here.", imgStyle: { maxHeight: "75%", maxWidth: "45%" } },
+          { type: "image", src: "/creative/t1-value-seekers-return.webp", alt: "Make a Return to Yourself", caption: "More grounded. More connected. More alive. Make more than a memory \u2014 make a return to yourself." },
         ],
       },
     ],
@@ -72,12 +72,12 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "OOH",
         meta: "Billboards, Transit, Airport",
         items: [
-          { type: "image", src: "/creative/t1-atlanta-billboard.png", alt: "Atlanta billboard concept", caption: "Hero OOH concept. The headline IS the proof \u2014 real visitors, real creations, real stories turned into ads." },
+          { type: "image", src: "/creative/t1-atlanta-billboard.webp", alt: "Atlanta billboard concept", caption: "Hero OOH concept. The headline IS the proof \u2014 real visitors, real creations, real stories turned into ads." },
           {
             type: "row",
             images: [
-              { src: "/creative/wheel-4-marta-ooh.png", alt: "MARTA station OOH", caption: "Experience Enthusiasts see something worth the drive." },
-              { src: "/creative/avl-airport-bowl.png", alt: "AVL Airport OOH \u2014 bowl", caption: "Meets travelers at AVL with a dare disguised as a welcome." },
+              { src: "/creative/wheel-4-marta-ooh.webp", alt: "MARTA station OOH", caption: "Experience Enthusiasts see something worth the drive." },
+              { src: "/creative/avl-airport-bowl.webp", alt: "AVL Airport OOH \u2014 bowl", caption: "Meets travelers at AVL with a dare disguised as a welcome." },
             ],
           },
         ],
@@ -86,7 +86,7 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "Print",
         meta: "Magazine, Editorial",
         items: [
-          { type: "image", src: "/creative/t1-make-contact.png", alt: "Print concept \u2014 make contact", caption: "Magazine spread for Garden & Gun / Southern Living. Positions Asheville as a place you make contact with, not just visit." },
+          { type: "image", src: "/creative/t1-make-contact.webp", alt: "Print concept \u2014 make contact", caption: "Magazine spread for Garden & Gun / Southern Living. Positions Asheville as a place you make contact with, not just visit." },
         ],
       },
       {
@@ -96,8 +96,8 @@ const TABS: { id: string; sections: Section[] }[] = [
           {
             type: "row",
             images: [
-              { src: "/creative/wheel-2-museum.png", alt: "Museum of 1st Attempts", caption: "Pop-ups and businesses built around making \u2014 each extends the brand without a media buy." },
-              { src: "/creative/coffee-cups-v2.png", alt: "Coffee shop \u2014 terrible cups", caption: "A local coffee shop becomes notorious for serving drinks in gloriously bad handmade cups." },
+              { src: "/creative/wheel-2-museum.webp", alt: "Museum of 1st Attempts", caption: "Pop-ups and businesses built around making \u2014 each extends the brand without a media buy." },
+              { src: "/creative/coffee-cups-v2.webp", alt: "Coffee shop \u2014 terrible cups", caption: "A local coffee shop becomes notorious for serving drinks in gloriously bad handmade cups." },
             ],
           },
         ],
@@ -106,16 +106,16 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "Social",
         meta: "Instagram, TikTok, Reels",
         items: [
-          { type: "image", src: "/creative/t1-instagram-profile.png", alt: "Instagram profile — @exploreashevillenc", caption: "The profile becomes a living gallery of the campaign. Every post is proof someone made contact.", imgStyle: { maxHeight: "75%", maxWidth: "45%" } },
-          { type: "image", src: "/creative/t1-instagram-value-seekers.png", alt: "Instagram — Smoky fig old fashioned recipe", caption: "We were never into gatekeeping around here. Share the recipe, share the secret, send people home with something they can keep making.", imgStyle: { maxHeight: "75%", maxWidth: "45%" } },
+          { type: "image", src: "/creative/t1-instagram-profile.webp", alt: "Instagram profile — @exploreashevillenc", caption: "The profile becomes a living gallery of the campaign. Every post is proof someone made contact.", imgStyle: { maxHeight: "75%", maxWidth: "45%" } },
+          { type: "image", src: "/creative/t1-instagram-value-seekers.webp", alt: "Instagram — Smoky fig old fashioned recipe", caption: "We were never into gatekeeping around here. Share the recipe, share the secret, send people home with something they can keep making.", imgStyle: { maxHeight: "75%", maxWidth: "45%" } },
         ],
       },
       {
         label: "Digital",
         meta: "Display, Programmatic",
         items: [
-          { type: "image", src: "/creative/t1-value-seekers-free.png", alt: "The Best of Asheville Is Free — digital display", caption: "Digital display ad targeting Value Seekers. The best stuff doesn\u2019t cost anything — mountain air, waterfalls, front-porch music, sunset views.", imgStyle: { maxHeight: "75%", maxWidth: "45%" } },
-          { type: "image", src: "/creative/t1-value-seekers-return.png", alt: "Make a Return to Yourself — digital display", caption: "More grounded. More connected. More alive. Make more than a memory \u2014 make a return to yourself." },
+          { type: "image", src: "/creative/t1-value-seekers-free.webp", alt: "The Best of Asheville Is Free — digital display", caption: "Digital display ad targeting Value Seekers. The best stuff doesn\u2019t cost anything — mountain air, waterfalls, front-porch music, sunset views.", imgStyle: { maxHeight: "75%", maxWidth: "45%" } },
+          { type: "image", src: "/creative/t1-value-seekers-return.webp", alt: "Make a Return to Yourself — digital display", caption: "More grounded. More connected. More alive. Make more than a memory \u2014 make a return to yourself." },
         ],
       },
     ],
@@ -127,27 +127,27 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "Atlanta",
         meta: "I-75/I-85 corridor, MARTA",
         items: [
-          { type: "image", src: "/creative/t1-atlanta-billboard.png", alt: "Atlanta billboard concept", caption: "Hero OOH concept targeting the Atlanta drive market." },
-          { type: "image", src: "/creative/wheel-4-marta-ooh.png", alt: "MARTA station OOH", caption: "Transit placements in Atlanta\u2019s busiest corridors." },
+          { type: "image", src: "/creative/t1-atlanta-billboard.webp", alt: "Atlanta billboard concept", caption: "Hero OOH concept targeting the Atlanta drive market." },
+          { type: "image", src: "/creative/wheel-4-marta-ooh.webp", alt: "MARTA station OOH", caption: "Transit placements in Atlanta\u2019s busiest corridors." },
         ],
       },
       {
         label: "Charleston",
         meta: "Competitor market",
         items: [
-          { type: "image", src: "/creative/fish-5-charleston-bus.png", alt: "Charleston bus wrap", caption: "The media follows the family home. Every Charleston tourist is now considering Asheville." },
+          { type: "image", src: "/creative/fish-5-charleston-bus.webp", alt: "Charleston bus wrap", caption: "The media follows the family home. Every Charleston tourist is now considering Asheville." },
         ],
       },
       {
         label: "Asheville",
         meta: "In-destination, Airport",
         items: [
-          { type: "image", src: "/creative/avl-airport-bowl.png", alt: "AVL Airport OOH \u2014 bowl", caption: "Meets travelers at AVL with a dare disguised as a welcome." },
+          { type: "image", src: "/creative/avl-airport-bowl.webp", alt: "AVL Airport OOH \u2014 bowl", caption: "Meets travelers at AVL with a dare disguised as a welcome." },
           {
             type: "row",
             images: [
-              { src: "/creative/wheel-2-museum.png", alt: "Museum of 1st Attempts", caption: "In-destination activation." },
-              { src: "/creative/coffee-cups-v2.png", alt: "Coffee shop \u2014 terrible cups", caption: "Local business becomes a destination." },
+              { src: "/creative/wheel-2-museum.webp", alt: "Museum of 1st Attempts", caption: "In-destination activation." },
+              { src: "/creative/coffee-cups-v2.webp", alt: "Coffee shop \u2014 terrible cups", caption: "Local business becomes a destination." },
             ],
           },
         ],
@@ -156,7 +156,7 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "Other Drive Markets",
         meta: "Nashville, Charlotte, Greenville",
         items: [
-          { type: "image", src: "/creative/t1-drive-market-billboard.png", alt: "Drive market billboard — Close enough for a weekend", caption: "Close enough for a weekend. Far enough to come back different. Targets Nashville, Charlotte, and Greenville commuters on I-40 and I-26." },
+          { type: "image", src: "/creative/t1-drive-market-billboard.webp", alt: "Drive market billboard — Close enough for a weekend", caption: "Close enough for a weekend. Far enough to come back different. Targets Nashville, Charlotte, and Greenville commuters on I-40 and I-26." },
         ],
       },
     ],

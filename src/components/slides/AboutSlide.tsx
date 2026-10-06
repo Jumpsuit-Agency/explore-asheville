@@ -14,7 +14,7 @@ export function AboutSlide({}: SlideProps) {
       <div className="relative z-10 flex flex-col flex-1" style={{ padding: "80px 100px" }}>
         {/* Jumpsuit wordmark */}
         <Image
-          src="/jumpsuit-wordmark.png"
+          src="/jumpsuit-wordmark.webp"
           alt="Jumpsuit"
           width={200}
           height={40}
@@ -92,12 +92,12 @@ export function AboutSlide({}: SlideProps) {
             </span>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "20px" }}>
               {[
-                { name: "Nicole Ayres", role: "CEO", photo: "/team/nicole.jpg", bio: "Founder of Jumpsuit, obsessed with the future, and thinks business should feel more like play." },
-                { name: "Jonathan Lapps", role: "Director of Client Success", photo: "/team/jonathan.jpg", bio: "Keeps clients feeling supported and happy, while learning to integrate his people pleasing shadow." },
-                { name: "Alex Land", role: "Account Director", photo: "/team/alex.jpg", bio: "Main point of contact. Keeps everything moving, everyone aligned, and thinks of everything you forgot to ask." },
-                { name: "Levi Bethune", role: "Creative Director", photo: "/team/levi.png", bio: "Full stack human. What can\u2019t this guy do? Shoot a commercial. Build AI. Give a TED talk. Make a killer cocktail." },
-                { name: "Sas", role: "Director of Multidimensionality", photo: "/team/sasquatch.png", bio: "Views business as its own multidimensional entity. Creates new realities through resonance, not force." },
-                { name: "AI", role: "Live Knowledge Base", photo: "/team/ai.png", bio: "Knows a bit about you. A bit about us. Can answer questions anytime you have one and is always down to riff." },
+                { name: "Nicole Ayres", role: "CEO", photo: "/team/nicole.webp", bio: "Founder of Jumpsuit, obsessed with the future, and thinks business should feel more like play." },
+                { name: "Jonathan Lapps", role: "Director of Client Success", photo: "/team/jonathan.webp", bio: "Keeps clients feeling supported and happy, while learning to integrate his people pleasing shadow." },
+                { name: "Alex Land", role: "Account Director", photo: "/team/alex.webp", bio: "Main point of contact. Keeps everything moving, everyone aligned, and thinks of everything you forgot to ask." },
+                { name: "Levi Bethune", role: "Creative Director", photo: "/team/levi.webp", bio: "Full stack human. What can\u2019t this guy do? Shoot a commercial. Build AI. Give a TED talk. Make a killer cocktail." },
+                { name: "Sas", role: "Director of Multidimensionality", photo: "/team/sasquatch.webp", bio: "Views business as its own multidimensional entity. Creates new realities through resonance, not force." },
+                { name: "AI", role: "Live Knowledge Base", photo: "/team/ai.webp", bio: "Knows a bit about you. A bit about us. Can answer questions anytime you have one and is always down to riff." },
               ].map((person) => (
                 <div
                   key={person.name}
