@@ -32,12 +32,12 @@ export function Territory1DescSlide({}: SlideProps) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "80px 120px",
+          padding: "40px 120px",
         }}
       >
         <span
           className="type-label"
-          style={{ fontSize: "12px", color: COLOR, marginBottom: "32px" }}
+          style={{ fontSize: "18px", color: COLOR, marginBottom: "18px" }}
         >
           Territory 01 &middot; Campaign Extensions
         </span>
@@ -50,18 +50,18 @@ export function Territory1DescSlide({}: SlideProps) {
             color: "white",
             lineHeight: 1.05,
             letterSpacing: "-0.03em",
-            marginBottom: "40px",
+            marginBottom: "24px",
           }}
         >
           How <span style={{ color: COLOR }}>Make Something of It</span> comes to life.
         </h2>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "28px", maxWidth: "1000px", marginBottom: "40px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "14px", maxWidth: "1000px", marginBottom: "18px" }}>
           {EXTENSIONS.map((ext, i) => (
             <div key={i}>
               <p style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "22px",
+                fontSize: "21px",
                 fontWeight: 700,
                 color: COLOR,
                 lineHeight: 1.4,
@@ -71,9 +71,9 @@ export function Territory1DescSlide({}: SlideProps) {
               </p>
               <p style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "18px",
+                fontSize: "21px",
                 color: "rgba(255,255,255,0.5)",
-                lineHeight: 1.6,
+                lineHeight: 1.5,
               }}>
                 {ext.desc}
               </p>
@@ -85,18 +85,18 @@ export function Territory1DescSlide({}: SlideProps) {
         <div
           style={{
             maxWidth: "1000px",
-            padding: "24px 28px",
+            padding: "18px 26px",
             borderLeft: `3px solid ${COLOR}`,
             background: "rgba(255,255,255,0.04)",
             borderRadius: "0 8px 8px 0",
           }}
         >
-          <span className="type-label" style={{ fontSize: "10px", color: COLOR, marginBottom: "10px", display: "block" }}>
+          <span className="type-label" style={{ fontSize: "16px", color: COLOR, marginBottom: "10px", display: "block" }}>
             {B30.label}
           </span>
           <p style={{
             fontFamily: "var(--font-slab)",
-            fontSize: "17px",
+            fontSize: "22px",
             color: "rgba(255,255,255,0.55)",
             lineHeight: 1.6,
             fontStyle: "italic",

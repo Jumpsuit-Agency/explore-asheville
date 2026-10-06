@@ -61,14 +61,14 @@ export function WhyItWorksSlide({}: SlideProps) {
               boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
             }}
           >
-            <h4 style={{ fontFamily: "var(--font-sans)", fontSize: "17px", fontWeight: 700, color: p.color, marginBottom: "10px" }}>
+            <h4 style={{ fontFamily: "var(--font-sans)", fontSize: "22px", fontWeight: 700, color: p.color, marginBottom: "10px" }}>
               {p.label}
             </h4>
-            <p style={{ fontFamily: "var(--font-slab)", fontSize: "15px", color: "#4a4a4a", lineHeight: 1.6 }}>
+            <p style={{ fontFamily: "var(--font-slab)", fontSize: "21px", color: "#4a4a4a", lineHeight: 1.6 }}>
               {p.body}
             </p>
             {p.source && (
-              <span style={{ fontFamily: "var(--font-sans)", fontSize: "11px", color: "#999", marginTop: "12px", display: "block" }}>
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "18px", color: "#999", marginTop: "12px", display: "block" }}>
                 {p.source}
               </span>
             )}

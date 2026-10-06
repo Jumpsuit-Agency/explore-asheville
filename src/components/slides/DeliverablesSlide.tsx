@@ -83,7 +83,7 @@ export function DeliverablesSlide({}: SlideProps) {
                   }}>
                     {i + 1}
                   </span>
-                  <p style={{ fontFamily: "var(--font-sans)", fontSize: "17px", fontWeight: 600, color: "white" }}>
+                  <p style={{ fontFamily: "var(--font-sans)", fontSize: "22px", fontWeight: 600, color: "white" }}>
                     {f}
                   </p>
                 </div>
@@ -125,7 +125,7 @@ export function DeliverablesSlide({}: SlideProps) {
                     in ways that <span style={{ color: "var(--color-fiddlehead)", fontWeight: 600 }}>surprise us.</span>
                   </p>
                 </div>
-                <span style={{ fontFamily: "var(--font-sans)", fontSize: "13px", color: "var(--color-fiddlehead)", opacity: 0.5 }}>
+                <span style={{ fontFamily: "var(--font-sans)", fontSize: "20px", color: "var(--color-fiddlehead)", opacity: 0.5 }}>
                   Click to read the full brief &rarr;
                 </span>
               </div>
@@ -133,7 +133,7 @@ export function DeliverablesSlide({}: SlideProps) {
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "20px" }}>
                 <p style={{
                   fontFamily: "var(--font-slab)",
-                  fontSize: "18px",
+                  fontSize: "24px",
                   color: "rgba(255,255,255,0.55)",
                   lineHeight: 1.55,
                   animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
@@ -145,7 +145,7 @@ export function DeliverablesSlide({}: SlideProps) {
                 </p>
                 <p style={{
                   fontFamily: "var(--font-slab)",
-                  fontSize: "18px",
+                  fontSize: "24px",
                   color: "rgba(255,255,255,0.4)",
                   lineHeight: 1.55,
                   fontStyle: "italic",

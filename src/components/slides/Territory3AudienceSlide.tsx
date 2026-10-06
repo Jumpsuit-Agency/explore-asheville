@@ -33,7 +33,7 @@ export function Territory3AudienceSlide({}: SlideProps) {
       <div className="relative z-10 flex flex-col flex-1" style={{ padding: "80px 100px" }}>
         {/* Header */}
         <div style={{ marginBottom: "48px" }}>
-          <span className="type-label" style={{ fontSize: "12px", color: "var(--color-goldenrod)", marginBottom: "12px", display: "block" }}>
+          <span className="type-label" style={{ fontSize: "18px", color: "var(--color-goldenrod)", marginBottom: "12px", display: "block" }}>
             How Many Signs Do You Need? &middot; By Audience
           </span>
           <h2 style={{
@@ -76,7 +76,7 @@ export function Territory3AudienceSlide({}: SlideProps) {
                   borderRadius: "0",
                   border: "none",
                   borderBottom: `2px solid ${a.color}`,
-                  fontSize: "11px",
+                  fontSize: "18px",
                   flexShrink: 0,
                   flexDirection: "column",
                   padding: "24px",
@@ -85,7 +85,7 @@ export function Territory3AudienceSlide({}: SlideProps) {
               >
                 <span style={{
                   fontFamily: "var(--font-slab)",
-                  fontSize: "15px",
+                  fontSize: "21px",
                   color: "rgba(255,255,255,0.3)",
                   textTransform: "none",
                   letterSpacing: "0",
@@ -109,7 +109,7 @@ export function Territory3AudienceSlide({}: SlideProps) {
                 <div>
                   <p style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "16px",
+                    fontSize: "22px",
                     fontWeight: 700,
                     color: a.color,
                     marginBottom: "2px",
@@ -118,7 +118,7 @@ export function Territory3AudienceSlide({}: SlideProps) {
                   </p>
                   <p style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "12px",
+                    fontSize: "18px",
                     color: "rgba(255,255,255,0.3)",
                   }}>
                     {a.age}
@@ -126,7 +126,7 @@ export function Territory3AudienceSlide({}: SlideProps) {
                 </div>
                 <p style={{
                   fontFamily: "var(--font-sans)",
-                  fontSize: "20px",
+                  fontSize: "26px",
                   fontWeight: 800,
                   color: "var(--color-goldenrod)",
                   lineHeight: 1.2,

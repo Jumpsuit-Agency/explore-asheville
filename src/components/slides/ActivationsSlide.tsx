@@ -68,16 +68,16 @@ export function ActivationsSlide({}: SlideProps) {
               borderTop: `2px solid ${a.color}`,
             }}
           >
-            <span className="type-label" style={{ fontSize: "10px", color: a.color, marginBottom: "12px" }}>
+            <span className="type-label" style={{ fontSize: "16px", color: a.color, marginBottom: "12px" }}>
               {a.channel}
             </span>
             <h4 style={{ fontFamily: "var(--font-sans)", fontSize: "22px", fontWeight: 700, color: "white", marginBottom: "10px", lineHeight: 1.2 }}>
               {a.line}
             </h4>
-            <p style={{ fontFamily: "var(--font-slab)", fontSize: "15px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5, flex: 1, marginBottom: "16px" }}>
+            <p style={{ fontFamily: "var(--font-slab)", fontSize: "21px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5, flex: 1, marginBottom: "16px" }}>
               {a.detail}
             </p>
-            <div className="asset-placeholder" style={{ height: "48px", fontSize: "10px" }}>
+            <div className="asset-placeholder" style={{ height: "48px", fontSize: "16px" }}>
               {a.placeholder}
             </div>
           </div>

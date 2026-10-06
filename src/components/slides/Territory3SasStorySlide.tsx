@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
+import { useSlideSequence } from "../SlideSequence";
 
 const COLOR = "var(--color-goldenrod)";
 
@@ -95,6 +96,9 @@ const BEATS: Beat[] = [
 export function Territory3SasStorySlide({}: SlideProps) {
   const [beatIdx, setBeatIdx] = useState(0);
   const beat = BEATS[beatIdx];
+
+  // Forward walks the story beats before leaving the slide.
+  useSlideSequence(BEATS.length, beatIdx, setBeatIdx);
   const isFirst = beatIdx === 0;
   const isLast = beatIdx === BEATS.length - 1;
 
@@ -109,14 +113,14 @@ export function Territory3SasStorySlide({}: SlideProps) {
           <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
             <span
               className="type-label"
-              style={{ fontSize: "12px", color: COLOR }}
+              style={{ fontSize: "18px", color: COLOR }}
             >
               Territory 03 &middot; Guerrilla
             </span>
             <span
               style={{
                 fontFamily: "var(--font-sans)",
-                fontSize: "10px",
+                fontSize: "16px",
                 fontWeight: 700,
                 color: COLOR,
                 textTransform: "uppercase",
@@ -157,7 +161,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
         >
           {/* Nav arrows */}
           {!isFirst && (
-            <button
+            <button className="ui-button"
               onClick={() => setBeatIdx(beatIdx - 1)}
               style={{
                 position: "absolute",
@@ -172,7 +176,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
                 background: "rgba(0,0,0,0.5)",
                 backdropFilter: "blur(8px)",
                 color: COLOR,
-                fontSize: "20px",
+                fontSize: "26px",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -204,7 +208,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
                   src={img.src}
                   alt={img.alt}
                   style={{
-                    maxHeight: beat.images.length === 1 ? "700px" : hero && isLast ? "650px" : hero ? "500px" : "650px",
+                    maxHeight: beat.images.length === 1 ? "630px" : hero && isLast ? "650px" : hero ? "500px" : "650px",
                     maxWidth: beat.images.length === 1 ? "98%" : hero && isLast ? "50%" : hero ? "22%" : `${95 / beat.images.length}%`,
                     objectFit: "contain",
                     borderRadius: "8px",
@@ -215,7 +219,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
           </div>
 
           {!isLast && (
-            <button
+            <button className="ui-button"
               onClick={() => setBeatIdx(beatIdx + 1)}
               style={{
                 position: "absolute",
@@ -230,7 +234,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
                 background: "rgba(0,0,0,0.5)",
                 backdropFilter: "blur(8px)",
                 color: COLOR,
-                fontSize: "20px",
+                fontSize: "26px",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -248,7 +252,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
             key={beatIdx}
             style={{
               fontFamily: "var(--font-slab)",
-              fontSize: "17px",
+              fontSize: "22px",
               color: "rgba(255,255,255,0.5)",
               lineHeight: 1.6,
               textAlign: "center",
@@ -268,7 +272,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
             }}
           >
             {BEATS.map((b, i) => (
-              <button
+              <button className="ui-button"
                 key={i}
                 onClick={() => setBeatIdx(i)}
                 style={{

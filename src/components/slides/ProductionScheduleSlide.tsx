@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
+import { useSlideSequence } from "../SlideSequence";
 
 const COLOR = "var(--color-goldenrod)";
 
@@ -141,6 +142,9 @@ const PHASES: Phase[] = [
 export function ProductionScheduleSlide({}: SlideProps) {
   const [phaseIdx, setPhaseIdx] = useState(0);
   const phase = PHASES[phaseIdx];
+
+  // Forward walks the phases before leaving the slide.
+  useSlideSequence(PHASES.length, phaseIdx, setPhaseIdx);
   const isFirst = phaseIdx === 0;
   const isLast = phaseIdx === PHASES.length - 1;
 
@@ -153,13 +157,13 @@ export function ProductionScheduleSlide({}: SlideProps) {
         {/* Header */}
         <div style={{ marginBottom: "16px", flexShrink: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
-            <span className="type-label" style={{ fontSize: "12px", color: COLOR }}>
+            <span className="type-label" style={{ fontSize: "18px", color: COLOR }}>
               Territory 03 &middot; Production Schedule
             </span>
             <span
               style={{
                 fontFamily: "var(--font-sans)",
-                fontSize: "10px",
+                fontSize: "16px",
                 fontWeight: 700,
                 color: COLOR,
                 textTransform: "uppercase",
@@ -193,7 +197,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
             flex: 1,
             minHeight: 0,
             display: "grid",
-            gridTemplateColumns: "1fr 1.4fr",
+            gridTemplateColumns: "1fr 1.25fr",
             gap: "48px",
             overflow: "hidden",
           }}
@@ -203,7 +207,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
             <p
               style={{
                 fontFamily: "var(--font-slab)",
-                fontSize: "20px",
+                fontSize: "34px",
                 color: "rgba(255,255,255,0.6)",
                 lineHeight: 1.6,
               }}
@@ -214,7 +218,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
               <p
                 style={{
                   fontFamily: "var(--font-sans)",
-                  fontSize: "22px",
+                  fontSize: "26px",
                   fontWeight: 800,
                   color: COLOR,
                   lineHeight: 1.3,
@@ -251,7 +255,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
                   <p
                     style={{
                       fontFamily: "var(--font-sans)",
-                      fontSize: "15px",
+                      fontSize: "21px",
                       color: "rgba(255,255,255,0.7)",
                       lineHeight: 1.5,
                     }}
@@ -266,7 +270,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
 
         {/* Navigation */}
         <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", gap: "16px", marginTop: "16px" }}>
-          <button
+          <button className="ui-button"
             onClick={() => setPhaseIdx(phaseIdx - 1)}
             disabled={isFirst}
             style={{
@@ -276,7 +280,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
               border: `2px solid ${isFirst ? "rgba(255,255,255,0.15)" : COLOR}`,
               background: "rgba(0,0,0,0.5)",
               color: isFirst ? "rgba(255,255,255,0.2)" : COLOR,
-              fontSize: "18px",
+              fontSize: "24px",
               cursor: isFirst ? "default" : "pointer",
               display: "flex",
               alignItems: "center",
@@ -288,12 +292,12 @@ export function ProductionScheduleSlide({}: SlideProps) {
 
           <div style={{ display: "flex", gap: "8px" }}>
             {PHASES.map((p, i) => (
-              <button
+              <button className="ui-button"
                 key={i}
                 onClick={() => setPhaseIdx(i)}
                 style={{
                   fontFamily: "var(--font-sans)",
-                  fontSize: "11px",
+                  fontSize: "18px",
                   fontWeight: 700,
                   padding: "5px 12px",
                   borderRadius: "20px",
@@ -311,7 +315,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
             ))}
           </div>
 
-          <button
+          <button className="ui-button"
             onClick={() => setPhaseIdx(phaseIdx + 1)}
             disabled={isLast}
             style={{
@@ -321,7 +325,7 @@ export function ProductionScheduleSlide({}: SlideProps) {
               border: `2px solid ${isLast ? "rgba(255,255,255,0.15)" : COLOR}`,
               background: "rgba(0,0,0,0.5)",
               color: isLast ? "rgba(255,255,255,0.2)" : COLOR,
-              fontSize: "18px",
+              fontSize: "24px",
               cursor: isLast ? "default" : "pointer",
               display: "flex",
               alignItems: "center",

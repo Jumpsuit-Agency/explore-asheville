@@ -92,7 +92,7 @@ export function TeamSlide({}: SlideProps) {
         <div style={{ display: "flex", alignItems: "center", gap: "20px", marginBottom: "16px" }}>
           <button
             onClick={() => { setAiActive(false); setAiOutput(null); setAiInput(""); }}
-            style={{ background: "none", border: "1px solid rgba(255,255,255,0.2)", color: "white", padding: "6px 14px", borderRadius: "6px", fontFamily: "var(--font-sans)", fontSize: "12px", cursor: "pointer" }}
+            style={{ background: "none", border: "1px solid rgba(255,255,255,0.2)", color: "white", padding: "6px 14px", borderRadius: "6px", fontFamily: "var(--font-sans)", fontSize: "18px", cursor: "pointer" }}
           >
             &larr; Team
           </button>
@@ -101,7 +101,7 @@ export function TeamSlide({}: SlideProps) {
           </h3>
         </div>
 
-        <p style={{ fontFamily: "var(--font-slab)", fontSize: "20px", color: "rgba(255,255,255,0.4)", marginBottom: "24px" }}>
+        <p style={{ fontFamily: "var(--font-slab)", fontSize: "26px", color: "rgba(255,255,255,0.4)", marginBottom: "24px" }}>
           Name an audience, a market, and a season. Watch the platform generate.
         </p>
 
@@ -111,7 +111,7 @@ export function TeamSlide({}: SlideProps) {
               key={ex.prompt}
               onClick={() => setAiInput(ex.prompt)}
               className="glass-light"
-              style={{ padding: "8px 16px", cursor: "pointer", color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-sans)", fontSize: "13px" }}
+              style={{ padding: "8px 16px", cursor: "pointer", color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-sans)", fontSize: "20px" }}
             >
               {ex.prompt}
             </button>
@@ -137,7 +137,7 @@ export function TeamSlide({}: SlideProps) {
               border: "none",
               borderRadius: "8px",
               fontFamily: "var(--font-sans)",
-              fontSize: "14px",
+              fontSize: "21px",
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: "0.1em",
@@ -153,21 +153,21 @@ export function TeamSlide({}: SlideProps) {
           <div className="glass" style={{ flex: 1, padding: "36px", overflow: "auto" }}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px" }}>
               <div>
-                <span className="type-label" style={{ fontSize: "10px", color: "var(--color-goldenrod)", marginBottom: "8px", display: "block" }}>Headline</span>
+                <span className="type-label" style={{ fontSize: "16px", color: "var(--color-goldenrod)", marginBottom: "8px", display: "block" }}>Headline</span>
                 <p style={{ fontFamily: "var(--font-accent)", fontStyle: "italic", fontSize: "36px", color: "white", lineHeight: 1.15, marginBottom: "32px" }}>
                   {aiOutput.headline}
                 </p>
-                <span className="type-label" style={{ fontSize: "10px", color: "var(--color-grove-park)", marginBottom: "8px", display: "block" }}>OOH</span>
-                <p style={{ fontFamily: "var(--font-slab)", fontSize: "20px", color: "rgba(255,255,255,0.6)" }}>
+                <span className="type-label" style={{ fontSize: "16px", color: "var(--color-grove-park)", marginBottom: "8px", display: "block" }}>OOH</span>
+                <p style={{ fontFamily: "var(--font-slab)", fontSize: "26px", color: "rgba(255,255,255,0.6)" }}>
                   {aiOutput.ooh}
                 </p>
               </div>
               <div>
-                <span className="type-label" style={{ fontSize: "10px", color: "var(--color-fiddlehead)", marginBottom: "12px", display: "block" }}>Social</span>
+                <span className="type-label" style={{ fontSize: "16px", color: "var(--color-fiddlehead)", marginBottom: "12px", display: "block" }}>Social</span>
                 <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
                   {aiOutput.social.map((line, i) => (
                     <div key={i} className="glass-light" style={{ padding: "16px 20px" }}>
-                      <p style={{ fontFamily: "var(--font-slab)", fontSize: "17px", color: "rgba(255,255,255,0.75)", lineHeight: 1.5 }}>
+                      <p style={{ fontFamily: "var(--font-slab)", fontSize: "22px", color: "rgba(255,255,255,0.75)", lineHeight: 1.5 }}>
                         {line}
                       </p>
                     </div>
@@ -176,7 +176,7 @@ export function TeamSlide({}: SlideProps) {
               </div>
             </div>
             <div style={{ marginTop: "20px", textAlign: "right" }}>
-              <span style={{ fontFamily: "var(--font-sans)", fontSize: "11px", color: "rgba(255,255,255,0.25)" }}>
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "18px", color: "rgba(255,255,255,0.25)" }}>
                 AI-generated &middot; Not pre-written work
               </span>
             </div>
@@ -210,13 +210,13 @@ export function TeamSlide({}: SlideProps) {
               }}>
                 {m.name.charAt(0)}
               </div>
-              <h3 style={{ fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 700, color: "white", marginBottom: "4px" }}>
+              <h3 style={{ fontFamily: "var(--font-sans)", fontSize: "24px", fontWeight: 700, color: "white", marginBottom: "4px" }}>
                 {m.name}
               </h3>
-              <span className="type-label" style={{ fontSize: "9px", color: "var(--color-jumpsuit-gold)", marginBottom: "12px", display: "block" }}>
+              <span className="type-label" style={{ fontSize: "16px", color: "var(--color-jumpsuit-gold)", marginBottom: "12px", display: "block" }}>
                 {m.role}
               </span>
-              <p style={{ fontFamily: "var(--font-slab)", fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.5 }}>
+              <p style={{ fontFamily: "var(--font-slab)", fontSize: "21px", color: "rgba(255,255,255,0.4)", lineHeight: 1.5 }}>
                 {m.bio}
               </p>
             </div>
@@ -232,18 +232,18 @@ export function TeamSlide({}: SlideProps) {
               width: "56px", height: "56px", borderRadius: "50%",
               background: "var(--color-jumpsuit-gold)",
               display: "flex", alignItems: "center", justifyContent: "center",
-              fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 800,
+              fontFamily: "var(--font-sans)", fontSize: "24px", fontWeight: 800,
               color: "var(--color-jumpsuit-navy)", marginBottom: "16px",
             }}>
               AI
             </div>
-            <h3 style={{ fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 700, color: "white", marginBottom: "4px" }}>
+            <h3 style={{ fontFamily: "var(--font-sans)", fontSize: "24px", fontWeight: 700, color: "white", marginBottom: "4px" }}>
               Claude
             </h3>
-            <span className="type-label" style={{ fontSize: "9px", color: "var(--color-jumpsuit-gold)", marginBottom: "12px", display: "block" }}>
+            <span className="type-label" style={{ fontSize: "16px", color: "var(--color-jumpsuit-gold)", marginBottom: "12px", display: "block" }}>
               AI Creative Engine
             </span>
-            <p style={{ fontFamily: "var(--font-slab)", fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.5, marginBottom: "16px" }}>
+            <p style={{ fontFamily: "var(--font-slab)", fontSize: "21px", color: "rgba(255,255,255,0.4)", lineHeight: 1.5, marginBottom: "16px" }}>
               Trained on the Storytelling Foundation, MMGY segmentation, and our platform. Generates on-brand copy live.
             </p>
             <span style={{
@@ -253,7 +253,7 @@ export function TeamSlide({}: SlideProps) {
               color: "var(--color-jumpsuit-navy)",
               borderRadius: "6px",
               fontFamily: "var(--font-sans)",
-              fontSize: "11px",
+              fontSize: "18px",
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: "0.1em",

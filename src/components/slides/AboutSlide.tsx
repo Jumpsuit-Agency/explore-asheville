@@ -34,16 +34,19 @@ export function AboutSlide({}: SlideProps) {
               consultancy</span> powered by the independent network. Our network is
               entrepreneurial, highly curated, and self-organizing. We are leaders
               in{" "}
-              <span
+              <button
+                type="button"
+                className="ui-button"
+                aria-expanded={showB30}
                 onClick={() => setShowB30(!showB30)}
                 style={{
                   color: "var(--color-jumpsuit-gold)",
-                  cursor: "pointer",
                   borderBottom: "1px dashed var(--color-jumpsuit-gold)",
+                  display: "inline",
                 }}
               >
                 Business 3.0
-              </span>
+              </button>
               .
             </p>
 
@@ -60,7 +63,7 @@ export function AboutSlide({}: SlideProps) {
               >
                 <p style={{
                   fontFamily: "var(--font-slab)",
-                  fontSize: "16px",
+                  fontSize: "22px",
                   color: "rgba(255,255,255,0.55)",
                   lineHeight: 1.6,
                   fontStyle: "italic",
@@ -73,7 +76,7 @@ export function AboutSlide({}: SlideProps) {
               </div>
             )}
 
-            <p className="type-body" style={{ color: "rgba(255,255,255,0.45)", fontSize: "18px", maxWidth: "650px", lineHeight: 1.6 }}>
+            <p className="type-body" style={{ color: "rgba(255,255,255,0.45)", fontSize: "24px", maxWidth: "650px", lineHeight: 1.6 }}>
               In practice, that means faster creative, deeper talent, and ideas
               that surprise you &mdash; all without the overhead of a traditional
               agency. We&apos;ve been building this way since 2016, long before
@@ -84,7 +87,7 @@ export function AboutSlide({}: SlideProps) {
 
           {/* Right — people in the room */}
           <div>
-            <span className="type-label" style={{ fontSize: "12px", color: "var(--color-jumpsuit-gold)", marginBottom: "20px", display: "block" }}>
+            <span className="type-label" style={{ fontSize: "18px", color: "var(--color-jumpsuit-gold)", marginBottom: "20px", display: "block" }}>
               In the Room
             </span>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "20px" }}>
@@ -128,7 +131,7 @@ export function AboutSlide({}: SlideProps) {
                   </div>
                   <span style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "16px",
+                    fontSize: "22px",
                     fontWeight: 800,
                     color: "white",
                     letterSpacing: "-0.02em",
@@ -138,7 +141,7 @@ export function AboutSlide({}: SlideProps) {
                   </span>
                   <span style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "9px",
+                    fontSize: "16px",
                     fontWeight: 600,
                     color: "var(--color-jumpsuit-gold)",
                     textTransform: "uppercase",
@@ -149,7 +152,7 @@ export function AboutSlide({}: SlideProps) {
                   </span>
                   <p style={{
                     fontFamily: "var(--font-slab)",
-                    fontSize: "12px",
+                    fontSize: "18px",
                     color: "rgba(255,255,255,0.4)",
                     lineHeight: 1.4,
                   }}>

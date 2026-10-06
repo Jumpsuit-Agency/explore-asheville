@@ -26,13 +26,13 @@ export function Territory3MontageSlide({}: SlideProps) {
         {/* Header */}
         <div style={{ marginBottom: "24px", flexShrink: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "16px" }}>
-            <span className="type-label" style={{ fontSize: "12px", color: COLOR }}>
+            <span className="type-label" style={{ fontSize: "18px", color: COLOR }}>
               Territory 03
             </span>
             <span
               style={{
                 fontFamily: "var(--font-sans)",
-                fontSize: "10px",
+                fontSize: "16px",
                 fontWeight: 700,
                 color: COLOR,
                 textTransform: "uppercase",
@@ -57,7 +57,7 @@ export function Territory3MontageSlide({}: SlideProps) {
           >
             The signs are everywhere.{" "}
             <span style={{ color: COLOR }}>And everything&apos;s a sign.</span>{" "}
-            <span style={{ fontSize: "20px", fontWeight: 600, color: "rgba(255,255,255,0.35)", verticalAlign: "middle" }}>OOH &amp; In-Destination</span>
+            <span style={{ fontSize: "26px", fontWeight: 600, color: "rgba(255,255,255,0.35)", verticalAlign: "middle" }}>OOH &amp; In-Destination</span>
           </h2>
         </div>
 

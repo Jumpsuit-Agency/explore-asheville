@@ -37,7 +37,7 @@ export function TitleSlide({}: SlideProps) {
         <div>
           <span
             className="type-label"
-            style={{ color: "var(--color-goldenrod)", marginBottom: "20px", fontSize: "14px", display: "block" }}
+            style={{ color: "var(--color-goldenrod)", marginBottom: "20px", fontSize: "21px", display: "block" }}
           >
             A Creative Campaign Platform
           </span>
@@ -48,7 +48,7 @@ export function TitleSlide({}: SlideProps) {
 
           <div style={{ display: "flex", alignItems: "center", gap: "24px" }}>
             <div style={{ width: "60px", height: "2px", background: "var(--color-goldenrod)" }} />
-            <span className="type-body" style={{ color: "rgba(255,255,255,0.6)", fontSize: "20px" }}>
+            <span className="type-body" style={{ color: "rgba(255,255,255,0.6)", fontSize: "26px" }}>
               Presented by Jumpsuit &middot; October 2026
             </span>
           </div>

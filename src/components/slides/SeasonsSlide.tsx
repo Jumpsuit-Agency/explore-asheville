@@ -70,24 +70,24 @@ export function SeasonsSlide({}: SlideProps) {
             <h3 style={{ fontFamily: "var(--font-sans)", fontSize: "24px", fontWeight: 800, color: "white", marginBottom: "2px" }}>
               {s.name}
             </h3>
-            <span style={{ fontFamily: "var(--font-sans)", fontSize: "11px", color: "rgba(255,255,255,0.3)", marginBottom: "16px" }}>
+            <span style={{ fontFamily: "var(--font-sans)", fontSize: "18px", color: "rgba(255,255,255,0.3)", marginBottom: "16px" }}>
               {s.dates}
             </span>
 
-            <p style={{ fontFamily: "var(--font-accent)", fontStyle: "italic", fontSize: "19px", color: s.color, marginBottom: "16px", lineHeight: 1.25 }}>
+            <p style={{ fontFamily: "var(--font-accent)", fontStyle: "italic", fontSize: "24px", color: s.color, marginBottom: "16px", lineHeight: 1.25 }}>
               &ldquo;{s.line}&rdquo;
             </p>
 
-            <p style={{ fontFamily: "var(--font-slab)", fontSize: "14px", color: "rgba(255,255,255,0.4)", lineHeight: 1.55, flex: 1, marginBottom: "16px" }}>
+            <p style={{ fontFamily: "var(--font-slab)", fontSize: "21px", color: "rgba(255,255,255,0.4)", lineHeight: 1.55, flex: 1, marginBottom: "16px" }}>
               {s.tone}
             </p>
 
             <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "12px" }}>
-              <span className="type-label" style={{ fontSize: "9px", color: "rgba(255,255,255,0.25)", marginBottom: "6px", display: "block" }}>
+              <span className="type-label" style={{ fontSize: "16px", color: "rgba(255,255,255,0.25)", marginBottom: "6px", display: "block" }}>
                 Executions
               </span>
               {s.executions.map((ex) => (
-                <p key={ex} style={{ fontFamily: "var(--font-sans)", fontSize: "11px", color: "rgba(255,255,255,0.35)", padding: "2px 0" }}>
+                <p key={ex} style={{ fontFamily: "var(--font-sans)", fontSize: "18px", color: "rgba(255,255,255,0.35)", padding: "2px 0" }}>
                   {ex}
                 </p>
               ))}

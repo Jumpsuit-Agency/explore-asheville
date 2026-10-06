@@ -32,7 +32,7 @@ export function RubricSlide({}: SlideProps) {
       <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "60px", alignItems: "start" }}>
         {/* Left — what they asked for */}
         <div>
-          <span className="type-label" style={{ color: "var(--color-grove-park)", fontSize: "11px", marginBottom: "24px", display: "block" }}>
+          <span className="type-label" style={{ color: "var(--color-grove-park)", fontSize: "18px", marginBottom: "24px", display: "block" }}>
             What you asked for
           </span>
           <div className="stagger" style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
@@ -48,7 +48,7 @@ export function RubricSlide({}: SlideProps) {
                 }}
               >
                 <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--color-grove-park)", flexShrink: 0 }} />
-                <span style={{ fontFamily: "var(--font-slab)", fontSize: "20px", color: "rgba(255,255,255,0.85)" }}>
+                <span style={{ fontFamily: "var(--font-slab)", fontSize: "26px", color: "rgba(255,255,255,0.85)" }}>
                   {item}
                 </span>
               </div>
@@ -58,7 +58,7 @@ export function RubricSlide({}: SlideProps) {
 
         {/* Right — Jumpsuit criteria */}
         <div>
-          <span className="type-label" style={{ color: "var(--color-french-broad)", fontSize: "11px", marginBottom: "24px", display: "block" }}>
+          <span className="type-label" style={{ color: "var(--color-french-broad)", fontSize: "18px", marginBottom: "24px", display: "block" }}>
             How Jumpsuit evaluates Big Ideas
           </span>
           <div className="stagger" style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
@@ -78,7 +78,7 @@ export function RubricSlide({}: SlideProps) {
                   <h4 style={{ fontFamily: "var(--font-sans)", fontSize: "22px", fontWeight: 700, color: "white", marginBottom: "4px" }}>
                     {c.q}
                   </h4>
-                  <p style={{ fontFamily: "var(--font-slab)", fontSize: "17px", color: "rgba(255,255,255,0.45)" }}>
+                  <p style={{ fontFamily: "var(--font-slab)", fontSize: "22px", color: "rgba(255,255,255,0.45)" }}>
                     {c.d}
                   </p>
                 </div>
