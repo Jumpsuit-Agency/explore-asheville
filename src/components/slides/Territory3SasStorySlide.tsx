@@ -208,7 +208,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
                   src={img.src}
                   alt={img.alt}
                   style={{
-                    maxHeight: beat.images.length === 1 ? "700px" : hero && isLast ? "650px" : hero ? "500px" : "650px",
+                    maxHeight: beat.images.length === 1 ? "630px" : hero && isLast ? "650px" : hero ? "500px" : "650px",
                     maxWidth: beat.images.length === 1 ? "98%" : hero && isLast ? "50%" : hero ? "22%" : `${95 / beat.images.length}%`,
                     objectFit: "contain",
                     borderRadius: "8px",
