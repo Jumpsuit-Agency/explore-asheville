@@ -313,8 +313,8 @@ export function Territory3SasStorySlide({}: SlideProps) {
         </div>
 
         {/* Caption + progress */}
+        {!beat.grid && (
         <div style={{ marginTop: "20px", maxWidth: "900px", margin: "20px auto 0" }}>
-          {!beat.grid && (
             <p
               key={beatIdx}
               style={{
@@ -328,7 +328,6 @@ export function Territory3SasStorySlide({}: SlideProps) {
             >
               {beat.caption}
             </p>
-          )}
 
           {/* Progress dots */}
           <div
@@ -356,7 +355,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
             ))}
           </div>
 
-          {!beat.grid && BEAT_KICKERS[beatIdx] && (
+          {BEAT_KICKERS[beatIdx] && (
             <p
               style={{
                 fontFamily: "var(--font-sans)",
@@ -371,6 +370,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
             </p>
           )}
         </div>
+        )}
       </div>
     </div>
   );
