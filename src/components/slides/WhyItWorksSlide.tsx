@@ -1,79 +1,115 @@
 import type { SlideProps } from "../Deck";
 
-const PROOF_POINTS = [
+const COLOR = "var(--color-goldenrod)";
+
+const POINTS = [
   {
-    label: "Their Promise, as an Instruction",
-    body: "\"Creative, independent, collaborative, open.\" \"Drawn together to stand out.\" We turned their own words into a verb.",
-    source: "Storytelling Foundation, p. 5",
-    color: "var(--color-goldenrod)",
+    title: "It puts heads in beds.",
+    desc: "Every touchpoint \u2014 every sign, every sighting, every Sas appearance \u2014 is designed to move someone from curious to booked. The campaign doesn\u2019t just build awareness. It builds intent.",
   },
   {
-    label: "Their Archetypes, Activated",
-    body: "The Quest and Cinderella archetypes both live inside \"make something of it\" — every visitor arrives with raw material and leaves transformed.",
-    source: "Storytelling Foundation, pp. 7-9",
-    color: "var(--color-french-broad)",
+    title: "It earns more than it spends.",
+    desc: "A Sasquatch wheat-pasting posters generates press, social, and search without a media buy. The campaign creates its own earned media engine.",
   },
   {
-    label: "Four Segments, One Line",
-    body: "Enthusiasts: \"Make a bucket-list moment.\" Traditionalists: \"Make a tradition.\" Families: \"Make a memory.\" Value Seekers: \"Make the most of it.\"",
-    source: "MMGY Visitor Profiles",
-    color: "var(--color-fiddlehead)",
+    title: "It compounds over time.",
+    desc: "Sas isn\u2019t a flight. He\u2019s a character with a story arc that extends across seasons, markets, and platforms. Every phase builds on the last.",
   },
   {
-    label: "Cultural Position",
-    body: "Maker movement, craft economy, DIY culture — Asheville is already synonymous with making. We named a position that already exists.",
-    color: "var(--color-grove-park)",
-  },
-  {
-    label: "Competitive Edge",
-    body: "Other destinations describe. This one instructs. Active, not passive. Verb energy. Ownable — try putting it on another city. It doesn't land.",
-    color: "var(--color-ridge-mid)",
-  },
-  {
-    label: "The Paradox, Resolved",
-    body: "\"Drawn together to stand out.\" Making is personal and shareable at the same time. The campaign's paradox IS Asheville's paradox.",
-    source: "Storytelling Foundation, p. 13",
-    color: "var(--color-biltmore)",
+    title: "It makes Asheville the main character.",
+    desc: "Sas doesn\u2019t steal the show \u2014 he points people toward it. The mountains, the food, the people, the weirdness. He\u2019s the sign. Asheville is the destination.",
   },
 ];
 
 export function WhyItWorksSlide({}: SlideProps) {
   return (
-    <div className="slide slide-cream" style={{ padding: "80px 100px" }}>
-      <span className="type-label" style={{ color: "var(--color-blue-ridge)" }}>
-        Why It Works
-      </span>
+    <div className="slide slide-ink" style={{ padding: 0 }}>
+      <div
+        className="relative z-10"
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "64px 120px",
+        }}
+      >
+        <span
+          className="type-label"
+          style={{ fontSize: "18px", color: COLOR, marginBottom: "24px" }}
+        >
+          Why This Works
+        </span>
 
-      <h2 className="type-headline" style={{ marginTop: "16px", marginBottom: "48px", fontSize: "52px", color: "#1E1F38" }}>
-        We didn&apos;t invent new language.<br />
-        <span style={{ color: "var(--color-blue-ridge)" }}>We activated yours.</span>
-      </h2>
+        <div style={{ display: "flex", gap: "32px", marginBottom: "48px" }}>
+          {POINTS.map((p, i) => (
+            <div
+              key={i}
+              style={{
+                flex: 1,
+                padding: "28px 24px",
+                borderRadius: "12px",
+                border: "1.5px solid rgba(254,181,44,0.25)",
+                background: "rgba(254,181,44,0.05)",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "20px",
+                  fontWeight: 800,
+                  color: COLOR,
+                  lineHeight: 1.3,
+                  marginBottom: "10px",
+                }}
+              >
+                {p.title}
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "15px",
+                  color: "rgba(255,255,255,0.5)",
+                  lineHeight: 1.6,
+                }}
+              >
+                {p.desc}
+              </p>
+            </div>
+          ))}
+        </div>
 
-      <div style={{ flex: 1, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", alignItems: "start" }}>
-        {PROOF_POINTS.map((p) => (
-          <div
-            key={p.label}
+        <div style={{ textAlign: "center" }}>
+          <p
             style={{
-              padding: "28px",
-              background: "white",
-              borderRadius: "12px",
-              borderTop: `2px solid ${p.color}`,
-              boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+              fontFamily: "var(--font-slab)",
+              fontSize: "32px",
+              color: "rgba(255,255,255,0.5)",
+              lineHeight: 1.4,
+              maxWidth: "900px",
+              margin: "0 auto",
             }}
           >
-            <h4 style={{ fontFamily: "var(--font-sans)", fontSize: "22px", fontWeight: 700, color: p.color, marginBottom: "10px" }}>
-              {p.label}
-            </h4>
-            <p style={{ fontFamily: "var(--font-slab)", fontSize: "21px", color: "#4a4a4a", lineHeight: 1.6 }}>
-              {p.body}
-            </p>
-            {p.source && (
-              <span style={{ fontFamily: "var(--font-sans)", fontSize: "18px", color: "#999", marginTop: "12px", display: "block" }}>
-                {p.source}
-              </span>
-            )}
-          </div>
-        ))}
+            And it works because{" "}
+            <span style={{ color: COLOR, fontWeight: 700 }}>
+              it&apos;s art.
+            </span>
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-slab)",
+              fontSize: "28px",
+              color: "rgba(255,255,255,0.35)",
+              lineHeight: 1.5,
+              maxWidth: "800px",
+              margin: "20px auto 0",
+            }}
+          >
+            This is Asheville. A city built by Appalachian artists, makers, and
+            misfits. Why would we sell it with anything less than art?
+          </p>
+        </div>
       </div>
     </div>
   );
