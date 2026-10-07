@@ -22,7 +22,7 @@ const TERRITORIES: {
     color: "var(--color-grove-park)",
     pitch: [
       "You can visit a place and leave with photos.",
-      "Or you can leave with evidence you made contact with it.",
+      "Or you can leave with proof you made contact with it.",
       "A crooked bowl you made. A song you learned to play. A part of yourself you hadn\u2019t heard from in a while.",
       "The best thing you make in Asheville might not be the thing you take home.",
     ],
@@ -36,9 +36,9 @@ const TERRITORIES: {
     color: "var(--color-french-broad)",
     pitch: [
       "A castle in the mountains.",
-      "A place where the road IS the destination.",
-      "You joining a drum circle, foraging for dinner, and forgetting what day it is.",
-      "Heading home with a story that turns into lore.",
+      "A road that IS the destination.",
+      "A drum circle. A foraged dinner. Forgetting what day it is.",
+      "A story you bring home that nobody believes.",
     ],
   },
   {
@@ -51,9 +51,9 @@ const TERRITORIES: {
     recommended: true,
     pitch: [
       "Some places you visit. And some places have been visiting you.",
-      "In a song. On a tee shirt. In a dream. In an ad.",
+      "In a song. On a t-shirt. In a dream. In an ad.",
       "In a conversation for the third time.",
-      "At some point, you have to wonder if it\u2019s still a coincidence.",
+      "At some point, you stop asking if it\u2019s a coincidence \u2014 and start asking how many signs you need.",
     ],
   },
 ];
