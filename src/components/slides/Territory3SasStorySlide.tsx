@@ -27,7 +27,7 @@ const BEAT_KICKERS: Record<number, string> = {
 
 const BEATS: Beat[] = [
   {
-    label: "Act 1",
+    label: "Phase 1",
     season: "Winter \u2014 Dec\u2013Feb",
     headline: "The sightings begin. Social takes off.",
     images: [
@@ -35,10 +35,10 @@ const BEATS: Beat[] = [
       { src: "/creative/t3-indy-bigfoot-cardboard.webp", alt: "Bigfoot holding cardboard Asheville sign" },
       { src: "/creative/t3-indy-bigfoot-stencil.webp", alt: "Bigfoot stenciling Asheville on the sidewalk" },
     ],
-    caption: "A mysterious figure shows up in drive markets \u2014 wheat-pasting posters, holding cardboard signs, stenciling sidewalks. Nobody knows what it is yet. They just know it\u2019s weird enough to post.",
+    caption: "A mysterious figure shows up in drive markets \u2014 wheat-pasting posters, holding cardboard signs, stenciling sidewalks. Launching in winter is the move: his fur was made for it, and a Sasquatch in a snowstorm could drive people to Asheville faster than any digital campaign. Nobody knows what it is yet. They just know it\u2019s weird enough to post.",
   },
   {
-    label: "Act 2",
+    label: "Phase 2",
     season: "Winter \u2014 Jan\u2013Feb",
     headline: "Local media gets involved.",
     images: [
@@ -48,7 +48,7 @@ const BEATS: Beat[] = [
     caption: "The posts catch newsrooms. A Sasquatch wheat-pasting tourism signs outside a stadium? That\u2019s a segment. The campaign starts generating its own earned media \u2014 no pitch required.",
   },
   {
-    label: "Act 3",
+    label: "Phase 3",
     season: "Spring \u2014 Mar",
     headline: "Digital captures the moment. And the easter egg.",
     images: [
@@ -60,7 +60,7 @@ const BEATS: Beat[] = [
     caption: "Search spikes in every sighting city. AI starts answering \u201Cwhat\u2019s the Asheville Sasquatch thing?\u201D with our story. Paid media follows anyone who searched, clicked, or engaged \u2014 Asheville keeps finding them. And the deeper they look, the more they notice: he\u2019s been in every billboard, coffee sleeve, and hotel elevator all along. The signs were never random.",
   },
   {
-    label: "Act 4",
+    label: "Phase 4",
     season: "Spring \u2014 Apr\u2013May",
     headline: "Sas returns to Asheville. Now he\u2019s the one spotting you.",
     images: [
@@ -71,7 +71,7 @@ const BEATS: Beat[] = [
     caption: "The nature. The food. The people. The sunsets. He came back to Asheville and he can\u2019t stop staring.",
   },
   {
-    label: "Act 5",
+    label: "Phase 5",
     season: "Summer \u2014 Jun",
     headline: "Explore Asheville officially hires Sas.",
     images: [
@@ -81,7 +81,7 @@ const BEATS: Beat[] = [
     caption: "Explore Asheville officially hires Sas as their new Head of Lore. A press conference. A badge. A title nobody saw coming. Every outlet in the region runs it.",
   },
   {
-    label: "Act 6",
+    label: "Phase 6",
     season: "Summer \u2014 Jul\u2013Sep",
     headline: "Sas on the job.",
     images: [
@@ -91,13 +91,13 @@ const BEATS: Beat[] = [
     caption: "He\u2019s posting flyers, crashing festivals, reviewing restaurants, hosting a podcast from an undisclosed location in the Blue Ridge. Every piece of content he makes is another sign pointing someone new to Asheville.",
   },
   {
-    label: "Act 7",
+    label: "Phase 7",
     season: "Fall \u2014 Oct\u2013Nov",
-    headline: "And when it\u2019s time to go?",
+    headline: "Sas keeps going. Fly markets. International. Who knows.",
     images: [
       { src: "/creative/t3-nashvillenews-sighting.webp", alt: "@nashvillenews TikTok \u2014 Big Foot sighting in Tennessee, Asheville declines to comment" },
     ],
-    caption: "That\u2019s okay. Explore Asheville hires a new Head of Lore. Human or otherwise. And if we do our job right, every time someone thinks of Sasquatch, they think of Asheville. And if Sasquatch does his job right, every time someone thinks of a rainbow, a mountain, a farm-to-table meal, a clay bowl, they think of Asheville.",
+    caption: "Sas isn\u2019t a one-year campaign \u2014 he\u2019s a character that can extend as far as the story goes. Fly markets. International cities. New seasons, new sightings. And if we do our job right, every time someone thinks of Sasquatch, they think of Asheville. And every time someone thinks of a rainbow, a mountain, a farm-to-table meal \u2014 they think of Asheville.",
   },
 ];
 
