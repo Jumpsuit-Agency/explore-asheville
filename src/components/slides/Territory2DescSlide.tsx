@@ -19,7 +19,7 @@ const EXTENSIONS = [
 
 const B30 = {
   label: "B3.0 Activation",
-  text: "Jumpsuit comes to Asheville and works with the businesses directly. We help them see the lore they\u2019re already sitting on \u2014 the weird history, the unexplained traditions, the stories regulars tell but nobody\u2019s ever put on a menu. We teach them to create new rituals, package new myths, and collaborate with each other to build experiences that generate stories on purpose. Then we step back. The lore doesn\u2019t need a campaign manager. It needs a spark.",
+  text: "We help businesses see the lore they\u2019re already sitting on \u2014 the weird history, the stories regulars tell but nobody\u2019s ever put on a menu. We teach them to create new rituals. The lore doesn\u2019t need a campaign manager. It needs a spark.",
 };
 
 export function Territory2DescSlide({}: SlideProps) {

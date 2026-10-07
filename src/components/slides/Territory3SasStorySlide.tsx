@@ -96,28 +96,29 @@ const BEATS: Beat[] = [
   {
     label: "Phase 7",
     season: "Fall 2027 \u2014 Oct\u2013Nov",
-    headline: "Sas doesn\u2019t advertise Asheville. He lives here.",
+    headline: "People encounter traces of him everywhere.",
     images: [
-      { src: "/creative/t3-sas-new-belgium.png", alt: "New Belgium billboard \u2014 We Don\u2019t Know Why Sasquatch Keeps Showing Up Here Either" },
       { src: "/creative/t3-sas-dog-bowl.png", alt: "BattleCat Coffee Bar with oversized Sasquatch water bowl and Please Do Not Pet sign" },
+      { src: "/creative/t3-sas-barber.png", alt: "The Local Barber with Sasquatch fur spilling onto sidewalk \u2014 You Should\u2019ve Seen Him Before" },
     ],
-    caption: "Partner activations bring Sas into the fabric of Asheville. New Belgium plays along with a wink \u2014 apparently he drinks local. An oversized water trough labeled SASQUATCH shows up outside a coffee shop next to the regular dog bowls. Please do not pet.",
+    caption: "Each activation costs almost nothing to produce. It\u2019s social, it\u2019s lore, and it\u2019s an invitation to play. It makes great content that attracts people here, and gives visitors something fun to look for once they arrive.",
   },
   {
     label: "Phase 7b",
     season: "Fall 2027 \u2014 Oct\u2013Nov",
-    headline: "People encounter traces of him everywhere.",
+    headline: "Sas doesn\u2019t advertise Asheville. He lives here.",
     images: [
-      { src: "/creative/t3-sas-barber.png", alt: "The Local Barber with Sasquatch fur spilling onto sidewalk \u2014 You Should\u2019ve Seen Him Before" },
+      { src: "/creative/t3-sas-new-belgium.png", alt: "New Belgium billboard \u2014 We Don\u2019t Know Why Sasquatch Keeps Showing Up Here Either" },
       { src: "/creative/t3-sas-french-broad.png", alt: "Giant Sasquatch footprints appear on French Broad River Greenway in the rain" },
     ],
-    caption: "A mountain of coarse brown hair spills onto the sidewalk outside a barber shop. And on the French Broad Greenway, giant footprints appear only when it rains. Each activation is independently funny and highly photographable. Together, they build Asheville lore.",
+    caption: "New Belgium plays along with a wink. And on the French Broad Greenway, a hydrophobic pavement treatment applied through a stencil means giant footprints appear only when it rains. Partner activations bring Sas into the fabric of Asheville.",
   },
   {
     label: "Phase 8",
     season: "2028 \u2014 and beyond",
     headline: "Sas keeps going. Fly markets. International. Who knows?",
     images: [
+      { src: "/creative/t3-sas-airport.png", alt: "Airport billboard \u2014 Sasquatch Doesn\u2019t Do Theme Parks. He Does Asheville." },
       { src: "/creative/t3-sas-scotland.png", alt: "WLOS News 13 \u2014 Asheville Launches First International Flight, Sasquatch Departs for Scotland to Meet Nessie" },
     ],
     caption: "Sas isn\u2019t a one-year campaign \u2014 he\u2019s a character that can extend as far as the story goes. Fly markets. International cities. New seasons, new sightings. And if we do our job right, every time someone thinks of Sasquatch, they think of Asheville. And every time someone thinks of a rainbow, a mountain, a farm-to-table meal \u2014 they think of Asheville.",

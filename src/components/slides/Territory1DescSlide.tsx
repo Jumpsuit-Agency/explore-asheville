@@ -19,7 +19,7 @@ const EXTENSIONS = [
 
 const B30 = {
   label: "B3.0 Activation",
-  text: "This is where Jumpsuit operates differently. We come to Asheville. We sit down with the makers, the guides, the chefs, the shop owners. We teach them the framework, inspire new ideas, and help them see the collaborations hiding in plain sight. Then we get out of the way. The campaign doesn\u2019t need us to run it \u2014 it needs us to ignite it. Once the locals see themselves as the campaign, they don\u2019t stop.",
+  text: "We sit down with makers, guides, and chefs \u2014 help them see the collaborations hiding in plain sight. Once locals see themselves as the campaign, they don\u2019t stop.",
 };
 
 export function Territory1DescSlide({}: SlideProps) {
