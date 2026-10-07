@@ -35,7 +35,7 @@ export function Territory3GuerillaIntroSlide({}: SlideProps) {
             maxWidth: "1000px",
           }}
         >
-          What if someone&apos;s been behind all the signs?
+          What if someone&apos;s been behind all the signs the entire time?
         </h2>
         <p
           style={{
