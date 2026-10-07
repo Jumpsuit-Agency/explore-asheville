@@ -29,7 +29,7 @@ const BEAT_KICKERS: Record<number, string> = {
 const BEATS: Beat[] = [
   {
     label: "Phase 1",
-    season: "Winter \u2014 Dec\u2013Feb",
+    season: "Winter 2027 \u2014 Dec\u2013Feb",
     headline: "The sightings begin. Social takes off.",
     images: [
       { src: "/creative/t3-indy-bigfoot-wheatpaste.webp", alt: "Bigfoot wheat-pasting Asheville signs in Indianapolis" },
@@ -40,7 +40,7 @@ const BEATS: Beat[] = [
   },
   {
     label: "Phase 2",
-    season: "Winter \u2014 Jan\u2013Feb",
+    season: "Winter 2027 \u2014 Jan\u2013Feb",
     headline: "Local media gets involved.",
     images: [
       { src: "/creative/t3-bigfoot-news.webp", alt: "WTHR news broadcast \u2014 The Weirdest Tourism Campaign of the Year" },
@@ -50,7 +50,7 @@ const BEATS: Beat[] = [
   },
   {
     label: "Phase 3",
-    season: "Spring \u2014 Mar",
+    season: "Spring 2027 \u2014 Mar",
     headline: "Digital captures the moment. And the easter egg.",
     images: [
       { src: "/creative/t3-media-search-results.webp", alt: "Google search results for Sasquatch Asheville sign" },
@@ -62,7 +62,7 @@ const BEATS: Beat[] = [
   },
   {
     label: "Phase 4",
-    season: "Spring \u2014 Apr\u2013May",
+    season: "Spring 2027 \u2014 Apr\u2013May",
     headline: "Sas returns to Asheville. Now he\u2019s the one spotting you.",
     images: [
       { src: "/creative/t3-sas-asheville-chronicle.webp", alt: "The Asheville Chronicle front page \u2014 Sasquatch Makes It Back to Asheville" },
@@ -73,7 +73,7 @@ const BEATS: Beat[] = [
   },
   {
     label: "Phase 5",
-    season: "Summer \u2014 Jun",
+    season: "Summer 2027 \u2014 Jun",
     headline: "Explore Asheville officially hires Sas.",
     images: [
       { src: "/creative/t3-sas-head-of-lore.webp", alt: "WLOS News 13 \u2014 Explore Asheville Hires Sasquatch as New Head of Lore" },
@@ -83,7 +83,7 @@ const BEATS: Beat[] = [
   },
   {
     label: "Phase 6",
-    season: "Summer \u2014 Jul\u2013Sep",
+    season: "Summer 2027 \u2014 Jul\u2013Sep",
     headline: "Sas on the job.",
     images: [
       { src: "/creative/t3-bigfoot-festival-marion.webp", alt: "WNC Bigfoot Festival Returns Near Asheville — Live from Marion, NC" },
@@ -93,7 +93,7 @@ const BEATS: Beat[] = [
   },
   {
     label: "Phase 6b",
-    season: "Summer \u2014 Jul\u2013Sep",
+    season: "Summer 2027 \u2014 Jul\u2013Sep",
     headline: "Sas doesn\u2019t advertise Asheville. He lives here.",
     images: [
       { src: "/creative/t3-sas-new-belgium.png", alt: "New Belgium billboard \u2014 We Don\u2019t Know Why Sasquatch Keeps Showing Up Here Either" },
@@ -105,10 +105,11 @@ const BEATS: Beat[] = [
   },
   {
     label: "Phase 7",
-    season: "Fall \u2014 Oct\u2013Nov",
+    season: "2028+",
     headline: "Sas keeps going. Fly markets. International. Who knows.",
     images: [
       { src: "/creative/t3-nashvillenews-sighting.webp", alt: "@nashvillenews TikTok \u2014 Big Foot sighting in Tennessee, Asheville declines to comment" },
+      { src: "/creative/t3-sas-scotland.png", alt: "WLOS News 13 \u2014 Asheville Launches First International Flight, Sasquatch Departs for Scotland to Meet Nessie" },
     ],
     caption: "Sas isn\u2019t a one-year campaign \u2014 he\u2019s a character that can extend as far as the story goes. Fly markets. International cities. New seasons, new sightings. And if we do our job right, every time someone thinks of Sasquatch, they think of Asheville. And every time someone thinks of a rainbow, a mountain, a farm-to-table meal \u2014 they think of Asheville.",
   },
