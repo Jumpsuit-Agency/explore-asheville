@@ -67,8 +67,22 @@ export function Territory3CompostSlide({}: SlideProps) {
           Every version of the campaign feeds the next one. The character
           changes, but the mechanism stays:{" "}
           <span style={{ color: COLOR }}>
-            Asheville keeps finding you.
+            the signs never stop.
           </span>
+        </p>
+        <p
+          style={{
+            fontFamily: "var(--font-slab)",
+            fontSize: "32px",
+            fontWeight: 700,
+            color: COLOR,
+            lineHeight: 1.4,
+            textAlign: "center",
+            maxWidth: "800px",
+            marginTop: "48px",
+          }}
+        >
+          How many signs do you need?
         </p>
       </div>
     </div>
