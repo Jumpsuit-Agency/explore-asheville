@@ -51,6 +51,20 @@ export function Territory3GuerillaIntroSlide({}: SlideProps) {
           Someone so obsessed with Asheville they couldn&apos;t help themselves.{" "}
           <span style={{ color: COLOR }}>And now they&apos;re ready to be seen.</span>
         </p>
+        <p
+          style={{
+            fontFamily: "var(--font-sans)",
+            fontSize: "36px",
+            fontWeight: 800,
+            color: COLOR,
+            lineHeight: 1.15,
+            letterSpacing: "-0.02em",
+            textAlign: "center",
+            marginTop: "48px",
+          }}
+        >
+          Guerrilla marketing is where the campaign gets its legs.
+        </p>
       </div>
     </div>
   );
