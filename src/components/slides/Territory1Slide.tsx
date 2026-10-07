@@ -237,9 +237,16 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
       <div className="relative z-10 flex flex-col flex-1 min-h-0" style={{ padding: "60px 80px" }}>
         {/* Header */}
         <div style={{ marginBottom: "10px" }}>
-          <span className="type-label" style={{ fontSize: "18px", color: COLOR, marginBottom: "8px", display: "block" }}>
-            Territory 01
-          </span>
+          <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "8px" }}>
+            <span className="type-label" style={{ fontSize: "18px", color: COLOR }}>
+              Territory 01
+            </span>
+            <div style={{ display: "flex", gap: "6px" }}>
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 700, padding: "3px 10px", borderRadius: "4px", background: "var(--color-grove-park)", color: "white" }}>T1</span>
+              <button className="ui-button" onClick={() => onNavigate?.("territory-2-creative")} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 700, padding: "3px 10px", borderRadius: "4px", background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.4)", border: "none", cursor: "pointer" }}>T2</button>
+              <button className="ui-button" onClick={() => onNavigate?.("territory-3-desc")} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 700, padding: "3px 10px", borderRadius: "4px", background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.4)", border: "none", cursor: "pointer" }}>T3</button>
+            </div>
+          </div>
           <h2 style={{ fontFamily: "var(--font-sans)", fontSize: "44px", fontWeight: 800, color: "white", lineHeight: 1.02, letterSpacing: "-0.03em" }}>
             ASHEVILLE. <span style={{ color: COLOR }}>MAKE SOMETHING OF IT.</span>
           </h2>
