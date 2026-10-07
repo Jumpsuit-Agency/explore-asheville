@@ -22,7 +22,8 @@ const BEAT_KICKERS: Record<number, string> = {
   3: "And he\u2019s absolutely obsessed.",
   4: "Now he has resources and access.",
   5: "And the new Head of Lore gets to work.",
-  6: "The legend moves on. The love for Asheville doesn\u2019t.",
+  6: "Sasquatch doesn\u2019t advertise Asheville. He lives here.",
+  7: "The legend moves on. The love for Asheville doesn\u2019t.",
 };
 
 const BEATS: Beat[] = [
@@ -89,6 +90,18 @@ const BEATS: Beat[] = [
       { src: "/creative/t3-sas-podcast.webp", alt: "Sasquatch hosting a talk show interview with a guest in a cardboard box costume" },
     ],
     caption: "He\u2019s posting flyers, crashing festivals, reviewing restaurants, capturing local lore. Every piece of content he makes is another sign pointing someone new to Asheville.",
+  },
+  {
+    label: "Phase 6b",
+    season: "Summer \u2014 Jul\u2013Sep",
+    headline: "Sas doesn\u2019t advertise Asheville. He lives here.",
+    images: [
+      { src: "/creative/t3-sas-new-belgium.png", alt: "New Belgium billboard \u2014 We Don\u2019t Know Why Sasquatch Keeps Showing Up Here Either" },
+      { src: "/creative/t3-sas-dog-bowl.png", alt: "BattleCat Coffee Bar with oversized Sasquatch water bowl and Please Do Not Pet sign" },
+      { src: "/creative/t3-sas-barber.png", alt: "The Local Barber with Sasquatch fur spilling onto sidewalk \u2014 You Should\u2019ve Seen Him Before" },
+      { src: "/creative/t3-sas-french-broad.png", alt: "Giant Sasquatch footprints appear on French Broad River Greenway in the rain" },
+    ],
+    caption: "Partner activations, storefronts, and the landscape itself. New Belgium plays along with a wink. An oversized water trough shows up outside a coffee shop. A barber sweeps Sasquatch fur off the sidewalk. And on the French Broad Greenway, giant footprints appear only when it rains. Each one is independently funny and highly photographable. Together, they build Asheville lore.",
   },
   {
     label: "Phase 7",
