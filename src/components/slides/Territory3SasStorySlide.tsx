@@ -35,6 +35,7 @@ const BEATS: Beat[] = [
       { src: "/creative/t3-indy-bigfoot-wheatpaste.webp", alt: "Bigfoot wheat-pasting Asheville signs in Indianapolis" },
       { src: "/creative/t3-indy-bigfoot-cardboard.webp", alt: "Bigfoot holding cardboard Asheville sign" },
       { src: "/creative/t3-indy-bigfoot-stencil.webp", alt: "Bigfoot stenciling Asheville on the sidewalk" },
+      { src: "/creative/t3-nashvillenews-sighting.webp", alt: "@nashvillenews TikTok \u2014 Big Foot sighting in Tennessee, Asheville declines to comment" },
     ],
     caption: "A mysterious figure shows up in drive markets \u2014 wheat-pasting posters, holding cardboard signs, stenciling sidewalks. Launching in winter is the move: his fur was made for it, and a Sasquatch in a snowstorm could drive people to Asheville faster than any digital campaign. Nobody knows what it is yet. They just know it\u2019s weird enough to post.",
   },
@@ -108,7 +109,6 @@ const BEATS: Beat[] = [
     season: "2028 \u2014 and beyond",
     headline: "Sas keeps going. Fly markets. International. Who knows.",
     images: [
-      { src: "/creative/t3-nashvillenews-sighting.webp", alt: "@nashvillenews TikTok \u2014 Big Foot sighting in Tennessee, Asheville declines to comment" },
       { src: "/creative/t3-sas-scotland.png", alt: "WLOS News 13 \u2014 Asheville Launches First International Flight, Sasquatch Departs for Scotland to Meet Nessie" },
     ],
     caption: "Sas isn\u2019t a one-year campaign \u2014 he\u2019s a character that can extend as far as the story goes. Fly markets. International cities. New seasons, new sightings. And if we do our job right, every time someone thinks of Sasquatch, they think of Asheville. And every time someone thinks of a rainbow, a mountain, a farm-to-table meal \u2014 they think of Asheville.",
@@ -246,7 +246,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
                   alt={img.alt}
                   style={{
                     maxHeight: beat.images.length === 1 ? "630px" : hero && isLast ? "650px" : hero ? "500px" : "650px",
-                    maxWidth: beat.images.length === 1 ? "98%" : hero && isLast ? "50%" : hero ? "22%" : `${95 / beat.images.length}%`,
+                    maxWidth: beat.images.length === 1 ? "98%" : hero && isLast ? "50%" : hero ? "22%" : `${95 / Math.min(beat.images.length, 3)}%`,
                     objectFit: "contain",
                     borderRadius: "8px",
                   }}
