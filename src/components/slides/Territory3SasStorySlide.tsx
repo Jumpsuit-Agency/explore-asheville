@@ -23,7 +23,7 @@ const BEAT_KICKERS: Record<number, string> = {
   4: "Now he has resources and access.",
   5: "And the new Head of Lore gets to work.",
   6: "Sasquatch doesn\u2019t advertise Asheville. He lives here.",
-  7: "The legend moves on. The love for Asheville doesn\u2019t.",
+  7: "The story keeps going. The legend keeps growing.",
 };
 
 const BEATS: Beat[] = [
@@ -92,8 +92,8 @@ const BEATS: Beat[] = [
     caption: "He\u2019s posting flyers, crashing festivals, reviewing restaurants, capturing local lore. Every piece of content he makes is another sign pointing someone new to Asheville.",
   },
   {
-    label: "Phase 6b",
-    season: "Summer 2027 \u2014 Jul\u2013Sep",
+    label: "Phase 7",
+    season: "Fall 2027 \u2014 Oct\u2013Nov",
     headline: "Sas doesn\u2019t advertise Asheville. He lives here.",
     images: [
       { src: "/creative/t3-sas-new-belgium.png", alt: "New Belgium billboard \u2014 We Don\u2019t Know Why Sasquatch Keeps Showing Up Here Either" },
@@ -104,8 +104,8 @@ const BEATS: Beat[] = [
     caption: "Partner activations, storefronts, and the landscape itself. New Belgium plays along with a wink. An oversized water trough shows up outside a coffee shop. A barber sweeps Sasquatch fur off the sidewalk. And on the French Broad Greenway, giant footprints appear only when it rains. Each one is independently funny and highly photographable. Together, they build Asheville lore.",
   },
   {
-    label: "Phase 7",
-    season: "2028+",
+    label: "Phase 8",
+    season: "2028 \u2014 and beyond",
     headline: "Sas keeps going. Fly markets. International. Who knows.",
     images: [
       { src: "/creative/t3-nashvillenews-sighting.webp", alt: "@nashvillenews TikTok \u2014 Big Foot sighting in Tennessee, Asheville declines to comment" },
