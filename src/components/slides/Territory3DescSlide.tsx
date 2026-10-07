@@ -105,7 +105,7 @@ export function Territory3DescSlide({}: SlideProps) {
             maxWidth: "800px",
           }}
         >
-          And what if someone&apos;s been behind the signs all along?
+          The campaign that makes visiting Asheville feel inevitable.
         </p>
       </div>
     </div>
