@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
+import { AiImage } from "../AiImage";
 
 interface ArcStep {
   step: string;
@@ -152,7 +153,7 @@ export function Territory1B30Slide({}: SlideProps) {
                   position: "relative",
                 }}
               >
-                <img
+                <AiImage
                   src={c.src}
                   alt={c.step}
                   style={{
@@ -251,7 +252,7 @@ export function Territory1B30Slide({}: SlideProps) {
             {arc[fullscreen].step}
           </p>
 
-          <img
+          <AiImage
             key={arc[fullscreen].src}
             src={arc[fullscreen].src}
             alt={arc[fullscreen].step}

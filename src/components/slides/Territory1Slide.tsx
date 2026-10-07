@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
+import { AiImage } from "../AiImage";
 import { useDeckAdvance, useDeckRetreat } from "../SlideSequence";
 import { useCreativeStops } from "./useCreativeStops";
 
@@ -383,7 +384,7 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
 
               {item?.type === "image" ? (
                 <div key={item.src} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px", maxWidth: "100%", maxHeight: "100%", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
-                  <img src={item.src} alt={item.alt} style={{ maxWidth: "100%", maxHeight: "85%", objectFit: "contain", borderRadius: "8px", ...item.imgStyle }} />
+                  <AiImage src={item.src} alt={item.alt} style={{ maxWidth: "100%", maxHeight: "85%", objectFit: "contain", borderRadius: "8px", ...item.imgStyle }} />
                   {item.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "20px", color: "rgba(255,255,255,0.45)", textAlign: "center", lineHeight: 1.5, maxWidth: "90%" }}>{item.caption}</p>}
                 </div>
               ) : item?.type === "row" ? (
@@ -393,7 +394,7 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
                     {item.images.map((img, i) => (
                       <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", gap: "8px", minWidth: 0 }}>
                         <div style={{ borderRadius: "8px", overflow: "hidden", flex: 1 }}>
-                          <img src={img.src} alt={img.alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                          <AiImage src={img.src} alt={img.alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                         </div>
                         {img.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "18px", color: "rgba(255,255,255,0.4)", lineHeight: 1.4 }}>{img.caption}</p>}
                       </div>

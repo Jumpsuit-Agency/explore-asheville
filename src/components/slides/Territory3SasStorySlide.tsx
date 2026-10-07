@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
+import { AiImage } from "../AiImage";
 import { useSlideSequence } from "../SlideSequence";
 
 const COLOR = "var(--color-goldenrod)";
@@ -226,7 +227,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
               const isLast = i === beat.images.length - 1;
               const hero = beat.heroLast;
               return (
-                <img
+                <AiImage
                   key={i}
                   src={img.src}
                   alt={img.alt}

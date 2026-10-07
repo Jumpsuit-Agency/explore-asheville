@@ -1,4 +1,5 @@
 import type { SlideProps } from "../Deck";
+import { AiImage } from "../AiImage";
 
 const COLOR = "var(--color-goldenrod)";
 
@@ -103,7 +104,7 @@ export function Territory3MediaEngineSlide({}: SlideProps) {
                   padding: 0,
                 }}
               >
-                <img
+                <AiImage
                   src={col.image}
                   alt={col.imageAlt}
                   style={{
@@ -114,12 +115,17 @@ export function Territory3MediaEngineSlide({}: SlideProps) {
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = "none";
-                    if (target.parentElement) {
-                      target.parentElement.style.display = "flex";
-                      target.parentElement.style.alignItems = "center";
-                      target.parentElement.style.justifyContent = "center";
-                      target.parentElement.style.fontSize = "13px";
-                      target.parentElement.textContent = col.imageAlt;
+                    // AiImage wraps the <img> to anchor its badge, so the
+                    // slot this fallback styles is one level further up.
+                    const slot = target.parentElement?.hasAttribute("data-ai-image")
+                      ? target.parentElement.parentElement
+                      : target.parentElement;
+                    if (slot) {
+                      slot.style.display = "flex";
+                      slot.style.alignItems = "center";
+                      slot.style.justifyContent = "center";
+                      slot.style.fontSize = "13px";
+                      slot.textContent = col.imageAlt;
                     }
                   }}
                 />

@@ -1,4 +1,5 @@
 import type { SlideProps } from "../Deck";
+import { AiImage } from "../AiImage";
 
 const WHEEL_IMAGES = [
   { src: "/creative/wheel-2-museum.webp", alt: "Now Open: The Museum of 1st Attempts." },
@@ -45,7 +46,7 @@ export function Territory1CreativeSlide(_props: SlideProps) {
                 minHeight: 0,
               }}
             >
-              <img
+              <AiImage
                 src={img.src}
                 alt={img.alt}
                 style={{

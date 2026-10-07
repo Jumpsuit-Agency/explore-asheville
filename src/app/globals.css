@@ -944,3 +944,25 @@
   .slide { position: relative; }
   [data-in-room-only="true"] { display: none; }
 }
+
+/* Provenance mark on AI-generated comps. Positioned by AiImage, which
+   measures the artwork's real corner inside the object-fit letterbox. The
+   translate pulls the badge back inside that corner. Small and quiet: it
+   should read as a footnote, not a caption. */
+.ai-badge {
+  position: absolute;
+  transform: translate(-100%, -100%);
+  margin: -8px 0 0 -8px;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(3px);
+  pointer-events: none;
+  user-select: none;
+}
