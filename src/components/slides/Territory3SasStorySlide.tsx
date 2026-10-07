@@ -227,41 +227,62 @@ export function Territory3SasStorySlide({}: SlideProps) {
             </button>
           )}
 
-          <div
-            key={beatIdx}
-            style={{
-              display: beat.grid ? "grid" : "flex",
-              ...(beat.grid
-                ? { gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr", width: "100%", height: "100%", minHeight: 0 }
-                : { alignItems: "center", justifyContent: "center", maxWidth: "100%", maxHeight: "100%" }),
-              gap: "16px",
-              animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
-            }}
-          >
-            {beat.images.map((img, i) => {
-              const isLast = i === beat.images.length - 1;
-              const hero = beat.heroLast;
-              return (
-                <img
-                  key={i}
-                  src={img.src}
-                  alt={img.alt}
-                  style={beat.grid ? {
-                    width: "100%",
-                    height: "100%",
-                    minHeight: 0,
-                    objectFit: "cover",
-                    borderRadius: "8px",
-                  } : {
-                    maxHeight: beat.images.length === 1 ? "630px" : hero && isLast ? "650px" : hero ? "500px" : "650px",
-                    maxWidth: beat.images.length === 1 ? "98%" : hero && isLast ? "50%" : hero ? "22%" : `${95 / Math.min(beat.images.length, 3)}%`,
-                    objectFit: "contain",
-                    borderRadius: "8px",
-                  }}
-                />
-              );
-            })}
-          </div>
+          {beat.grid ? (
+            <div
+              key={beatIdx}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gridTemplateRows: "1fr 1fr",
+                gap: "10px",
+                width: "100%",
+                height: "100%",
+                overflow: "hidden",
+                animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
+              }}
+            >
+              {beat.images.map((img, i) => (
+                <div key={i} style={{ borderRadius: "6px", overflow: "hidden" }}>
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div
+              key={beatIdx}
+              style={{
+                display: "flex",
+                gap: "16px",
+                alignItems: "center",
+                justifyContent: "center",
+                maxWidth: "100%",
+                maxHeight: "100%",
+                animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
+              }}
+            >
+              {beat.images.map((img, i) => {
+                const isLast = i === beat.images.length - 1;
+                const hero = beat.heroLast;
+                return (
+                  <img
+                    key={i}
+                    src={img.src}
+                    alt={img.alt}
+                    style={{
+                      maxHeight: beat.images.length === 1 ? "630px" : hero && isLast ? "650px" : hero ? "500px" : "650px",
+                      maxWidth: beat.images.length === 1 ? "98%" : hero && isLast ? "50%" : hero ? "22%" : `${95 / Math.min(beat.images.length, 3)}%`,
+                      objectFit: "contain",
+                      borderRadius: "8px",
+                    }}
+                  />
+                );
+              })}
+            </div>
+          )}
 
           {!isLast && (
             <button className="ui-button"
