@@ -100,6 +100,11 @@ export default function Deck() {
   const hideChromeTimer = useRef<number | null>(null);
   const wheelLock = useRef(0);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const [navIdle, setNavIdle] = useState(false);
+  const lastMouse = useRef<{ x: number; y: number; t: number }>({ x: 0, y: 0, t: 0 });
+  const navIdleTimer = useRef<number | null>(null);
+  const IDLE_SPEED_THRESHOLD = 120; // px/sec — below this, cursor goes normal
+  const EDGE_ZONE = 0.15; // 15% from each edge stays in nav mode
 
   // Scale 1920x1080 canvas to viewport
   const updateScale = useCallback(() => {
@@ -117,13 +122,39 @@ export default function Deck() {
   }, [updateScale]);
 
   // Reveal the chrome, then fade it back out once the pointer settles.
-  const wakeChrome = useCallback(() => {
+  // Also track mouse velocity to toggle between nav mode and select mode.
+  const wakeChrome = useCallback((e: React.MouseEvent) => {
     setChromeVisible(true);
     if (hideChromeTimer.current) window.clearTimeout(hideChromeTimer.current);
     hideChromeTimer.current = window.setTimeout(
       () => setChromeVisible(false),
       CHROME_IDLE_MS
     );
+
+    // Velocity tracking for nav-idle
+    const now = performance.now();
+    const prev = lastMouse.current;
+    const dt = now - prev.t;
+    if (dt > 0) {
+      const dist = Math.sqrt((e.clientX - prev.x) ** 2 + (e.clientY - prev.y) ** 2);
+      const speed = (dist / dt) * 1000; // px/sec
+      // Check if cursor is near the edges of the viewport
+      const vw = viewportRef.current?.clientWidth ?? window.innerWidth;
+      const xRatio = e.clientX / vw;
+      const inEdge = xRatio < EDGE_ZONE || xRatio > (1 - EDGE_ZONE);
+
+      if (speed < IDLE_SPEED_THRESHOLD && !inEdge) {
+        // Mouse is slow and centered — enter idle (text select) mode
+        if (navIdleTimer.current) window.clearTimeout(navIdleTimer.current);
+        setNavIdle(true);
+        // Stay idle until mouse speeds up again (handled by else branch)
+      } else {
+        // Mouse is fast or near edges — nav mode
+        setNavIdle(false);
+        if (navIdleTimer.current) window.clearTimeout(navIdleTimer.current);
+      }
+    }
+    lastMouse.current = { x: e.clientX, y: e.clientY, t: now };
   }, []);
 
   useEffect(
@@ -350,7 +381,7 @@ export default function Deck() {
           Split into two zones so the cursor can point the way it will move.
           Zone width is --nav-prev-zone in globals.css.
         */}
-        <div className="nav-layer" aria-hidden="true">
+        <div className={`nav-layer ${navIdle ? "nav-idle" : ""}`} aria-hidden="true">
           <div
             className={`nav-zone nav-zone-prev ${current === 0 ? "is-disabled" : ""}`}
             onClick={() => navigate("prev")}

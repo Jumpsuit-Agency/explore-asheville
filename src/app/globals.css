@@ -378,6 +378,12 @@
   pointer-events: none;
 }
 
+/* When the mouse is slow/still and away from edges, disable nav zones so
+   the normal cursor shows and text underneath becomes selectable. */
+.nav-layer.nav-idle {
+  pointer-events: none;
+}
+
 /*
   The content layer paints ABOVE the nav layer but is transparent to the
   pointer, so ordinary slide content lets a click through to navigation.
