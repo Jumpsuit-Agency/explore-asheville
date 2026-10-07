@@ -13,6 +13,7 @@ interface Beat {
   images: { src: string; alt: string }[];
   caption: string;
   heroLast?: boolean;
+  grid?: boolean;
 }
 
 const BEAT_KICKERS: Record<number, string> = {
@@ -102,6 +103,7 @@ const BEATS: Beat[] = [
       { src: "/creative/t3-sas-barber.png", alt: "The Local Barber with Sasquatch fur spilling onto sidewalk \u2014 You Should\u2019ve Seen Him Before" },
       { src: "/creative/t3-sas-french-broad.png", alt: "Giant Sasquatch footprints appear on French Broad River Greenway in the rain" },
     ],
+    grid: true,
     caption: "Partner activations, storefronts, and the landscape itself. New Belgium plays along with a wink. An oversized water trough shows up outside a coffee shop. A barber sweeps Sasquatch fur off the sidewalk. And on the French Broad Greenway, giant footprints appear only when it rains. Each one is independently funny and highly photographable. Together, they build Asheville lore.",
   },
   {
@@ -227,12 +229,11 @@ export function Territory3SasStorySlide({}: SlideProps) {
           <div
             key={beatIdx}
             style={{
-              display: "flex",
+              display: beat.grid ? "grid" : "flex",
+              ...(beat.grid
+                ? { gridTemplateColumns: "1fr 1fr", width: "100%", height: "100%" }
+                : { alignItems: "center", justifyContent: "center", maxWidth: "100%", maxHeight: "100%" }),
               gap: "16px",
-              alignItems: "center",
-              justifyContent: "center",
-              maxWidth: "100%",
-              maxHeight: "100%",
               animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
             }}
           >
@@ -244,7 +245,12 @@ export function Territory3SasStorySlide({}: SlideProps) {
                   key={i}
                   src={img.src}
                   alt={img.alt}
-                  style={{
+                  style={beat.grid ? {
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "8px",
+                  } : {
                     maxHeight: beat.images.length === 1 ? "630px" : hero && isLast ? "650px" : hero ? "500px" : "650px",
                     maxWidth: beat.images.length === 1 ? "98%" : hero && isLast ? "50%" : hero ? "22%" : `${95 / Math.min(beat.images.length, 3)}%`,
                     objectFit: "contain",
