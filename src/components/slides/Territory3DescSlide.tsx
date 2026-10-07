@@ -68,6 +68,22 @@ export function Territory3DescSlide({}: SlideProps) {
           How <span style={{ color: COLOR }}>How Many Signs Do You Need?</span> comes to life.
         </h2>
 
+        <p style={{
+          fontFamily: "var(--font-sans)",
+          fontSize: "21px",
+          fontWeight: 700,
+          color: "rgba(255,255,255,0.5)",
+          lineHeight: 1.5,
+          marginBottom: "28px",
+          maxWidth: "1000px",
+        }}>
+          <span style={{ color: COLOR }}>Every touchpoint is a sign.</span>
+          {" "}&middot;{" "}
+          <span style={{ color: COLOR }}>Love is the engine.</span>
+          {" "}&middot;{" "}
+          <span style={{ color: COLOR }}>Visitors become the campaign.</span>
+        </p>
+
         <div style={{ display: "flex", flexDirection: "column", gap: "28px", maxWidth: "1000px", marginBottom: "48px" }}>
           {EXTENSIONS.map((ext, i) => (
             <div key={i}>
