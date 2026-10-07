@@ -384,6 +384,13 @@
   pointer-events: none;
 }
 
+/* Mirror: when nav is idle, the content layer accepts all pointer events
+   so text can be selected and copied. */
+.slide-content.nav-idle {
+  pointer-events: auto;
+  cursor: text;
+}
+
 /*
   The content layer paints ABOVE the nav layer but is transparent to the
   pointer, so ordinary slide content lets a click through to navigation.

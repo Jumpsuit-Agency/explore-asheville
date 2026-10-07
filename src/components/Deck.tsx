@@ -390,7 +390,7 @@ export default function Deck() {
         </div>
 
         {/* Slide content layer — above the nav layer so controls stay clickable */}
-        <div className="slide-content">
+        <div className={`slide-content ${navIdle ? "nav-idle" : ""}`}>
           <SlideSequenceContext.Provider value={sequenceContext}>
             <SlideComponent
               key={SLIDES[current].id}
