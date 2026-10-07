@@ -109,7 +109,7 @@ const BEATS: Beat[] = [
   {
     label: "Phase 8",
     season: "2028 \u2014 and beyond",
-    headline: "Sas keeps going. Fly markets. International. Who knows.",
+    headline: "Sas keeps going. Fly markets. International. Who knows?",
     images: [
       { src: "/creative/t3-sas-scotland.png", alt: "WLOS News 13 \u2014 Asheville Launches First International Flight, Sasquatch Departs for Scotland to Meet Nessie" },
     ],
