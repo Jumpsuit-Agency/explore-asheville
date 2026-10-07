@@ -70,7 +70,7 @@ export function Territory3DescSlide({}: SlideProps) {
 
         <div style={{ display: "flex", gap: "48px", flex: 1, minHeight: 0 }}>
           {/* Left: extensions */}
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "24px" }}>
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
             {EXTENSIONS.map((ext, i) => (
               <div key={i}>
                 <p style={{
@@ -98,7 +98,7 @@ export function Territory3DescSlide({}: SlideProps) {
             <p
               style={{
                 fontFamily: "var(--font-sans)",
-                fontSize: "36px",
+                fontSize: "34px",
                 fontWeight: 800,
                 color: COLOR,
                 lineHeight: 1.15,
@@ -111,7 +111,7 @@ export function Territory3DescSlide({}: SlideProps) {
           </div>
 
           {/* Right: principles as pill blocks */}
-          <div style={{ width: "340px", flexShrink: 0, display: "flex", flexDirection: "column", gap: "16px", justifyContent: "center" }}>
+          <div style={{ width: "340px", flexShrink: 0, display: "flex", flexDirection: "column", gap: "16px", justifyContent: "flex-start" }}>
             {[
               { title: "Every touchpoint is a sign.", desc: "The media plan becomes part of the idea. Every ad, billboard, search result and retargeting hit feels less like advertising \u2014 and more like Asheville finding you." },
               { title: "Love is the engine.", desc: "People who love Asheville can\u2019t help talking about it. Their recommendations, stories, photos and invitations become signs of their own." },
