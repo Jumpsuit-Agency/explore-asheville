@@ -185,8 +185,25 @@ const SCRIPTS: Script[] = [
       { dir: "SUPER", vis: "SOUNDS MADE UP. IT\u2019S ASHEVILLE.", vo: "" },
     ],
   },
-  { title: ":30 Spot", lines: null },
-  { title: ":15 Spot", lines: null },
+  {
+    title: ":30 Spot",
+    lines: [
+      { dir: "OPEN ON", vis: "A chunk of snow falls off a tree branch in the foreground of a beautiful winter landscape.", vo: "They say Asheville gets so quiet in the winter you can hear the snow settle." },
+      { dir: "CUT TO", vis: "Smoke rises from a cabin in the snow.", vo: "Rumor has it, a cabin in the Blue Ridge Mountains can fix anything." },
+      { dir: "CUT TO", vis: "The family\u2019s hiking shoes narrowly miss a massive frozen footprint. A kid\u2019s shoe lands perfectly in the center of it.", vo: "Off the record, but you can hike the same trails as cryptids and legends." },
+      { dir: "CUT TO", vis: "The family rounds the bend on a trail, revealing a beautiful waterfall.", vo: "Depends on who you ask, but if you follow the footprints, you\u2019ll find magic." },
+      { dir: "SUPER", vis: "SOUNDS MADE UP. IT\u2019S ASHEVILLE.", vo: "" },
+    ],
+  },
+  {
+    title: ":15 Spot",
+    lines: [
+      { dir: "OPEN ON", vis: "A chunk of snow falls off a tree branch in the foreground of a beautiful winter landscape.", vo: "They say Asheville gets so quiet in the winter you can hear the snow settle." },
+      { dir: "CUT TO", vis: "Smoke rises from a cabin in the snow.", vo: "Rumor has it, a cabin in the Blue Ridge Mountains can fix anything." },
+      { dir: "CUT TO", vis: "A couple of elder millennials leave The Burger Bar. Look closely at the reflection in the door \u2014 Bigfoot is walking up.", vo: "No one\u2019s gonna believe you, but Bigfoot is a regular at The Burger Bar." },
+      { dir: "SUPER", vis: "SOUNDS MADE UP. IT\u2019S ASHEVILLE.", vo: "" },
+    ],
+  },
   { title: "Radio", lines: null },
 ];
 
