@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
+import { AiImage } from "../AiImage";
 import { useDeckAdvance, useDeckRetreat } from "../SlideSequence";
 import { useCreativeStops } from "./useCreativeStops";
 
@@ -172,9 +173,38 @@ const SCRIPTS: Script[] = [
       { dir: "SUPER", vis: "ASHEVILLE. SOUNDS MADE UP.", vo: "Hear for yourself this winter." },
     ],
   },
-  { title: ":60 Spot", lines: null },
-  { title: ":30 Spot", lines: null },
-  { title: ":15 Spot", lines: null },
+  {
+    title: ":60 Spot",
+    lines: [
+      { dir: "OPEN ON", vis: "A chunk of snow falls off a tree branch in the foreground of a beautiful winter landscape.", vo: "They say Asheville gets so quiet in the winter you can hear the snow settle." },
+      { dir: "CUT TO", vis: "Smoke rises from a cabin in the snow.", vo: "Rumor has it, a cabin in the Blue Ridge Mountains can fix anything." },
+      { dir: "CUT TO", vis: "The family\u2019s hiking shoes narrowly miss a massive frozen footprint. A kid\u2019s shoe lands perfectly in the center of it.", vo: "Off the record, but you can hike the same trails as cryptids and legends." },
+      { dir: "CUT TO", vis: "The family rounds the bend on a trail, revealing a beautiful waterfall.", vo: "Depends on who you ask, but if you follow the footprints, you\u2019ll find magic." },
+      { dir: "CUT TO", vis: "The family attending a ceramics class.", vo: "Allegedly, the makers in this town want you to create." },
+      { dir: "CUT TO", vis: "An older woman unwraps a gift, tears in her eyes.", vo: "Off the record, the ceramics you make here have special powers." },
+      { dir: "CUT TO", vis: "A couple of elder millennials leave The Burger Bar. Look closely at the reflection in the door \u2014 Bigfoot is walking up.", vo: "No one\u2019s gonna believe you, but Bigfoot is a regular at The Burger Bar." },
+      { dir: "SUPER", vis: "SOUNDS MADE UP. IT\u2019S ASHEVILLE.", vo: "" },
+    ],
+  },
+  {
+    title: ":30 Spot",
+    lines: [
+      { dir: "OPEN ON", vis: "A chunk of snow falls off a tree branch in the foreground of a beautiful winter landscape.", vo: "They say Asheville gets so quiet in the winter you can hear the snow settle." },
+      { dir: "CUT TO", vis: "Smoke rises from a cabin in the snow.", vo: "Rumor has it, a cabin in the Blue Ridge Mountains can fix anything." },
+      { dir: "CUT TO", vis: "The family\u2019s hiking shoes narrowly miss a massive frozen footprint. A kid\u2019s shoe lands perfectly in the center of it.", vo: "Off the record, but you can hike the same trails as cryptids and legends." },
+      { dir: "CUT TO", vis: "The family rounds the bend on a trail, revealing a beautiful waterfall.", vo: "Depends on who you ask, but if you follow the footprints, you\u2019ll find magic." },
+      { dir: "SUPER", vis: "SOUNDS MADE UP. IT\u2019S ASHEVILLE.", vo: "" },
+    ],
+  },
+  {
+    title: ":15 Spot",
+    lines: [
+      { dir: "OPEN ON", vis: "A chunk of snow falls off a tree branch in the foreground of a beautiful winter landscape.", vo: "They say Asheville gets so quiet in the winter you can hear the snow settle." },
+      { dir: "CUT TO", vis: "Smoke rises from a cabin in the snow.", vo: "Rumor has it, a cabin in the Blue Ridge Mountains can fix anything." },
+      { dir: "CUT TO", vis: "A couple of elder millennials leave The Burger Bar. Look closely at the reflection in the door \u2014 Bigfoot is walking up.", vo: "No one\u2019s gonna believe you, but Bigfoot is a regular at The Burger Bar." },
+      { dir: "SUPER", vis: "SOUNDS MADE UP. IT\u2019S ASHEVILLE.", vo: "" },
+    ],
+  },
   { title: "Radio", lines: null },
 ];
 
@@ -205,8 +235,10 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
   const items = section ? section.items : [];
   const advance = useDeckAdvance();
   const retreat = useDeckRetreat();
-  // A single comp has nothing to page to, so the stage stays inert:
-  // no handler, no paging cursor, and no fall-through to a slide change.
+  // Whether there is a carousel to page. The stage advances either way —
+  // on a single comp the click carries the deck to the next stop — so this
+  // only governs the back arrow, the counter, and whether the forward arrow
+  // is permanent or waits for hover.
   const canPage = items.length > 1;
   const item = items[itemIdx];
   const script = SCRIPTS[scriptIdx];
@@ -353,8 +385,8 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
                 it is a surface, not a control, and the keyboard path is the
                 deck's own forward step rather than a focus stop here. */}
             <div
-              className={`carousel-stage ${canPage ? "carousel-stage-french" : "carousel-stage-inert"}`}
-              onClick={canPage ? advance : undefined}
+              className={`carousel-stage carousel-stage-french`}
+              onClick={advance}
               style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative" }}
             >
               {items.length > 1 && (
@@ -363,7 +395,7 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
 
               {item?.type === "image" ? (
                 <div key={item.src} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px", maxWidth: "100%", maxHeight: "100%", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
-                  <img src={item.src} alt={item.alt} style={{ maxWidth: "70%", maxHeight: "70%", objectFit: "contain", borderRadius: "8px", ...item.imgStyle }} />
+                  <AiImage src={item.src} alt={item.alt} style={{ maxWidth: "70%", maxHeight: "70%", objectFit: "contain", borderRadius: "8px", ...item.imgStyle }} />
                   {item.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "20px", color: "rgba(255,255,255,0.45)", textAlign: "center", lineHeight: 1.5, maxWidth: "90%" }}>{item.caption}</p>}
                 </div>
               ) : item?.type === "row" ? (
@@ -373,7 +405,7 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
                     {item.images.map((img, i) => (
                       <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", gap: "8px", minWidth: 0 }}>
                         <div style={{ borderRadius: "8px", overflow: "hidden", flex: 1 }}>
-                          <img src={img.src} alt={img.alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                          <AiImage src={img.src} alt={img.alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                         </div>
                         {img.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "18px", color: "rgba(255,255,255,0.4)", lineHeight: 1.4 }}>{img.caption}</p>}
                       </div>
@@ -382,7 +414,7 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
                 </div>
               ) : item?.type === "image-script" ? (
                 <div key={item.src} style={{ display: "flex", gap: "32px", alignItems: "flex-start", width: "100%", height: "100%", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both", padding: "20px 40px" }}>
-                  <img src={item.src} alt={item.alt} style={{ objectFit: "contain", borderRadius: "8px", flexShrink: 0, ...item.imgStyle }} />
+                  <AiImage src={item.src} alt={item.alt} style={{ objectFit: "contain", borderRadius: "8px", flexShrink: 0, ...item.imgStyle }} />
                   <div className="glass-light" style={{ flex: 0, minWidth: "320px", maxWidth: "360px", padding: "24px 28px", borderLeft: `3px solid ${COLOR}`, overflow: "auto", maxHeight: "100%" }}>
                     <span className="type-label" style={{ fontSize: "16px", color: COLOR, marginBottom: "16px", display: "block" }}>{item.scriptTitle}</span>
                     <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -407,9 +439,11 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
                 </div>
               ) : null}
 
-              {items.length > 1 && (
-                <button className="ui-button" onClick={(e) => { e.stopPropagation(); advance(); }} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
-              )}
+              <button
+                className={`ui-button${canPage ? "" : " stage-advance"}`}
+                onClick={(e) => { e.stopPropagation(); advance(); }}
+                style={{ ...arrowStyle, right: "12px" }}
+              >&rarr;</button>
               {items.length > 1 && (
                 <span style={{ position: "absolute", bottom: "12px", left: "50%", transform: "translateX(-50%)", fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>
                   {itemIdx + 1} / {items.length}

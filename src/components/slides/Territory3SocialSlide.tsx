@@ -1,4 +1,5 @@
 import type { SlideProps } from "../Deck";
+import { AiImage } from "../AiImage";
 
 const COLOR = "var(--color-goldenrod)";
 
@@ -64,7 +65,7 @@ export function Territory3SocialSlide({}: SlideProps) {
             overflow: "hidden",
           }}
         >
-          <img
+          <AiImage
             src={GRID[0].src}
             alt={GRID[0].alt}
             style={{
@@ -75,7 +76,7 @@ export function Territory3SocialSlide({}: SlideProps) {
               animation: "child-fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0s both",
             }}
           />
-          <img
+          <AiImage
             src={GRID[1].src}
             alt={GRID[1].alt}
             style={{

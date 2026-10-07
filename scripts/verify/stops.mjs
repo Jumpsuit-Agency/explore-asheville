@@ -11,10 +11,13 @@ const SNAP=`const c=document.querySelector('.nav-counter');
  const sec=[...document.querySelectorAll('.pill-sm')].find(b=>getComputedStyle(b).backgroundColor!=='rgba(0, 0, 0, 0)');
  const img=document.querySelector('.carousel-stage img');
  const ctr=[...document.querySelectorAll('.slide-content span')].find(d=>/^\\d+\\s*\\/\\s*\\d+$/.test((d.textContent||'').trim()));
+ const scr=[...document.querySelectorAll('button')].filter(b=>/Spot$|^Winter$|^Radio$/.test(b.textContent.trim()))
+     .find(b=>getComputedStyle(b).backgroundColor!=='rgba(0, 0, 0, 0)');
  const comingSoon=/Coming Soon/.test(document.querySelector('.slide-content')?.textContent||'');
  return {slide:c?c.textContent.trim():null, tab:tab?tab.textContent.trim():null, sec:sec?sec.textContent.trim():null,
-         img:img?img.getAttribute('src').split('/').pop():null, ctr:ctr?ctr.textContent.trim():null, comingSoon};`;
-for (const [hash,label,expected] of [["territory-1","T1",25],["territory-2-creative","T2",24],["territory-3-creative","T3",26]]){
+         img:img?img.getAttribute('src').split('/').pop():null, ctr:ctr?ctr.textContent.trim():null,
+         scr:scr?scr.textContent.trim():null, comingSoon};`;
+for (const [hash,label,expected] of [["territory-1","T1",26],["territory-2-creative","T2",27],["territory-3-creative","T3",26]]){
   await send("Page.navigate",{url:"about:blank"});await sleep(320);
   await send("Page.navigate",{url:"http://localhost:3000/#"+hash});await sleep(3200);
   const seen=[]; const tabs=new Set(); const secs=new Set(); const imgs=new Set(); let stranded=0; let last=null; let exitAt=null;
@@ -22,7 +25,7 @@ for (const [hash,label,expected] of [["territory-1","T1",25],["territory-2-creat
   for(let i=0;i<expected+8;i++){
     const s=await ev(SNAP);
     if(s.slide!==startSlide){ exitAt=i; break; }
-    const sig=`${s.tab}|${s.sec}|${s.img}|${s.ctr}`;
+    const sig=`${s.tab}|${s.sec}|${s.img}|${s.ctr}|${s.scr}`;
     if(sig!==last){ seen.push(sig); last=sig; if(s.tab)tabs.add(s.tab); if(s.sec)secs.add(s.sec); if(s.img)imgs.add(s.img); if(s.comingSoon)stranded++; }
     await key("ArrowRight"); await sleep(260);
   }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { SlideProps } from "../Deck";
+import { AiImage } from "../AiImage";
 import { useDeckAdvance, useDeckRetreat } from "../SlideSequence";
 import { useCreativeStops } from "./useCreativeStops";
 
@@ -241,8 +242,10 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
   const items = section ? section.items : [];
   const advance = useDeckAdvance();
   const retreat = useDeckRetreat();
-  // A single comp has nothing to page to, so the stage stays inert:
-  // no handler, no paging cursor, and no fall-through to a slide change.
+  // Whether there is a carousel to page. The stage advances either way —
+  // on a single comp the click carries the deck to the next stop — so this
+  // only governs the back arrow, the counter, and whether the forward arrow
+  // is permanent or waits for hover.
   const canPage = items.length > 1;
   const item = items[itemIdx];
   const script = SCRIPTS[scriptIdx];
@@ -380,8 +383,8 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
                 it is a surface, not a control, and the keyboard path is the
                 deck's own forward step rather than a focus stop here. */}
             <div
-              className={`carousel-stage ${canPage ? "carousel-stage-gold" : "carousel-stage-inert"}`}
-              onClick={canPage ? advance : undefined}
+              className={`carousel-stage carousel-stage-gold`}
+              onClick={advance}
               style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative" }}
             >
               {items.length > 1 && (
@@ -390,7 +393,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
 
               {item?.type === "image" && item.layout === "side" ? (
                 <div key={item.src} style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "40px", maxWidth: "100%", maxHeight: "100%", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
-                  <img src={item.src} alt={item.alt} style={{ maxWidth: "45%", maxHeight: "600px", objectFit: "contain", borderRadius: "8px", ...item.imgStyle }} />
+                  <AiImage src={item.src} alt={item.alt} style={{ maxWidth: "45%", maxHeight: "600px", objectFit: "contain", borderRadius: "8px", ...item.imgStyle }} />
                   <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "20px" }}>
                     {item.headline && <p style={{ fontFamily: "var(--font-sans)", fontSize: "24px", fontWeight: 800, color: "white", lineHeight: 1.3, whiteSpace: "pre-line" }}>{item.headline}</p>}
                     {item.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "21px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5 }}>{item.caption}</p>}
@@ -399,7 +402,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
               ) : item?.type === "image" ? (
                 <div key={item.src} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "12px", maxWidth: "100%", maxHeight: "100%", animation: "child-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both" }}>
                   {item.headline && <p style={{ fontFamily: "var(--font-sans)", fontSize: "26px", fontWeight: 800, color: "white", textAlign: "center", lineHeight: 1.3, maxWidth: "90%", whiteSpace: "pre-line" }}>{item.headline}</p>}
-                  <img src={item.src} alt={item.alt} style={{ maxWidth: "100%", maxHeight: item.headline ? "460px" : "580px", objectFit: "contain", borderRadius: "8px", ...item.imgStyle }} />
+                  <AiImage src={item.src} alt={item.alt} style={{ maxWidth: "100%", maxHeight: item.headline ? "460px" : "580px", objectFit: "contain", borderRadius: "8px", ...item.imgStyle }} />
                   {item.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "20px", color: "rgba(255,255,255,0.45)", textAlign: "center", lineHeight: 1.5, maxWidth: "90%" }}>{item.caption}</p>}
                 </div>
               ) : item?.type === "row" ? (
@@ -407,7 +410,7 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
                   <div style={{ display: "flex", gap: "12px", flex: 1, alignItems: "center", justifyContent: "center" }}>
                     {item.images.map((img, i) => (
                       <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", gap: "8px", minWidth: 0, alignItems: "center" }}>
-                        <img src={img.src} alt={img.alt} style={{ maxWidth: "100%", maxHeight: "540px", objectFit: "contain", borderRadius: "8px", display: "block" }} />
+                        <AiImage src={img.src} alt={img.alt} style={{ maxWidth: "100%", maxHeight: "540px", objectFit: "contain", borderRadius: "8px", display: "block" }} />
                         {img.caption && <p style={{ fontFamily: "var(--font-sans)", fontSize: "17px", color: "rgba(255,255,255,0.45)", lineHeight: 1.35 }}>{img.caption}</p>}
                       </div>
                     ))}
@@ -420,9 +423,11 @@ export function Territory3CreativeSlide({ onNavigate }: SlideProps) {
                 </div>
               ) : null}
 
-              {items.length > 1 && (
-                <button className="ui-button" onClick={(e) => { e.stopPropagation(); advance(); }} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
-              )}
+              <button
+                className={`ui-button${canPage ? "" : " stage-advance"}`}
+                onClick={(e) => { e.stopPropagation(); advance(); }}
+                style={{ ...arrowStyle, right: "12px" }}
+              >&rarr;</button>
               {items.length > 1 && (
                 <span style={{ position: "absolute", bottom: "12px", left: "50%", transform: "translateX(-50%)", fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>
                   {itemIdx + 1} / {items.length}
