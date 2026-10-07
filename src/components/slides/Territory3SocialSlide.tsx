@@ -112,9 +112,6 @@ export function Territory3SocialSlide({}: SlideProps) {
                 The person behind this account isn&apos;t running a social strategy. They&apos;re running a frequency. And if you&apos;re paying attention, it starts to feel like Asheville is paying attention to you.
               </p>
             </div>
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: "16px", fontWeight: 800, color: COLOR, lineHeight: 1.3, marginTop: "4px" }}>
-              Someone behind this account is completely obsessed.
-            </p>
           </div>
         </div>
       </div>
