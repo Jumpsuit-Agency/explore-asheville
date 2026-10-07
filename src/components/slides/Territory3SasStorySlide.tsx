@@ -13,7 +13,6 @@ interface Beat {
   images: { src: string; alt: string }[];
   caption: string;
   heroLast?: boolean;
-  grid?: boolean;
 }
 
 const BEAT_KICKERS: Record<number, string> = {
@@ -24,7 +23,8 @@ const BEAT_KICKERS: Record<number, string> = {
   4: "Now he has resources and access.",
   5: "And the new Head of Lore gets to work.",
   6: "Sasquatch doesn\u2019t advertise Asheville. He lives here.",
-  7: "The story keeps going. The legend keeps growing.",
+  7: "The whole city is in on it.",
+  8: "The story keeps going. The legend keeps growing.",
 };
 
 const BEATS: Beat[] = [
@@ -100,11 +100,18 @@ const BEATS: Beat[] = [
     images: [
       { src: "/creative/t3-sas-new-belgium.png", alt: "New Belgium billboard \u2014 We Don\u2019t Know Why Sasquatch Keeps Showing Up Here Either" },
       { src: "/creative/t3-sas-dog-bowl.png", alt: "BattleCat Coffee Bar with oversized Sasquatch water bowl and Please Do Not Pet sign" },
+    ],
+    caption: "Partner activations bring Sas into the fabric of Asheville. New Belgium plays along with a wink \u2014 apparently he drinks local. An oversized water trough labeled SASQUATCH shows up outside a coffee shop next to the regular dog bowls. Please do not pet.",
+  },
+  {
+    label: "Phase 7b",
+    season: "Fall 2027 \u2014 Oct\u2013Nov",
+    headline: "People encounter traces of him everywhere.",
+    images: [
       { src: "/creative/t3-sas-barber.png", alt: "The Local Barber with Sasquatch fur spilling onto sidewalk \u2014 You Should\u2019ve Seen Him Before" },
       { src: "/creative/t3-sas-french-broad.png", alt: "Giant Sasquatch footprints appear on French Broad River Greenway in the rain" },
     ],
-    grid: true,
-    caption: "Partner activations, storefronts, and the landscape itself. New Belgium plays along with a wink. An oversized water trough shows up outside a coffee shop. A barber sweeps Sasquatch fur off the sidewalk. And on the French Broad Greenway, giant footprints appear only when it rains. Each one is independently funny and highly photographable. Together, they build Asheville lore.",
+    caption: "A mountain of coarse brown hair spills onto the sidewalk outside a barber shop. And on the French Broad Greenway, giant footprints appear only when it rains. Each activation is independently funny and highly photographable. Together, they build Asheville lore.",
   },
   {
     label: "Phase 8",
@@ -227,62 +234,36 @@ export function Territory3SasStorySlide({}: SlideProps) {
             </button>
           )}
 
-          {beat.grid ? (
-            <div
-              key={beatIdx}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gridTemplateRows: "1fr 1fr",
-                gap: "10px",
-                width: "100%",
-                height: "100%",
-                overflow: "hidden",
-                animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
-              }}
-            >
-              {beat.images.map((img, i) => (
-                <div key={i} style={{ borderRadius: "6px", overflow: "hidden" }}>
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div
-              key={beatIdx}
-              style={{
-                display: "flex",
-                gap: "16px",
-                alignItems: "center",
-                justifyContent: "center",
-                maxWidth: "100%",
-                maxHeight: "100%",
-                animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
-              }}
-            >
-              {beat.images.map((img, i) => {
-                const isLast = i === beat.images.length - 1;
-                const hero = beat.heroLast;
-                return (
-                  <img
-                    key={i}
-                    src={img.src}
-                    alt={img.alt}
-                    style={{
-                      maxHeight: beat.images.length === 1 ? "630px" : hero && isLast ? "650px" : hero ? "500px" : "650px",
-                      maxWidth: beat.images.length === 1 ? "98%" : hero && isLast ? "50%" : hero ? "22%" : `${95 / Math.min(beat.images.length, 3)}%`,
-                      objectFit: "contain",
-                      borderRadius: "8px",
-                    }}
-                  />
-                );
-              })}
-            </div>
-          )}
+          <div
+            key={beatIdx}
+            style={{
+              display: "flex",
+              gap: "16px",
+              alignItems: "center",
+              justifyContent: "center",
+              maxWidth: "100%",
+              maxHeight: "100%",
+              animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
+            }}
+          >
+            {beat.images.map((img, i) => {
+              const isLast = i === beat.images.length - 1;
+              const hero = beat.heroLast;
+              return (
+                <img
+                  key={i}
+                  src={img.src}
+                  alt={img.alt}
+                  style={{
+                    maxHeight: beat.images.length === 1 ? "630px" : hero && isLast ? "650px" : hero ? "500px" : "650px",
+                    maxWidth: beat.images.length === 1 ? "98%" : hero && isLast ? "50%" : hero ? "22%" : `${95 / Math.min(beat.images.length, 3)}%`,
+                    objectFit: "contain",
+                    borderRadius: "8px",
+                  }}
+                />
+              );
+            })}
+          </div>
 
           {!isLast && (
             <button className="ui-button"
@@ -313,7 +294,6 @@ export function Territory3SasStorySlide({}: SlideProps) {
         </div>
 
         {/* Caption + progress */}
-        {!beat.grid && (
         <div style={{ marginTop: "20px", maxWidth: "900px", margin: "20px auto 0" }}>
             <p
               key={beatIdx}
@@ -370,7 +350,6 @@ export function Territory3SasStorySlide({}: SlideProps) {
             </p>
           )}
         </div>
-        )}
       </div>
     </div>
   );
