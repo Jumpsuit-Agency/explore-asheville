@@ -115,11 +115,7 @@ export function Territory3MediaEngineSlide({}: SlideProps) {
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.display = "none";
-                    // AiImage wraps the <img> to anchor its badge, so the
-                    // slot this fallback styles is one level further up.
-                    const slot = target.parentElement?.hasAttribute("data-ai-image")
-                      ? target.parentElement.parentElement
-                      : target.parentElement;
+                    const slot = target.parentElement;
                     if (slot) {
                       slot.style.display = "flex";
                       slot.style.alignItems = "center";
