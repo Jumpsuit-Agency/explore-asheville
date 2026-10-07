@@ -443,10 +443,22 @@
 .carousel-stage-french { cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48ZyBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjEyLjUiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjU1KSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTE0IDExIEwxOSAxNiBMMTQgMjEiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjU1KSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTIuNSIgc3Ryb2tlPSIjOUJEMUQ2IiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTQgMTEgTDE5IDE2IEwxNCAyMSIgc3Ryb2tlPSIjOUJEMUQ2IiBzdHJva2Utd2lkdGg9IjIuNiIvPjwvZz48L3N2Zz4=") 16 16, e-resize; }
 .carousel-stage-gold { cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48ZyBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjEyLjUiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjU1KSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTE0IDExIEwxOSAxNiBMMTQgMjEiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjU1KSIgc3Ryb2tlLXdpZHRoPSI1Ii8+PGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTIuNSIgc3Ryb2tlPSIjRkVCNTJDIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTQgMTEgTDE5IDE2IEwxNCAyMSIgc3Ryb2tlPSIjRkVCNTJDIiBzdHJva2Utd2lkdGg9IjIuNiIvPjwvZz48L3N2Zz4=") 16 16, e-resize; }
 
-/* Nothing to page to: keep the stage swallowing the click so it does not
-   fall through to a slide change, but drop the affordance that promised one. */
-.carousel-stage-inert {
-  cursor: default;
+/* A single-comp stage has no carousel, but clicking it still carries the
+   deck to the next stop — so it keeps the paging cursor and offers a forward
+   arrow. That arrow waits for the pointer rather than sitting over artwork
+   that has nothing to page. */
+.stage-advance {
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.carousel-stage:hover .stage-advance,
+.stage-advance:focus-visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-advance { transition: none; }
 }
 
 /* Controls inside the stage keep the pointer and swallow their own clicks. */

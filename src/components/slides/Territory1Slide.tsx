@@ -226,8 +226,10 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
   const items = section ? section.items : [];
   const advance = useDeckAdvance();
   const retreat = useDeckRetreat();
-  // A single comp has nothing to page to, so the stage stays inert:
-  // no handler, no paging cursor, and no fall-through to a slide change.
+  // Whether there is a carousel to page. The stage advances either way —
+  // on a single comp the click carries the deck to the next stop — so this
+  // only governs the back arrow, the counter, and whether the forward arrow
+  // is permanent or waits for hover.
   const canPage = items.length > 1;
   const item = items[itemIdx];
   const script = SCRIPTS[scriptIdx];
@@ -371,8 +373,8 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
                 it is a surface, not a control, and the keyboard path is the
                 deck's own forward step rather than a focus stop here. */}
             <div
-              className={`carousel-stage ${canPage ? "carousel-stage-grove" : "carousel-stage-inert"}`}
-              onClick={canPage ? advance : undefined}
+              className={`carousel-stage carousel-stage-grove`}
+              onClick={advance}
               style={{ flex: 1, minHeight: 0, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", position: "relative" }}
             >
               {items.length > 1 && (
@@ -404,9 +406,11 @@ export function Territory1Slide({ onNavigate }: SlideProps) {
                 </div>
               ) : null}
 
-              {items.length > 1 && (
-                <button className="ui-button" onClick={(e) => { e.stopPropagation(); advance(); }} style={{ ...arrowStyle, right: "12px" }}>&rarr;</button>
-              )}
+              <button
+                className={`ui-button${canPage ? "" : " stage-advance"}`}
+                onClick={(e) => { e.stopPropagation(); advance(); }}
+                style={{ ...arrowStyle, right: "12px" }}
+              >&rarr;</button>
               {items.length > 1 && (
                 <span style={{ position: "absolute", bottom: "12px", left: "50%", transform: "translateX(-50%)", fontFamily: "var(--font-sans)", fontSize: "18px", fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>
                   {itemIdx + 1} / {items.length}
