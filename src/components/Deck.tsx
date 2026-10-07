@@ -13,7 +13,9 @@ import { Territory1Slide } from "./slides/Territory1Slide";
 import { Territory2DescSlide } from "./slides/Territory2DescSlide";
 import { Territory3DescSlide } from "./slides/Territory3DescSlide";
 import { Territory3MontageSlide } from "./slides/Territory3MontageSlide";
+import { Territory3InDestinationSlide } from "./slides/Territory3InDestinationSlide";
 import { Territory3DigitalMontageSlide } from "./slides/Territory3DigitalMontageSlide";
+import { Territory3SocialSlide } from "./slides/Territory3SocialSlide";
 import { Territory3GuerillaIntroSlide } from "./slides/Territory3GuerillaIntroSlide";
 import { RationaleSlide } from "./slides/RationaleSlide";
 import { ClientRubricSlide } from "./slides/ClientRubricSlide";
@@ -48,10 +50,12 @@ const SLIDES = [
   { id: "territory-3-desc", title: "How Many Signs Do You Need?", component: Territory3DescSlide },
   { id: "territory-3-montage", title: "Signs — OOH", component: Territory3MontageSlide },
   { id: "territory-3-digital", title: "Signs — Digital", component: Territory3DigitalMontageSlide },
+  { id: "territory-3-in-destination", title: "Signs — In-Destination", component: Territory3InDestinationSlide },
+  { id: "territory-3-social", title: "Signs — Social", component: Territory3SocialSlide },
   { id: "territory-3-guerrilla-intro", title: "Guerrilla", component: Territory3GuerillaIntroSlide },
   { id: "territory-3-sas-story", title: "The Sasquatch Story", component: Territory3SasStorySlide },
   { id: "production-schedule", title: "Production Schedule", component: ProductionScheduleSlide },
-  { id: "territory-3-creative", title: "T3 Creative", component: Territory3CreativeSlide },
+  // { id: "territory-3-creative", title: "T3 Creative", component: Territory3CreativeSlide }, // REMOVED — revisit later
   { id: "rationale", title: "Our Recommendation", component: RationaleSlide },
   { id: "client-rubric", title: "Against Your Criteria", component: ClientRubricSlide },
   { id: "closing", title: "Let's Talk", component: ClosingSlide },

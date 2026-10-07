@@ -27,7 +27,7 @@ const TABS: { id: string; sections: Section[] }[] = [
         label: "Value Seekers",
         meta: "35\u201344 \u00B7 HHI $88K",
         items: [
-          { type: "image", src: "/creative/t3-highway-billboard.webp", alt: "Highway billboard \u2014 You Asked for a Sign", caption: "A rainbow, a mountain vista, and a simple truth on the highway. For Traveling Traditionalists, the sign doesn\u2019t need to be clever \u2014 it just needs to feel like fate." },
+          { type: "image", src: "/creative/t3-highway-billboard.webp", alt: "Highway billboard \u2014 You Asked for a Sign", caption: "A rainbow, a mountain vista, and a simple truth on the highway. For Value Seekers, the sign doesn\u2019t need to be clever \u2014 it just needs to feel like fate." },
           { type: "image", src: "/creative/t3-magic8ball-billboard.webp", alt: "Highway billboard — Outlook Good, How Many Signs Do You Need?", caption: "A Magic 8-Ball on a highway billboard. The universe is answering \u2014 and the exit is two miles away." },
           { type: "image", src: "/creative/t3-crystal-billboard.webp", alt: "Charlotte billboard — A Crystal-Clear Sign to Visit", caption: "Planted on I-77 in Charlotte. The crystals burst off the board \u2014 impossible to ignore, impossible to forget. The sign is the sign." },
         ],

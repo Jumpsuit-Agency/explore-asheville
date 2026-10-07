@@ -8,6 +8,7 @@ const COLOR = "var(--color-goldenrod)";
 
 interface Beat {
   label: string;
+  season: string;
   headline: string;
   images: { src: string; alt: string }[];
   caption: string;
@@ -27,6 +28,7 @@ const BEAT_KICKERS: Record<number, string> = {
 const BEATS: Beat[] = [
   {
     label: "Act 1",
+    season: "Winter \u2014 Dec\u2013Feb",
     headline: "The sightings begin. Social takes off.",
     images: [
       { src: "/creative/t3-indy-bigfoot-wheatpaste.webp", alt: "Bigfoot wheat-pasting Asheville signs in Indianapolis" },
@@ -37,6 +39,7 @@ const BEATS: Beat[] = [
   },
   {
     label: "Act 2",
+    season: "Winter \u2014 Jan\u2013Feb",
     headline: "Local media gets involved.",
     images: [
       { src: "/creative/t3-bigfoot-news.webp", alt: "WTHR news broadcast \u2014 The Weirdest Tourism Campaign of the Year" },
@@ -46,6 +49,7 @@ const BEATS: Beat[] = [
   },
   {
     label: "Act 3",
+    season: "Spring \u2014 Mar",
     headline: "Digital captures the moment. And the easter egg.",
     images: [
       { src: "/creative/t3-media-search-results.webp", alt: "Google search results for Sasquatch Asheville sign" },
@@ -57,6 +61,7 @@ const BEATS: Beat[] = [
   },
   {
     label: "Act 4",
+    season: "Spring \u2014 Apr\u2013May",
     headline: "Sas returns to Asheville. Now he\u2019s the one spotting you.",
     images: [
       { src: "/creative/t3-sas-asheville-chronicle.webp", alt: "The Asheville Chronicle front page \u2014 Sasquatch Makes It Back to Asheville" },
@@ -67,24 +72,27 @@ const BEATS: Beat[] = [
   },
   {
     label: "Act 5",
+    season: "Summer \u2014 Jun",
     headline: "Explore Asheville officially hires Sas.",
     images: [
       { src: "/creative/t3-sas-head-of-lore.webp", alt: "WLOS News 13 \u2014 Explore Asheville Hires Sasquatch as New Head of Lore" },
-      { src: "/creative/t3-bigfoot-festival-marion.webp", alt: "WNC Bigfoot Festival Returns Near Asheville — Live from Marion, NC" },
+      { src: "/creative/t3-sas-believes-in-you.webp", alt: "Sasquatch posting a Sasquatch Believes in You flyer on a downtown Asheville bulletin board" },
     ],
     caption: "Explore Asheville officially hires Sas as their new Head of Lore. A press conference. A badge. A title nobody saw coming. Every outlet in the region runs it.",
   },
   {
     label: "Act 6",
+    season: "Summer \u2014 Jul\u2013Sep",
     headline: "Sas on the job.",
     images: [
-      { src: "/creative/t3-sas-believes-in-you.webp", alt: "Sasquatch posting a Sasquatch Believes in You flyer on a downtown Asheville bulletin board" },
+      { src: "/creative/t3-bigfoot-festival-marion.webp", alt: "WNC Bigfoot Festival Returns Near Asheville — Live from Marion, NC" },
       { src: "/creative/t3-sas-podcast.webp", alt: "Sasquatch hosting a talk show interview with a guest in a cardboard box costume" },
     ],
     caption: "He\u2019s posting flyers, crashing festivals, reviewing restaurants, hosting a podcast from an undisclosed location in the Blue Ridge. Every piece of content he makes is another sign pointing someone new to Asheville.",
   },
   {
     label: "Act 7",
+    season: "Fall \u2014 Oct\u2013Nov",
     headline: "And when it\u2019s time to go?",
     images: [
       { src: "/creative/t3-nashvillenews-sighting.webp", alt: "@nashvillenews TikTok \u2014 Big Foot sighting in Tennessee, Asheville declines to comment" },
@@ -131,6 +139,21 @@ export function Territory3SasStorySlide({}: SlideProps) {
               }}
             >
               {beat.label}
+            </span>
+            <span
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: "10px",
+                fontWeight: 700,
+                color: "rgba(255,255,255,0.4)",
+                textTransform: "uppercase",
+                letterSpacing: "0.15em",
+                background: "rgba(255,255,255,0.08)",
+                padding: "3px 10px",
+                borderRadius: "4px",
+              }}
+            >
+              {beat.season}
             </span>
           </div>
           <h2
