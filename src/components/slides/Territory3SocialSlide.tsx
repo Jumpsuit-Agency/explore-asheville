@@ -101,17 +101,16 @@ export function Territory3SocialSlide({}: SlideProps) {
               Asheville doesn&apos;t wait to be discovered.<br />
               <span style={{ color: COLOR }}>It follows you first.</span>
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-              {[
-                { bold: "Proactive, not reactive.", rest: "Asheville follows creators, comments on posts, shows up in threads before anyone asks." },
-                { bold: "Content that documents, not advertises.", rest: "Original series, tarot pulls, sign collections, local lore \u2014 every post is a reason to look twice." },
-                { bold: "Creator + influencer partnerships.", rest: "Voices seeding the campaign into culture, not just feeds." },
-                { bold: "An absolutely obsessed community manager.", rest: "Commenting on tour dates, weather posts, flight deals, sunset photos \u2014 pointing out signs in the wild that nobody else would catch." },
-              ].map((item, i) => (
-                <p key={i} style={{ fontFamily: "var(--font-sans)", fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.5 }}>
-                  <span style={{ fontWeight: 700, color: "rgba(255,255,255,0.8)" }}>{item.bold}</span>{" "}{item.rest}
-                </p>
-              ))}
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.6 }}>
+                You post a sunset. Asheville comments. You search for weekend flights. Asheville&apos;s already in your feed with a tarot pull that says &ldquo;go.&rdquo; A creator you follow goes to Asheville and comes back different &mdash; and now their audience is curious too.
+              </p>
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.6 }}>
+                The account doesn&apos;t advertise. It documents signs. It collects them. It pulls cards, tracks synchronicities, replies to strangers&apos; weather posts with &ldquo;Feels like: you should be here.&rdquo;
+              </p>
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "14px", color: "rgba(255,255,255,0.55)", lineHeight: 1.6 }}>
+                The person behind this account isn&apos;t running a social strategy. They&apos;re running a frequency. And if you&apos;re paying attention, it starts to feel like Asheville is paying attention to you.
+              </p>
             </div>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: "16px", fontWeight: 800, color: COLOR, lineHeight: 1.3, marginTop: "4px" }}>
               Someone behind this account is completely obsessed.
