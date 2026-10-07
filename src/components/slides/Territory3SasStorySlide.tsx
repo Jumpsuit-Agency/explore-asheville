@@ -231,7 +231,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
             style={{
               display: beat.grid ? "grid" : "flex",
               ...(beat.grid
-                ? { gridTemplateColumns: "1fr 1fr", width: "100%", height: "100%" }
+                ? { gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr", width: "100%", height: "100%", minHeight: 0 }
                 : { alignItems: "center", justifyContent: "center", maxWidth: "100%", maxHeight: "100%" }),
               gap: "16px",
               animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
@@ -248,6 +248,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
                   style={beat.grid ? {
                     width: "100%",
                     height: "100%",
+                    minHeight: 0,
                     objectFit: "cover",
                     borderRadius: "8px",
                   } : {
