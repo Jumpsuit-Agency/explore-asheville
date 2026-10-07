@@ -190,6 +190,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
         <div
           style={{
             flex: 1,
+            minHeight: 0,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
