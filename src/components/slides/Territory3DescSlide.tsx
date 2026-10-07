@@ -4,11 +4,11 @@ const COLOR = "var(--color-goldenrod)";
 
 const EXTENSIONS = [
   {
-    prompt: "What if Asheville starts to feel like a sign?",
+    prompt: "What if Asheville starts to feel like a synchronicity. A sign.",
     desc: "Once you see it, you start seeing it everywhere. A cheap flight. A long weekend opening up. A rainbow. A friend who just got back. A billboard. An Asheville Instagram account that started following you. Is it the algorithm or the universe conspiring?",
   },
   {
-    prompt: "What if Asheville gets in on the signs?",
+    prompt: "What if visitors get in on it?",
     desc: "Hotel key cards. Coffee sleeves. Storefronts. Murals. Hotel elevators. Even the interstate construction zone gets in on it. Signs show up in the places people stay, eat, shop, walk, drive and explore \u2014 each one adding another little nudge, wink or confirmation that Asheville is exactly where they\u2019re supposed to be. Is it word of mouth, or is the whole city in on it?",
   },
   {
