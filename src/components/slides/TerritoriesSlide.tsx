@@ -38,7 +38,7 @@ const TERRITORIES: {
       "A castle in the mountains.",
       "A road that IS the destination.",
       "A drum circle. A foraged dinner. Forgetting what day it is.",
-      "A story you bring home that nobody believes.",
+      "Heading home with stories that feel like lore.",
     ],
   },
   {
