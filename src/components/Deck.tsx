@@ -21,8 +21,10 @@ import { RationaleSlide } from "./slides/RationaleSlide";
 import { ClientRubricSlide } from "./slides/ClientRubricSlide";
 import { Territory2CreativeSlide } from "./slides/Territory2CreativeSlide";
 import { Territory3SasStorySlide } from "./slides/Territory3SasStorySlide";
+import { Territory3CompostSlide } from "./slides/Territory3CompostSlide";
 import { Territory3CreativeSlide } from "./slides/Territory3CreativeSlide";
 import { ProductionScheduleSlide } from "./slides/ProductionScheduleSlide";
+import { WhyItWorksSlide } from "./slides/WhyItWorksSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
 
 export interface SlideProps {
@@ -54,10 +56,12 @@ const SLIDES = [
   { id: "territory-3-social", title: "Signs — Social", component: Territory3SocialSlide },
   { id: "territory-3-guerrilla-intro", title: "Guerrilla", component: Territory3GuerillaIntroSlide },
   { id: "territory-3-sas-story", title: "The Sasquatch Story", component: Territory3SasStorySlide },
-  { id: "production-schedule", title: "Production Schedule", component: ProductionScheduleSlide },
-  // { id: "territory-3-creative", title: "T3 Creative", component: Territory3CreativeSlide }, // REMOVED — revisit later
-  { id: "rationale", title: "Our Recommendation", component: RationaleSlide },
-  { id: "client-rubric", title: "Against Your Criteria", component: ClientRubricSlide },
+  { id: "territory-3-compost", title: "Composting the Campaign", component: Territory3CompostSlide },
+  { id: "why-it-works", title: "Why This Works", component: WhyItWorksSlide },
+  // { id: "production-schedule", title: "Production Schedule", component: ProductionScheduleSlide }, // PARKED — proposal deck
+  // { id: "territory-3-creative", title: "T3 Creative", component: Territory3CreativeSlide }, // PARKED — revisit later
+  // { id: "rationale", title: "Our Recommendation", component: RationaleSlide }, // PARKED — proposal deck
+  // { id: "client-rubric", title: "Against Your Criteria", component: ClientRubricSlide }, // PARKED — proposal deck
   { id: "closing", title: "Let's Talk", component: ClosingSlide },
 ] as const satisfies readonly SlideConfig[];
 

@@ -2,7 +2,7 @@ import type { SlideProps } from "../Deck";
 
 const COLOR = "var(--color-goldenrod)";
 
-export function Territory3GuerillaIntroSlide({}: SlideProps) {
+export function Territory3CompostSlide({}: SlideProps) {
   return (
     <div className="slide slide-ink" style={{ padding: 0 }}>
       <div
@@ -21,12 +21,12 @@ export function Territory3GuerillaIntroSlide({}: SlideProps) {
           className="type-label"
           style={{ fontSize: "18px", color: COLOR, marginBottom: "24px" }}
         >
-          Territory 03 &middot; Campaign Extension
+          Territory 03 &middot; Composting the Campaign
         </span>
         <h2
           style={{
             fontFamily: "var(--font-sans)",
-            fontSize: "64px",
+            fontSize: "56px",
             fontWeight: 800,
             color: "white",
             lineHeight: 1.1,
@@ -35,12 +35,13 @@ export function Territory3GuerillaIntroSlide({}: SlideProps) {
             maxWidth: "1000px",
           }}
         >
-          What if someone&apos;s been behind all the signs <span style={{ color: COLOR }}>the entire time?</span>
+          When Sas is done,{" "}
+          <span style={{ color: COLOR }}>the story doesn&apos;t end.</span>
         </h2>
         <p
           style={{
             fontFamily: "var(--font-slab)",
-            fontSize: "28px",
+            fontSize: "26px",
             color: "rgba(255,255,255,0.5)",
             lineHeight: 1.5,
             textAlign: "center",
@@ -48,22 +49,26 @@ export function Territory3GuerillaIntroSlide({}: SlideProps) {
             marginTop: "32px",
           }}
         >
-          Someone so obsessed with Asheville they couldn&apos;t help themselves.{" "}
-          <span style={{ color: COLOR }}>And now they&apos;re ready to be seen.</span>
+          Maybe a human steps into the role of Head of Lore. Maybe another
+          mythical creature picks up where Sas left off. We don&apos;t know yet
+          &mdash; and that&apos;s the point.
         </p>
         <p
           style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: "36px",
-            fontWeight: 800,
-            color: COLOR,
-            lineHeight: 1.15,
-            letterSpacing: "-0.02em",
+            fontFamily: "var(--font-slab)",
+            fontSize: "26px",
+            color: "rgba(255,255,255,0.5)",
+            lineHeight: 1.5,
             textAlign: "center",
-            marginTop: "48px",
+            maxWidth: "800px",
+            marginTop: "24px",
           }}
         >
-          Guerrilla marketing is where the campaign gets its legs.
+          Every version of the campaign feeds the next one. The character
+          changes, but the mechanism stays:{" "}
+          <span style={{ color: COLOR }}>
+            the signs never stop.
+          </span>
         </p>
       </div>
     </div>

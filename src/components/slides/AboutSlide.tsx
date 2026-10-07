@@ -77,11 +77,11 @@ export function AboutSlide({}: SlideProps) {
             )}
 
             <p className="type-body" style={{ color: "rgba(255,255,255,0.45)", fontSize: "24px", maxWidth: "650px", lineHeight: 1.6 }}>
-              In practice, that means faster creative, deeper talent, and ideas
-              that surprise you &mdash; all without the overhead of a traditional
-              agency. We&apos;ve been building this way since 2016, long before
-              remote work was trendy. We don&apos;t scale by hiring. We scale by
-              trusting the right people.
+              The result is faster creative, better-fit talent, and ideas you
+              probably didn&apos;t see coming without paying for an agency
+              machine you don&apos;t need. We&apos;ve been building this way since
+              2016. No bloated teams. No hiring for the sake of growth. Just the
+              right people, brought together at the right moment.
             </p>
           </div>
 
@@ -96,8 +96,8 @@ export function AboutSlide({}: SlideProps) {
                 { name: "Jonathan Lapps", role: "Director of Client Success", photo: "/team/jonathan.webp", bio: "Keeps clients feeling supported and happy, while learning to integrate his people pleasing shadow." },
                 { name: "Alex Land", role: "Account Director", photo: "/team/alex.webp", bio: "Main point of contact. Keeps everything moving, everyone aligned, and thinks of everything you forgot to ask." },
                 { name: "Levi Bethune", role: "Creative Director", photo: "/team/levi.webp", bio: "Full stack human. What can\u2019t this guy do? Shoot a commercial. Build AI. Give a TED talk. Make a killer cocktail." },
-                { name: "Sas", role: "Director of Multidimensionality", photo: "/team/sasquatch.webp", bio: "Views business as its own multidimensional entity. Creates new realities through resonance, not force." },
-                { name: "AI", role: "Live Knowledge Base", photo: "/team/ai.webp", bio: "Knows a bit about you. A bit about us. Can answer questions anytime you have one and is always down to riff." },
+                { name: "Sas", role: "Chief Cryptid", photo: "/team/sasquatch.webp", bio: "He followed us here from the mountains." },
+                { name: "AI", role: "Live Knowledge Base", photo: "/team/ai.webp", bio: "Knows a bit about you. A bit about us. Always down to riff." },
               ].map((person) => (
                 <div
                   key={person.name}

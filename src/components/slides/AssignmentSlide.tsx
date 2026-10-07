@@ -95,7 +95,11 @@ export function AssignmentSlide({}: SlideProps) {
               // Constant. The 48px -> 32px shrink on open pulled every child
               // up under the pointer at the moment of the click.
               padding: "40px 36px",
-              borderTop: "3px solid var(--color-goldenrod)",
+              border: "1px solid rgba(254,181,44,0.2)",
+              borderTop: "none",
+              borderImage: "linear-gradient(180deg, var(--color-goldenrod), rgba(254,181,44,0.1) 70%, transparent) 1",
+              borderImageSlice: 1,
+              boxShadow: "0 -2px 20px rgba(254,181,44,0.15), inset 0 1px 0 rgba(254,181,44,0.3)",
               display: "flex",
               flexDirection: "column",
               position: "relative",
@@ -204,7 +208,11 @@ export function AssignmentSlide({}: SlideProps) {
               // Constant. The 48px -> 32px shrink on open pulled every child
               // up under the pointer at the moment of the click.
               padding: "40px 36px",
-              borderTop: "3px solid var(--color-french-broad)",
+              border: "1px solid rgba(155,209,214,0.2)",
+              borderTop: "none",
+              borderImage: "linear-gradient(180deg, var(--color-french-broad), rgba(155,209,214,0.1) 70%, transparent) 1",
+              borderImageSlice: 1,
+              boxShadow: "0 -2px 20px rgba(155,209,214,0.15), inset 0 1px 0 rgba(155,209,214,0.3)",
               display: "flex",
               flexDirection: "column",
               position: "relative",

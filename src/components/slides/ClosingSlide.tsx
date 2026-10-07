@@ -309,7 +309,7 @@ export function ClosingSlide({ onOpenAdvisor }: SlideProps) {
                 fontStyle: "italic",
               }}
             >
-              Sas accepting a Gold ADDY. As one does.
+              2026: Sas accepting a Gold Addy for Jumpsuit.
             </p>
           </div>
         </div>

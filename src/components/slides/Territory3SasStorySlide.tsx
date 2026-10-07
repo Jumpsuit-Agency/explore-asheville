@@ -23,24 +23,27 @@ const BEAT_KICKERS: Record<number, string> = {
   3: "And he\u2019s absolutely obsessed.",
   4: "Now he has resources and access.",
   5: "And the new Head of Lore gets to work.",
-  6: "The legend moves on. The love for Asheville doesn\u2019t.",
+  6: "Sasquatch doesn\u2019t advertise Asheville. He lives here.",
+  7: "The whole city is in on it.",
+  8: "The story keeps going. The legend keeps growing.",
 };
 
 const BEATS: Beat[] = [
   {
-    label: "Act 1",
-    season: "Winter \u2014 Dec\u2013Feb",
+    label: "Phase 1",
+    season: "Winter 2027 \u2014 Dec\u2013Feb",
     headline: "The sightings begin. Social takes off.",
     images: [
       { src: "/creative/t3-indy-bigfoot-wheatpaste.webp", alt: "Bigfoot wheat-pasting Asheville signs in Indianapolis" },
       { src: "/creative/t3-indy-bigfoot-cardboard.webp", alt: "Bigfoot holding cardboard Asheville sign" },
       { src: "/creative/t3-indy-bigfoot-stencil.webp", alt: "Bigfoot stenciling Asheville on the sidewalk" },
+      { src: "/creative/t3-nashvillenews-sighting.webp", alt: "@nashvillenews TikTok \u2014 Big Foot sighting in Tennessee, Asheville declines to comment" },
     ],
-    caption: "A mysterious figure shows up in drive markets \u2014 wheat-pasting posters, holding cardboard signs, stenciling sidewalks. Nobody knows what it is yet. They just know it\u2019s weird enough to post.",
+    caption: "A mysterious figure shows up in drive markets \u2014 wheat-pasting posters, holding cardboard signs, stenciling sidewalks. Launching in winter is the move: his fur was made for it, and a Sasquatch in a snowstorm could drive people to Asheville faster than any digital campaign. Nobody knows what it is yet. They just know it\u2019s weird enough to post.",
   },
   {
-    label: "Act 2",
-    season: "Winter \u2014 Jan\u2013Feb",
+    label: "Phase 2",
+    season: "Winter 2027 \u2014 Jan\u2013Feb",
     headline: "Local media gets involved.",
     images: [
       { src: "/creative/t3-bigfoot-news.webp", alt: "WTHR news broadcast \u2014 The Weirdest Tourism Campaign of the Year" },
@@ -49,8 +52,8 @@ const BEATS: Beat[] = [
     caption: "The posts catch newsrooms. A Sasquatch wheat-pasting tourism signs outside a stadium? That\u2019s a segment. The campaign starts generating its own earned media \u2014 no pitch required.",
   },
   {
-    label: "Act 3",
-    season: "Spring \u2014 Mar",
+    label: "Phase 3",
+    season: "Spring 2027 \u2014 Mar",
     headline: "Digital captures the moment. And the easter egg.",
     images: [
       { src: "/creative/t3-media-search-results.webp", alt: "Google search results for Sasquatch Asheville sign" },
@@ -61,8 +64,8 @@ const BEATS: Beat[] = [
     caption: "Search spikes in every sighting city. AI starts answering \u201Cwhat\u2019s the Asheville Sasquatch thing?\u201D with our story. Paid media follows anyone who searched, clicked, or engaged \u2014 Asheville keeps finding them. And the deeper they look, the more they notice: he\u2019s been in every billboard, coffee sleeve, and hotel elevator all along. The signs were never random.",
   },
   {
-    label: "Act 4",
-    season: "Spring \u2014 Apr\u2013May",
+    label: "Phase 4",
+    season: "Spring 2027 \u2014 Apr\u2013May",
     headline: "Sas returns to Asheville. Now he\u2019s the one spotting you.",
     images: [
       { src: "/creative/t3-sas-asheville-chronicle.webp", alt: "The Asheville Chronicle front page \u2014 Sasquatch Makes It Back to Asheville" },
@@ -72,8 +75,8 @@ const BEATS: Beat[] = [
     caption: "The nature. The food. The people. The sunsets. He came back to Asheville and he can\u2019t stop staring.",
   },
   {
-    label: "Act 5",
-    season: "Summer \u2014 Jun",
+    label: "Phase 5",
+    season: "Summer 2027 \u2014 Jun",
     headline: "Explore Asheville officially hires Sas.",
     images: [
       { src: "/creative/t3-sas-head-of-lore.webp", alt: "WLOS News 13 \u2014 Explore Asheville Hires Sasquatch as New Head of Lore" },
@@ -82,23 +85,44 @@ const BEATS: Beat[] = [
     caption: "Explore Asheville officially hires Sas as their new Head of Lore. A press conference. A badge. A title nobody saw coming. Every outlet in the region runs it.",
   },
   {
-    label: "Act 6",
-    season: "Summer \u2014 Jul\u2013Sep",
+    label: "Phase 6",
+    season: "Summer 2027 \u2014 Jul\u2013Sep",
     headline: "Sas on the job.",
     images: [
       { src: "/creative/t3-bigfoot-festival-marion.webp", alt: "WNC Bigfoot Festival Returns Near Asheville — Live from Marion, NC" },
       { src: "/creative/t3-sas-podcast.webp", alt: "Sasquatch hosting a talk show interview with a guest in a cardboard box costume" },
     ],
-    caption: "He\u2019s posting flyers, crashing festivals, reviewing restaurants, hosting a podcast from an undisclosed location in the Blue Ridge. Every piece of content he makes is another sign pointing someone new to Asheville.",
+    caption: "He\u2019s posting flyers, crashing festivals, reviewing restaurants, capturing local lore. Every piece of content he makes is another sign pointing someone new to Asheville.",
   },
   {
-    label: "Act 7",
-    season: "Fall \u2014 Oct\u2013Nov",
-    headline: "And when it\u2019s time to go?",
+    label: "Phase 7",
+    season: "Fall 2027 \u2014 Oct\u2013Nov",
+    headline: "People encounter traces of him everywhere.",
     images: [
-      { src: "/creative/t3-nashvillenews-sighting.webp", alt: "@nashvillenews TikTok \u2014 Big Foot sighting in Tennessee, Asheville declines to comment" },
+      { src: "/creative/t3-sas-dog-bowl.png", alt: "BattleCat Coffee Bar with oversized Sasquatch water bowl and Please Do Not Pet sign" },
+      { src: "/creative/t3-sas-barber.png", alt: "The Local Barber with Sasquatch fur spilling onto sidewalk \u2014 You Should\u2019ve Seen Him Before" },
     ],
-    caption: "That\u2019s okay. Explore Asheville hires a new Head of Lore. Human or otherwise. And if we do our job right, every time someone thinks of Sasquatch, they think of Asheville. And if Sasquatch does his job right, every time someone thinks of a rainbow, a mountain, a farm-to-table meal, a clay bowl, they think of Asheville.",
+    caption: "Each activation costs almost nothing to produce. It\u2019s social, it\u2019s lore, and it\u2019s an invitation to play. It makes great content that attracts people here, and gives visitors something fun to look for once they arrive.",
+  },
+  {
+    label: "Phase 7b",
+    season: "Fall 2027 \u2014 Oct\u2013Nov",
+    headline: "Sas doesn\u2019t advertise Asheville. He lives here.",
+    images: [
+      { src: "/creative/t3-sas-new-belgium.png", alt: "New Belgium billboard \u2014 We Don\u2019t Know Why Sasquatch Keeps Showing Up Here Either" },
+      { src: "/creative/t3-sas-french-broad.png", alt: "Giant Sasquatch footprints appear on French Broad River Greenway in the rain" },
+    ],
+    caption: "New Belgium plays along with a wink. And on the French Broad Greenway, a hydrophobic pavement treatment applied through a stencil means giant footprints appear only when it rains. Partner activations bring Sas into the fabric of Asheville.",
+  },
+  {
+    label: "Phase 8",
+    season: "2028 \u2014 and beyond",
+    headline: "Sas keeps going. Fly markets. International. Who knows?",
+    images: [
+      { src: "/creative/t3-sas-airport.png", alt: "Airport billboard \u2014 Sasquatch Doesn\u2019t Do Theme Parks. He Does Asheville." },
+      { src: "/creative/t3-sas-scotland.png", alt: "WLOS News 13 \u2014 Asheville Launches First International Flight, Sasquatch Departs for Scotland to Meet Nessie" },
+    ],
+    caption: "Sas isn\u2019t a one-year campaign \u2014 he\u2019s a character that can extend as far as the story goes. Fly markets. International cities. New seasons, new sightings. And if we do our job right, every time someone thinks of Sasquatch, they think of Asheville. And every time someone thinks of a rainbow, a mountain, a farm-to-table meal \u2014 they think of Asheville.",
   },
 ];
 
@@ -175,6 +199,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
         <div
           style={{
             flex: 1,
+            minHeight: 0,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -233,7 +258,7 @@ export function Territory3SasStorySlide({}: SlideProps) {
                   alt={img.alt}
                   style={{
                     maxHeight: beat.images.length === 1 ? "630px" : hero && isLast ? "650px" : hero ? "500px" : "650px",
-                    maxWidth: beat.images.length === 1 ? "98%" : hero && isLast ? "50%" : hero ? "22%" : `${95 / beat.images.length}%`,
+                    maxWidth: beat.images.length === 1 ? "98%" : hero && isLast ? "50%" : hero ? "22%" : `${95 / Math.min(beat.images.length, 3)}%`,
                     objectFit: "contain",
                     borderRadius: "8px",
                   }}
@@ -272,19 +297,19 @@ export function Territory3SasStorySlide({}: SlideProps) {
 
         {/* Caption + progress */}
         <div style={{ marginTop: "20px", maxWidth: "900px", margin: "20px auto 0" }}>
-          <p
-            key={beatIdx}
-            style={{
-              fontFamily: "var(--font-slab)",
-              fontSize: "22px",
-              color: "rgba(255,255,255,0.5)",
-              lineHeight: 1.6,
-              textAlign: "center",
-              animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
-            }}
-          >
-            {beat.caption}
-          </p>
+            <p
+              key={beatIdx}
+              style={{
+                fontFamily: "var(--font-slab)",
+                fontSize: "22px",
+                color: "rgba(255,255,255,0.5)",
+                lineHeight: 1.6,
+                textAlign: "center",
+                animation: "child-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
+              }}
+            >
+              {beat.caption}
+            </p>
 
           {/* Progress dots */}
           <div
