@@ -88,11 +88,10 @@ export function Territory3ActivationsSlide({}: SlideProps) {
               key={i}
               style={{
                 display: "flex",
-                gap: "16px",
+                flexDirection: "column",
                 borderRadius: "12px",
                 border: "1.5px solid rgba(254,181,44,0.15)",
                 background: "rgba(254,181,44,0.04)",
-                padding: "14px",
                 overflow: "hidden",
                 animation: `child-fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.1}s both`,
               }}
@@ -101,21 +100,21 @@ export function Territory3ActivationsSlide({}: SlideProps) {
                 src={a.src}
                 alt={a.alt}
                 style={{
-                  width: "45%",
+                  width: "100%",
+                  flex: 1,
+                  minHeight: 0,
                   objectFit: "cover",
-                  borderRadius: "8px",
-                  flexShrink: 0,
                 }}
               />
-              <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <div style={{ padding: "12px 14px" }}>
                 <p
                   style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "16px",
+                    fontSize: "14px",
                     fontWeight: 800,
                     color: COLOR,
                     lineHeight: 1.3,
-                    marginBottom: "6px",
+                    marginBottom: "4px",
                   }}
                 >
                   {a.title}
@@ -123,9 +122,9 @@ export function Territory3ActivationsSlide({}: SlideProps) {
                 <p
                   style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "14px",
-                    color: "rgba(255,255,255,0.5)",
-                    lineHeight: 1.5,
+                    fontSize: "12px",
+                    color: "rgba(255,255,255,0.45)",
+                    lineHeight: 1.4,
                   }}
                 >
                   {a.desc}

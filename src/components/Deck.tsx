@@ -56,8 +56,8 @@ const SLIDES = [
   { id: "territory-3-in-destination", title: "Signs — In-Destination", component: Territory3InDestinationSlide },
   { id: "territory-3-social", title: "Signs — Social", component: Territory3SocialSlide },
   { id: "territory-3-guerrilla-intro", title: "Guerrilla", component: Territory3GuerillaIntroSlide },
-  { id: "territory-3-sas-story", title: "The Sasquatch Story", component: Territory3SasStorySlide },
   { id: "territory-3-activations", title: "Sas Activations", component: Territory3ActivationsSlide },
+  { id: "territory-3-sas-story", title: "The Sasquatch Story", component: Territory3SasStorySlide },
   { id: "territory-3-compost", title: "Composting the Campaign", component: Territory3CompostSlide },
   { id: "why-it-works", title: "Why This Works", component: WhyItWorksSlide },
   // { id: "production-schedule", title: "Production Schedule", component: ProductionScheduleSlide }, // PARKED — proposal deck
