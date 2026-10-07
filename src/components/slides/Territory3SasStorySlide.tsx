@@ -88,7 +88,7 @@ const BEATS: Beat[] = [
       { src: "/creative/t3-bigfoot-festival-marion.webp", alt: "WNC Bigfoot Festival Returns Near Asheville — Live from Marion, NC" },
       { src: "/creative/t3-sas-podcast.webp", alt: "Sasquatch hosting a talk show interview with a guest in a cardboard box costume" },
     ],
-    caption: "He\u2019s posting flyers, crashing festivals, reviewing restaurants, hosting a podcast from an undisclosed location in the Blue Ridge. Every piece of content he makes is another sign pointing someone new to Asheville.",
+    caption: "He\u2019s posting flyers, crashing festivals, reviewing restaurants, capturing local lore. Every piece of content he makes is another sign pointing someone new to Asheville.",
   },
   {
     label: "Phase 7",
