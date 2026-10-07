@@ -35,7 +35,7 @@ export function Territory3DescSlide({}: SlideProps) {
             className="type-label"
             style={{ fontSize: "18px", color: COLOR }}
           >
-            Territory 03 &middot; Campaign Extensions
+            Territory 03 &middot; Campaign Principles
           </span>
           <span
             style={{
@@ -68,61 +68,71 @@ export function Territory3DescSlide({}: SlideProps) {
           How <span style={{ color: COLOR }}>How Many Signs Do You Need?</span> comes to life.
         </h2>
 
-        <p style={{
-          fontFamily: "var(--font-sans)",
-          fontSize: "21px",
-          fontWeight: 700,
-          color: "rgba(255,255,255,0.5)",
-          lineHeight: 1.5,
-          marginBottom: "28px",
-          maxWidth: "1000px",
-        }}>
-          <span style={{ color: COLOR }}>Every touchpoint is a sign.</span>
-          {" "}&middot;{" "}
-          <span style={{ color: COLOR }}>Love is the engine.</span>
-          {" "}&middot;{" "}
-          <span style={{ color: COLOR }}>Visitors become the campaign.</span>
-        </p>
+        <div style={{ display: "flex", gap: "48px", flex: 1, minHeight: 0 }}>
+          {/* Left: extensions */}
+          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "24px" }}>
+            {EXTENSIONS.map((ext, i) => (
+              <div key={i}>
+                <p style={{
+                  fontFamily: "var(--font-slab)",
+                  fontSize: "21px",
+                  fontWeight: 700,
+                  color: COLOR,
+                  lineHeight: 1.4,
+                  marginBottom: "8px",
+                }}>
+                  {ext.prompt}
+                </p>
+                <p style={{
+                  fontFamily: "var(--font-slab)",
+                  fontSize: "20px",
+                  color: "rgba(255,255,255,0.5)",
+                  lineHeight: 1.5,
+                }}>
+                  {ext.desc}
+                </p>
+              </div>
+            ))}
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "28px", maxWidth: "1000px", marginBottom: "48px" }}>
-          {EXTENSIONS.map((ext, i) => (
-            <div key={i}>
-              <p style={{
-                fontFamily: "var(--font-slab)",
-                fontSize: "21px",
-                fontWeight: 700,
+            {/* The tee-up */}
+            <p
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: "36px",
+                fontWeight: 800,
                 color: COLOR,
-                lineHeight: 1.4,
-                marginBottom: "8px",
-              }}>
-                {ext.prompt}
-              </p>
-              <p style={{
-                fontFamily: "var(--font-slab)",
-                fontSize: "21px",
-                color: "rgba(255,255,255,0.5)",
-                lineHeight: 1.5,
-              }}>
-                {ext.desc}
-              </p>
-            </div>
-          ))}
-        </div>
+                lineHeight: 1.15,
+                letterSpacing: "-0.02em",
+                marginTop: "auto",
+              }}
+            >
+              The campaign that makes visiting Asheville feel inevitable.
+            </p>
+          </div>
 
-        {/* The tee-up */}
-        <p
-          style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: "40px",
-            fontWeight: 800,
-            color: COLOR,
-            lineHeight: 1.15,
-            letterSpacing: "-0.02em",
-            maxWidth: "800px",
-          }}
-        >
-          The campaign that makes visiting Asheville feel inevitable.
-        </p>
+          {/* Right: principles as pill blocks */}
+          <div style={{ width: "340px", flexShrink: 0, display: "flex", flexDirection: "column", gap: "16px", justifyContent: "center" }}>
+            {[
+              { title: "Every touchpoint is a sign.", desc: "The media plan becomes part of the idea. Every ad, billboard, search result and retargeting hit feels less like advertising \u2014 and more like Asheville finding you." },
+              { title: "Love is the engine.", desc: "People who love Asheville can\u2019t help talking about it. Their recommendations, stories, photos and invitations become signs of their own." },
+              { title: "Visitors become the campaign.", desc: "Fall for Asheville and you start sending signs back into the world. The cosmic joke is that eventually, there is no campaign. Just people pointing people toward Asheville." },
+            ].map((p, i) => (
+              <div key={i} style={{
+                padding: "20px 24px",
+                borderRadius: "10px",
+                border: `1.5px solid rgba(254,181,44,0.3)`,
+                background: "rgba(254,181,44,0.06)",
+              }}>
+                <p style={{ fontFamily: "var(--font-sans)", fontSize: "17px", fontWeight: 800, color: COLOR, lineHeight: 1.3, marginBottom: "6px" }}>
+                  {p.title}
+                </p>
+                <p style={{ fontFamily: "var(--font-sans)", fontSize: "14px", color: "rgba(255,255,255,0.45)", lineHeight: 1.5 }}>
+                  {p.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
