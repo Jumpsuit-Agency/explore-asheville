@@ -39,11 +39,19 @@ function sourceFiles(dir, out = []) {
 }
 
 const files = SRC_DIRS.flatMap((d) => sourceFiles(d));
+/** Needs converting this run. */
 const refs = new Set();
+/** Every image the deck references, converted or already WebP. The precache
+ *  manifest is built from this, not from what this run happened to touch —
+ *  otherwise a run that converts three new PNGs publishes a manifest of three
+ *  entries and silently drops everything converted before it. */
+const allRefs = new Set();
 for (const f of files) {
   const s = readFileSync(f, "utf8");
   for (const m of s.matchAll(/["'`](\/[A-Za-z0-9._\/-]+\.(?:png|jpe?g))["'`]/g)) refs.add(m[1]);
   for (const m of s.matchAll(/url\((\/[A-Za-z0-9._\/-]+\.(?:png|jpe?g))\)/g)) refs.add(m[1]);
+  for (const m of s.matchAll(/["'`](\/[A-Za-z0-9._\/-]+\.(?:png|jpe?g|webp))["'`]/g)) allRefs.add(m[1]);
+  for (const m of s.matchAll(/url\((\/[A-Za-z0-9._\/-]+\.(?:png|jpe?g|webp))\)/g)) allRefs.add(m[1]);
 }
 
 let before = 0, after = 0, converted = 0, missing = [];
@@ -79,7 +87,10 @@ console.log(`converted ${converted} assets across ${edited} source files`);
 console.log(`  ${mb(before)} MB -> ${mb(after)} MB  (${(100 - after * 100 / before).toFixed(1)}% smaller)`);
 if (missing.length) console.log(`  referenced but missing on disk: ${missing.join(", ")}`);
 
-// Emit the precache manifest the service worker installs.
-const manifest = [...rename.values()].sort();
+// Emit the precache manifest the service worker installs: every referenced
+// asset, with anything converted above pointed at its new extension.
+const manifest = [...new Set([...allRefs].map((r) => rename.get(r) ?? r))]
+  .filter((r) => existsSync(join(PUBLIC, r)))
+  .sort();
 writeFileSync(join(PUBLIC, "asset-manifest.json"), JSON.stringify(manifest, null, 2));
 console.log(`  wrote public/asset-manifest.json (${manifest.length} entries)`);

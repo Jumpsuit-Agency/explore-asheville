@@ -1,4 +1,5 @@
 import type { SlideProps } from "../Deck";
+import { SlideHeader } from "../SlideHeader";
 
 const COLOR = "var(--color-goldenrod)";
 
@@ -27,46 +28,20 @@ export function Territory3DescSlide({}: SlideProps) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "56px 120px",
+          padding: "48px 80px 40px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
-          <span
-            className="type-label"
-            style={{ fontSize: "18px", color: COLOR }}
-          >
-            Territory 03 &middot; Campaign Principles
-          </span>
-          <span
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "16px",
-              fontWeight: 700,
-              color: COLOR,
-              textTransform: "uppercase",
-              letterSpacing: "0.15em",
-              background: "rgba(254,181,44,0.15)",
-              padding: "3px 10px",
-              borderRadius: "4px",
-            }}
-          >
-            Our Pick
-          </span>
-        </div>
-
-        <h2
-          style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: "48px",
-            fontWeight: 800,
-            color: "white",
-            lineHeight: 1.05,
-            letterSpacing: "-0.03em",
-            marginBottom: "24px",
-          }}
-        >
-          How <span style={{ color: COLOR }}>How Many Signs Do You Need?</span> comes to life.
-        </h2>
+        <SlideHeader
+          color={COLOR}
+          eyebrow="Territory 03"
+          eyebrowSuffix="Campaign Principles"
+          chips={[{ label: "Our Pick" }]}
+          title={
+            <>
+              How <span style={{ color: COLOR }}>“How Many Signs Do You Need?”</span> comes to life.
+            </>
+          }
+        />
 
         <div style={{ display: "flex", gap: "48px", flex: 1, minHeight: 0, alignItems: "center" }}>
           {/* Left: principles stacked */}

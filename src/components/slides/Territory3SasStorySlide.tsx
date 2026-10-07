@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { SlideProps } from "../Deck";
 import { AiImage } from "../AiImage";
 import { useSlideSequence } from "../SlideSequence";
+import { SlideHeader } from "../SlideHeader";
 
 const COLOR = "var(--color-goldenrod)";
 
@@ -99,8 +100,8 @@ const BEATS: Beat[] = [
     season: "Fall 2027 \u2014 Oct\u2013Nov",
     headline: "People encounter traces of him everywhere.",
     images: [
-      { src: "/creative/t3-sas-dog-bowl.png", alt: "BattleCat Coffee Bar with oversized Sasquatch water bowl and Please Do Not Pet sign" },
-      { src: "/creative/t3-sas-barber.png", alt: "The Local Barber with Sasquatch fur spilling onto sidewalk \u2014 You Should\u2019ve Seen Him Before" },
+      { src: "/creative/t3-sas-dog-bowl.webp", alt: "BattleCat Coffee Bar with oversized Sasquatch water bowl and Please Do Not Pet sign" },
+      { src: "/creative/t3-sas-barber.webp", alt: "The Local Barber with Sasquatch fur spilling onto sidewalk \u2014 You Should\u2019ve Seen Him Before" },
     ],
     caption: "Each activation costs almost nothing to produce. It\u2019s social, it\u2019s lore, and it\u2019s an invitation to play. It makes great content that attracts people here, and gives visitors something fun to look for once they arrive.",
   },
@@ -109,8 +110,8 @@ const BEATS: Beat[] = [
     season: "Fall 2027 \u2014 Oct\u2013Nov",
     headline: "Sas doesn\u2019t advertise Asheville. He lives here.",
     images: [
-      { src: "/creative/t3-sas-new-belgium.png", alt: "New Belgium billboard \u2014 We Don\u2019t Know Why Sasquatch Keeps Showing Up Here Either" },
-      { src: "/creative/t3-sas-french-broad.png", alt: "Giant Sasquatch footprints appear on French Broad River Greenway in the rain" },
+      { src: "/creative/t3-sas-new-belgium.webp", alt: "New Belgium billboard \u2014 We Don\u2019t Know Why Sasquatch Keeps Showing Up Here Either" },
+      { src: "/creative/t3-sas-french-broad.webp", alt: "Giant Sasquatch footprints appear on French Broad River Greenway in the rain" },
     ],
     caption: "New Belgium plays along with a wink. And on the French Broad Greenway, a hydrophobic pavement treatment applied through a stencil means giant footprints appear only when it rains. Partner activations bring Sas into the fabric of Asheville.",
   },
@@ -119,8 +120,8 @@ const BEATS: Beat[] = [
     season: "2028 \u2014 and beyond",
     headline: "Sas keeps going. Fly markets. International. Who knows?",
     images: [
-      { src: "/creative/t3-sas-airport.png", alt: "Airport billboard \u2014 Sasquatch Doesn\u2019t Do Theme Parks. He Does Asheville." },
-      { src: "/creative/t3-sas-scotland.png", alt: "WLOS News 13 \u2014 Asheville Launches First International Flight, Sasquatch Departs for Scotland to Meet Nessie" },
+      { src: "/creative/t3-sas-airport.webp", alt: "Airport billboard \u2014 Sasquatch Doesn\u2019t Do Theme Parks. He Does Asheville." },
+      { src: "/creative/t3-sas-scotland.webp", alt: "WLOS News 13 \u2014 Asheville Launches First International Flight, Sasquatch Departs for Scotland to Meet Nessie" },
     ],
     caption: "Sas isn\u2019t a one-year campaign \u2014 he\u2019s a character that can extend as far as the story goes. Fly markets. International cities. New seasons, new sightings. And if we do our job right, every time someone thinks of Sasquatch, they think of Asheville. And every time someone thinks of a rainbow, a mountain, a farm-to-table meal \u2014 they think of Asheville.",
   },
@@ -139,61 +140,15 @@ export function Territory3SasStorySlide({}: SlideProps) {
     <div className="slide slide-ink" style={{ padding: 0 }}>
       <div
         className="relative z-10 flex flex-col flex-1"
-        style={{ padding: "40px 60px" }}
+        style={{ padding: "48px 80px 12px" }}
       >
-        {/* Header */}
-        <div style={{ marginBottom: "12px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "12px" }}>
-            <span
-              className="type-label"
-              style={{ fontSize: "18px", color: COLOR }}
-            >
-              Territory 03 &middot; Guerrilla
-            </span>
-            <span
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "16px",
-                fontWeight: 700,
-                color: COLOR,
-                textTransform: "uppercase",
-                letterSpacing: "0.15em",
-                background: "rgba(254,181,44,0.15)",
-                padding: "3px 10px",
-                borderRadius: "4px",
-              }}
-            >
-              {beat.label}
-            </span>
-            <span
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "10px",
-                fontWeight: 700,
-                color: "rgba(255,255,255,0.4)",
-                textTransform: "uppercase",
-                letterSpacing: "0.15em",
-                background: "rgba(255,255,255,0.08)",
-                padding: "3px 10px",
-                borderRadius: "4px",
-              }}
-            >
-              {beat.season}
-            </span>
-          </div>
-          <h2
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "56px",
-              fontWeight: 800,
-              color: "white",
-              lineHeight: 1.05,
-              letterSpacing: "-0.03em",
-            }}
-          >
-            {beat.headline}
-          </h2>
-        </div>
+        <SlideHeader
+          color={COLOR}
+          eyebrow="Territory 03"
+          eyebrowSuffix="Guerrilla"
+          chips={[{ label: beat.label, tone: "solid" }, { label: beat.season, tone: "quiet" }]}
+          title={beat.headline}
+        />
 
         {/* Image area */}
         <div

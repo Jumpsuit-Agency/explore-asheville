@@ -5,6 +5,7 @@ import type { SlideProps } from "../Deck";
 import { AiImage } from "../AiImage";
 import { useDeckAdvance, useDeckRetreat } from "../SlideSequence";
 import { useCreativeStops } from "./useCreativeStops";
+import { SlideHeader } from "../SlideHeader";
 
 type CarouselItem =
   | { type: "image"; src: string; alt: string; caption?: string; imgStyle?: React.CSSProperties }
@@ -205,7 +206,6 @@ const SCRIPTS: Script[] = [
       { dir: "SUPER", vis: "SOUNDS MADE UP. IT\u2019S ASHEVILLE.", vo: "" },
     ],
   },
-  { title: "Radio", lines: null },
 ];
 
 const PRINCIPLES = [
@@ -245,23 +245,23 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
 
   return (
     <div className="slide slide-deep" style={{ padding: 0 }}>
-      <div className="relative z-10 flex flex-col flex-1 min-h-0" style={{ padding: "60px 80px" }}>
-        {/* Header */}
-        <div style={{ marginBottom: "10px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "8px" }}>
-            <span className="type-label" style={{ fontSize: "18px", color: COLOR }}>
-              Territory 02
-            </span>
+      <div className="relative z-10 flex flex-col flex-1 min-h-0 slide-frame" style={{}}>
+        <SlideHeader
+          color={COLOR}
+          eyebrow="Territory 02"
+          title={
+            <>
+              ASHEVILLE. <span style={{ color: COLOR }}>SOUNDS MADE UP.</span>
+            </>
+          }
+          nav={
             <div style={{ display: "flex", gap: "6px" }}>
-              <button className="ui-button" onClick={() => onNavigate?.("territory-1")} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 700, padding: "3px 10px", borderRadius: "4px", background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.4)", border: "none", cursor: "pointer" }}>T1</button>
-              <span style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 700, padding: "3px 10px", borderRadius: "4px", background: "var(--color-french-broad)", color: "white" }}>T2</span>
-              <button className="ui-button" onClick={() => onNavigate?.("territory-3-desc")} style={{ fontFamily: "var(--font-sans)", fontSize: "12px", fontWeight: 700, padding: "3px 10px", borderRadius: "4px", background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.4)", border: "none", cursor: "pointer" }}>T3</button>
+              <button className="ui-button" onClick={() => onNavigate?.("territory-1")} style={{ fontFamily: "var(--font-sans)", fontSize: "13px", fontWeight: 700, padding: "4px 11px", borderRadius: "5px", background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.4)", border: "none", cursor: "pointer" }}>T1</button>
+              <span style={{ fontFamily: "var(--font-sans)", fontSize: "13px", fontWeight: 700, padding: "4px 11px", borderRadius: "5px", background: COLOR, color: "#1E1F38" }}>T2</span>
+              <button className="ui-button" onClick={() => onNavigate?.("territory-3-desc")} style={{ fontFamily: "var(--font-sans)", fontSize: "13px", fontWeight: 700, padding: "4px 11px", borderRadius: "5px", background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.4)", border: "none", cursor: "pointer" }}>T3</button>
             </div>
-          </div>
-          <h2 style={{ fontFamily: "var(--font-sans)", fontSize: "44px", fontWeight: 800, color: "white", lineHeight: 1.02, letterSpacing: "-0.03em" }}>
-            ASHEVILLE. <span style={{ color: COLOR }}>SOUNDS MADE UP.</span>
-          </h2>
-        </div>
+          }
+        />
 
         {/* Tab bar */}
         <div style={{ display: "flex", gap: "6px", marginBottom: "20px" }}>

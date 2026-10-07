@@ -1,12 +1,13 @@
 import type { SlideProps } from "../Deck";
 import { AiImage } from "../AiImage";
+import { SlideHeader } from "../SlideHeader";
 
 const COLOR = "var(--color-goldenrod)";
 
 const GRID: { src: string; alt: string }[] = [
   // Col 1
   { src: "/creative/t3-1111-mountain-night.webp", alt: "11:11 — Good. You noticed." },
-  { src: "/creative/t3-nonstop-asheville-poster.png", alt: "Nonstop to Asheville — BNA Nashville to AVL Asheville, 1 HR 12 MIN" },
+  { src: "/creative/t3-nonstop-asheville-poster.webp", alt: "Nonstop to Asheville — BNA Nashville to AVL Asheville, 1 HR 12 MIN" },
   // Col 2
   { src: "/creative/t3-222-round-trip.webp", alt: "$222 Round Trip — At some point it stops being a coincidence" },
   { src: "/creative/t3-maps-light-traffic.webp", alt: "Maps — Asheville 4hr 52min, Light Traffic. Looks like another sign." },
@@ -19,46 +20,21 @@ export function Territory3DigitalMontageSlide({}: SlideProps) {
   return (
     <div className="slide slide-ink" style={{ padding: 0 }}>
       <div
-        className="relative z-10"
-        style={{ padding: "48px 80px 40px", width: "100%", height: "100%", display: "flex", flexDirection: "column", overflow: "hidden" }}
+        className="relative z-10 slide-frame"
+        style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", overflow: "hidden" }}
       >
-        {/* Header */}
-        <div style={{ marginBottom: "24px", flexShrink: 0 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "16px" }}>
-            <span className="type-label" style={{ fontSize: "18px", color: COLOR }}>
-              Territory 03
-            </span>
-            <span
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "16px",
-                fontWeight: 700,
-                color: COLOR,
-                textTransform: "uppercase",
-                letterSpacing: "0.15em",
-                background: "rgba(254,181,44,0.15)",
-                padding: "3px 10px",
-                borderRadius: "4px",
-              }}
-            >
-              Our Pick
-            </span>
-          </div>
-          <h2
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "48px",
-              fontWeight: 800,
-              color: "white",
-              lineHeight: 1.05,
-              letterSpacing: "-0.03em",
-            }}
-          >
-            The signs are everywhere.{" "}
-            <span style={{ color: COLOR }}>And everything&apos;s a sign.</span>{" "}
-            <span style={{ fontSize: "26px", fontWeight: 600, color: "rgba(255,255,255,0.35)", verticalAlign: "middle" }}>Digital</span>
-          </h2>
-        </div>
+        <SlideHeader
+          color={COLOR}
+          eyebrow="Territory 03"
+          chips={[{ label: "Our Pick" }]}
+          title={
+            <>
+              The signs are everywhere.{" "}
+              <span style={{ color: COLOR }}>And everything&apos;s a sign.</span>
+            </>
+          }
+          suffix="Digital"
+        />
 
         {/* Montage: 3 cols of 2 + 1 tall column */}
         <div

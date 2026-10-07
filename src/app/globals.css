@@ -969,3 +969,67 @@
   pointer-events: none;
   user-select: none;
 }
+
+/* ============================================
+   SLIDE HEADER
+
+   One scale for every content slide — see SlideHeader. Sizes live here
+   rather than inline so a slide cannot quietly pick its own.
+   ============================================ */
+
+.slide-header {
+  margin-bottom: 24px;
+  flex-shrink: 0;
+}
+
+.slide-header-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  height: 30px;
+}
+
+.slide-header-kicker {
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.slide-header-chip {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 11px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.slide-header-chip-quiet {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.slide-header-title {
+  font-family: var(--font-sans);
+  font-size: 48px;
+  font-weight: 800;
+  color: white;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.slide-header-suffix {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0;
+  vertical-align: middle;
+  margin-left: 14px;
+}
+
+/* The content slides share a frame so the left edge never moves. */
+.slide-frame {
+  padding: 48px 80px 40px;
+}

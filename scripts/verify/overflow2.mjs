@@ -7,6 +7,15 @@ const send=(m,q={})=>new Promise(r=>{const i=++id;p.set(i,r);ws.send(JSON.string
 const ev=async x=>{const r=await send("Runtime.evaluate",{expression:`(async()=>{${x}})()`,awaitPromise:true,returnByValue:true});
  if(r.result?.exceptionDetails)return {err:1};return r.result?.result?.value;};
 await send("Page.enable");await send("Runtime.enable");
+// The deck installs a service worker that precaches itself. Without clearing
+// it, this harness measures whatever was cached on a previous run instead of
+// the code being tested — which has produced confidently wrong results more
+// than once.
+await send("Network.enable");await send("Network.setCacheDisabled",{cacheDisabled:true});
+await send("Page.navigate",{url:BASE+"/"});await sleep(1500);
+await ev(`if(navigator.serviceWorker){for(const r of await navigator.serviceWorker.getRegistrations())await r.unregister();}
+          if(window.caches){for(const k of await caches.keys())await caches.delete(k);} return 1;`);
+
 const IDS=["title","about","assignment","territories","territory-1-desc","territory-1","territory-2-desc","territory-2-creative","territory-3-desc","territory-3-montage","territory-3-digital","territory-3-guerrilla-intro","territory-3-sas-story","production-schedule","territory-3-creative","rationale","client-rubric","closing"];
 // Only count elements that are NOT inside a clipping/scrolling ancestor —
 // content inside one of those is scrolled, not spilling out of the slide.
@@ -33,6 +42,19 @@ const out={};
 for(const h of IDS){
   await send("Page.navigate",{url:"about:blank"});await sleep(280);
   await send("Page.navigate",{url:BASE+"/#"+h});await sleep(2500);
+  // Slides fade in on a translateY(16px) and comps load async. Measuring
+  // before both settle reports the animation's offset as a spill — that is
+  // what the long-standing "sas-story overflows by 10px" actually was.
+  await ev(`const cap=(pr,ms)=>Promise.race([pr,new Promise(r=>setTimeout(r,ms))]);
+    await cap(Promise.all([...document.images].filter(i=>!i.complete)
+      .map(i=>new Promise(r=>{i.onload=i.onerror=r;}))), 5000);
+    const fin=document.getAnimations().filter(a=>{
+      const t=a.effect&&a.effect.getComputedTiming();
+      return t && t.iterations!==Infinity && Number.isFinite(t.endTime);
+    }).map(a=>a.finished.catch(()=>{}));
+    await cap(Promise.all(fin), 2000);
+    await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+    return 1;`);
   out[h]=await ev(OVER);
 }
 await import("node:fs").then(fs=>fs.writeFileSync("overflow2.json",JSON.stringify(out,null,2)));

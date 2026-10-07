@@ -5,6 +5,15 @@ let id=0;const p=new Map();ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&
 const send=(m,q={})=>new Promise(r=>{const i=++id;p.set(i,r);ws.send(JSON.stringify({id:i,method:m,params:q}));});
 const ev=async x=>(await send("Runtime.evaluate",{expression:`(async()=>{${x}})()`,awaitPromise:true,returnByValue:true})).result?.result?.value;
 await send("Page.enable");await send("Runtime.enable");
+// The deck installs a service worker that precaches itself. Without clearing
+// it, this harness measures whatever was cached on a previous run instead of
+// the code being tested — which has produced confidently wrong results more
+// than once.
+await send("Network.enable");await send("Network.setCacheDisabled",{cacheDisabled:true});
+await send("Page.navigate",{url:"http://localhost:3000"+"/"});await sleep(1500);
+await ev(`if(navigator.serviceWorker){for(const r of await navigator.serviceWorker.getRegistrations())await r.unregister();}
+          if(window.caches){for(const k of await caches.keys())await caches.delete(k);} return 1;`);
+
 const key=k=>ev(`window.dispatchEvent(new KeyboardEvent('keydown',{key:'${k}',bubbles:true}));`);
 const SNAP=`const c=document.querySelector('.nav-counter');
  const tab=[...document.querySelectorAll('.pill:not(.pill-sm)')].find(b=>getComputedStyle(b).backgroundColor!=='rgba(0, 0, 0, 0)');

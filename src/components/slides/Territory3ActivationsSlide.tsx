@@ -4,25 +4,25 @@ const COLOR = "var(--color-goldenrod)";
 
 const ACTIVATIONS = [
   {
-    src: "/creative/t3-sas-new-belgium.png",
+    src: "/creative/t3-sas-new-belgium.webp",
     alt: "New Belgium billboard — We Don't Know Why Sasquatch Keeps Showing Up Here Either",
     title: "New Belgium — Partner Activation",
     desc: "The brewery plays along with a wink. Sasquatch keeps showing up at their taproom. Apparently he drinks local.",
   },
   {
-    src: "/creative/t3-sas-dog-bowl.png",
+    src: "/creative/t3-sas-dog-bowl.webp",
     alt: "BattleCat Coffee Bar with oversized Sasquatch water bowl and Please Do Not Pet sign",
     title: "The Dog Bowl — Street Installation",
     desc: "An oversized trough labeled SASQUATCH sits outside a coffee shop next to the regular dog bowls. Please do not pet.",
   },
   {
-    src: "/creative/t3-sas-barber.png",
+    src: "/creative/t3-sas-barber.webp",
     alt: "The Local Barber with Sasquatch fur spilling onto sidewalk — You Should've Seen Him Before",
     title: "The Haircut — Storefront Takeover",
     desc: "A mountain of coarse brown hair spills onto the sidewalk. The window reads: SASQUATCH GOT A HAIRCUT. YOU SHOULD'VE SEEN HIM BEFORE.",
   },
   {
-    src: "/creative/t3-sas-french-broad.png",
+    src: "/creative/t3-sas-french-broad.webp",
     alt: "Giant Sasquatch footprints appear on French Broad River Greenway in the rain",
     title: "French Broad Footprints — Landscape",
     desc: "Hydrophobic footprints on the greenway — invisible when dry, revealed by rain. The weather itself becomes a sign.",

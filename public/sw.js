@@ -9,7 +9,7 @@
  * "install a known list, then serve cache-first", and a worker that is easy to
  * read is one that can be debugged an hour before a pitch.
  */
-const VERSION = "ea-deck-v3";
+const VERSION = "ea-deck-v4";
 const SHELL = `${VERSION}-shell`;
 const ASSETS = `${VERSION}-assets`;
 
