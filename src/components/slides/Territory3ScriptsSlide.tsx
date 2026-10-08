@@ -110,12 +110,9 @@ export function Territory3ScriptsSlide({}: SlideProps) {
 
         <div style={{ flex: 1, minHeight: 0, display: "grid", gridTemplateColumns: "1fr 1.25fr", gap: "48px" }}>
           <div style={{ display: "flex", flexDirection: "column", minHeight: 0 }}>
-            <div className="asset-placeholder" style={{ flex: 1, minHeight: "240px", marginBottom: "16px", fontSize: "22px", textAlign: "center", padding: "0 24px" }}>
-              {script.title} &mdash; Production Pending
-            </div>
-            <div className="glass-light" style={{ padding: "16px 20px", flexShrink: 0 }}>
-              <span className="type-label" style={{ fontSize: "16px", color: COLOR }}>Production</span>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: "19px", color: "rgba(255,255,255,0.45)", marginTop: "4px", lineHeight: 1.5 }}>
+            <div className="glass-light" style={{ flex: 1, padding: "32px 34px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+              <span className="type-label" style={{ fontSize: "18px", color: COLOR }}>Production</span>
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: "25px", color: "rgba(255,255,255,0.55)", marginTop: "14px", lineHeight: 1.45 }}>
                 {script.production}
               </p>
             </div>

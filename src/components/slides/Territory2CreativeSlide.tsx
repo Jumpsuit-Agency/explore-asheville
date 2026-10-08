@@ -293,12 +293,9 @@ export function Territory2CreativeSlide({ onNavigate }: SlideProps) {
             {script.lines ? (
               <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1.1fr", gap: "48px" }}>
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <div className="asset-placeholder" style={{ flex: 1, minHeight: "360px", marginBottom: "16px", fontSize: "22px" }}>
-                    {script.title} &mdash; Production Pending
-                  </div>
-                  <div className="glass-light" style={{ padding: "16px 20px" }}>
-                    <span className="type-label" style={{ fontSize: "16px", color: COLOR }}>Production</span>
-                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "20px", color: "rgba(255,255,255,0.4)", marginTop: "4px", lineHeight: 1.5 }}>
+                  <div className="glass-light" style={{ flex: 1, padding: "32px 34px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                    <span className="type-label" style={{ fontSize: "18px", color: COLOR }}>Production</span>
+                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "27px", color: "rgba(255,255,255,0.55)", marginTop: "14px", lineHeight: 1.45 }}>
                       Sound-first filmmaking. Layered audio drives every frame &mdash; the place is heard before it&apos;s seen.
                     </p>
                   </div>
