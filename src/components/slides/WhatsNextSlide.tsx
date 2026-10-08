@@ -24,7 +24,7 @@ const STEPS = [
 
 export function WhatsNextSlide({}: SlideProps) {
   return (
-    <div className="slide slide-deep" style={{ padding: 0 }}>
+    <div className="slide slide-ink" style={{ padding: 0 }}>
       <div
         className="relative z-10"
         style={{
@@ -104,9 +104,9 @@ export function WhatsNextSlide({}: SlideProps) {
           }}
         >
           This creates a virtuous cycle of content and conversation that lays the groundwork for
-          Spring. Fully-produced Spring creative then feels like it{" "}
-          <span style={{ color: COLOR, fontWeight: 600 }}>belongs in the campaign</span>, and less
-          like it&rsquo;s the launch.
+          Spring. Fully-produced Spring creative then feels like it&rsquo;s{" "}
+          <span style={{ color: COLOR, fontWeight: 600 }}>joining the campaign</span>, and less like
+          it&rsquo;s a commercial launch.
         </p>
       </div>
     </div>
