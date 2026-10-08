@@ -250,6 +250,17 @@ export default function Deck() {
         return;
       }
 
+      // Jump home to Three Territories, the deck's hub. Bound to Up as well
+      // as I so a presenter can reach it without looking down; Left and
+      // PageUp still step backwards, and PageUp is what a clicker sends.
+      if (e.key === "ArrowUp" || e.key === "i" || e.key === "I") {
+        e.preventDefault();
+        setDepthOpen(null);
+        setOverview(false);
+        goToId("territories");
+        return;
+      }
+
       if (overview) return; // no navigation in overview mode
 
       // Surface navigation. PageDown/PageUp are what presentation clickers send.
@@ -262,7 +273,7 @@ export default function Deck() {
         e.preventDefault();
         navigate("next");
       }
-      if (e.key === "ArrowLeft" || e.key === "ArrowUp" || e.key === "PageUp") {
+      if (e.key === "ArrowLeft" || e.key === "PageUp") {
         e.preventDefault();
         navigate("prev");
       }
@@ -278,7 +289,7 @@ export default function Deck() {
 
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [navigate, goTo, depthOpen, overview]);
+  }, [navigate, goTo, goToId, depthOpen, overview]);
 
   // Trackpad / wheel — one gesture moves one slide.
   const handleWheel = useCallback(
@@ -442,6 +453,9 @@ export default function Deck() {
             <span>
               <kbd>&#8592;</kbd>
               <kbd>&#8594;</kbd> or click to move
+            </span>
+            <span>
+              <kbd>&#8593;</kbd> or <kbd>I</kbd> territories
             </span>
             <span>
               <kbd>O</kbd> overview
