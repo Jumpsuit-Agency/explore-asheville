@@ -30,8 +30,20 @@ output file. Kill Chrome afterwards: `pkill -f "remote-debugging-port=9333"`.
 | `stops.mjs` | walks each creative slide with one key and reports stops reached, tabs visited, and any landing on a "Coming Soon" placeholder |
 | `congruent.mjs` | the two rubric slides share table top, row height, column widths and type sizes |
 | `offline2.mjs` | first-paint bytes, precache completion, then cuts the network and checks every image-heavy slide for broken images |
+| `badges.mjs` | walks every stop of every slide and hit-tests each `/creative/` image for a painted AI badge. Hit-tests rather than checking geometry: a badge can be positioned correctly inside an image and still be clipped by the carousel stage's `overflow:hidden`, which is exactly how five comps shipped unbadged |
 
 ## Reading the results
+
+**Every script here clears the service worker before measuring.** The deck
+precaches itself, and without that step these scripts test whatever was
+cached rather than the code under test. That produced confidently wrong
+results more than once — a stage test reporting a CSS class that had already
+been deleted, and a "pre-existing" overflow that was neither pre-existing nor
+where it appeared to be. If you write a new harness, copy that preamble.
+
+`overflow2` and the export capture also wait for images to load and for
+finite animations to finish. Slides fade in on a `translateY(16px)`, so an
+unsettled read reports the animation's offset as a layout bug.
 
 Measure before concluding. Several times a red result here was the harness
 being wrong — a selector that matched nothing, coordinates landing off-canvas,

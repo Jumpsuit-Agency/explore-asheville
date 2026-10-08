@@ -7,6 +7,13 @@ const send=(m,q={})=>new Promise(r=>{const i=++id;p.set(i,r);ws.send(JSON.string
 const ev=async x=>{const r=await send("Runtime.evaluate",{expression:`(async()=>{${x}})()`,awaitPromise:true,returnByValue:true});
  if(r.result?.exceptionDetails)return null;return r.result?.result?.value;};
 await send("Page.enable");await send("Runtime.enable");
+// The deck precaches itself with a service worker; without clearing it this
+// harness measures whatever was cached instead of the code under test.
+await send("Network.enable");await send("Network.setCacheDisabled",{cacheDisabled:true});
+await send("Page.navigate",{url:BASE+"/"});await sleep(1500);
+await ev(`if(navigator.serviceWorker){for(const r of await navigator.serviceWorker.getRegistrations())await r.unregister();}
+          if(window.caches){for(const k of await caches.keys())await caches.delete(k);} return 1;`);
+
 const CTR=`const c=document.querySelector('.nav-counter');return c?c.textContent.trim():null;`;
 const ctr=()=>ev(CTR);
 const key=k=>ev(`window.dispatchEvent(new KeyboardEvent('keydown',{key:'${k}',bubbles:true}));`);

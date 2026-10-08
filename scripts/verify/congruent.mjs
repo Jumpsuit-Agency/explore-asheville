@@ -5,6 +5,13 @@ let id=0;const p=new Map();ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&
 const send=(m,q={})=>new Promise(r=>{const i=++id;p.set(i,r);ws.send(JSON.stringify({id:i,method:m,params:q}));});
 const ev=async x=>(await send("Runtime.evaluate",{expression:`(async()=>{${x}})()`,awaitPromise:true,returnByValue:true})).result?.result?.value;
 await send("Page.enable");await send("Runtime.enable");
+// The deck precaches itself with a service worker; without clearing it this
+// harness measures whatever was cached instead of the code under test.
+await send("Network.enable");await send("Network.setCacheDisabled",{cacheDisabled:true});
+await send("Page.navigate",{url:"http://localhost:3000"+"/"});await sleep(1500);
+await ev(`if(navigator.serviceWorker){for(const r of await navigator.serviceWorker.getRegistrations())await r.unregister();}
+          if(window.caches){for(const k of await caches.keys())await caches.delete(k);} return 1;`);
+
 const fs=await import("node:fs");
 async function load(h){await send("Page.navigate",{url:"about:blank"});await sleep(320);
  await send("Page.navigate",{url:"http://localhost:3000/#"+h});await sleep(3200);}
