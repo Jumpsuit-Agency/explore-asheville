@@ -8,7 +8,7 @@ const POINTS = [
     desc: "Every touchpoint \u2014 every sign, every sighting, every Sas appearance \u2014 is designed to move someone from curious to booked. The campaign doesn\u2019t just build awareness. It builds intent.",
   },
   {
-    title: "It earns more than it spends.",
+    title: "A story people want to tell",
     desc: "A Sasquatch wheat-pasting posters generates press, social, and search without a media buy. The campaign creates its own earned media engine.",
   },
   {
