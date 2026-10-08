@@ -93,7 +93,7 @@ export function AboutSlide({}: SlideProps) {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "20px" }}>
               {[
                 { name: "Nicole Ayres", role: "CEO", photo: "/team/nicole.webp", bio: "Founder of Jumpsuit, obsessed with the future, and thinks business should feel more like play." },
-                { name: "Jonathan Lapps", role: "Director of Client Success", photo: "/team/jonathan.webp", bio: "Keeps clients feeling supported and happy, while learning to integrate his people pleasing shadow." },
+                { name: "Jonathan Lapps", role: "Director of Client Success", photo: "/team/jonathan.webp", bio: "Keeps clients feeling supported and happy, while doing what it takes to get the right people on the job." },
                 { name: "Alex Land", role: "Account Director", photo: "/team/alex.webp", bio: "Main point of contact. Keeps everything moving, everyone aligned, and thinks of everything you forgot to ask." },
                 { name: "Levi Bethune", role: "Creative Director", photo: "/team/levi.webp", bio: "Full stack human. What can\u2019t this guy do? Shoot a commercial. Build AI. Give a TED talk. Make a killer cocktail." },
                 { name: "Sas", role: "Chief Cryptid", photo: "/team/sasquatch.webp", bio: "He followed us here from the mountains." },

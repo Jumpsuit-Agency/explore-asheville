@@ -49,22 +49,49 @@ export function AiImage({ src, alt, style, className, onError }: Props) {
   const measure = useCallback(() => {
     const el = ref.current;
     if (!el) return;
+    const ir = el.getBoundingClientRect();
+    if (!ir.width || !ir.height) return;
+    // The deck scales its canvas, so bounding rects are in scaled pixels
+    // while offsetLeft/offsetTop are unscaled layout pixels. Convert.
+    const scale = el.offsetWidth ? ir.width / el.offsetWidth : 1;
 
     // `object-fit: contain` letterboxes: the element box can be wider or
     // taller than the pixels inside it, and a badge pinned to the box corner
-    // would float in the empty margin beside the artwork. `cover` fills the
-    // box, so its inset is zero.
+    // would float in the empty margin beside the artwork.
     let insetX = 0;
     let insetY = 0;
-    const { naturalWidth: nw, naturalHeight: nh, clientWidth: w, clientHeight: h } = el;
-    if (nw && nh && w && h && getComputedStyle(el).objectFit === "contain") {
-      const scale = Math.min(w / nw, h / nh);
-      insetX = (w - nw * scale) / 2;
-      insetY = (h - nh * scale) / 2;
+    const { naturalWidth: nw, naturalHeight: nh } = el;
+    if (nw && nh && getComputedStyle(el).objectFit === "contain") {
+      const s = Math.min(ir.width / nw, ir.height / nh);
+      insetX = (ir.width - nw * s) / 2;
+      insetY = (ir.height - nh * s) / 2;
     }
 
-    const left = el.offsetLeft + el.offsetWidth - insetX;
-    const top = el.offsetTop + el.offsetHeight - insetY;
+    let right = ir.right - insetX;
+    let bottom = ir.bottom - insetY;
+    let minLeft = ir.left + insetX;
+    let minTop = ir.top + insetY;
+
+    // Clamp inside every clipping ancestor. The carousel stage sets
+    // overflow:hidden and crops tall artwork, so the image's true corner can
+    // sit outside the visible area — and a badge pinned to it is clipped away
+    // with the part of the image nobody sees. Pin to the visible corner.
+    for (let a: HTMLElement | null = el.parentElement; a; a = a.parentElement) {
+      const cs = getComputedStyle(a);
+      if (/hidden|auto|scroll|clip/.test(cs.overflow + cs.overflowX + cs.overflowY)) {
+        const cr = a.getBoundingClientRect();
+        if (!cr.width || !cr.height) continue;
+        right = Math.min(right, cr.right);
+        bottom = Math.min(bottom, cr.bottom);
+        minLeft = Math.max(minLeft, cr.left);
+        minTop = Math.max(minTop, cr.top);
+      }
+    }
+    right = Math.max(right, minLeft);
+    bottom = Math.max(bottom, minTop);
+
+    const left = el.offsetLeft + (right - ir.left) / scale;
+    const top = el.offsetTop + (bottom - ir.top) / scale;
     // Bail when nothing moved. This runs from a ResizeObserver, so handing
     // back a fresh object every tick would re-render on a loop.
     setPos((prev) => (prev && prev.left === left && prev.top === top ? prev : { left, top }));
@@ -84,6 +111,13 @@ export function AiImage({ src, alt, style, className, onError }: Props) {
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     ro.observe(parent);
+    for (let a: HTMLElement | null = parent; a; a = a.parentElement) {
+      const cs = getComputedStyle(a);
+      if (/hidden|auto|scroll|clip/.test(cs.overflow + cs.overflowX + cs.overflowY)) {
+        ro.observe(a);
+        break;
+      }
+    }
     return () => ro.disconnect();
   }, [marked, measure, src]);
 
