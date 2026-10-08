@@ -16,7 +16,7 @@ await send("Page.navigate",{url:BASE+"/"});await sleep(1500);
 await ev(`if(navigator.serviceWorker){for(const r of await navigator.serviceWorker.getRegistrations())await r.unregister();}
           if(window.caches){for(const k of await caches.keys())await caches.delete(k);} return 1;`);
 
-const IDS=["title","about","assignment","territories","territory-1-desc","territory-1","territory-2-desc","territory-2-creative","territory-3-desc","territory-3-montage","territory-3-digital","territory-3-guerrilla-intro","territory-3-sas-story","production-schedule","territory-3-creative","rationale","client-rubric","closing"];
+const IDS=["title","about","assignment","territories","territory-1-desc","territory-1","territory-2-desc","territory-2-creative","territory-3-desc","territory-3-montage","territory-3-digital","territory-3-guerrilla-intro","territory-3-sas-story","production-schedule","territory-3-creative","rationale","client-rubric","whats-next","closing"];
 // Only count elements that are NOT inside a clipping/scrolling ancestor —
 // content inside one of those is scrolled, not spilling out of the slide.
 const OVER=`const px=n=>+n.toFixed(0);

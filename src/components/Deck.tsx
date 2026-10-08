@@ -26,6 +26,7 @@ import { Territory3CompostSlide } from "./slides/Territory3CompostSlide";
 import { Territory3CreativeSlide } from "./slides/Territory3CreativeSlide";
 import { ProductionScheduleSlide } from "./slides/ProductionScheduleSlide";
 import { WhyItWorksSlide } from "./slides/WhyItWorksSlide";
+import { WhatsNextSlide } from "./slides/WhatsNextSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
 
 export interface SlideProps {
@@ -64,6 +65,7 @@ const SLIDES = [
   // { id: "territory-3-creative", title: "T3 Creative", component: Territory3CreativeSlide }, // PARKED — revisit later
   // { id: "rationale", title: "Our Recommendation", component: RationaleSlide }, // PARKED — proposal deck
   // { id: "client-rubric", title: "Against Your Criteria", component: ClientRubricSlide }, // PARKED — proposal deck
+  { id: "whats-next", title: "What’s Next?", component: WhatsNextSlide },
   { id: "closing", title: "Let's Talk", component: ClosingSlide },
 ] as const satisfies readonly SlideConfig[];
 
