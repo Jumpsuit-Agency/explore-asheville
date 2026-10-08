@@ -5,7 +5,7 @@ const COLOR = "var(--color-goldenrod)";
 
 const EXTENSIONS = [
   {
-    prompt: "What if Asheville starts to feel like a synchronicity. A sign.",
+    prompt: "What if Asheville starts to feel like a synchronicity\u2014a sign?",
     desc: "Once you see it, you start seeing it everywhere. A cheap flight. A long weekend opening up. A rainbow. A friend who just got back. A billboard. An Asheville Instagram account that started following you. Is it the algorithm or the universe conspiring?",
   },
   {
