@@ -28,6 +28,9 @@ import { ProductionScheduleSlide } from "./slides/ProductionScheduleSlide";
 import { WhyItWorksSlide } from "./slides/WhyItWorksSlide";
 import { WhatsNextSlide } from "./slides/WhatsNextSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
+import { AppendixSlide } from "./slides/AppendixSlide";
+import { AppendixT3DescSlide } from "./slides/AppendixT3DescSlide";
+import { AppendixT3CreativeSlide } from "./slides/AppendixT3CreativeSlide";
 
 export interface SlideProps {
   onDepthOpen?: (panelId: string) => void;
@@ -67,6 +70,9 @@ const SLIDES = [
   // { id: "client-rubric", title: "Against Your Criteria", component: ClientRubricSlide }, // PARKED — proposal deck
   { id: "whats-next", title: "What’s Next?", component: WhatsNextSlide },
   { id: "closing", title: "Let's Talk", component: ClosingSlide },
+  { id: "appendix", title: "Appendix", component: AppendixSlide },
+  { id: "appendix-territory-3-desc", title: "Appendix — T3 Extensions", component: AppendixT3DescSlide },
+  { id: "appendix-territory-3-creative", title: "Appendix — T3 Creative", component: AppendixT3CreativeSlide },
 ] as const satisfies readonly SlideConfig[];
 
 /** Every slide id, derived from SLIDES — navigate by name, never by index. */
