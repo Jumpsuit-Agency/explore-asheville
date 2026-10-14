@@ -1,8 +1,25 @@
 # Explore Asheville — handoff
 
-**State:** `main` = `15e5e7d`, production = the same commit, working tree clean.
-20 slides. Live at https://explore-asheville.vercel.app
-PDF export at `~/Desktop/explore-asheville-deck.pdf` (80 pages).
+**State:** `main` = `910d3a0`, production = the same commit, working tree clean.
+24 slides. Live at https://explore-asheville.vercel.app
+
+**PDFs on Levi's Desktop:**
+- `explore-asheville-deck.pdf` — the original 20-slide, 80-page export. **Already
+  sent to the client — never regenerate or overwrite it.**
+- `explore-asheville-testing-plan.pdf` — slide 21 only (1 page).
+- `explore-asheville-appendix.pdf` — slides 22–24 (18 pages; it predates the
+  testing plan slide, which is why that one is a separate file).
+
+**Added 2026-10-13, after the client PDF went out:** slide 21 Testing Plan
+(launch on social with variants → learn → adapt), then the appendix: 22
+divider, 23 T3 extensions in the T1 slide-5 layout, 24 a curated subset of T3
+comps in the T1 slide-6 tabbed layout (no Scripts tab). They sit after "Let's
+Talk" on purpose: adding to the end, not reworking the sent deck, avoids
+looking like a retcon. Don't move them earlier.
+
+**Exporting only some slides:** `capture.mjs` always starts at `#title`. Run a
+scratch copy with the start hash swapped (`sed 's|/#title|/#appendix|'`); it
+walks to the end, so delete the pages you don't want before `mkpdf`.
 
 Shared repo — `Jumpsuit-Agency/explore-asheville`. Nicole deploys too.
 
