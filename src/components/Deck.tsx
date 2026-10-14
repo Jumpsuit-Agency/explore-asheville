@@ -28,6 +28,7 @@ import { ProductionScheduleSlide } from "./slides/ProductionScheduleSlide";
 import { WhyItWorksSlide } from "./slides/WhyItWorksSlide";
 import { WhatsNextSlide } from "./slides/WhatsNextSlide";
 import { ClosingSlide } from "./slides/ClosingSlide";
+import { TestingPlanSlide } from "./slides/TestingPlanSlide";
 import { AppendixSlide } from "./slides/AppendixSlide";
 import { AppendixT3DescSlide } from "./slides/AppendixT3DescSlide";
 import { AppendixT3CreativeSlide } from "./slides/AppendixT3CreativeSlide";
@@ -70,6 +71,7 @@ const SLIDES = [
   // { id: "client-rubric", title: "Against Your Criteria", component: ClientRubricSlide }, // PARKED — proposal deck
   { id: "whats-next", title: "What’s Next?", component: WhatsNextSlide },
   { id: "closing", title: "Let's Talk", component: ClosingSlide },
+  { id: "testing-plan", title: "Testing Plan", component: TestingPlanSlide },
   { id: "appendix", title: "Appendix", component: AppendixSlide },
   { id: "appendix-territory-3-desc", title: "Appendix — T3 Extensions", component: AppendixT3DescSlide },
   { id: "appendix-territory-3-creative", title: "Appendix — T3 Creative", component: AppendixT3CreativeSlide },
